@@ -1,13 +1,10 @@
-from flask import Flask, request, json
-from flask_restful import Api, Resource, reqparse
-from flask_cors import CORS, cross_origin
 import urllib.request
+from flask import Flask, request, json
+from flask_cors import CORS, cross_origin
 from sparql_slurper import SlurpyGraph
 from pyshex.shex_evaluator import ShExEvaluator
 from pyshex.utils.sparql_query import SPARQLQuery
 
-import logging
-from logging.handlers import RotatingFileHandler
 app = Flask(__name__)
 CORS(app)
 
@@ -17,7 +14,10 @@ def data():
     entity = request.args.get("entity", type=str)
     sparql = request.args.get("sparql", type=str)
     result = checkShex(entitySchema, entity, sparql)
-    response = app.response_class(response=json.dumps(result), status=200, mimetype="application/json")
+    payload = {}
+    payload['results'] = result
+    payload['length'] = len(result)
+    response = app.response_class(response=json.dumps(payload), status=200, mimetype="application/json")
     return response
 
 def checkShex(shex, entity, query):
@@ -63,8 +63,5 @@ def processShex(shex):
     return shexString
 
 if __name__ == '__main__':
-   handler = RotatingFileHandler('log.log', maxBytes=10000, backupCount=1)
-   handler.setLevel(logging.INFO)
-   app.logger.addHandler(handler)
-   app.run()
+    app.run()
    
