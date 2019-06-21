@@ -13,25 +13,27 @@ def data():
     entitySchema = request.args.get("entityschema", type=str)
     entity = request.args.get("entity", type=str)
     sparql = request.args.get("sparql", type=str)
-    result = checkShex(entitySchema, entity, sparql)
+    shexc = request.args.get("shexc", type=str)
+    result = checkShex(shexc, entitySchema, entity, sparql)
     payload = {}
     payload['results'] = result
     payload['length'] = len(result)
     response = app.response_class(response=json.dumps(payload), status=200, mimetype="application/json")
     return response
 
-def checkShex(shex, entity, query):
+def checkShex(shexc, entitySchema, entity, query):
     result = []
     endpoint = "https://query.wikidata.org/bigdata/namespace/wdq/sparql"
     if query:
         sparql = query
     else:
-        sparql = "SELECT ?item WHERE { BIND(wd:" + str(entity) + " as ?item) } LIMIT 1"
+        sparql = "SELECT ?item WHERE { BIND(wd:%s as ?item) } LIMIT 1" % (entity)
 
-    shex = "https://www.wikidata.org/wiki/Special:EntitySchemaText/" + str(shex)
-     
-    shexString = processShex(shex)
-     
+    if entitySchema:
+        shex = "https://www.wikidata.org/wiki/Special:EntitySchemaText/%s" % (entitySchema)
+        shexString = processShex(shex)
+    else:
+        shexString = shexc
     results = ShExEvaluator(SlurpyGraph(endpoint),
                         shexString,
                         SPARQLQuery(endpoint, sparql).focus_nodes()).evaluate()
@@ -64,4 +66,3 @@ def processShex(shex):
 
 if __name__ == '__main__':
     app.run()
-   
