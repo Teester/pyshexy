@@ -14,29 +14,31 @@ def data():
     entity = request.args.get("entity", type=str)
     sparql = request.args.get("sparql", type=str)
     shexc = request.args.get("shexc", type=str)
-    result = checkShex(shexc, entitySchema, entity, sparql)
+    endpoint = request.args.get("endpoint", type=str)
+    result = checkShex(shexc, entitySchema, entity, sparql, endpoint)
     payload = {}
     payload['results'] = result
     payload['length'] = len(result)
     response = app.response_class(response=json.dumps(payload), status=200, mimetype="application/json")
     return response
 
-def checkShex(shexc, entitySchema, entity, query):
+def checkShex(shexc, entitySchema, entity, query, endpoint):
     result = []
-    endpoint = "https://query.wikidata.org/bigdata/namespace/wdq/sparql"
-    if query:
-        sparql = query
-    else:
-        sparql = "SELECT ?item WHERE { BIND(wd:%s as ?item) } LIMIT 1" % (entity)
+    if endpoint == None:
+        endpoint = "https://query.wikidata.org/bigdata/namespace/wdq/sparql"
+        
+    if query == None:
+        query = "SELECT ?item WHERE { BIND(wd:%s as ?item) } LIMIT 1" % (entity)
 
     if entitySchema:
         shex = "https://www.wikidata.org/wiki/Special:EntitySchemaText/%s" % (entitySchema)
         shexString = processShex(shex)
     else:
         shexString = shexc
+
     results = ShExEvaluator(SlurpyGraph(endpoint),
                         shexString,
-                        SPARQLQuery(endpoint, sparql).focus_nodes()).evaluate()
+                        SPARQLQuery(endpoint, query).focus_nodes()).evaluate()
     for r in results:
         thisResult = {}
         thisResult['result'] = r.result
@@ -66,3 +68,4 @@ def processShex(shex):
 
 if __name__ == '__main__':
     app.run()
+   
