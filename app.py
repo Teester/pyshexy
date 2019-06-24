@@ -1,4 +1,4 @@
-import urllib.request
+import requests
 from flask import Flask, request, json
 from flask_cors import CORS, cross_origin
 from sparql_slurper import SlurpyGraph
@@ -24,10 +24,10 @@ def data():
 
 def checkShex(shexc, entitySchema, entity, query, endpoint):
     result = []
-    if endpoint == None:
+    if endpoint is= None:
         endpoint = "https://query.wikidata.org/bigdata/namespace/wdq/sparql"
         
-    if query == None:
+    if query is None:
         query = "SELECT ?item WHERE { BIND(wd:%s as ?item) } LIMIT 1" % (entity)
 
     if entitySchema:
@@ -49,21 +49,15 @@ def checkShex(shexc, entitySchema, entity, query, endpoint):
     return result
  
 def processShex(shex):
-    fp = urllib.request.urlopen(shex)
-    mybytes = fp.read()
-    shexString = mybytes.decode("utf8")
-    fp.close()
-     
+    r = requests.get(shex)
+    shexString = r.text
+    
     # Replace import statements with the contents of those schemas since PyShEx doesn't do imports
     for line in shexString.splitlines():
         if line.startswith("IMPORT"):
             importString = line[line.find("<")+1:line.find(">")]
-            pq = urllib.request.urlopen(importString)
-            mybytes2 = pq.read()
-            importString2 = mybytes2.decode("UTF-8")
-            pq.close()
-            shexString = shexString.replace(line, importString2)
-     
+            s = requests.get(importString)
+            shexString = shexString.replace(line, s.text)
     return shexString
 
 if __name__ == '__main__':
