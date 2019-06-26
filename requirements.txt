@@ -1,3 +1,5 @@
 flask
 flask_cors
 nose2
+rdflib
+rdflib-jsonld
