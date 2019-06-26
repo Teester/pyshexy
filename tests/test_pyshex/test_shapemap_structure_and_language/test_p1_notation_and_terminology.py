@@ -3,7 +3,7 @@ import unittest
 from rdflib import Literal
 
 from pyshex.shapemap_structure_and_language.p1_notation_and_terminology import RDFTriple, RDFGraph
-from tests.utils.setup_test import EX, gen_rdf, setup_test
+from tests.test_pyshex.utils.setup_test import EX, gen_rdf, setup_test
 
 rdf_1 = gen_rdf("""
 <issue1> ex:submittedOn "2016-07-08"^^xsd:date .
