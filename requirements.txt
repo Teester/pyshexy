@@ -3,3 +3,4 @@ flask_cors
 nose2
 rdflib
 rdflib-jsonld
+antlr4-python3-runtime
