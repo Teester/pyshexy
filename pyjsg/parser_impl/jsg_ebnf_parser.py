@@ -60,7 +60,7 @@ class JSGEbnf(jsgParserVisitor):
         :return: Typed subject
         """
         if self.multiple_elements:
-            rval = "jsg.ArrayFactory('{%s}', _CONTEXT, %s, %d, %d)" % (name, subject, self.min, self.max)
+            rval = "jsg.ArrayFactory('{{name}}', _CONTEXT, %s, %d, %d)" % (subject, self.min, self.max)
         elif self.one_optional_element:
             rval = subject if subject.startswith("typing.Optional[") else "typing.Optional[%s]" % (subject)
         elif self.max == 0:
