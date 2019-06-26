@@ -5,7 +5,7 @@ from typing import List
 from pyshex.parse_tree.parse_node import ParseNode
 from pyshex.shape_expressions_language.p5_4_node_constraints import nodeSatisfiesStringFacet
 from pyshex.shape_expressions_language.p5_context import Context
-from tests.utils.setup_test import rdf_header, EX, setup_context
+from tests.test_pyshex.utils.setup_test import rdf_header, EX, setup_context
 
 shex_1 = """{ "type": "Schema", "shapes": [
   { "id": "http://schema.example/IssueShape",
@@ -15,9 +15,9 @@ shex_1 = """{ "type": "Schema", "shapes": [
       "valueExpr": { "type": "NodeConstraint", "minlength": 10 } } } ] }
 """
 
-rdf_1 = f"""{rdf_header}
+rdf_1 = """%s
 :issue1 ex:submittedBy <http://a.example/bob> .
-:issue2 ex:submittedOn "bob" ."""
+:issue2 ex:submittedOn "bob" .""" % (rdf_header)
 
 shex_2 = """{ "type": "Schema", "shapes": [
   { "id": "http://schema.example/IssueShape",
@@ -28,27 +28,27 @@ shex_2 = """{ "type": "Schema", "shapes": [
                      "pattern": "genuser[0-9]+", "flags": "i" }
 } } ] }"""
 
-rdf_2 = f"""{rdf_header}
+rdf_2 = """%s
 :issue6 ex:submittedBy :genUser218 .
-:issue7 ex:submittedBy :genContact817 ."""
+:issue7 ex:submittedBy :genContact817 .""" % (rdf_header)
 
 pattern = re.sub(r'\\', r'\\\\', r'^\t\\𝒸\?$')
-shex_3 = f"""{{ "type": "Schema", "shapes": [
+shex_3 = """{{ "type": "Schema", "shapes": [
   {{ "id": "http://schema.example/ProductShape",
     "type": "Shape", "expression": {{
       "type": "TripleConstraint",
       "predicate": "http://schema.example/trademark",
       "valueExpr": {{ "type": "NodeConstraint",
-                     "pattern": "{pattern}" }}
-}} }} ] }}"""
+                     "pattern": "%s" }}
+}} }} ] }}""" % (pattern)
 
 # Warning - the editor has to preserve the tab in product6 - if it changes it to spaces, no match
-rdf_3 = f"""{rdf_header}
+rdf_3 = """%s
 :product6 ex:trademark "\\t\\\\𝒸?" .
 :product7 ex:trademark "\\t\\\\\U0001D4B8?" .
 :product8 ex:trademark "\\t\\\\\\\\U0001D4B8?" .
 
-"""
+""" % (rdf_header)
 
 
 class StringFacetTestCase(unittest.TestCase):
