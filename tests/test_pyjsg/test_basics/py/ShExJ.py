@@ -191,7 +191,7 @@ class stringFacet(jsg.JSGObject):
                 self.pattern = opts_.pattern
                 self.flags = opts_.flags
             else:
-                raise ValueError(f"Unrecognized value type: {opts_}")
+                raise ValueError("Unrecognized value type: %s" % (opts_))
 
 
 
@@ -259,7 +259,7 @@ class xsFacet_1_(jsg.JSGObject):
                 self.pattern = opts_.pattern
                 self.flags = opts_.flags
             else:
-                raise ValueError(f"Unrecognized value type: {opts_}")
+                raise ValueError("Unrecognized value type: %s" % (opts_))
 
 
 
@@ -318,7 +318,7 @@ class xsFacet(jsg.JSGObject):
                 self.totaldigits = opts_.totaldigits
                 self.fractiondigits = opts_.fractiondigits
             else:
-                raise ValueError(f"Unrecognized value type: {opts_}")
+                raise ValueError("Unrecognized value type: %s" % (opts_))
 
 
 
@@ -477,7 +477,7 @@ class NodeConstraint(jsg.JSGObject):
                 self.totaldigits = opts_.totaldigits
                 self.fractiondigits = opts_.fractiondigits
             else:
-                raise ValueError(f"Unrecognized value type: {opts_}")
+                raise ValueError("Unrecognized value type: %s" % (opts_))
         self.values = values
 
 
