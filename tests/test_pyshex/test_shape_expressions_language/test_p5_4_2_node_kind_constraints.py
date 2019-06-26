@@ -3,7 +3,7 @@ from typing import List
 
 from pyshex.parse_tree.parse_node import ParseNode
 from pyshex.shape_expressions_language.p5_context import Context
-from tests.utils.setup_test import rdf_header, EX, setup_context
+from tests.test_pyshex.utils.setup_test import rdf_header, EX, setup_context
 
 shex_1 = """{ "type": "Schema", "shapes": [
   { "id": "http://schema.example/IssueShape",
@@ -11,11 +11,11 @@ shex_1 = """{ "type": "Schema", "shapes": [
       "type": "TripleConstraint", "predicate": "http://schema.example/state",
       "valueExpr": { "type": "NodeConstraint", "nodeKind": "iri" } } } ] }"""
 
-rdf_1 = f"""{rdf_header}
+rdf_1 = f"""%s
 :issue1 ex:state ex:HunkyDory .
 :issue2 ex:taste ex:GoodEnough .
 :issue3 ex:state "just fine" .
-"""
+""" % (rdf_header)
 
 
 class NodeKindConstraintTest(unittest.TestCase):
