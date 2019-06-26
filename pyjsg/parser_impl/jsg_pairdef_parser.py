@@ -90,8 +90,7 @@ class JSGPairDef(jsgParserVisitor, PythonGeneratorElement):
                 raise NotImplementedError("Reference to " + self._type_reference + " is not valid")
             return self._context.reference(self._type_reference).signatures(all_are_optional)
         else:
-            return ["%s: %s = " % (self._names[rn], self.python_type())
-                    "%s" % (self._ebnf.mt_value(self._typ)) for rn, cn in self._names.items() if is_valid_python(cn)]
+            return ["%s: %s = %s" % (self._names[rn], self.python_type(), self._ebnf.mt_value(self._typ)) for rn, cn in self._names.items() if is_valid_python(cn)]
 
     def _initializer_for(self, raw_name: str, cooked_name: str, prefix: Optional[str]) -> List[str]:
         """Create an initializer entry for the entry
