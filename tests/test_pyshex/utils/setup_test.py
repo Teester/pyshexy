@@ -13,15 +13,15 @@ from pyshex.utils.rdf_namespace import RDFNamespace
 EX = RDFNamespace("http://schema.example/")
 INST = RDFNamespace("http://inst.example/#")
 
-rdf_header = f"""
-prefix ex: <{EX}>
-prefix : <{EX}>
-prefix rdf: <{RDF}>
-prefix rdfs: <{RDFS}>
-prefix xsd: <{XSD}>
-prefix inst: <{INST}>
-prefix foaf: <{FOAF}>
-"""
+rdf_header = """
+prefix ex: <%s>
+prefix : <%s>
+prefix rdf: <%s>
+prefix rdfs: <%s>
+prefix xsd: <%s>
+prefix inst: <%s>
+prefix foaf: <%s>
+""" % (EX, EX, RDF, RDFS, XSD, INST, FOAF)
 
 
 def setup_context(shex_str: str, rdf_str: Optional[str]) -> Context:
@@ -33,7 +33,7 @@ def setup_context(shex_str: str, rdf_str: Optional[str]) -> Context:
 
 
 def setup_test(shex_str: Optional[str], rdf_str: Optional[str]) -> Tuple[Optional[ShExJ.Schema], Optional[Graph]]:
-    schema: ShExJ.Schema = loads(shex_str, ShExJ, strict=False) if shex_str else None
+    schema = loads(shex_str, ShExJ, strict=False) if shex_str else None
     if rdf_str:
         g = Graph()
         g.parse(data=rdf_str, format="turtle")
@@ -46,4 +46,4 @@ def gen_rdf(rdf_fragment: str) -> str:
     """ Edit rdf_fragment from the spec to be complete. We
     1) Add the rdf header and
     2) convert relative URI's into URI's based in the default space """
-    return f"""{rdf_header}""" + re.sub(r'<([^.:>]+)>', r':\1', rdf_fragment)
+    return """%s""" % (rdf_header) + re.sub(r'<([^.:>]+)>', r':\1', rdf_fragment)
