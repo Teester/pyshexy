@@ -8,7 +8,7 @@ from rdflib import URIRef, RDF
 
 from pyshex.shape_expressions_language.p5_context import Context
 from pyshex.utils.schema_utils import predicates_in_expression
-from tests.utils.setup_test import gen_rdf, setup_context
+from tests.test_pyshex.utils.setup_test import gen_rdf, setup_context
 
 shex_1 = """
 { "type": "Schema",
