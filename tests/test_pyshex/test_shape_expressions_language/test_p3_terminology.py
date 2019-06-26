@@ -3,9 +3,9 @@ import unittest
 from rdflib import URIRef, Literal
 from rdflib.namespace import FOAF
 
-from tests.utils.setup_test import rdf_header, setup_test, EX, INST
+from tests.test_pyshex.utils.setup_test import rdf_header, setup_test, EX, INST
 
-rdf_1 = f"""{rdf_header}
+rdf_1 = """%s
 inst:Issue1 
     ex:state      ex:unassigned ;
     ex:reportedBy ex:User2 .
@@ -13,7 +13,7 @@ inst:Issue1
 ex:User2
     foaf:name     "Bob Smith" ;
     foaf:mbox     <mailto:bob@example.org> .
-"""
+""" % (rdf_header)
 
 
 class TerminologyTestCase(unittest.TestCase):
