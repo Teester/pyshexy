@@ -17,11 +17,11 @@ class JSGValueType(jsgParserVisitor, PythonGeneratorElement):
         self._context = context
 
         # With the exception of lexeridref and alttypelist, all options below are mutually exclusive
-        self._typeid: Optional[str] = None              # The name of a referenced (possibly anonymous) type
-        self._arrayDef: Optional[JSGArrayExpr] = None   # Type is an array
-        self._lexeridref: Optional[str] = None          # The name of a (possibly anonymous) string match pattern
-        self._builtintype: Optional[JSGBuiltinValueType] = None  # Type is a builtin type
-        self._alttypelist: List[JSGValueType] = []      # Two or more alternative types
+        self._typeid = None              # The name of a referenced (possibly anonymous) type
+        self._arrayDef = None   # Type is an array
+        self._lexeridref = None          # The name of a (possibly anonymous) string match pattern
+        self._builtintype = None  # Type is a builtin type
+        self._alttypelist = []      # Two or more alternative types
         self.text = ""
 
         if ctx:
@@ -31,15 +31,15 @@ class JSGValueType(jsgParserVisitor, PythonGeneratorElement):
     def __str__(self):
         if self._typeid:
             if self._context.is_anon(self._typeid):
-                typ = f"(anonymous: {self._typeid}): {self._context.reference(self._typeid)}"
+                typ = "(anonymous: %s): %s" % (self._typeid, self._context.reference(self._typeid))
             else:
-                typ = f"ID: {self._typeid}"
+                typ = "ID: %s" % (self._typeid)
         elif self._builtintype:
             typ = str(self._builtintype)
         elif self._alttypelist:
-            lid_str = f"({self._lexerid_str()}) | " if self._lexeridref else ""
+            lid_str = "(%s) | " % (self._lexerid_str()) if self._lexeridref else ""
             alts_str = ' | '.join(ta.signature_type() for ta in self._alttypelist)
-            typ = f"({lid_str}{alts_str})"
+            typ = "(%s%s)" % (lid_str, alts_str)
         elif self._lexeridref:
             typ = self._lexerid_str()
         elif self._arrayDef:

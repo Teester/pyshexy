@@ -1,0 +1,37 @@
+usage: shexeval [-h] [-f FORMAT] [-s START] [-ut] [-sp STARTPREDICATE]
+                [-fn FOCUS] [-A] [-d] [-ss] [-cf] [-sq SPARQL] [-se]
+                [--stopafter STOPAFTER] [-ps] [-pr] [-gn GRAPHNAME] [-pb]
+                rdf shex
+
+positional arguments:
+  rdf                   Input RDF file or SPARQL endpoint if slurper or sparql
+                        options
+  shex                  ShEx specification
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -f FORMAT, --format FORMAT
+                        Input RDF Format
+  -s START, --start START
+                        Start shape. If absent use ShEx start node.
+  -ut, --usetype        Start shape is rdf:type of focus
+  -sp STARTPREDICATE, --startpredicate STARTPREDICATE
+                        Start shape is object of this predicate
+  -fn FOCUS, --focus FOCUS
+                        RDF focus node
+  -A, --allsubjects     Evaluate all non-bnode subjects in the graph
+  -d, --debug           Add debug output
+  -ss, --slurper        Use SPARQL slurper graph
+  -cf, --flattener      Use RDF Collections flattener graph
+  -sq SPARQL, --sparql SPARQL
+                        SPARQL query to generate focus nodes
+  -se, --stoponerror    Stop on an error
+  --stopafter STOPAFTER
+                        Stop after N nodes
+  -ps, --printsparql    Print SPARQL queries as they are executed
+  -pr, --printsparqlresults
+                        Print SPARQL query and results
+  -gn GRAPHNAME, --graphname GRAPHNAME
+                        Specific SPARQL graph to query - use '' for any named
+                        graph
+  -pb, --persistbnodes  Treat BNodes as persistent in SPARQL endpoint

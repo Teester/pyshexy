@@ -1,0 +1,12 @@
+objectValue      = (IRI|ObjectLiteral) ;
+
+Wildcard {}
+ObjectLiteral    { value:@string language:@string? type:@string? }
+
+
+Stem             { stem:IRI } # StemRange with exclusions
+StemRange        { stem:(IRI|Wildcard) exclusions:[(objectValue|Stem) +]? }
+
+@terminals
+IRI : @string ;
+

@@ -1,0 +1,1 @@
+doc { street:@string no:@int }

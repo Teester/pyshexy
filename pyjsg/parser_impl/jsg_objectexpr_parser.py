@@ -51,13 +51,13 @@ class JSGObjectExpr(jsgParserVisitor, PythonGeneratorElement):
         self._strict = True
 
         # _members, _choices and _map_name_type are mutually exclusive
-        self._members: List[JSGPairDef] = []
-        self._choices: List[str] = []
+        self._members = []
+        self._choices = []
 
         # _map is for a map style definition
-        self._map_name_type: Optional[Union[str, JSGLexerRuleBlock]] = None               # Name of a lexer rule block
-        self._map_valuetype: Optional[JSGValueType] = None
-        self._map_ebnf: Optional[JSGEbnf] = None
+        self._map_name_type = None               # Name of a lexer rule block
+        self._map_valuetype = None
+        self._map_ebnf = None
         self.text = ""
 
         if ctx:
@@ -74,14 +74,14 @@ class JSGObjectExpr(jsgParserVisitor, PythonGeneratorElement):
                 filtr = self._map_name_type
             else:
                 filtr = self._map_name_type.signature_type()
-            name_filter = f"{indent1n}_name_filter = {filtr}"
+            name_filter = "%s_name_filter = %s" % (indentln, filtr)
         else:
             name_filter = ""
         if self._map_valuetype is not None:
             typ = self._map_valuetype.python_type()
         else:
             typ = "jsg.AnyType"
-        value_type = f"{indent1n}_value_type = {typ}"
+        value_type = "%s_value_type = %s" % (indentln, typ)
         return _map_template.format(**locals())
 
     def as_python(self, name: str) -> str:
@@ -111,7 +111,7 @@ class JSGObjectExpr(jsgParserVisitor, PythonGeneratorElement):
         if self._map_valuetype:
             return ''
         else:
-            return indent0.join(f"'{mk}': {mt}" for mk, mt in self.members_entries())
+            return indent0.join("'%s': %s" % (mk, mt) for mk, mt in self.members_entries())
 
     def _gen_init_fctn(self) -> str:
         pair_signatures = self.signatures()
@@ -145,9 +145,9 @@ class JSGObjectExpr(jsgParserVisitor, PythonGeneratorElement):
         elif self._choices:
             pair_signatures = ', '.join(self._choices)
             if len(self._choices) > 1:
-                pair_signatures = f'opts_: typing.Union[{pair_signatures}] = None'
+                pair_signatures = 'opts_: typing.Union[%s] = None' % (pair_signatures)
             else:
-                pair_signatures = f'{self._choices[0]}: {pair_signatures} = None'
+                pair_signatures = '%s: %s = None' % (self._choices[0], pair_signatures)
             return [pair_signatures]
         else:
             return flatten([pairdef.signatures() for pairdef in self._members])
@@ -160,11 +160,11 @@ class JSGObjectExpr(jsgParserVisitor, PythonGeneratorElement):
             if not prefix:
                 prefix = 'opts_'
             # Overall test
-            rval = [f'if {prefix} is not None:']
+            rval = ['if %s is not None:' % (prefix)]
 
             # First choice option
             choice = self._choices[0]
-            rval.append(f'{t(1)}if isinstance({prefix}, {choice}):')
+            rval.append('%sif isinstance(%s, %s):' % (t(1), prefix, choice))
             choice_ref = self._context.reference(choice)
             inits = choice_ref.initializers(prefix)
             for initializer in inits:
@@ -175,7 +175,7 @@ class JSGObjectExpr(jsgParserVisitor, PythonGeneratorElement):
             # Second through nth choice options
             for choice in self._choices[1:]:
                 if is_valid_python(choice):
-                    rval.append(f'{t(1)}elif isinstance({prefix}, {choice}):')
+                    rval.append('%selif isinstance(%s, %s):' % (t(1), prefix, choice))
                     choice_ref = self._context.reference(choice)
                     choice_inits = []
                     for initializer in choice_ref.initializers(prefix):
@@ -188,7 +188,7 @@ class JSGObjectExpr(jsgParserVisitor, PythonGeneratorElement):
 
             # Error checker
             rval.append(t() + 'else:')
-            rval.append(t(2) + f'raise ValueError(f"Unrecognized value type: {{{prefix}}}")')
+            rval.append(t(2) + 'raise ValueError("Unrecognized value type: {{%s}}"' % (prefix))
             return rval
         else:
             return flatten([pairdef.initializers(prefix) for pairdef in self._members])

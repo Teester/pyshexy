@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+#from dataclasses import dataclass
 from typing import Optional, Tuple, Dict, List
 
 from pyjsg.parser.jsgParser import *
@@ -7,14 +7,19 @@ from pyjsg.parser_impl.jsg_doc_context import JSGDocContext, PythonGeneratorElem
 
 
 class JSGBuiltinValueType(jsgParserVisitor, PythonGeneratorElement):
-    @dataclass
+    #@dataclass
     class TypeInfo:
-        sig_type: str
-        ref_type: str
-        py_type: type
-        mt_value: str
+        #sig_type: str
+        #ref_type: str
+        #py_type: type
+        #mt_value: str
+        def __init__(self, sig_type: str, ref_type: str, py_type: type, mt_value: str):
+            self.sig_type = sig_type
+            self.ref_type = ref_type
+            self.py_type = py_type
+            self.mt_value = mt_value
 
-    parserTypeToImplClass: Dict[str, TypeInfo] = \
+    parserTypeToImplClass = \
         {"@string": TypeInfo("jsg.String", "jsg.String", str, "None"),
          "@object": TypeInfo("jsg.ObjectFactory('{name}', _CONTEXT, jsg.Object)", "jsg.JSGObject", object, "None"),
          "@int": TypeInfo("jsg.Integer", "jsg.Integer", int, "None"),
@@ -26,15 +31,15 @@ class JSGBuiltinValueType(jsgParserVisitor, PythonGeneratorElement):
 
     def __init__(self, context: JSGDocContext, ctx: Optional[jsgParser.BuiltinValueTypeContext] = None):
         self._context = context
-        self._value_type_text: Optional[str] = None
-        self._typeinfo: JSGBuiltinValueType.TypeInfo = None
+        self._value_type_text = None
+        self._typeinfo = None
         self.text = ""
         if ctx:
             self.text = ctx.getText()
             self.visit(ctx)
 
     def __str__(self):
-        return f"builtinValueType: {self._value_type_text if self._value_type_text != '.' else 'jsg.AnyType'}"
+        return "builtinValueType: %s" % (self._value_type_text if self._value_type_text != '.' else 'jsg.AnyType')
 
     def python_type(self) -> str:
         return "type(None)" if self._typeinfo.py_type is type(None) else self._typeinfo.py_type.__name__

@@ -291,13 +291,12 @@ class ShExC:
                 return '+'
             elif maxv == 1:
                 return ""
-        #return f"{{{minv}}}" if minv == maxv else f"{{{minv},{maxv}}}" if maxv != -1 else f"{{{minv},*}}"
-        return "{{" + minv + "}}" if minv == maxv else "{{" + minv + "," + maxv + "}}" if maxv != -1 else "{{" + minv + ",*}}"
+        return "{{%d}}" % (minv) if minv == maxv else "{{%d,%d}}" % (minv, maxv) if maxv != -1 else "{{%d,*}}" % (minv)
 
     @staticmethod
     def add_facet(facet, label: str) -> str:
         #return f'{label} {facet}' if facet is not None else ''
-        return label + " " + facet if facet is not None else ''
+        return label + " " + str(facet) if facet is not None else ''
 
     @staticmethod
     def add_pattern(pattern, flags) -> str:

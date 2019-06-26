@@ -1,13 +1,10 @@
-from flask import Flask, request, json
-from flask_restful import Api, Resource, reqparse
-from flask_cors import CORS, cross_origin
 import urllib.request
+from flask import Flask, request, json
+from flask_cors import CORS, cross_origin
 from sparql_slurper import SlurpyGraph
 from pyshex.shex_evaluator import ShExEvaluator
 from pyshex.utils.sparql_query import SPARQLQuery
 
-import logging
-from logging.handlers import RotatingFileHandler
 app = Flask(__name__)
 CORS(app)
 
@@ -16,25 +13,32 @@ def data():
     entitySchema = request.args.get("entityschema", type=str)
     entity = request.args.get("entity", type=str)
     sparql = request.args.get("sparql", type=str)
-    result = checkShex(entitySchema, entity, sparql)
-    response = app.response_class(response=json.dumps(result), status=200, mimetype="application/json")
+    shexc = request.args.get("shexc", type=str)
+    endpoint = request.args.get("endpoint", type=str)
+    result = checkShex(shexc, entitySchema, entity, sparql, endpoint)
+    payload = {}
+    payload['results'] = result
+    payload['length'] = len(result)
+    response = app.response_class(response=json.dumps(payload), status=200, mimetype="application/json")
     return response
 
-def checkShex(shex, entity, query):
+def checkShex(shexc, entitySchema, entity, query, endpoint):
     result = []
-    endpoint = "https://query.wikidata.org/bigdata/namespace/wdq/sparql"
-    if query:
-        sparql = query
-    else:
-        sparql = "SELECT ?item WHERE { BIND(wd:" + str(entity) + " as ?item) } LIMIT 1"
+    if endpoint == None:
+        endpoint = "https://query.wikidata.org/bigdata/namespace/wdq/sparql"
+        
+    if query == None:
+        query = "SELECT ?item WHERE { BIND(wd:%s as ?item) } LIMIT 1" % (entity)
 
-    shex = "https://www.wikidata.org/wiki/Special:EntitySchemaText/" + str(shex)
-     
-    shexString = processShex(shex)
-     
+    if entitySchema:
+        shex = "https://www.wikidata.org/wiki/Special:EntitySchemaText/%s" % (entitySchema)
+        shexString = processShex(shex)
+    else:
+        shexString = shexc
+
     results = ShExEvaluator(SlurpyGraph(endpoint),
                         shexString,
-                        SPARQLQuery(endpoint, sparql).focus_nodes()).evaluate()
+                        SPARQLQuery(endpoint, query).focus_nodes()).evaluate()
     for r in results:
         thisResult = {}
         thisResult['result'] = r.result
@@ -63,8 +67,5 @@ def processShex(shex):
     return shexString
 
 if __name__ == '__main__':
-   handler = RotatingFileHandler('log.log', maxBytes=10000, backupCount=1)
-   handler.setLevel(logging.INFO)
-   app.logger.addHandler(handler)
-   app.run()
+    app.run(debug=True)
    

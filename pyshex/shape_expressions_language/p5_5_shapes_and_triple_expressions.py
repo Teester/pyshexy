@@ -66,7 +66,7 @@ def satisfiesShape(cntxt: Context, n: Node, S: ShExJ.Shape, c: DebugContext) -> 
             non_matchables = RDFGraph([t for t in arcsOut(cntxt.graph, n) if t not in matchables])
             if len(non_matchables):
                 cntxt.fail_reason = "Unmatched triples in CLOSED shape:"
-                cntxt.fail_reason = '\n'.join("\t" + t for t in non_matchables)
+                cntxt.fail_reason = '\n'.join("\t" + str(t) for t in non_matchables)
                 if c.debug:
                     print(c.i(0,
                               "<--- Satisfies shape " + c.d() + " FAIL - ",

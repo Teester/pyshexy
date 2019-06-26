@@ -12,8 +12,8 @@ class JSGArrayExpr(jsgParserVisitor, PythonGeneratorElement):
         from pyjsg.parser_impl.jsg_ebnf_parser import JSGEbnf
 
         self._context = context
-        self._types: List[JSGValueType] = None
-        self._ebnf: JSGEbnf = JSGEbnf(context)
+        self._types = None
+        self._ebnf = JSGEbnf(context)
         self._ebnf.min = 0
         self._ebnf.max = None
         self.text = ""
@@ -25,23 +25,23 @@ class JSGArrayExpr(jsgParserVisitor, PythonGeneratorElement):
     def __str__(self):
         type_list = ' | '.join([str(t) for t in self._types])
         if len(self._types) != 1:
-            type_list = f'({type_list})'
-        return f"arrayExpr: [{type_list}{self._ebnf}]"
+            type_list = '(%s)' % (type_list)
+        return "arrayExpr: [%s%s]" % (type_list, self._ebnf)
 
     def python_type(self) -> str:
         type_list = ', '.join([t.python_type() for t in self._types])
         if len(self._types) > 1:
-            type_list = f'typing.Union[{type_list}]'
-        return f"typing.List[{type_list}]"
+            type_list = 'typing.Union[%s]' % (type_list)
+        return "typing.List[%s]" % (type_list)
 
     def _inner_signature(self) -> str:
         type_list = ', '.join([t.signature_type() for t in self._types])
         if len(self._types) > 1:
-            type_list = f'typing.Union[{type_list}]'
+            type_list = 'typing.Union[%s]' % (type_list)
         return type_list
 
     def signature_type(self) -> str:
-        return f"jsg.ArrayFactory('{{name}}', _CONTEXT, {self._inner_signature()}, {self._ebnf.min}, {self._ebnf.max})"
+        return "jsg.ArrayFactory('{%s}', _CONTEXT, %s, %d, %d)" % (name, self._inner_signature(), self._ebnf.min, self._ebnf.max)
 
     def reference_type(self) -> str:
         return self.signature_type()

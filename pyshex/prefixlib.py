@@ -5,7 +5,6 @@ from pyshexc.parser_impl.generate_shexj import load_shex_file
 from rdflib import Namespace, Graph, RDF, RDFS, XSD, URIRef
 from rdflib.namespace import DOAP, FOAF, DC, DCTERMS, SKOS, OWL, XMLNS, _RDFNamespace
 
-
 class PrefixLibrary:
     unique_token = object()
 
@@ -30,8 +29,7 @@ class PrefixLibrary:
         """ Return the ShEx representation of the library """
         rval = ""
         for k, v in self:
-            rval += "PREFIX " + k.lower() + ": <" + str(v) + ">\n"
-            #rval += f"PREFIX {k.lower()}: <{str(v)}>\n"
+            rval += "PREFIX %s: <%s>\n" % (k.lower, str(v))
         return rval + '\n'
 
     def __setitem__(self, key, value):
@@ -95,8 +93,7 @@ class PrefixLibrary:
                 setattr(target, k, v)
                 nret += 1
             else:
-                #print(f"Warning: {key} is already defined in namespace {target}. Not overridden")
-                print("Warning: " + key + " is already defined in nsmespace " + target + ". Not overridden")
+                print("Warning: %s is already defined in namespace %s. Not overridden" % (key, target))
         return nret
 
     def nsname(self, uri: Union[str, URIRef]) -> str:

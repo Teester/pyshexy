@@ -33,11 +33,9 @@ class ParseNode:
         rval = []
         if top:
             for s, p in g.subject_predicates(node):
-                #rval.append(f"{indent}  {self.n3m.n3(s)} {self.n3m.n3(p)} {self.n3m.n3(node)} .")
-                rval.append(indent + "  " + self.n3m.n3(s) + " " ,+ self.n3m.n3(p) + " " + self.n3m.n3(node) + " .")
+                rval.append("%s  %s %s %s ." % (indent, str(self.n3m.n3(s)), str(self.n3m.n3(p)), str(self.n3m.n3(node))))
         for p, o in sorted(g.predicate_objects(node)):
-            #rval += [f"{indent}     {self.n3m.n3(node)} {self.n3m.n3(p)} {self.n3m.n3(o)} ."]
-            rval += [indent + "    " + self.n3m.n3(node) + " " + self.n3m.n3(p) + " " + self.n3m.n3(o) + " ."]
+            rval += ["%s    %s %s %s ." % (indent, str(self.n3m.n3(node)), str(self.n3m.n3(p)), str(self.n3m.n3(o)))]
             if isinstance(o, BNode):
                 rval += self.dump_bnodes(g, o, indent, top=False)
         return rval
@@ -60,10 +58,10 @@ class ParseNode:
                 shape_name = '(unnamed shape)'
             indent = (i+depth)*"  "
             #rval.append(f"{indent}  Testing {self.n3m.n3(node)} against shape {shape_name}")
-            rval.append(indent + "  Testing " + self.n3m.n3(node) + " against shape " + shape_name)
+            rval.append(indent + "  Testing " + str(self.n3m.n3(node)) + " against shape " + shape_name)
             if isinstance(node, BNode):
                 #rval += [f"{indent}  {self.n3m.n3(node)} context:"]
-                rval += [indent + "  " + self.n3m.n3(node) + " context:"]
+                rval += [indent + "  " + str(self.n3m.n3(node)) + " context:"]
                 rval += self.dump_bnodes(g, node, indent)
                 rval[-1] = rval[-1] + '\n'
         rval += follow_reasons(depth + len(self.reason_stack))

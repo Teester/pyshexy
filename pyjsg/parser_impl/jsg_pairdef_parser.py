@@ -14,10 +14,10 @@ class JSGPairDef(jsgParserVisitor, PythonGeneratorElement):
         self._context = context
 
         # PairDef can be one of "name: valueType [ebnsuffix]", "(name [|] name ...): valueType [ebnsuffix]" or type_ref
-        self._typ: Optional[JSGValueType] = None       # If absent, then _type reference
-        self._names: Dict[str, str] = OrderedDict()    # List of names associated with _typ
+        self._typ = None       # If absent, then _type reference
+        self._names = OrderedDict()    # List of names associated with _typ
 
-        self._type_reference: Optional[str] = None     # Reference to external type
+        self._type_reference = None     # Reference to external type
 
         self._ebnf = JSGEbnf(context)                  # Cardinality of either branch
         self.text = ""
@@ -33,9 +33,9 @@ class JSGPairDef(jsgParserVisitor, PythonGeneratorElement):
                 namelist = '(' + ' | '.join(name for name in names) + ')'
             else:
                 namelist = names[0]
-            return f"pairDef: {namelist} : {self._typ}{self._ebnf}"
+            return "pairDef: %s : %s%s" % (namelist, self._typ, self._ebnf)
         else:
-            return f"pairDef: typeReference: {self._type_reference}{self._ebnf}"
+            return "pairDef: typeReference: %s%s" % (self._type_reference, self._ebnf)
 
     def is_reference_type(self) -> bool:
         return self._type_reference is not None
@@ -48,7 +48,7 @@ class JSGPairDef(jsgParserVisitor, PythonGeneratorElement):
         :return: raw name/ signature type for all elements in this pair
         """
         if self._type_reference:
-            rval: List[Tuple[str, str]] = []
+            rval = []
             for n, t in self._context.reference(self._type_reference).members_entries(all_are_optional):
                 rval.append((n, self._ebnf.signature_cardinality(t, all_are_optional).format(name=n)))
             return rval
@@ -90,8 +90,8 @@ class JSGPairDef(jsgParserVisitor, PythonGeneratorElement):
                 raise NotImplementedError("Reference to " + self._type_reference + " is not valid")
             return self._context.reference(self._type_reference).signatures(all_are_optional)
         else:
-            return [f"{self._names[rn]}: {self.python_type()} = " 
-                    f"{self._ebnf.mt_value(self._typ)}" for rn, cn in self._names.items() if is_valid_python(cn)]
+            return ["%s: %s = " % (self._names[rn], self.python_type())
+                    "%s" % (self._ebnf.mt_value(self._typ)) for rn, cn in self._names.items() if is_valid_python(cn)]
 
     def _initializer_for(self, raw_name: str, cooked_name: str, prefix: Optional[str]) -> List[str]:
         """Create an initializer entry for the entry
@@ -109,22 +109,22 @@ class JSGPairDef(jsgParserVisitor, PythonGeneratorElement):
         if is_valid_python(raw_name):
             if prefix:
                 # If a prefix exists, the input has already been processed - no if clause is necessary
-                rval.append(f"self.{raw_name} = {prefix}.{raw_name}")
+                rval.append("self.%s = %s.%s" % (raw_name, prefix, raw_name))
             else:
                 cons = raw_name
-                rval.append(f"self.{raw_name} = {cons}")
+                rval.append("self.%s = %s" % (raw_name, cons))
         elif is_valid_python(cooked_name):
             if prefix:
-                rval.append(f"setattr(self, '{raw_name}', getattr({prefix}, '{raw_name}')")
+                rval.append("setattr(self, '%s', getattr(%s, '%s')"  % (raw_name, prefix, raw_name)))
             else:
-                cons = f"{cooked_name} if {cooked_name} is not {mt_val} else _kwargs.get('{raw_name}', {mt_val})"
-                rval.append(f"setattr(self, '{raw_name}', {cons})")
+                cons = "{cooked_name} if %s is not %s else _kwargs.get('%s', %s)" % (cooked_name, cooked_name, mt_val, raw_name, mt_val)
+                rval.append("setattr(self, '%s', %s)" % (raw_name, cons))
         else:
-            getter = f"_kwargs.get('{raw_name}', {mt_val})"
+            getter = "_kwargs.get('%s', %s)" % (raw_name, mt_val)
             if prefix:
-                rval.append(f"setattr(self, '{raw_name}', getattr({prefix}, '{getter}')")
+                rval.append("setattr(self, '%s', getattr(%s, '%s')" % (raw_name, prefix, getter))
             else:
-                rval.append(f"setattr(self, '{raw_name}', {getter})")
+                rval.append("setattr(self, '%s', %s)" % (raw_name, getter))
 
         return rval
 

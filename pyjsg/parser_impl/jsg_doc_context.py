@@ -40,7 +40,7 @@ class PythonGeneratorElement(metaclass=ABCMeta):
 
 class UndefinedElement(PythonGeneratorElement):
     def __init__(self, name) -> None:
-        self.name = f"Undefined({name})"
+        self.name = "Undefined(%s)" % (name)
 
     def __str__(self):
         return self.name
@@ -76,7 +76,7 @@ class JSGForwardRef:
 
     @property
     def label(self) -> str:
-        return f'"{self._ref}"'
+        return '"%s"' % (self._ref)
 
 
 class JSGDocContext:
@@ -89,13 +89,12 @@ class JSGDocContext:
         from pyjsg.parser_impl.jsg_arrayexpr_parser import JSGArrayExpr
         from pyjsg.parser_impl.jsg_builtinvaluetype_parser import JSGBuiltinValueType
 
-        self.directives: List[str] = []
-        self.grammarelts: Dict[str, Union[JSGLexerRuleBlock, JSGObjectExpr,  JSGArrayExpr,
-                                          JSGForwardRef, JSGBuiltinValueType]] = OrderedDict()
-        self.dependency_map: Dict[str, List[str]] = {}
-        self.forward_refs: Dict[str, str] = {}
-        self.depths: Dict[str, int] = {}
-        self.has_typeid: bool = False
+        self.directives = []
+        self.grammarelts = OrderedDict()
+        self.dependency_map = {}
+        self.forward_refs = {}
+        self.depths = {}
+        self.has_typeid = False
 
         self._id_factory = AnonymousIdentifierFactory()
 

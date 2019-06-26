@@ -216,14 +216,16 @@ class JSGObject(JsonObj, JSGValidateable, metaclass=JSGObjectMeta):
         et = self._map_jsg_type(name, element, poss_types)
         if et is not None:
             return et
-        #raise ValueError(f"Wrong type for {name}: {Logger.json_repr(element)} - expected:"
-        #                 f" {poss_types} got {type(element).__name__}")
-        raise ValueError("Wrong type for " + name + ": " + Logger.json_repr(element) + " - expected: " + poss_types + " got " + type(element.__name__))
-
+        raise ValueError("Wrong type for %s: %s - expected: %s got %s" % (name, Logger.json_repr(element), poss_types, type(element.__name__)))
+        
 class ObjectWrapperMeta(type):
     #variable_name: str
     #context: JSGContext
     #typ: type
+    def __init__(self, variable_name:str, context: JSGContext, typ: type):
+        self.variable_name = variable_name
+        self.context = context
+        self.typ = typ
 
     def __instancecheck__(self, element: object) -> bool:
         return conforms(element, JSGObject, self.context.NAMESPACE)
@@ -233,7 +235,11 @@ class ObjectWrapper(metaclass=ObjectWrapperMeta):
     #variable_name: str
     #context: JSGContext
     #typ: type
-
+    def __init__(self, variable_name:str, context: JSGContext, typ: type):
+        self.variable_name = variable_name
+        self.context = context
+        self.typ = typ
+        
     def __new__(cls, value):
         return cls.typ(cls.variable_name, cls.context, value)
 

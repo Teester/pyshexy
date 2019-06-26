@@ -57,7 +57,7 @@ class AnyType(JSGValidateable, metaclass=AnyTypeMeta):
 class AnyTypeWrapperMeta(type):
     #variable_name: str
     #context: JSGContext
-    def __init__(self, type, variable_name, context):
+    def __init__(self, type, variable_name: str, context: JSGContext):
         self.variable_name = variable_name
         self.context = context
 

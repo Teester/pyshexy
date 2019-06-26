@@ -44,7 +44,7 @@ class ShExC:
         rval = reduce(lambda r, p: re.sub(p[0], p[1], r), repl_list, rval)
         rval = rval.replace(self.base, '') if self.base is not None else rval
         if self.base is not None:
-            rval = f'BASE <{self.base}>\n\n' + rval
+            rval = "BASE <{%s}>\n\n%s" % (self.base, rval)
         return rval
 
     def __repr__(self) -> str:
@@ -64,7 +64,7 @@ class ShExC:
         return schema
 
     def implementation_error(self, tkn: Any) -> None:
-        raise NotImplementedError(f"Unknown token: {type(tkn)}")
+        raise NotImplementedError("Unknown token: " % (type(tkn)))
 
     def imports(self, imports: Optional[List[ShExJ.IRIREF]]) -> List[str]:
         if imports is not None:
@@ -77,7 +77,7 @@ class ShExC:
             for act in semActs:
                 rval.append(f"%{self.iriref(act.name)}")
                 act_code = self._escape_embedded_code(act.code).replace('%', '\\%') if act.code else None
-                rval.append(f"{{{act_code}%}}" if act_code is not None else '%')
+                rval.append(("{{%s%}}" % (act_code)) if act_code is not None else "%")
         return rval
 
     def start(self, start: Optional[ShExJ.shapeExpr]) -> List[str]:

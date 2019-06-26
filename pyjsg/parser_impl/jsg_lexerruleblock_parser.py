@@ -20,9 +20,9 @@ class JSGLexerRuleBlock(jsgParserVisitor, PythonGeneratorElement):
     def __init__(self, context: JSGDocContext, ctx: Optional[jsgParser.lexerRuleBlock] = None) -> None:
         self._context = context
 
-        self._rulePattern: str = ""
-        self._ruleTokens: Set[str] = set()
-        self._jsontype: Optional[JSGBuiltinValueType] = None
+        self._rulePattern = ""
+        self._ruleTokens = set()
+        self._jsontype = None
         self.text = ""
 
         if ctx:
@@ -30,7 +30,7 @@ class JSGLexerRuleBlock(jsgParserVisitor, PythonGeneratorElement):
             self.visit(ctx)
 
     def __str__(self):
-        return f"pattern: r'{self._rulePattern}'"
+        return "pattern: r'%s'" % (self._rulePattern)
 
     def dependency_list(self) -> List[str]:
         return list(self._ruleTokens)

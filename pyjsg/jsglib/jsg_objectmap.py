@@ -35,7 +35,7 @@ class JSGObjectMap(JSGObject):
             if self._name_filter is not None:
                 if not isinstance(key, self._name_filter):
                     #raise ValueError(f"Illegal Object Map key: {key}={value}")
-                    raise ValueError("Illegal Object Map key: " + key + "=" + value)
+                    raise ValueError("Illegal Object Map key: " + key + "=" + str(value))
             if not conforms(value, self._value_type, self._context.NAMESPACE):
                 raise ValueError("Illegal value type {} = {}".format(key, value))
                

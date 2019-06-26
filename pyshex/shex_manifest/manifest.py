@@ -16,7 +16,7 @@ def fetch_uri(self, url: str, base: str="") -> Optional[str]:
     if req.ok:
         return req.text
     else:
-        print(f"{base + url} {req.reason}" )
+        print("%s %s" % (base + url, req.reason))
         return None
 
 

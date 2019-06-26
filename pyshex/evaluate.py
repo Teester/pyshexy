@@ -6,10 +6,8 @@ from rdflib import Graph, URIRef
 
 from pyshex.shape_expressions_language.p5_2_validation_definition import isValid
 from pyshex.shape_expressions_language.p5_context import Context
-from pyshex.shapemap_structure_and_language.p3_shapemap_structure import FixedShapeMap, ShapeAssociation, START, \
-    START_TYPE
+from pyshex.shapemap_structure_and_language.p3_shapemap_structure import FixedShapeMap, ShapeAssociation, START, START_TYPE
 from pyshex.utils.schema_loader import SchemaLoader
-
 
 def evaluate(g: Graph,
              schema: Union[str, ShExJ.Schema],

@@ -31,7 +31,7 @@ class JSGDocParser(jsgParserVisitor):
     def __init__(self, context: Optional[JSGDocContext] = None):
         jsgParserVisitor.__init__(self)
         self._context = JSGDocContext() if context is None else context
-        self.text: str = ""
+        self.text = ""
 
     def as_python(self, infile, include_original_shex: bool=False):
         """ Return the python representation of the document """
@@ -42,11 +42,11 @@ class JSGDocParser(jsgParserVisitor):
             if isinstance(v, (JSGLexerRuleBlock, JSGObjectExpr)):
                 body += v.as_python(k)
                 if isinstance(v, JSGObjectExpr) and not self._context.has_typeid:
-                    self._context.directives.append(f'_CONTEXT.TYPE_EXCEPTIONS.append("{k}")')
+                    self._context.directives.append('_CONTEXT.TYPE_EXCEPTIONS.append("%s")' % (k))
             elif isinstance(v, JSGForwardRef):
                 pass
             elif isinstance(v, (JSGValueType, JSGArrayExpr)):
-                body += f"\n\n\n{k} = {v.signature_type()}"
+                body += "\n\n\n%s = %s" % (k, v.signature_type())
             else:
                 raise NotImplementedError("Unknown grammar elt for {}".format(k))
             self._context.forward_refs.pop(k, None)

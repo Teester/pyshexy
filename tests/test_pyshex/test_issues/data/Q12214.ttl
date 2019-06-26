@@ -1,0 +1,2089 @@
+@prefix do: <http://purl.obolibrary.org/obo/DOID_> .
+@prefix doio: <http://identifiers.org/doid/> .
+@prefix gw: <http://micel.io/genewiki/> .
+@prefix mir: <http://www.ebi.ac.uk/miriam/main/collections/> .
+@prefix ns1: <http://www.wikidata.org/prop/direct-normalized/> .
+@prefix ns2: <http://wikiba.se/ontology#> .
+@prefix ns3: <http://www.w3.org/2002/07/owl#> .
+@prefix p: <http://www.wikidata.org/prop/> .
+@prefix pq: <http://www.wikidata.org/prop/qualifier/> .
+@prefix pr: <http://www.wikidata.org/prop/reference/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix prv: <http://www.wikidata.org/prop/reference/value/> .
+@prefix ps: <http://www.wikidata.org/prop/statement/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+wd:Q1035573 wdt:P509 wd:Q12214 .
+
+wd:Q10395980 wdt:P509 wd:Q12214 .
+
+wd:Q10436625 wdt:P509 wd:Q12214 .
+
+wd:Q1051072 wdt:P509 wd:Q12214 .
+
+wd:Q1051776 wdt:P509 wd:Q12214 .
+
+wd:Q10941550 wdt:P509 wd:Q12214 .
+
+wd:Q11174074 wdt:P509 wd:Q12214 .
+
+wd:Q11245062 wdt:P509 wd:Q12214 .
+
+wd:Q11359253 wdt:P509 wd:Q12214 .
+
+wd:Q11368647 wdt:P509 wd:Q12214 .
+
+wd:Q11374491 wdt:P509 wd:Q12214 .
+
+wd:Q11380699 wdt:P509 wd:Q12214 .
+
+wd:Q11380752 wdt:P509 wd:Q12214 .
+
+wd:Q11380815 wdt:P509 wd:Q12214 .
+
+wd:Q11388921 wdt:P509 wd:Q12214 .
+
+wd:Q11399214 wdt:P509 wd:Q12214 .
+
+wd:Q11408514 wdt:P509 wd:Q12214 .
+
+wd:Q11452033 wdt:P509 wd:Q12214 .
+
+wd:Q11452706 wdt:P509 wd:Q12214 .
+
+wd:Q11476793 wdt:P509 wd:Q12214 .
+
+wd:Q11496428 wdt:P509 wd:Q12214 .
+
+wd:Q11510232 wdt:P509 wd:Q12214 .
+
+wd:Q115110 wdt:P509 wd:Q12214 .
+
+wd:Q11542498 wdt:P509 wd:Q12214 .
+
+wd:Q11544192 wdt:P509 wd:Q12214 .
+
+wd:Q11547539 wdt:P509 wd:Q12214 .
+
+wd:Q11551880 wdt:P509 wd:Q12214 .
+
+wd:Q11551950 wdt:P509 wd:Q12214 .
+
+wd:Q11559872 wdt:P509 wd:Q12214 .
+
+wd:Q11563993 wdt:P509 wd:Q12214 .
+
+wd:Q1156668 wdt:P509 wd:Q12214 .
+
+wd:Q11581259 wdt:P509 wd:Q12214 .
+
+wd:Q11594093 wdt:P509 wd:Q12214 .
+
+wd:Q11594495 wdt:P509 wd:Q12214 .
+
+wd:Q11606593 wdt:P509 wd:Q12214 .
+
+wd:Q11614400 wdt:P509 wd:Q12214 .
+
+wd:Q11623093 wdt:P509 wd:Q12214 .
+
+wd:Q11623339 wdt:P509 wd:Q12214 .
+
+wd:Q11623387 wdt:P509 wd:Q12214 .
+
+wd:Q11623491 wdt:P509 wd:Q12214 .
+
+wd:Q11623748 wdt:P509 wd:Q12214 .
+
+wd:Q11623762 wdt:P509 wd:Q12214 .
+
+wd:Q11625140 wdt:P509 wd:Q12214 .
+
+wd:Q11650646 wdt:P509 wd:Q12214 .
+
+wd:Q11658876 wdt:P509 wd:Q12214 .
+
+wd:Q1252100 wdt:P509 wd:Q12214 .
+
+wd:Q12745108 wdt:P509 wd:Q12214 .
+
+wd:Q1292269 wdt:P509 wd:Q12214 .
+
+wd:Q13049771 wdt:P1050 wd:Q12214 .
+
+wd:Q130812 wdt:P509 wd:Q12214 .
+
+wd:Q13544196 wdt:P509 wd:Q12214 .
+
+wd:Q1362200 wdt:P509 wd:Q12214 .
+
+wd:Q1370638 wdt:P509 wd:Q12214 .
+
+wd:Q1406351 wdt:P509 wd:Q12214 .
+
+wd:Q1425366 wdt:P509 wd:Q12214 .
+
+wd:Q15047909 wdt:P509 wd:Q12214 .
+
+wd:Q15053813 wdt:P509 wd:Q12214 .
+
+wd:Q15053814 wdt:P509 wd:Q12214 .
+
+wd:Q15053816 wdt:P509 wd:Q12214 .
+
+wd:Q15053824 wdt:P509 wd:Q12214 .
+
+wd:Q15053825 wdt:P509 wd:Q12214 .
+
+wd:Q152480 wdt:P509 wd:Q12214 .
+
+wd:Q15618153 wdt:P509 wd:Q12214 .
+
+wd:Q157103 wdt:P509 wd:Q12214 .
+
+wd:Q15905084 wdt:P509 wd:Q12214 .
+
+wd:Q160227 wdt:P509 wd:Q12214 .
+
+wd:Q16042232 ns3:sameAs wd:Q12214 .
+
+wd:Q16858146 wdt:P509 wd:Q12214 .
+
+wd:Q16859592 wdt:P509 wd:Q12214 .
+
+wd:Q16863683 wdt:P509 wd:Q12214 .
+
+wd:Q169448 wdt:P509 wd:Q12214 .
+
+wd:Q17000887 wdt:P509 wd:Q12214 .
+
+wd:Q17077887 wdt:P279 wd:Q12214 .
+
+wd:Q1708662 wdt:P509 wd:Q12214 .
+
+wd:Q17181068 wdt:P509 wd:Q12214 .
+
+wd:Q17230514 wdt:P509 wd:Q12214 .
+
+wd:Q17232104 wdt:P509 wd:Q12214 .
+
+wd:Q17423971 wdt:P509 wd:Q12214 .
+
+wd:Q17424977 wdt:P509 wd:Q12214 .
+
+wd:Q17640068 wdt:P509 wd:Q12214 .
+
+wd:Q1767673 wdt:P509 wd:Q12214 .
+
+wd:Q1775598 wdt:P509 wd:Q12214 .
+
+wd:Q18553280 wdt:P279 wd:Q12214 .
+
+wd:Q18558071 wdt:P279 wd:Q12214 .
+
+wd:Q1867131 wdt:P509 wd:Q12214 .
+
+wd:Q18714346 wdt:P509 wd:Q12214 .
+
+wd:Q1890878 wdt:P509 wd:Q12214 .
+
+wd:Q1929613 wdt:P793 wd:Q12214 .
+
+wd:Q19519573 wdt:P509 wd:Q12214 .
+
+wd:Q19664433 wdt:P509 wd:Q12214 .
+
+wd:Q2013921 wdt:P509 wd:Q12214 .
+
+wd:Q2056633 wdt:P509 wd:Q12214 .
+
+wd:Q2058648 wdt:P509 wd:Q12214 .
+
+wd:Q20706982 wdt:P509 wd:Q12214 .
+
+wd:Q20816949 wdt:P509 wd:Q12214 .
+
+wd:Q21069459 wdt:P509 wd:Q12214 .
+
+wd:Q21182865 wdt:P509 wd:Q12214 .
+
+wd:Q212457 wdt:P509 wd:Q12214 .
+
+wd:Q2140119 wdt:P509 wd:Q12214 .
+
+wd:Q2172000 wdt:P509 wd:Q12214 .
+
+wd:Q2173602 wdt:P509 wd:Q12214 .
+
+wd:Q2213967 wdt:P509 wd:Q12214 .
+
+wd:Q225328 wdt:P509 wd:Q12214 .
+
+wd:Q2297336 wdt:P509 wd:Q12214 .
+
+wd:Q230868 wdt:P509 wd:Q12214 .
+
+wd:Q2310712 wdt:P509 wd:Q12214 .
+
+wd:Q232041 wdt:P509 wd:Q12214 .
+
+wd:Q2325634 wdt:P509 wd:Q12214 .
+
+wd:Q232955 wdt:P509 wd:Q12214 .
+
+wd:Q2360377 wdt:P509 wd:Q12214 .
+
+wd:Q236930 wdt:P509 wd:Q12214 .
+
+wd:Q237103 wdt:P509 wd:Q12214 .
+
+wd:Q237458 wdt:P509 wd:Q12214 .
+
+wd:Q2395150 wdt:P509 wd:Q12214 .
+
+wd:Q2483584 wdt:P509 wd:Q12214 .
+
+wd:Q25017290 wdt:P509 wd:Q12214 .
+
+wd:Q252087 wdt:P509 wd:Q12214 .
+
+wd:Q2550280 wdt:P509 wd:Q12214 .
+
+wd:Q25541177 ns3:sameAs wd:Q12214 .
+
+wd:Q2561668 wdt:P509 wd:Q12214 .
+
+wd:Q2595750 wdt:P509 wd:Q12214 .
+
+wd:Q2603865 wdt:P509 wd:Q12214 .
+
+wd:Q260448 wdt:P509 wd:Q12214 .
+
+wd:Q2617314 wdt:P509 wd:Q12214 .
+
+wd:Q2661222 wdt:P1050 wd:Q12214 .
+
+wd:Q2714587 wdt:P509 wd:Q12214 .
+
+wd:Q271999 wdt:P509 wd:Q12214 .
+
+wd:Q2735601 wdt:P509 wd:Q12214 .
+
+wd:Q2745427 wdt:P509 wd:Q12214 .
+
+wd:Q276021 wdt:P509 wd:Q12214 .
+
+wd:Q27886480 wdt:P509 wd:Q12214 .
+
+wd:Q27926964 wdt:P828 wd:Q12214 .
+
+wd:Q27958293 wdt:P509 wd:Q12214 .
+
+wd:Q2831132 wdt:P509 wd:Q12214 .
+
+wd:Q2859591 wdt:P509 wd:Q12214 .
+
+wd:Q28609730 wdt:P509 wd:Q12214 .
+
+wd:Q2866311 wdt:P509 wd:Q12214 .
+
+wd:Q29273184 wdt:P509 wd:Q12214 .
+
+wd:Q2944763 wdt:P509 wd:Q12214 .
+
+wd:Q29711 wdt:P509 wd:Q12214 .
+
+wd:Q299179 wdt:P509 wd:Q12214 .
+
+wd:Q3090635 wdt:P509 wd:Q12214 .
+
+wd:Q310453 wdt:P509 wd:Q12214 .
+
+wd:Q311433 wdt:P509 wd:Q12214 .
+
+wd:Q311455 wdt:P509 wd:Q12214 .
+
+wd:Q3129915 wdt:P509 wd:Q12214 .
+
+wd:Q313073 wdt:P509 wd:Q12214 .
+
+wd:Q313801 wdt:P509 wd:Q12214 .
+
+wd:Q315628 wdt:P509 wd:Q12214 .
+
+wd:Q318811 wdt:P509 wd:Q12214 .
+
+wd:Q320976 wdt:P509 wd:Q12214 .
+
+wd:Q3271592 wdt:P509 wd:Q12214 .
+
+wd:Q329765 wdt:P509 wd:Q12214 .
+
+wd:Q334594 wdt:P509 wd:Q12214 .
+
+wd:Q3428532 wdt:P509 wd:Q12214 .
+
+wd:Q349281 wdt:P509 wd:Q12214 .
+
+wd:Q349762 wdt:P509 wd:Q12214 .
+
+wd:Q3519413 wdt:P509 wd:Q12214 .
+
+wd:Q3568406 wdt:P509 wd:Q12214 .
+
+wd:Q3659899 wdt:P509 wd:Q12214 .
+
+wd:Q366253 wdt:P509 wd:Q12214 .
+
+wd:Q3666720 wdt:P509 wd:Q12214 .
+
+wd:Q372192 wdt:P509 wd:Q12214 .
+
+wd:Q3723212 wdt:P509 wd:Q12214 .
+
+wd:Q3750946 wdt:P509 wd:Q12214 .
+
+wd:Q381752 wdt:P509 wd:Q12214 .
+
+wd:Q381846 wdt:P509 wd:Q12214 .
+
+wd:Q3847860 wdt:P509 wd:Q12214 .
+
+wd:Q4021064 wdt:P509 wd:Q12214 .
+
+wd:Q4027184 wdt:P509 wd:Q12214 .
+
+wd:Q40319 wdt:P509 wd:Q12214 .
+
+wd:Q4064 wdt:P509 wd:Q12214 .
+
+wd:Q4159713 wdt:P509 wd:Q12214 .
+
+wd:Q41599306 wdt:P509 wd:Q12214 .
+
+wd:Q4180706 wdt:P1050 wd:Q12214 .
+
+wd:Q4191414 wdt:P509 wd:Q12214 .
+
+wd:Q426317 wdt:P509 wd:Q12214 .
+
+wd:Q4290615 wdt:P509 wd:Q12214 .
+
+wd:Q436876 wdt:P509 wd:Q12214 .
+
+wd:Q437306 wdt:P509 wd:Q12214 .
+
+wd:Q4382416 wdt:P509 wd:Q12214 .
+
+wd:Q4394673 wdt:P509 wd:Q12214 .
+
+wd:Q45639 wdt:P509 wd:Q12214 .
+
+wd:Q457386 wdt:P509 wd:Q12214 .
+
+wd:Q4669114 wdt:P509 wd:Q12214 .
+
+wd:Q4669210 wdt:P509 wd:Q12214 .
+
+wd:Q467662 wdt:P509 wd:Q12214 .
+
+wd:Q46837 wdt:P509 wd:Q12214 .
+
+wd:Q469059 wdt:P509 wd:Q12214 .
+
+wd:Q470004 wdt:P509 wd:Q12214 .
+
+wd:Q4718488 wdt:P509 wd:Q12214 .
+
+wd:Q4719324 wdt:P509 wd:Q12214 .
+
+wd:Q472235 wdt:P509 wd:Q12214 .
+
+wd:Q4748606 wdt:P509 wd:Q12214 .
+
+wd:Q4768505 wdt:P509 wd:Q12214 .
+
+wd:Q477902 wdt:P509 wd:Q12214 .
+
+wd:Q4805862 wdt:P509 wd:Q12214 .
+
+wd:Q4930599 wdt:P509 wd:Q12214 .
+
+wd:Q4992747 wdt:P509 wd:Q12214 .
+
+wd:Q4992752 wdt:P509 wd:Q12214 .
+
+wd:Q4992758 wdt:P509 wd:Q12214 .
+
+wd:Q505658 wdt:P509 wd:Q12214 .
+
+wd:Q5076032 wdt:P509 wd:Q12214 .
+
+wd:Q5077274 wdt:P509 wd:Q12214 .
+
+wd:Q5079086 wdt:P509 wd:Q12214 .
+
+wd:Q509027 wdt:P509 wd:Q12214 .
+
+wd:Q5096669 wdt:P509 wd:Q12214 .
+
+wd:Q5112408 wdt:P509 wd:Q12214 .
+
+wd:Q52933 wdt:P509 wd:Q12214 .
+
+wd:Q5339809 wdt:P509 wd:Q12214 .
+
+wd:Q534948 wdt:P509 wd:Q12214 .
+
+wd:Q5365056 wdt:P509 wd:Q12214 .
+
+wd:Q5400621 wdt:P509 wd:Q12214 .
+
+wd:Q5443945 wdt:P509 wd:Q12214 .
+
+wd:Q5480266 wdt:P509 wd:Q12214 .
+
+wd:Q5481296 wdt:P509 wd:Q12214 .
+
+wd:Q5482414 wdt:P509 wd:Q12214 .
+
+wd:Q5482688 wdt:P509 wd:Q12214 .
+
+wd:Q5507516 wdt:P509 wd:Q12214 .
+
+wd:Q552232 wdt:P509 wd:Q12214 .
+
+wd:Q5526700 wdt:P509 wd:Q12214 .
+
+wd:Q5535873 wdt:P509 wd:Q12214 .
+
+wd:Q5537375 wdt:P509 wd:Q12214 .
+
+wd:Q5540929 wdt:P509 wd:Q12214 .
+
+wd:Q555049 wdt:P509 wd:Q12214 .
+
+wd:Q561280 wdt:P509 wd:Q12214 .
+
+wd:Q561733 wdt:P509 wd:Q12214 .
+
+wd:Q565401 wdt:P509 wd:Q12214 .
+
+wd:Q5724953 wdt:P509 wd:Q12214 .
+
+wd:Q5725174 wdt:P509 wd:Q12214 .
+
+wd:Q57841 wdt:P509 wd:Q12214 .
+
+wd:Q57909 wdt:P509 wd:Q12214 .
+
+wd:Q58020 wdt:P509 wd:Q12214 .
+
+wd:Q601274 wdt:P509 wd:Q12214 .
+
+wd:Q6039520 wdt:P509 wd:Q12214 .
+
+wd:Q6077032 wdt:P509 wd:Q12214 .
+
+wd:Q61093 wdt:P509 wd:Q12214 .
+
+wd:Q612983 wdt:P509 wd:Q12214 .
+
+wd:Q6131994 wdt:P509 wd:Q12214 .
+
+wd:Q6144986 wdt:P509 wd:Q12214 .
+
+wd:Q61689 wdt:P509 wd:Q12214 .
+
+wd:Q618237 wdt:P509 wd:Q12214 .
+
+wd:Q6219566 wdt:P509 wd:Q12214 .
+
+wd:Q6223696 wdt:P509 wd:Q12214 .
+
+wd:Q623669 wdt:P509 wd:Q12214 .
+
+wd:Q6242276 wdt:P509 wd:Q12214 .
+
+wd:Q6242899 wdt:P509 wd:Q12214 .
+
+wd:Q6253129 wdt:P509 wd:Q12214 .
+
+wd:Q6272949 wdt:P509 wd:Q12214 .
+
+wd:Q6290703 wdt:P509 wd:Q12214 .
+
+wd:Q6323767 wdt:P509 wd:Q12214 .
+
+wd:Q6352055 wdt:P509 wd:Q12214 .
+
+wd:Q638919 wdt:P509 wd:Q12214 .
+
+wd:Q6393494 wdt:P509 wd:Q12214 .
+
+wd:Q651883 wdt:P509 wd:Q12214 .
+
+wd:Q6530854 wdt:P509 wd:Q12214 .
+
+wd:Q6639577 wdt:P509 wd:Q12214 .
+
+wd:Q6682717 wdt:P509 wd:Q12214 .
+
+wd:Q668424 wdt:P509 wd:Q12214 .
+
+wd:Q6687046 wdt:P509 wd:Q12214 .
+
+wd:Q670383 wdt:P509 wd:Q12214 .
+
+wd:Q6734743 wdt:P509 wd:Q12214 .
+
+wd:Q6779246 wdt:P509 wd:Q12214 .
+
+wd:Q67930 wdt:P509 wd:Q12214 .
+
+wd:Q69286 wdt:P509 wd:Q12214 .
+
+wd:Q6959871 wdt:P509 wd:Q12214 .
+
+wd:Q6969661 wdt:P509 wd:Q12214 .
+
+wd:Q6969761 wdt:P509 wd:Q12214 .
+
+wd:Q6987139 wdt:P509 wd:Q12214 .
+
+wd:Q7004531 wdt:P509 wd:Q12214 .
+
+wd:Q700564 wdt:P509 wd:Q12214 .
+
+wd:Q7069026 wdt:P509 wd:Q12214 .
+
+wd:Q7140297 wdt:P509 wd:Q12214 .
+
+wd:Q7147289 wdt:P509 wd:Q12214 .
+
+wd:Q716403 wdt:P509 wd:Q12214 .
+
+wd:Q71652 wdt:P509 wd:Q12214 .
+
+wd:Q7175817 wdt:P509 wd:Q12214 .
+
+wd:Q7244846 wdt:P509 wd:Q12214 .
+
+wd:Q72936 wdt:P509 wd:Q12214 .
+
+wd:Q7326681 wdt:P509 wd:Q12214 .
+
+wd:Q7327659 wdt:P509 wd:Q12214 .
+
+wd:Q7342142 wdt:P509 wd:Q12214 .
+
+wd:Q7348865 wdt:P509 wd:Q12214 .
+
+wd:Q7348866 wdt:P509 wd:Q12214 .
+
+wd:Q7412877 wdt:P509 wd:Q12214 .
+
+wd:Q7562410 wdt:P509 wd:Q12214 .
+
+wd:Q7638738 wdt:P509 wd:Q12214 .
+
+wd:Q76564 wdt:P509 wd:Q12214 .
+
+wd:Q77336 wdt:P509 wd:Q12214 .
+
+wd:Q7738 wdt:P509 wd:Q12214 .
+
+wd:Q7792557 wdt:P509 wd:Q12214 .
+
+wd:Q7811617 wdt:P509 wd:Q12214 .
+
+wd:Q784173 wdt:P509 wd:Q12214 .
+
+wd:Q7908989 wdt:P509 wd:Q12214 .
+
+wd:Q8009182 wdt:P509 wd:Q12214 .
+
+wd:Q8010466 wdt:P509 wd:Q12214 .
+
+wd:Q8020653 wdt:P509 wd:Q12214 .
+
+wd:Q821078 wdt:P509 wd:Q12214 .
+
+wd:Q8513818 wdt:P509 wd:Q12214 .
+
+wd:Q851716 wdt:P509 wd:Q12214 .
+
+wd:Q883015 wdt:P509 wd:Q12214 .
+
+wd:Q883022 wdt:P509 wd:Q12214 .
+
+wd:Q93810 wdt:P509 wd:Q12214 .
+
+wd:Q949712 wdt:P509 wd:Q12214 .
+
+wd:Q959774 wdt:P509 wd:Q12214 .
+
+wd:Q978309 wdt:P509 wd:Q12214 .
+
+wd:Q991486 wdt:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q1035573-E9DDC8FE-6B50-4C0F-AE4A-70F1FB08A9BE> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q10395980-0A1BECED-4409-4754-92AB-64FF9D1BE292> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q10436625-51E24374-D50E-4912-BB52-313D1DDBB189> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q1051072-142F9165-C18E-4956-ADE3-8A9E9486D9D3> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q1051776-1bde4d8e-4ff2-a989-5b1f-fd5a62d7c3aa> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q10941550-0EBACB75-E665-41AE-8510-40DAF59A9C07> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11174074-44A773EB-0B43-4027-9DD0-A2A63236204A> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11245062-2C1FE91C-3A0D-4E68-91DB-42B2791F2B25> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11359253-772F4B8B-7A71-48AC-A7D3-2366E8CE5529> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11368647-E82ECCED-B078-4AE2-A7FA-1463251CA31F> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11374491-c24ad081-4675-090c-aa25-e29d977adefd> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11380699-3D4EC4E2-2BBB-498A-8D05-0349BD2F99CA> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11380752-23753BCA-870B-4A8D-A573-3E7B703C416D> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11380815-0D995266-9B6D-40A1-BC1A-63FDA1C5F621> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11388921-64AB02E4-6090-4137-A04E-0934033C28A8> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11399214-6880F091-1D46-4F52-B02C-7C78F3B8027F> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11408514-4C66F7C3-6E6F-42A6-A9F2-82E464592110> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11452033-9CA6C6C4-AF69-41B6-895B-E2E5C736AF65> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11452706-138BBCCC-D205-40D2-B41F-0E8BE5DB0E23> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11476793-0FDB3432-D7F3-4232-8675-1D86F60275D5> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11496428-3FA414ED-C813-4EA1-B6FD-C665F8F9CAC3> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11510232-EF588A52-9579-401F-9C5A-632C91F61420> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q115110-EB1BF6B2-58F1-4E39-AD3E-163B908E63DB> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11542498-28128088-BC42-4201-9E82-40A3099839AE> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11544192-9D01EEB5-58BB-4F23-8424-A1AB42394A55> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11547539-A3EEED09-6AE1-41A9-8235-781BCD2B01C3> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11551880-DE884052-6923-407C-A23D-AB884A30DD2A> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11551950-D9FE3E00-6ED6-41DE-BEE6-AF2827603D5D> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11559872-AD0A2357-2F1E-434D-BE5E-E57395CD6ADB> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11563993-5225ED5B-EBE7-4A4F-9E78-1ED5712A5902> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q1156668-E4C2E66B-10A1-4969-B64D-8B8365778358> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11581259-0190EA38-BAA1-4E21-8522-49AF1CBF3C94> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11594093-D32B9BAC-BB8C-48CE-A65A-CAED7BF4159C> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11594495-C9E406C6-340C-40BF-B7A8-C4363A917A67> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11606593-6767DAC7-51E0-44DB-95F6-3070AF60F876> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11614400-F8A3311A-DE17-4DF0-897B-921DBB6C9AD8> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11623093-E5084E43-C637-4670-A49F-028B3B47E5B8> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11623339-E77CCAEF-D75B-40CC-8F6D-7B5E91242B02> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11623387-A8C59CC4-80D2-41AB-AC02-372F9B56E208> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11623491-C18442A3-EA3F-4168-B32E-FE02D80F436F> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11623748-2EB565E8-18CD-447D-8D21-6F8B329B4085> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11623762-DF7D4626-BAE8-44A4-BE65-6EA3431855AC> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11625140-7365BF17-70F4-4768-9FF7-6B036A8AA4C0> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11650646-1F86A017-BEE1-4F65-A4BD-047878282E3A> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11658876-261C912D-6716-40D2-B414-3AC3A5D6F601> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q11877169-369DF114-ADF6-4959-9669-28D8C4E40A13> ps:P1542 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q1252100-8F086755-2C87-4ADF-B7EB-DAA4D39A811E> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q12745108-5809f872-480f-eeb1-2be9-136bd54f8700> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q1292269-2a2b2dde-4fee-bfa9-c519-d2e9c03dfceb> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q13049771-3cb74d59-4446-f71f-98c7-6ac39dd26233> ps:P1050 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q130812-989B4F64-27C0-42B1-841D-2DA77506EE97> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q13544196-67A46525-3454-46CB-91D8-ABF7FBEBF6AC> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q1362200-BEE8B123-4489-44DF-A88F-8FE8AC443F6D> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q1370638-ADA7884E-9AF7-4C7B-B0AA-F2C9A74E2160> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q1406351-CA9502AD-0055-4838-A9F0-CE285BC0D098> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q1425366-5caea393-4965-54c9-dd2d-9889e8326318> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q14913440-09986540-84F8-4092-8ED8-85BB94E24FA9> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q14916190-800AB8DC-68F5-44FD-B405-A120B644F083> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q14916487-B05BDFAA-6251-40FE-9EC1-5802D53D954D> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q15047909-d6a9a62b-4c90-ccdf-2d41-d6fe2306433f> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q15053813-39751CDC-5226-494F-BF12-46D94EA7B3F1> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q15053814-8C78A93E-F8D3-4310-8149-09A0173D344D> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q15053816-B2FCAECC-D00E-46AE-B86A-855FBE152EDF> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q15053824-F4391B0A-E450-4FC2-A63D-0D4A09C94F99> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q15053825-8B65FFD5-BA87-4F2F-8A7B-777A7E2AA888> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q152480-3F1D18F2-801A-4F48-9039-7426AE44F06C> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q15317046-3025929D-B70E-47EE-A352-26EC1B949E19> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q15320451-F34506C0-6FC9-4570-86EC-CA088075317E> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q15618153-23B6D5B9-44C8-4FEE-BC6A-F080FADD4093> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q157103-0F3D5791-0B51-4632-84F6-BD6EAFB124E2> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q15905084-B1096570-39E8-499F-8991-D16958D2ADBB> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q160227-BCDB076D-BEFB-43F5-A72C-D82EC6E66A03> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q16858146-51C182B9-E56C-4EF2-AAFA-EA2EE132E648> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q16859592-770CBC4F-68FA-42AD-9D17-85304BBB1A14> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q16863683-D502C664-3FE1-4B14-8B42-AA6566EF17EB> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q169448-BD4707D7-8966-47C7-A2D6-A9AF8E56C7DA> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q17000887-856930B7-C9CD-40AF-945D-8D66E324CD61> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q17077887-28e2c80b-458c-f165-5e57-dff96038dac9> ps:P279 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q1708662-C4D65A0D-102D-40C1-8A06-558E7034894C> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q17181068-440078B9-73E4-43BF-9218-B7EF7BF66F1D> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q17230514-CE45E8E3-4C62-4E1D-A4D6-3C84792C660A> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q17232104-DF7B330B-4C5E-476D-86A3-FC0F98CFD070> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q17423971-F8D06834-9B38-4DCA-99C0-693C5A296545> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q17424977-1EA6D182-C9E2-4133-AA70-954B69016C78> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q17640068-DDD153A8-69E7-4E0B-8434-D77BE0BF6FE3> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q1767673-F7EA544D-17C8-4C3D-91C7-AB7FB7350509> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q1775598-A04D25D9-E1E5-43B6-B74F-B2948D95831A> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q17848770-914679B4-C4C9-4FCE-B09E-30B4D007D317> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q17854281-49122876-D742-4D63-8854-9D1D65EF65F5> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q17907898-4B5C7631-5440-4E84-BA7D-00211CFE391E> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q17912763-EA32337F-75D6-4C5C-AD5A-910110040E9B> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18025811-0E79FB98-2F90-431F-8778-075A32648FF0> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18026519-BEB34704-B862-444D-ABD8-3C26464CA8C6> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18027833-20BD911B-9D52-4475-A430-1D9AE210F900> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18028156-5CEAFC3D-9D24-4EAB-BF97-12E150B99D6D> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18028644-33BD0D27-45CA-48CD-A043-C9BAA525192D> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18028692-3938BADB-00B9-4F60-BE69-123C79F13F67> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18029227-52571CA8-6C64-496C-8B15-E134AE3B0B03> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18030409-D1CB22C0-D063-47BD-B278-368E9E58942C> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18030780-D18A7C86-4FED-461E-A4D0-E0B9DC10CCD0> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18031469-43F409C0-464F-41E3-A58F-78C80CCBDC64> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18031564-7AB12B2F-F2A7-4E9D-97DA-9A003F178610> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18032255-B1D50987-4A75-4287-BE3D-5E079D816E56> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18033532-718E263E-84D3-47B8-8FCF-4E5127E3CAC4> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18034286-196924D1-FC32-4C03-9B24-797D386C0096> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18035351-1FC228A8-CC8D-40B5-9AB5-918635E1F507> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18035921-8760AA15-795D-4717-B6CC-E506D656294E> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18036562-C12FCDE9-FAD3-484B-946D-842F456E3C16> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18036632-155BBFA7-99FC-4A05-950C-AB8B17262A0C> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18040213-DDFFD692-B9F5-445B-AAB6-02EF4DC18827> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18040224-5E3CA490-CEA8-43F4-9DAB-556B4356053C> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18040387-89A90E40-BAE7-4015-903D-40348731D8AB> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18040393-C83B1AC1-F4F8-4E8A-B0E9-8EAA799A39BC> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18040744-B8E011CC-792E-438E-B0DF-8977697DA156> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18041212-9EB60C64-FACF-46F5-9033-A4AE21853211> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18041263-98002712-999E-4117-AA44-D6B243A0BB1A> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18041288-7AEA8764-2451-4F0D-975D-5CC847247724> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18041864-446A95C9-8D50-485D-ACF3-EBB9A3B72E88> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18042064-4165832D-F0D5-4416-BAC8-4724590314E7> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18042575-72A82503-2E87-4C97-B9C3-BC8A2B962729> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18044722-8372F4CD-CAD9-4440-8A86-95E54037AC65> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18045649-79C5114C-660F-4D87-B40D-272DFEE1052B> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18045682-857BB8C6-414A-41F8-8520-8A8A1A634F62> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18046242-CB257A29-DF48-44A5-A80C-D974E4C7FA6E> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18046382-95F6473A-66B9-48FC-8551-3FDE02151006> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18047303-EE3D0C46-A6CA-4158-8A3C-E21097A39027> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18048572-9C9F334C-A138-4DC5-AB69-D57AD91585C8> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18049058-59F0FFAF-3010-4F72-9859-8D7E6B911598> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18049201-114AA0A6-A77B-4723-AB51-644BF21E710D> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18050771-6EEC6DEB-8D22-4E98-843D-3883B62684D5> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18052189-BBDBC9D2-9B7A-49C4-85A9-27FFF90A88BC> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18054056-B121A9A5-B93B-4F17-98B3-E822AF1C2460> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18055395-4E97981F-2908-487C-AA32-31485291645A> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18058371-5C6CFFAB-2ED3-48FE-82F1-BA3A953BE6AD> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18058473-5C837734-B7E0-4EEC-B9BC-2DE88A16AE2A> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18292821-8D18947B-0B29-4B92-B595-11B67DE37173> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18553280-35BC77CB-B2C2-4A6E-9299-1485723E2379> ps:P279 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18558071-D4815AF1-B41D-4B43-8B72-3FCC447488C3> ps:P279 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q1867131-C5BA205B-62BA-4E3A-8B2A-30CECBDEE40A> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q18714346-1272f04a-42a9-a783-dd42-b29de43c56d4> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q1890878-0BBF64A2-CFC0-4960-843A-212440E7D6A9> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q1929613-6a5213fe-422e-3296-ce90-42aaa2020358> ps:P793 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q19519573-BBDADA58-76A3-4E26-9BED-A6D07BCEB017> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q19664433-9AEBB990-EC47-4C9B-891A-81138F9CCDD0> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2013921-A69ECB2E-C80C-4950-AE25-5CCFA36D67B6> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2056633-1C736F50-BF2B-437F-9F6E-7555DB426FEB> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2058648-2464E53F-B8DC-4BAC-8645-998D18F70DD2> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q20706982-F1D51DE1-E8EA-4C20-B0DC-D381F9394EEF> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q20763585-CC9B0BD9-441A-4773-AFCA-B51D40FE70A9> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q20816949-77b79fab-47e6-330b-1381-b579155b4107> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2100118-92d1f1c3-4d1e-5a93-9aee-f11f7ba22ae1> pq:P642 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2100120-4ce3a913-4938-83ef-3688-f05d92cc4fd2> pq:P642 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2100121-7ea7e2b1-4e1a-e6b3-f7c4-e8763ccd88d7> pq:P642 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q21069459-F30BA962-CF51-4898-8F55-7AD89F07AB4F> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q21182865-E1BC9A4F-4D94-4629-9026-C02F73E5BE8C> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q212457-9739D15D-0199-440A-8164-E82ED8C201DD> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2140119-33E40CC2-1735-435F-B65C-4AD6303E79DD> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2172000-EDD3919C-4DED-4348-BD85-6D94F12492A8> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2173602-AE48140D-FED6-43D4-B8F6-877C402939D6> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2213967-D871FFE4-984F-4EA6-943D-D21BF0914A86> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q225328-074757ae-43c4-7687-fd3e-bd689703445f> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2297336-451A6729-B33E-482C-8651-AA828860D5CC> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q230868-84145AD0-1B58-4920-AF69-36FBF0AAD97E> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2310712-59A1DE6B-C95B-4454-9D85-79A9F08A829F> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q232041-0649EDD2-56DA-4515-9CB0-6A55E567A0D5> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2325634-4084F7F1-9AD0-4858-996D-198D056E381B> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q232955-AC03961F-EF11-4CE3-95B9-1918A376DDAF> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2360377-BBBCBA8A-4570-403B-85B0-65F34524D4A9> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q236930-60BD89D2-06C7-4AAF-B308-F531497F516A> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q237103-3F961DF1-FEE9-4106-8DAC-199E0CCF1407> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q237458-79D3F919-C4B8-47CC-AD09-2A86FA390D13> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2395150-C3B1CB4D-66FA-4FB2-ABDD-9E45F06776D0> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q248215-92CFE935-99E7-4F13-BF85-5FC79D3E2A0D> ps:P2293 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2483584-12D93662-E0B2-4EF6-A122-705D05F2CCBF> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q25017290-714cb798-47fd-f5f7-b139-385140ab46d5> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q252087-18CDD020-309E-41AF-B2FE-1AF4AC3B1C99> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2550280-C66C9E0C-5D1C-4057-9648-232A32A2E342> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2561668-B940FF22-E752-4128-9031-D3D48E6F70E0> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2595750-275913ee-4fe6-17f4-bd55-1a33de7fc970> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2603865-AAE89676-DA1F-4683-A04B-F872D452266A> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q260448-75B52B47-9E3F-441A-868A-433E6BD2CFDF> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2617314-4446A815-3482-43F5-83D6-AB54D5F2586D> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2661222-1a7774c6-44fc-9f03-6402-2992723ae231> ps:P1050 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2714587-31A4D323-4C48-4CD0-8CCC-F85A788AE1BD> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q271999-BB4A5C41-BC9E-4965-B029-D154882F3FE0> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2735601-B8CA29C4-95B6-49ED-AA4C-E9BFB8640535> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2745427-C72A76CE-6541-4173-B563-C222E6F070FD> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q276021-84057986-0761-4D0C-BAC9-F93FAE66A033> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q27886480-4AE1F196-B4A1-4B2E-AEA5-E44448D6E1E6> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q27926964-a0d63058-4447-f6e1-69fd-106ed36ddbbb> ps:P828 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q27958293-8502A2C9-B238-4617-9AAF-65105EE02A83> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2831132-928755C4-12EE-498F-B199-0A1772F669EE> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2859591-23CFC1C5-9562-4B40-83E6-FC39E8F66143> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q28609730-b23aaa3c-4c3e-8b7d-0767-5904ce6fd40c> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2866311-7AA9CEFA-FCDE-43D8-A6D8-6603A09CFD23> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q29273184-31641357-A738-439D-B9B6-003BD8A6A3AB> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q2944763-9AACF832-898E-4A9C-98DD-81491ED3EE68> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q29711-38C1F570-AC15-4640-846E-8882C5786ECA> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q299179-AEFB3071-B827-4C6C-B2B3-E9BF6480C421> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q30103545-d9175ecd-431d-2d26-caef-608df89d0757> pq:P642 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q3090635-5AC3B14D-931A-42ED-9A26-F570979D1136> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q310453-ADD68E37-926C-48D6-A90D-4F13FA368B74> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q311433-D55A204F-3E5C-473A-A006-3151D97B9D93> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q311455-CB95855D-2B24-4B01-8E1D-4577DD558192> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q3129915-04A048AB-959B-442D-983A-A029494DCE59> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q313073-24232E35-B605-4965-8BC5-9199F454580E> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q313801-B9DE288F-F7E5-4B5B-921D-4957D813B953> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q315628-F5D06C91-D714-45DB-976C-E96DA655BF1A> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q318811-5E0E8EE5-7C48-4426-A01F-3EA4682C4C12> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q320976-ACAC5F4E-B7AA-483F-992C-37F3F8D5700B> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q3271592-437F53A9-E66E-4D11-B4F0-56028ED451F0> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q329765-EDD49869-93AC-4465-B82C-1CBCFE2145E7> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q334594-F38F5709-7B01-44ED-A9CD-E08EBD058CC5> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q3428532-B40D0F34-C764-4509-B220-CB901F3C00DB> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q349281-9D6DD5FD-A98A-4C2E-8A05-ECD4FCA6AA04> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q349762-E5A82308-2D8C-4067-8436-70A25B343E09> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q3519413-26566A33-D4A7-460A-AB3B-E5ECDCC4DDD5> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q3568406-1D8D6153-78BB-4EE7-A848-C5B78E3BAB2B> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q3659899-0245D85A-5598-4835-88A2-851FF829C837> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q366253-CA3EAA5F-9805-40C1-8BC2-9F198D38731D> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q3666720-34878CA8-7C45-4726-9509-AFBCCF381A48> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q372192-EED3302B-2DB3-4AB6-839E-C31EE076E7F1> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q3723212-1C92B9A2-D029-4AC1-AF8D-3EF47DA707C8> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q3750946-CD929210-6C95-4A91-8E94-8ADC436223C1> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q381752-27F85D23-28B4-4582-8606-36BE6E614AE2> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q381846-65C64727-8909-4241-9679-AE4E9731A250> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q3847860-901613F4-D86B-48D6-A186-40D2121FEBBF> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q4021064-776E4A16-02D8-4B58-8493-05E4758F31BA> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q4027184-69AA1C11-C495-4100-B21E-F664047CF208> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q40319-D94A2422-6533-4FCC-9157-13228E78D1D8> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q4064-807BA24E-741E-4C28-BDAD-7CBD0338A1BE> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q4159713-166589A7-83C9-4332-B6DF-06F417581265> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q41599306-f2718b6a-4315-f601-eed4-6a1eefc7a411> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q4180706-9a406ed6-4ccc-74e1-c78a-50ca855b6660> ps:P1050 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q4191414-0ed3e078-41a4-48ce-7d67-675191747a46> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q426317-6F4C5302-DAC0-47E0-BFEC-4B189B024CDB> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q4290615-8898492E-4EC4-4F55-BFD3-604A0BB4DFE1> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q436876-90E9A969-DFD4-4D4A-9F0E-EB00CC2DF57F> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q437306-52d7ecaa-4ce4-2caa-d658-e5dc3f3b0309> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q4382416-AAE97032-B32D-4A7D-86AE-53225FC42D71> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q4394673-C8D29A19-4E8D-4B7F-80E9-8630FF80D308> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q45639-951E84FF-1A0B-49EB-BC54-B0AB7BCC44A1> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q457386-7BDD08F4-627F-4438-A1B8-DA568CDEC4B0> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q4669114-82BA59A1-60DD-483A-93FB-C6131F720F9D> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q4669210-3B117E99-A664-4FB2-B888-3430A5819B07> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q467662-BC6AED0E-D852-4099-9712-5BFAFC712599> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q46837-63DA33B6-9828-4DB2-A8DB-3DA1229AB4DD> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q469059-2881AA3C-851E-4100-A243-112F56D9D3D6> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q470004-809F4349-FA1C-462D-8A6A-83CD70D2C196> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q4718488-80600AC6-6D4C-4324-8513-431F6B8A0924> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q4719324-7D702E84-0233-4295-8E63-B0D737C9E3CF> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q4748606-69200BE8-3CCB-4E71-B997-D98C9915D2F2> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q4768505-23C357AB-98B0-4C16-A829-91DEB3409345> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q477902-91280259-3ECB-4A83-9FB0-D845527E38F9> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q4805862-DD0D0C09-D97A-4C45-AB9B-D8D599D59B5A> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q4930599-0905A930-4DB4-4272-94CC-76E25832DA07> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q4992747-201E2FC4-D1C9-4D61-8C0D-343CE8DE0CFE> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q4992752-125CEBCB-9988-4B19-8364-C4C6531A01D9> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q4992758-6EFD1611-A5AE-418F-95BE-1AB3FD6E47A1> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q505658-14B5387D-9B86-4125-A694-0FDC1A97DE34> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q5076032-5E9F3A22-CDF9-4106-8AFF-00A7FF452BFA> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q5077274-D4A2BBE1-71B0-49C0-ACCD-1518575F229B> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q5079086-39443C81-548A-48E4-9F86-E9F8A4F25C6F> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q509027-FF84542B-5F76-4805-9CC2-F734EA5FEFFE> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q5096669-EBEB86F4-2219-4E22-9F3D-7673E794A7FA> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q5112408-349A8810-C144-4416-B9A3-0C047F94B03C> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q52933-CCDA2666-73ED-42E0-82DC-A64055EAE33B> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q5339809-4F88B257-8EE6-4D92-9B1E-71A4528D57C0> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q534948-59C6E2D2-6797-42EB-97B9-33445FAF30BF> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q5365056-E2425610-12D2-4701-B19A-41C23B40D240> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q5400621-82D487EB-FEF7-42CB-A96D-47D0ECE2F8DE> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q5443945-B5BBA080-7C2C-40DF-A7FC-1D2E9F03369D> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q5480266-BF33CE2E-DABE-4741-9915-3D6328AEE8EB> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q5481296-91895696-6BB0-4C16-9B08-22A2B4589C01> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q5482414-CEEC7956-41F6-4FEA-9A87-3BB201C2BACE> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q5482688-C3043B3E-EF66-42B4-91E6-43BF58A0133D> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q5507516-2276C2FF-CA12-495C-9386-9D1938FB0B02> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q552232-1FCEEA38-A52A-4688-A0C8-729F04F8075E> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q5526700-C84DB6DA-4D7E-4677-BCF2-813678DBAD42> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q5535873-F883930F-D7EC-417F-9E60-EB5BC1B52BE2> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q5537375-A470B418-9233-413C-9431-3296EDBCA9F2> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q5540929-DC4CB0E4-18C2-4BFF-924A-BB3B5D025DAB> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q555049-0F01D40B-375E-45D1-A7C0-1B2AB834EE5A> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q561280-12F2E0BF-3225-4FEC-8E7D-11B524990BA0> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q561733-F89655CE-4A25-4452-9B14-A3668E863006> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q565401-8DDC760D-B68A-4CF8-8669-27B281C09E4E> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q5724953-1168A5DB-16F8-4764-A904-38DB8BB341E6> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q5725174-E787F880-A18C-4131-BBD8-F4480BC63907> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q57841-D7D06554-CB11-4D49-93DB-A361C46745F9> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q57909-504D4469-98D7-45D4-BFD9-47BD524FE1AB> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q58020-4F404822-0567-4477-B412-EFAAE92AD551> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q601274-BAB565A4-1A77-4C15-9539-F287AA7291F9> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6039520-644C0926-D588-4B50-A786-5099D1E70515> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6077032-88E685FF-06D3-458C-A5A9-386CC95FAF8F> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q61093-2395411F-2D8A-44C0-81C4-7D03C81C2046> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q612983-5F5BE78B-C734-4EB6-B068-9EEDC872E574> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6131994-FD754AD1-E72A-4698-BCBB-8C1F6A9FD4C4> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6144986-69BBB75B-4340-492D-B5AC-3D2D272338C8> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q61689-F82BA822-19D6-443A-AE67-3AAAB7D5899A> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q618237-2FBFCAD1-51A0-4670-8DE6-DF4E4BA3405F> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6219566-B242C9CA-CC6F-4C6D-AB60-A2636754F157> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6223696-4071E387-F7DA-4876-BE69-F39B96FEF980> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q623669-8615ECCE-6F0D-468C-B0B6-9F03616BE408> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6242276-74D48D6A-C704-464E-9229-84441A760F15> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6242899-350B0DB0-CD2B-497C-8075-F2D0911978F5> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6253129-EA3DE59B-15A2-406A-90C1-D4622044D170> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6272949-F6E35A8C-65B6-4CA8-92B1-747281C27FED> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6290703-C4F03FE7-222A-4084-AE28-BE13CBF0BA18> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6323767-519A71A0-5659-4663-93D8-9C5FBDEFEC5F> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6352055-E1D7A522-A0F0-4E6E-BD36-311541090C14> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q638919-F87BBEA3-D0F9-4406-82F9-2CCBF9766C6C> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6393494-EBEE94CF-9685-45DA-9F79-D5F8FD0D7772> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q651883-EA836336-D197-4594-8603-2C1F61E2F1BC> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6530854-82037C67-5F28-4742-9D1C-0720A86C18D1> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6639577-899B704E-7E64-4DBC-889E-6F84CB405A84> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6682717-81906A66-7D3C-4170-9DB7-D7C46DCDE434> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q668424-4FA353D3-0923-4B18-A935-4CDA2E38734A> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6687046-7833878C-806B-4E7F-8978-307D5213C684> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q670383-474FE2A0-4D6D-40D6-9431-3B78F6311039> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6734743-B573575D-3F9D-4465-901A-5E6A281094AD> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6779246-56690E7B-8A34-4521-9846-868973F6EBD1> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q67930-4A9FEFD1-E34A-4592-9C97-894DF66F7906> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q69286-18AEF402-A043-4B71-8100-72E36FA7CDFC> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6959871-B3F76DDE-D3F5-4BA3-BA6F-BB9571A4A3C4> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6969661-56A7FDE8-30BA-45C9-A015-A5E90D7991EE> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6969761-A8222195-3C2E-4E01-925C-164B3CD18466> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q6987139-ADDD2E5F-B6A3-47ED-B525-385C95741195> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q7004531-494E6562-017A-4782-991B-CE6571DC8816> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q700564-0B73CF14-710B-4846-A473-FB6AE84FE07B> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q7069026-3B367FC7-2EF4-4CC0-8E3E-9C1FC51420E2> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q7140297-3279BD82-3FC0-4F91-9C8E-0BCBBA299937> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q7147289-609F5E33-0706-4BDE-8D82-23F6CC36A576> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q716403-DC1A4F46-2247-4281-8C39-B6795AB8374A> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q71652-0E52FDEF-D284-4041-9CB5-C064701CF9B0> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q7175817-DA831F28-F759-47D2-B7AD-2254F7404034> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q7244846-B134E398-E8E4-4D8E-876D-B7139716401C> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q72936-E71BF997-A28E-428C-AC77-CF19FCF3B741> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q7326681-7C41478B-CEBD-4014-BECC-9CDAB2323DEF> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q7327659-5BDF861D-C666-4759-8AF9-65A24C0BA0BA> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q7342142-9D31DEAC-445A-456F-8573-E0556DE318C5> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q7348865-35023E52-650C-4DDA-9CBF-051D71C76AAE> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q7348866-FD739F8B-513D-4EAD-B839-BB6605FDCE9C> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q7412877-03AF1BF7-409F-4FD5-BEBD-BCC1272A48C4> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q7562410-9DE19C4C-DADF-4CDC-A64F-1BE07FBAD288> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q7638738-43E95259-091D-4CB8-B37B-6A1F0EA6A667> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q76564-62038CEA-823E-4962-904C-FA3AEE2A5A39> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q77336-C0FD7695-9820-4102-B907-ECC12594A0F4> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q7738-DE2383B0-AC35-4E5A-9AE3-2978D3E805AC> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q7787665-56138B27-5FAC-4883-9ED7-DB14BB3BAD0C> pq:P828 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q7792557-AB394DD7-9C75-4501-9418-B0948FA9FA75> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q7811617-C0D7BF54-4388-4159-817B-7F45D8CCC3B4> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q784173-3628EE1B-9D74-4C66-BF71-F9179FCA1E75> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q7908989-66752EC7-7666-4ADB-93BD-C051F2724604> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q8009182-A8A22CE1-DE5A-4A7F-8062-30ADBD108498> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q8010466-3DF5C34D-8E4B-4096-82FB-D9DB16DD9D54> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q8020653-D695FE7C-AD59-45CD-9367-640180E21DA4> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q821078-EC01662B-3CA2-47B0-8CA4-A3BDFE4B8557> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q8513818-FBEA0899-B508-4D92-A0E4-CF8D6C3FB616> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q851716-58DAD762-A26C-4179-B540-A207FB541696> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q883015-D9389595-0CF0-4D7A-84E5-A2ADC4A1A9F4> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q883022-FBE0520F-B18B-4405-BCD7-4FC34FCBAAA3> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q9254276-61d01a16-4361-bf36-75b8-82543cd0800b> pq:P642 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q93810-9ACE964C-073B-41EE-ABC3-7FF3AC5DDEBF> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q949712-6DB07410-C0C7-4ADA-81F7-71AAFC994496> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q959774-99CBAE89-071F-456C-AB12-7099A34219BC> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q978309-17426957-FC63-4D3C-A5F5-81344BBE2968> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q991486-D9014826-D433-4600-9069-E7081B0BA523> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/q472235-7d042890-4afe-777c-bceb-82708bf32ab3> ps:P509 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/q8754940-B2EE7C0C-F0BA-4030-8D6D-B20C1D63D1A3> ps:P301 wd:Q12214 .
+
+<https://af.wikipedia.org/wiki/Pokke> schema:about wd:Q12214 .
+
+<https://als.wikipedia.org/wiki/Pocken> schema:about wd:Q12214 .
+
+<https://an.wikipedia.org/wiki/Picueta> schema:about wd:Q12214 .
+
+<https://ar.wikipedia.org/wiki/%D8%AC%D8%AF%D8%B1%D9%8A> schema:about wd:Q12214 .
+
+<https://arz.wikipedia.org/wiki/%D8%AC%D8%AF%D8%B1%D9%89> schema:about wd:Q12214 .
+
+<https://as.wikipedia.org/wiki/%E0%A6%AC%E0%A7%B0%E0%A6%86%E0%A6%87> schema:about wd:Q12214 .
+
+<https://ast.wikipedia.org/wiki/Viruela> schema:about wd:Q12214 .
+
+<https://ay.wikipedia.org/wiki/Chuqu_usu> schema:about wd:Q12214 .
+
+<https://az.wikipedia.org/wiki/T%C9%99bii_%C3%A7i%C3%A7%C9%99k> schema:about wd:Q12214 .
+
+<https://ba.wikipedia.org/wiki/%D2%A0%D0%B0%D1%80%D0%B0_%D1%81%D3%99%D1%81%D3%99%D0%BA> schema:about wd:Q12214 .
+
+<https://bat-smg.wikipedia.org/wiki/Raup%C4%81> schema:about wd:Q12214 .
+
+<https://be-tarask.wikipedia.org/wiki/%D0%9D%D0%B0%D1%82%D1%83%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F_%D0%B2%D0%BE%D1%81%D0%BF%D0%B0> schema:about wd:Q12214 .
+
+<https://be.wikipedia.org/wiki/%D0%9D%D0%B0%D1%82%D1%83%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F_%D0%B2%D0%BE%D1%81%D0%BF%D0%B0> schema:about wd:Q12214 .
+
+<https://bg.wikipedia.org/wiki/%D0%95%D0%B4%D1%80%D0%B0_%D1%88%D0%B0%D1%80%D0%BA%D0%B0> schema:about wd:Q12214 .
+
+<https://bn.wikipedia.org/wiki/%E0%A6%97%E0%A7%81%E0%A6%9F%E0%A6%BF%E0%A6%AC%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4> schema:about wd:Q12214 .
+
+<https://br.wikipedia.org/wiki/Brec%27h_(kle%C3%B1ved)> schema:about wd:Q12214 .
+
+<https://bs.wikipedia.org/wiki/Boginje> schema:about wd:Q12214 .
+
+<https://ca.wikipedia.org/wiki/Verola> schema:about wd:Q12214 .
+
+<https://cdo.wikipedia.org/wiki/Ti%C4%95ng-hu%C4%83> schema:about wd:Q12214 .
+
+<https://ckb.wikipedia.org/wiki/%DA%BE%D8%A7%D9%88%DA%B5%DB%95> schema:about wd:Q12214 .
+
+<https://cs.wikipedia.org/wiki/Prav%C3%A9_ne%C5%A1tovice> schema:about wd:Q12214 .
+
+<https://cy.wikipedia.org/wiki/Brech_wen> schema:about wd:Q12214 .
+
+<https://da.wikipedia.org/wiki/Kopper> schema:about wd:Q12214 .
+
+<https://de.wikipedia.org/wiki/Pocken> schema:about wd:Q12214 .
+
+<https://dv.wikipedia.org/wiki/%DE%86%DE%A6%DE%81%DE%A8_%DE%88%DE%A8%DE%8B%DE%AA%DE%83%DE%A8> schema:about wd:Q12214 .
+
+<https://el.wikipedia.org/wiki/%CE%95%CF%85%CE%BB%CE%BF%CE%B3%CE%B9%CE%AC> schema:about wd:Q12214 .
+
+<https://eml.wikipedia.org/wiki/Var%C5%8Dl> schema:about wd:Q12214 .
+
+<https://en.wikipedia.org/wiki/Smallpox> schema:about wd:Q12214 .
+
+<https://en.wikiquote.org/wiki/Smallpox> schema:about wd:Q12214 .
+
+<https://eo.wikipedia.org/wiki/Variolo> schema:about wd:Q12214 .
+
+<https://es.wikipedia.org/wiki/Viruela> schema:about wd:Q12214 .
+
+<https://et.wikipedia.org/wiki/R%C3%B5uged> schema:about wd:Q12214 .
+
+<https://eu.wikipedia.org/wiki/Baztanga> schema:about wd:Q12214 .
+
+<https://fa.wikipedia.org/wiki/%D8%A2%D8%A8%D9%84%D9%87> schema:about wd:Q12214 .
+
+<https://fi.wikipedia.org/wiki/Isorokko> schema:about wd:Q12214 .
+
+<https://fiu-vro.wikipedia.org/wiki/Hernet%C3%B5bi> schema:about wd:Q12214 .
+
+<https://fr.wikipedia.org/wiki/Variole> schema:about wd:Q12214 .
+
+<https://ga.wikipedia.org/wiki/Bolgach> schema:about wd:Q12214 .
+
+<https://gd.wikipedia.org/wiki/Breac_(tinneas)> schema:about wd:Q12214 .
+
+<https://gl.wikipedia.org/wiki/Var%C3%ADola> schema:about wd:Q12214 .
+
+<https://gn.wikipedia.org/wiki/Mbiru%27a> schema:about wd:Q12214 .
+
+<https://hak.wikipedia.org/wiki/Thi%C3%AAn-f%C3%A2> schema:about wd:Q12214 .
+
+<https://he.wikipedia.org/wiki/%D7%90%D7%91%D7%A2%D7%91%D7%95%D7%A2%D7%95%D7%AA_%D7%A9%D7%97%D7%95%D7%A8%D7%95%D7%AA> schema:about wd:Q12214 .
+
+<https://hi.wikipedia.org/wiki/%E0%A4%9A%E0%A5%87%E0%A4%9A%E0%A4%95> schema:about wd:Q12214 .
+
+<https://hr.wikipedia.org/wiki/Boginje> schema:about wd:Q12214 .
+
+<https://hu.wikipedia.org/wiki/Fekete_himl%C5%91> schema:about wd:Q12214 .
+
+<https://hy.wikipedia.org/wiki/%D4%B2%D5%B6%D5%A1%D5%AF%D5%A1%D5%B6_%D5%AE%D5%A1%D5%B2%D5%AB%D5%AF> schema:about wd:Q12214 .
+
+<https://id.wikipedia.org/wiki/Variola> schema:about wd:Q12214 .
+
+<https://ilo.wikipedia.org/wiki/Burtong> schema:about wd:Q12214 .
+
+<https://is.wikipedia.org/wiki/B%C3%B3lus%C3%B3tt> schema:about wd:Q12214 .
+
+<https://it.wikipedia.org/wiki/Vaiolo> schema:about wd:Q12214 .
+
+<https://it.wikiquote.org/wiki/Vaiolo> schema:about wd:Q12214 .
+
+<https://ja.wikipedia.org/wiki/%E5%A4%A9%E7%84%B6%E7%97%98> schema:about wd:Q12214 .
+
+<https://jam.wikipedia.org/wiki/Sumaalpax> schema:about wd:Q12214 .
+
+<https://kbp.wikipedia.org/wiki/%C6%90s%C9%94_k%CA%8Ad%C9%94%C5%8B_(Variole)> schema:about wd:Q12214 .
+
+<https://kk.wikipedia.org/wiki/%D2%9A%D0%B0%D1%80%D0%B0_%D1%88%D0%B5%D1%88%D0%B5%D0%BA> schema:about wd:Q12214 .
+
+<https://ko.wikipedia.org/wiki/%EC%B2%9C%EC%97%B0%EB%91%90> schema:about wd:Q12214 .
+
+<https://ky.wikipedia.org/wiki/%D0%A7%D0%B5%D1%87%D0%B5%D0%BA> schema:about wd:Q12214 .
+
+<https://la.wikipedia.org/wiki/Variola> schema:about wd:Q12214 .
+
+<https://lez.wikipedia.org/wiki/%D0%A6I%D0%B5%D0%B3%D1%8C%D0%B5%D1%80> schema:about wd:Q12214 .
+
+<https://lt.wikipedia.org/wiki/Raupai> schema:about wd:Q12214 .
+
+<https://lv.wikipedia.org/wiki/Bakas> schema:about wd:Q12214 .
+
+<https://mk.wikipedia.org/wiki/%D0%A1%D0%B8%D0%BF%D0%B0%D0%BD%D0%B8%D1%86%D0%B8> schema:about wd:Q12214 .
+
+<https://ml.wikipedia.org/wiki/%E0%B4%B5%E0%B4%B8%E0%B5%82%E0%B4%B0%E0%B4%BF> schema:about wd:Q12214 .
+
+<https://mr.wikipedia.org/wiki/%E0%A4%A6%E0%A5%87%E0%A4%B5%E0%A5%80_(%E0%A4%B0%E0%A5%8B%E0%A4%97)> schema:about wd:Q12214 .
+
+<https://ms.wikipedia.org/wiki/Cacar> schema:about wd:Q12214 .
+
+<https://my.wikipedia.org/wiki/%E1%80%80%E1%80%BB%E1%80%B1%E1%80%AC%E1%80%80%E1%80%BA%E1%80%80%E1%80%BC%E1%80%AE%E1%80%B8%E1%80%9B%E1%80%B1%E1%80%AC%E1%80%82%E1%80%AB> schema:about wd:Q12214 .
+
+<https://nah.wikipedia.org/wiki/M%C4%81tl%C4%81lzahuatl> schema:about wd:Q12214 .
+
+<https://nl.wikipedia.org/wiki/Pokken> schema:about wd:Q12214 .
+
+<https://nn.wikipedia.org/wiki/Koppar> schema:about wd:Q12214 .
+
+<https://no.wikipedia.org/wiki/Kopper_(sykdom)> schema:about wd:Q12214 .
+
+<https://nv.wikipedia.org/wiki/%C5%81%C3%B3%C3%B3dtsoh> schema:about wd:Q12214 .
+
+<https://oc.wikipedia.org/wiki/Ver%C3%B2la> schema:about wd:Q12214 .
+
+<https://os.wikipedia.org/wiki/%D0%A5%C3%A6%D0%B1%D1%83%D0%B7> schema:about wd:Q12214 .
+
+<https://pa.wikipedia.org/wiki/%E0%A8%9A%E0%A9%87%E0%A8%9A%E0%A8%95> schema:about wd:Q12214 .
+
+<https://pl.wikipedia.org/wiki/Ospa_prawdziwa> schema:about wd:Q12214 .
+
+<https://pms.wikipedia.org/wiki/Vair%C3%B2le> schema:about wd:Q12214 .
+
+<https://pnb.wikipedia.org/wiki/%DA%86%DB%8C%DA%86%DA%A9> schema:about wd:Q12214 .
+
+<https://pt.wikipedia.org/wiki/Var%C3%ADola> schema:about wd:Q12214 .
+
+<https://qu.wikipedia.org/wiki/Muru_unquy> schema:about wd:Q12214 .
+
+<https://ro.wikipedia.org/wiki/Variol%C4%83> schema:about wd:Q12214 .
+
+<https://ru.wikipedia.org/wiki/%D0%9D%D0%B0%D1%82%D1%83%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F_%D0%BE%D1%81%D0%BF%D0%B0> schema:about wd:Q12214 .
+
+<https://sa.wikipedia.org/wiki/%E0%A4%AE%E0%A4%B8%E0%A5%82%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A4%BE> schema:about wd:Q12214 .
+
+<https://sah.wikipedia.org/wiki/%D0%A3%D0%BE%D1%81%D0%BF%D0%B0> schema:about wd:Q12214 .
+
+<https://scn.wikipedia.org/wiki/Vaiolu> schema:about wd:Q12214 .
+
+<https://sh.wikipedia.org/wiki/Boginje> schema:about wd:Q12214 .
+
+<https://simple.wikipedia.org/wiki/Smallpox> schema:about wd:Q12214 .
+
+<https://sk.wikipedia.org/wiki/Kiahne> schema:about wd:Q12214 .
+
+<https://sl.wikipedia.org/wiki/%C4%8Crne_koze> schema:about wd:Q12214 .
+
+<https://species.wikimedia.org/wiki/Variola_virus> schema:about wd:Q12214 .
+
+<https://sr.wikipedia.org/wiki/%D0%91%D0%BE%D0%B3%D0%B8%D1%9A%D0%B5> schema:about wd:Q12214 .
+
+<https://sv.wikipedia.org/wiki/Smittkoppor> schema:about wd:Q12214 .
+
+<https://sw.wikipedia.org/wiki/Ndui> schema:about wd:Q12214 .
+
+<https://ta.wikipedia.org/wiki/%E0%AE%AA%E0%AF%86%E0%AE%B0%E0%AE%BF%E0%AE%AF%E0%AE%AE%E0%AF%8D%E0%AE%AE%E0%AF%88> schema:about wd:Q12214 .
+
+<https://te.wikipedia.org/wiki/%E0%B0%AE%E0%B0%B6%E0%B1%82%E0%B0%9A%E0%B0%BF> schema:about wd:Q12214 .
+
+<https://th.wikipedia.org/wiki/%E0%B9%82%E0%B8%A3%E0%B8%84%E0%B8%9D%E0%B8%B5%E0%B8%94%E0%B8%B2%E0%B8%A9> schema:about wd:Q12214 .
+
+<https://tl.wikipedia.org/wiki/Bulutong> schema:about wd:Q12214 .
+
+<https://tr.wikipedia.org/wiki/%C3%87i%C3%A7ek_hastal%C4%B1%C4%9F%C4%B1> schema:about wd:Q12214 .
+
+<https://tt.wikipedia.org/wiki/%D0%A7%D3%99%D1%87%D3%99%D0%BA_(%D0%B0%D0%B2%D1%8B%D1%80%D1%83)> schema:about wd:Q12214 .
+
+<https://uk.wikipedia.org/wiki/%D0%9D%D0%B0%D1%82%D1%83%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0_%D0%B2%D1%96%D1%81%D0%BF%D0%B0> schema:about wd:Q12214 .
+
+<https://ur.wikipedia.org/wiki/%DA%86%DB%8C%DA%86%DA%A9> schema:about wd:Q12214 .
+
+<https://uz.wikipedia.org/wiki/Chechak> schema:about wd:Q12214 .
+
+<https://vi.wikipedia.org/wiki/%C4%90%E1%BA%ADu_m%C3%B9a> schema:about wd:Q12214 .
+
+<https://wa.wikipedia.org/wiki/Noer%C3%A8s_plokes> schema:about wd:Q12214 .
+
+<https://war.wikipedia.org/wiki/Pandok> schema:about wd:Q12214 .
+
+<https://yi.wikipedia.org/wiki/%D7%A4%D7%90%D7%A7%D7%9F> schema:about wd:Q12214 .
+
+<https://zh-min-nan.wikipedia.org/wiki/Thian-hoa> schema:about wd:Q12214 .
+
+<https://zh-yue.wikipedia.org/wiki/%E5%A4%A9%E8%8A%B1_(%E5%82%B3%E6%9F%93%E7%97%85)> schema:about wd:Q12214 .
+
+<https://zh.wikipedia.org/wiki/%E5%A4%A9%E8%8A%B1> schema:about wd:Q12214 .
+
+wd:Q11877169 wdt:P1542 wd:Q12214 .
+
+wd:Q14913440 wdt:P2293 wd:Q12214 .
+
+wd:Q14916190 wdt:P2293 wd:Q12214 .
+
+wd:Q14916487 wdt:P2293 wd:Q12214 .
+
+wd:Q15317046 wdt:P2293 wd:Q12214 .
+
+wd:Q15320451 wdt:P2293 wd:Q12214 .
+
+wd:Q17848770 wdt:P2293 wd:Q12214 .
+
+wd:Q17854281 wdt:P2293 wd:Q12214 .
+
+wd:Q17907898 wdt:P2293 wd:Q12214 .
+
+wd:Q17912763 wdt:P2293 wd:Q12214 .
+
+wd:Q18025811 wdt:P2293 wd:Q12214 .
+
+wd:Q18026519 wdt:P2293 wd:Q12214 .
+
+wd:Q18027833 wdt:P2293 wd:Q12214 .
+
+wd:Q18028156 wdt:P2293 wd:Q12214 .
+
+wd:Q18028644 wdt:P2293 wd:Q12214 .
+
+wd:Q18028692 wdt:P2293 wd:Q12214 .
+
+wd:Q18029227 wdt:P2293 wd:Q12214 .
+
+wd:Q18030409 wdt:P2293 wd:Q12214 .
+
+wd:Q18030780 wdt:P2293 wd:Q12214 .
+
+wd:Q18031469 wdt:P2293 wd:Q12214 .
+
+wd:Q18031564 wdt:P2293 wd:Q12214 .
+
+wd:Q18032255 wdt:P2293 wd:Q12214 .
+
+wd:Q18033532 wdt:P2293 wd:Q12214 .
+
+wd:Q18034286 wdt:P2293 wd:Q12214 .
+
+wd:Q18035351 wdt:P2293 wd:Q12214 .
+
+wd:Q18035921 wdt:P2293 wd:Q12214 .
+
+wd:Q18036562 wdt:P2293 wd:Q12214 .
+
+wd:Q18036632 wdt:P2293 wd:Q12214 .
+
+wd:Q18040213 wdt:P2293 wd:Q12214 .
+
+wd:Q18040224 wdt:P2293 wd:Q12214 .
+
+wd:Q18040387 wdt:P2293 wd:Q12214 .
+
+wd:Q18040393 wdt:P2293 wd:Q12214 .
+
+wd:Q18040744 wdt:P2293 wd:Q12214 .
+
+wd:Q18041212 wdt:P2293 wd:Q12214 .
+
+wd:Q18041263 wdt:P2293 wd:Q12214 .
+
+wd:Q18041288 wdt:P2293 wd:Q12214 .
+
+wd:Q18041864 wdt:P2293 wd:Q12214 .
+
+wd:Q18042064 wdt:P2293 wd:Q12214 .
+
+wd:Q18042575 wdt:P2293 wd:Q12214 .
+
+wd:Q18044722 wdt:P2293 wd:Q12214 .
+
+wd:Q18045649 wdt:P2293 wd:Q12214 .
+
+wd:Q18045682 wdt:P2293 wd:Q12214 .
+
+wd:Q18046242 wdt:P2293 wd:Q12214 .
+
+wd:Q18046382 wdt:P2293 wd:Q12214 .
+
+wd:Q18047303 wdt:P2293 wd:Q12214 .
+
+wd:Q18048572 wdt:P2293 wd:Q12214 .
+
+wd:Q18049058 wdt:P2293 wd:Q12214 .
+
+wd:Q18049201 wdt:P2293 wd:Q12214 .
+
+wd:Q18050771 wdt:P2293 wd:Q12214 .
+
+wd:Q18052189 wdt:P2293 wd:Q12214 .
+
+wd:Q18054056 wdt:P2293 wd:Q12214 .
+
+wd:Q18055395 wdt:P2293 wd:Q12214 .
+
+wd:Q18058371 wdt:P2293 wd:Q12214 .
+
+wd:Q18058473 wdt:P2293 wd:Q12214 .
+
+wd:Q18292821 wdt:P2293 wd:Q12214 .
+
+wd:Q20763585 wdt:P2293 wd:Q12214 .
+
+wd:Q248215 wdt:P2293 wd:Q12214 .
+
+wd:Q8754940 wdt:P301 wd:Q12214 .
+
+<http://www.wikidata.org/entity/statement/Q12214-00BB6306-6589-4E2D-8DA1-AF0EF5A6CA76> prov:wasDerivedFrom <http://www.wikidata.org/reference/983bda8338732d051bbbe560ed02a1baef574a20> .
+
+<http://www.wikidata.org/entity/statement/Q12214-30D6A871-D613-41CD-B2E6-E8FFA08817E5> prov:wasDerivedFrom <http://www.wikidata.org/reference/983bda8338732d051bbbe560ed02a1baef574a20> .
+
+<http://www.wikidata.org/entity/statement/Q12214-36330696-CDC7-44C3-B867-1FE88FED0187> a ns2:BestRank ;
+    ns2:rank ns2:NormalRank ;
+    prov:wasDerivedFrom <http://www.wikidata.org/reference/983bda8338732d051bbbe560ed02a1baef574a20> ;
+    ps:P31 wd:Q12136 .
+
+<http://www.wikidata.org/entity/statement/Q12214-6325FDC0-B1F6-429E-B3DF-9C5676B0ABC8> prov:wasDerivedFrom <http://www.wikidata.org/reference/983bda8338732d051bbbe560ed02a1baef574a20> .
+
+<http://www.wikidata.org/entity/statement/Q12214-823B4FFC-359D-45C6-B192-1431EAFF4AC5> prov:wasDerivedFrom <http://www.wikidata.org/reference/983bda8338732d051bbbe560ed02a1baef574a20> .
+
+<http://www.wikidata.org/entity/statement/Q12214-8B80A9EB-8074-4307-807C-0E93AE970CC2> a ns2:BestRank ;
+    ns2:rank ns2:NormalRank ;
+    prov:wasDerivedFrom <http://www.wikidata.org/reference/983bda8338732d051bbbe560ed02a1baef574a20> ;
+    ps:P279 wd:Q1928978 .
+
+<http://www.wikidata.org/entity/statement/Q12214-93138cd6-4150-3e3f-0b31-fabce61ff691> a ns2:BestRank ;
+    ns2:rank ns2:NormalRank ;
+    ps:P279 wd:Q18975241 .
+
+<http://www.wikidata.org/entity/statement/Q12214-975959CF-D6C3-46C2-AFC0-97D44034A074> prov:wasDerivedFrom <http://www.wikidata.org/reference/983bda8338732d051bbbe560ed02a1baef574a20> .
+
+<http://www.wikidata.org/entity/statement/Q12214-B014B1B7-A8D2-4D32-AC43-7B606016163F> prov:wasDerivedFrom <http://www.wikidata.org/reference/983bda8338732d051bbbe560ed02a1baef574a20> .
+
+<http://www.wikidata.org/entity/statement/Q12214-DB7F53D1-A060-47A1-B7F7-F83B4B79B681> prov:wasDerivedFrom <http://www.wikidata.org/reference/983bda8338732d051bbbe560ed02a1baef574a20> .
+
+<http://www.wikidata.org/entity/statement/Q12214-EA9D3417-B88A-4B07-AC6C-1F631EB42A60> prov:wasDerivedFrom <http://www.wikidata.org/reference/983bda8338732d051bbbe560ed02a1baef574a20> .
+
+<http://www.wikidata.org/reference/983bda8338732d051bbbe560ed02a1baef574a20> pr:P248 wd:Q50349458 ;
+    pr:P699 "DOID:8736" ;
+    pr:P813 "2018-03-05T00:00:00+00:00"^^xsd:dateTime ;
+    prv:P813 <http://www.wikidata.org/value/1e3a6bea7157623e35de26b2a62a80cb> .
+
+wd:Q12214 rdfs:label "Bakas",
+        "Baztanga",
+        "Boginje",
+        "Bolgach",
+        "Breac",
+        "Brec'h",
+        "Brech wen",
+        "Bulutong",
+        "Bólusótt",
+        "Cacar",
+        "Chechak",
+        "Chuqu usu",
+        "Hernetõbi",
+        "Isorokko",
+        "Kiahne",
+        "Kopper",
+        "Mbiru'a",
+        "Muru unquy",
+        "Mātlālzahuatl",
+        "Ndui",
+        "Noerès plokes",
+        "Ospa prawdziwa",
+        "Pandok",
+        "Picueta",
+        "Pocken",
+        "Pokke",
+        "Raupai",
+        "Raupā",
+        "Rõuged",
+        "Smallpox",
+        "Thian-hoa",
+        "Təbii çiçək",
+        "Vaiolu",
+        "Vairòle",
+        "Variola",
+        "Varíola",
+        "Veròla",
+        "Viruela",
+        "burtong",
+        "feketehimlő",
+        "jedri",
+        "koppar",
+        "kopper",
+        "pokken",
+        "pravé neštovice",
+        "smallpox",
+        "smittkoppor",
+        "vaiolo",
+        "variola",
+        "variole",
+        "variolo",
+        "variolă",
+        "varíola",
+        "verola",
+        "viruela",
+        "Çiçek hastalığı",
+        "Črne koze",
+        "Đậu mùa",
+        "Łóódtsoh",
+        "Ευλογιά",
+        "Едра шарка",
+        "Сипаници",
+        "Уоспа",
+        "Хæбуз",
+        "Чечек",
+        "Чәчәк",
+        "богиње",
+        "натуральна віспа",
+        "натуральная воспа",
+        "натуральная оспа",
+        "Қара шешек",
+        "Բնական ծաղիկ",
+        "אבעבועות שחורות",
+        "פאקן",
+        "آبله",
+        "جدرى",
+        "جدري",
+        "چیچک",
+        "ھاوڵە",
+        "ކަށި ވިދުރި",
+        "चेचक",
+        "देवी (रोग)",
+        "मसूरिका",
+        "গুটিবসন্ত",
+        "বৰআই",
+        "ਚੇਚਕ",
+        "பெரியம்மை",
+        "మశూచి",
+        "വസൂരി",
+        "ฝีดาษ",
+        "ကျောက်ကြီးရောဂါ",
+        "天然痘",
+        "天花",
+        "천연두" ;
+    schema:dateModified "2018-03-15T05:06:28+00:00"^^xsd:dateTime ;
+    schema:description "Infektionskrankheit",
+        "choroba wirusowa",
+        "doença humana infecciosa",
+        "doença infecciosa",
+        "emberi fertőző betegség",
+        "enfermedad infecciosa",
+        "gaixotasun kutsakorra",
+        "human disease",
+        "infektionssjukdom",
+        "infekční onemocnění",
+        "makaalis a sakit",
+        "maladie infectieuse d'origine virale",
+        "malattia infettiva causata da due varianti del virus Variola",
+        "morbus",
+        "virusziekte",
+        "инфекционная болезнь",
+        "людська інфекційна хвороба з епідемічним перебігом",
+        "מחלה קטלנית שהוכחדה",
+        "مَرَضٌ بَشَرِيٌّ",
+        "एक मानवीय रोग, जिसे बड़ी माता के नाम से भी जाना जाता है।",
+        "മനുഷ്യനെ ബാധിക്കുന്ന രോഗം",
+        "感染症" ;
+    schema:version 649644031 ;
+    ns2:identifiers 20 ;
+    ns2:sitelinks 109 ;
+    ns2:statements 100 ;
+    skos:altLabel "Blattern",
+        "Variola",
+        "Variola vera",
+        "czarna ospa",
+        "ordinary smallpox",
+        "petite vérole",
+        "variola",
+        "variola vera",
+        "černé neštovice",
+        "алястрим",
+        "варіолоїд",
+        "велика віспа",
+        "оспа",
+        "черная оспа",
+        "чорна віспа",
+        "чёрная оспа",
+        "الجدري",
+        "مرض الجدري",
+        "疱瘡",
+        "痘瘡" ;
+    p:P1225 <http://www.wikidata.org/entity/statement/Q12214-65A7BB54-1058-44E5-80A6-DD0B538D1A11> ;
+    p:P1343 <http://www.wikidata.org/entity/statement/Q12214-0DA86344-B62C-4EEE-9AA5-69AF266B8E06> ;
+    p:P1417 <http://www.wikidata.org/entity/statement/Q12214-A21C12FC-1352-4D9A-A545-0807B68CF36A> ;
+    p:P1461 <http://www.wikidata.org/entity/statement/Q12214-80E6BD14-599E-4DBC-97EA-CFBA35F87E6E> ;
+    p:P1692 <http://www.wikidata.org/entity/statement/Q12214-B014B1B7-A8D2-4D32-AC43-7B606016163F>,
+        <http://www.wikidata.org/entity/statement/Q12214-DB7F53D1-A060-47A1-B7F7-F83B4B79B681> ;
+    p:P1748 <http://www.wikidata.org/entity/statement/Q12214-00BB6306-6589-4E2D-8DA1-AF0EF5A6CA76> ;
+    p:P18 <http://www.wikidata.org/entity/statement/Q12214-8a592ec9-425a-0714-7248-d92440736892>,
+        <http://www.wikidata.org/entity/statement/Q12214-A1C98DA2-0682-4D71-991F-8BD656ABF041>,
+        <http://www.wikidata.org/entity/statement/q12214-2B892E95-C176-4D7F-BC48-667F018F2C3B> ;
+    p:P1995 <http://www.wikidata.org/entity/statement/Q12214-8BB6BB00-640A-46A6-884D-E79F20D5FE9D> ;
+    p:P227 <http://www.wikidata.org/entity/statement/q12214-a29ea800-4299-7812-4e79-198d561965d9> ;
+    p:P2293 <http://www.wikidata.org/entity/statement/Q12214-08B0BD25-AD38-4952-960B-655F52FCB630>,
+        <http://www.wikidata.org/entity/statement/Q12214-08D2B413-3311-4CBB-B085-144F21184E41>,
+        <http://www.wikidata.org/entity/statement/Q12214-0DB5455F-1E27-43C5-9B0C-C903A52ED98C>,
+        <http://www.wikidata.org/entity/statement/Q12214-105B636B-AB22-4F1F-A543-305780221F87>,
+        <http://www.wikidata.org/entity/statement/Q12214-189F1194-73FB-4225-8881-0BAC67B57649>,
+        <http://www.wikidata.org/entity/statement/Q12214-1B87F2F5-FEB7-408C-B07B-589F59F25491>,
+        <http://www.wikidata.org/entity/statement/Q12214-1E39BB3F-9F0E-4206-AB58-77E642D7D926>,
+        <http://www.wikidata.org/entity/statement/Q12214-1F65FAB7-6BC7-45C5-ABB0-891BF67606AF>,
+        <http://www.wikidata.org/entity/statement/Q12214-1F9E170F-158C-40C7-8958-E402773910EF>,
+        <http://www.wikidata.org/entity/statement/Q12214-296D42AF-80B1-4736-87A9-1E9CDA8E387A>,
+        <http://www.wikidata.org/entity/statement/Q12214-2CFB7B15-682C-483B-9C8F-4460217A4094>,
+        <http://www.wikidata.org/entity/statement/Q12214-2DF33122-825D-4245-81C2-B5A7ED0FD748>,
+        <http://www.wikidata.org/entity/statement/Q12214-3B72B229-2005-44EB-93BA-BADCBC92AF0A>,
+        <http://www.wikidata.org/entity/statement/Q12214-43D37EE5-55CE-4DB1-A8AA-0457F6C41BD9>,
+        <http://www.wikidata.org/entity/statement/Q12214-49AFDDAF-715F-4666-9241-971E6D112AB7>,
+        <http://www.wikidata.org/entity/statement/Q12214-4C25B98E-D597-463F-82B7-2479178DA19D>,
+        <http://www.wikidata.org/entity/statement/Q12214-5608E8A6-0ABD-4115-9D0D-F0058F68238C>,
+        <http://www.wikidata.org/entity/statement/Q12214-590520E9-5A76-4339-8431-B8F5EC034111>,
+        <http://www.wikidata.org/entity/statement/Q12214-59C9AE9F-10D1-44A4-8D07-069F569DC9AC>,
+        <http://www.wikidata.org/entity/statement/Q12214-69678501-6C31-4DE9-A342-225344DCE509>,
+        <http://www.wikidata.org/entity/statement/Q12214-6AD8DC24-DD22-4E7F-8B5A-3EDEB7987615>,
+        <http://www.wikidata.org/entity/statement/Q12214-6FCAE90D-339A-4251-8002-0A93E0E0B223>,
+        <http://www.wikidata.org/entity/statement/Q12214-7648A539-F70B-4F09-A681-4D093BB447B9>,
+        <http://www.wikidata.org/entity/statement/Q12214-77986BDA-7852-497D-B726-45B9835C77DC>,
+        <http://www.wikidata.org/entity/statement/Q12214-7B7D2C39-45B7-4151-A0A0-51D52BEDFCD7>,
+        <http://www.wikidata.org/entity/statement/Q12214-824AF780-54DC-4EA2-B5FF-C0B711A4EE56>,
+        <http://www.wikidata.org/entity/statement/Q12214-838F9BCF-5831-46F9-934E-116A08C4CFC6>,
+        <http://www.wikidata.org/entity/statement/Q12214-86F4C500-11AD-49BA-A667-8F5254B82A55>,
+        <http://www.wikidata.org/entity/statement/Q12214-93724867-F82D-4FF2-9C00-F5EEE05A1E28>,
+        <http://www.wikidata.org/entity/statement/Q12214-99BE1C5E-817C-4AE7-ADF5-56CE28302653>,
+        <http://www.wikidata.org/entity/statement/Q12214-9B8DF5C4-8B39-41A1-92CA-F36977484C76>,
+        <http://www.wikidata.org/entity/statement/Q12214-A5343E7E-C0F3-47A9-8CC1-E0EBDF63AAFA>,
+        <http://www.wikidata.org/entity/statement/Q12214-A6CF7510-AE29-46F0-8B17-15BC0C147467>,
+        <http://www.wikidata.org/entity/statement/Q12214-A76837FE-B46C-4949-B6ED-6FE054965587>,
+        <http://www.wikidata.org/entity/statement/Q12214-A7B90221-9447-40BD-8AFE-9F6EC56F6FAC>,
+        <http://www.wikidata.org/entity/statement/Q12214-ABD9B921-0958-4E1C-BC4C-885E6A93DF3C>,
+        <http://www.wikidata.org/entity/statement/Q12214-B032BA41-159B-4EE6-8C38-F5EEB37676ED>,
+        <http://www.wikidata.org/entity/statement/Q12214-B57FA6D8-E2AF-4B91-AC36-28DA2514987F>,
+        <http://www.wikidata.org/entity/statement/Q12214-B5D634E3-4C5E-4F4A-93C2-C061255FC3DC>,
+        <http://www.wikidata.org/entity/statement/Q12214-B682CB0A-2967-4614-83B2-98A01C47D453>,
+        <http://www.wikidata.org/entity/statement/Q12214-B8CD5196-E027-4D5A-81A0-B0513D7F7156>,
+        <http://www.wikidata.org/entity/statement/Q12214-C15D43F5-28BD-4457-AD59-4869590FAA47>,
+        <http://www.wikidata.org/entity/statement/Q12214-C275702A-B11D-4118-A11A-19A6201F4101>,
+        <http://www.wikidata.org/entity/statement/Q12214-C3806802-8047-4816-A7F6-58B676FF6057>,
+        <http://www.wikidata.org/entity/statement/Q12214-CB50FEEB-6F5C-4D42-BA73-1085DE1F850F>,
+        <http://www.wikidata.org/entity/statement/Q12214-CBFA1294-2323-47D7-A8E0-48A05CC794C7>,
+        <http://www.wikidata.org/entity/statement/Q12214-CF6F802C-8432-43A1-9833-CC5911B41F82>,
+        <http://www.wikidata.org/entity/statement/Q12214-DA15981A-12C9-4AEF-8B99-4B00D44F5D98>,
+        <http://www.wikidata.org/entity/statement/Q12214-DC9C7D0F-9367-4999-9D42-869769860D65>,
+        <http://www.wikidata.org/entity/statement/Q12214-E1D3E14B-9A6D-4788-A778-D1D3DE405007>,
+        <http://www.wikidata.org/entity/statement/Q12214-EC5EB7DA-AC69-4D3F-B147-B86B01BFB238>,
+        <http://www.wikidata.org/entity/statement/Q12214-EE033A55-DDA5-4FE4-AA3B-F3DF0822389C>,
+        <http://www.wikidata.org/entity/statement/Q12214-EEDE3443-61D4-4AED-B431-CB349E7357FE>,
+        <http://www.wikidata.org/entity/statement/Q12214-F168C4C2-B167-4AD4-99E4-2B6743B4FF4B>,
+        <http://www.wikidata.org/entity/statement/Q12214-F342F26E-218C-4897-BF5C-61338B866ED1>,
+        <http://www.wikidata.org/entity/statement/Q12214-FF038C4A-7408-4878-9128-678A7E69054E> ;
+    p:P279 <http://www.wikidata.org/entity/statement/Q12214-8B80A9EB-8074-4307-807C-0E93AE970CC2>,
+        <http://www.wikidata.org/entity/statement/Q12214-93138cd6-4150-3e3f-0b31-fabce61ff691> ;
+    p:P2888 <http://www.wikidata.org/entity/statement/Q12214-975959CF-D6C3-46C2-AFC0-97D44034A074>,
+        <http://www.wikidata.org/entity/statement/Q12214-9B317BA5-7A49-4D7A-BA9C-E6233B469443> ;
+    p:P2892 <http://www.wikidata.org/entity/statement/Q12214-30D6A871-D613-41CD-B2E6-E8FFA08817E5> ;
+    p:P31 <http://www.wikidata.org/entity/statement/Q12214-36330696-CDC7-44C3-B867-1FE88FED0187> ;
+    p:P3219 <http://www.wikidata.org/entity/statement/Q12214-70569A9A-A248-4250-840B-CCBE2BC40081> ;
+    p:P3417 <http://www.wikidata.org/entity/statement/Q12214-A9205BAC-DB9B-48CC-8D7B-8373BB5AF5DB> ;
+    p:P3471 <http://www.wikidata.org/entity/statement/Q12214-3c537372-4928-f6b0-58c0-64157bfee965> ;
+    p:P3487 <http://www.wikidata.org/entity/statement/Q12214-53742cd0-40a4-8df0-6489-b083a7958845>,
+        <http://www.wikidata.org/entity/statement/Q12214-f4333061-404e-02e0-0884-153cc50fbe4f> ;
+    p:P3488 <http://www.wikidata.org/entity/statement/Q12214-1f11a5d3-4929-565f-a29a-219ceaab8d42>,
+        <http://www.wikidata.org/entity/statement/Q12214-fd7410ca-48b1-f485-a02c-aeaa8259e740> ;
+    p:P349 <http://www.wikidata.org/entity/statement/Q12214-1E8FA7E5-84EF-4D23-B29B-46CDDD797EE5> ;
+    p:P3569 <http://www.wikidata.org/entity/statement/Q12214-E0DCF1EC-680F-451A-A973-5553229DF0BD> ;
+    p:P373 <http://www.wikidata.org/entity/statement/q12214-AF817EBC-676E-4EC5-A52E-E5FC265612BB> ;
+    p:P3827 <http://www.wikidata.org/entity/statement/Q12214-DAE50667-1862-4CF1-95B4-F65D63553F37> ;
+    p:P4229 <http://www.wikidata.org/entity/statement/Q12214-823B4FFC-359D-45C6-B192-1431EAFF4AC5> ;
+    p:P4317 <http://www.wikidata.org/entity/statement/Q12214-EA2D65C1-506A-467B-B353-8B0DA05F635A> ;
+    p:P486 <http://www.wikidata.org/entity/statement/Q12214-EA9D3417-B88A-4B07-AC6C-1F631EB42A60> ;
+    p:P4903 <http://www.wikidata.org/entity/statement/Q12214-252C0E4F-09AC-482F-91EC-C5BB0799C8E4> ;
+    p:P508 <http://www.wikidata.org/entity/statement/q12214-461ADBC1-21D1-4B83-A8FE-4C4A524BA80F> ;
+    p:P557 <http://www.wikidata.org/entity/statement/q12214-23B29238-F6D6-4833-B574-BFCFFE78AB92> ;
+    p:P604 <http://www.wikidata.org/entity/statement/q12214-5DCCB892-0EB3-409C-859F-0F7FFA6B6E36> ;
+    p:P646 <http://www.wikidata.org/entity/statement/Q12214-50D52127-8B60-49CB-9F44-691AA432540C> ;
+    p:P667 <http://www.wikidata.org/entity/statement/Q12214-5ADC4765-02D5-4D2E-B646-E302067A0700> ;
+    p:P673 <http://www.wikidata.org/entity/statement/q12214-28F745EF-400F-424C-958B-98F96746E325> ;
+    p:P689 <http://www.wikidata.org/entity/statement/Q12214-1d34a002-436e-c3c3-5131-9126a0094ae1> ;
+    p:P699 <http://www.wikidata.org/entity/statement/Q12214-6325FDC0-B1F6-429E-B3DF-9C5676B0ABC8> ;
+    p:P828 <http://www.wikidata.org/entity/statement/Q12214-1f3902e5-4aaa-1003-f20a-ea1e437bc7e7> ;
+    p:P910 <http://www.wikidata.org/entity/statement/Q12214-23C30413-C67D-42C2-92CB-9222B0844336> ;
+    p:P972 <http://www.wikidata.org/entity/statement/Q12214-9A12A288-E19A-4EB3-93BF-B5C290B83560> ;
+    ns1:P227 <http://d-nb.info/gnd/4135714-0> ;
+    ns1:P349 <http://id.ndl.go.jp/auth/ndlna/00573369> ;
+    ns1:P486 <http://id.nlm.nih.gov/mesh/D012899> ;
+    ns1:P508 <http://purl.org/bncf/tid/43162> ;
+    ns1:P646 <http://g.co/kg/m/06vr2> ;
+    wdt:P1225 "10643938" ;
+    wdt:P1343 wd:Q2657718 ;
+    wdt:P1417 "science/smallpox" ;
+    wdt:P1461 "Smallpox" ;
+    wdt:P1692 "050",
+        "050.9" ;
+    wdt:P1748 "C35027" ;
+    wdt:P18 <http://commons.wikimedia.org/wiki/Special:FilePath/Child%20with%20Smallpox%20Bangladesh.jpg>,
+        <http://commons.wikimedia.org/wiki/Special:FilePath/Smallpox%20virus%20virions%20TEM%20PHIL%201849.JPG> ;
+    wdt:P1995 wd:Q788926 ;
+    wdt:P227 "4135714-0" ;
+    wdt:P2293 wd:Q14913440,
+        wd:Q14916190,
+        wd:Q14916487,
+        wd:Q15317046,
+        wd:Q15320451,
+        wd:Q17848770,
+        wd:Q17854281,
+        wd:Q17907898,
+        wd:Q17912763,
+        wd:Q18025811,
+        wd:Q18026519,
+        wd:Q18027833,
+        wd:Q18028156,
+        wd:Q18028644,
+        wd:Q18028692,
+        wd:Q18029227,
+        wd:Q18030409,
+        wd:Q18030780,
+        wd:Q18031469,
+        wd:Q18031564,
+        wd:Q18032255,
+        wd:Q18033532,
+        wd:Q18034286,
+        wd:Q18035351,
+        wd:Q18035921,
+        wd:Q18036562,
+        wd:Q18036632,
+        wd:Q18040213,
+        wd:Q18040224,
+        wd:Q18040387,
+        wd:Q18040393,
+        wd:Q18040744,
+        wd:Q18041212,
+        wd:Q18041263,
+        wd:Q18041288,
+        wd:Q18041864,
+        wd:Q18042064,
+        wd:Q18042575,
+        wd:Q18044722,
+        wd:Q18045649,
+        wd:Q18045682,
+        wd:Q18046242,
+        wd:Q18046382,
+        wd:Q18047303,
+        wd:Q18048572,
+        wd:Q18049058,
+        wd:Q18049201,
+        wd:Q18050771,
+        wd:Q18052189,
+        wd:Q18054056,
+        wd:Q18055395,
+        wd:Q18058371,
+        wd:Q18058473,
+        wd:Q18292821,
+        wd:Q20763585,
+        wd:Q248215 ;
+    wdt:P279 wd:Q18975241,
+        wd:Q1928978 ;
+    wdt:P2888 <http://identifiers.org/doid/DOID:8736>,
+        <http://purl.obolibrary.org/obo/DOID_8736> ;
+    wdt:P2892 "C0037354" ;
+    wdt:P31 wd:Q12136 ;
+    wdt:P3219 "variole" ;
+    wdt:P3417 "Smallpox" ;
+    wdt:P3471 "20899" ;
+    wdt:P3487 12.0,
+        17.0 ;
+    wdt:P3488 7.0,
+        10.0 ;
+    wdt:P349 "00573369" ;
+    wdt:P3569 "levenswetenschappen-en-geneeskunde/pokken" ;
+    wdt:P373 "Smallpox" ;
+    wdt:P3827 "variola-virus" ;
+    wdt:P4229 "B03" ;
+    wdt:P4317 "7444" ;
+    wdt:P486 "D012899" ;
+    wdt:P4903 "science-medicine/smallpox" ;
+    wdt:P508 "43162" ;
+    wdt:P557 "12219" ;
+    wdt:P604 "001356" ;
+    wdt:P646 "/m/06vr2" ;
+    wdt:P667 "A76" ;
+    wdt:P673 "830328" ;
+    wdt:P689 wd:Q5 ;
+    wdt:P699 "DOID:8736" ;
+    wdt:P828 wd:Q11877169 ;
+    wdt:P910 wd:Q8754940 ;
+    wdt:P972 wd:Q5460604 .
+

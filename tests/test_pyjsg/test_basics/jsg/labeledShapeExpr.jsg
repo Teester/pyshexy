@@ -1,0 +1,10 @@
+expr        = labeledShapeOr | labeledShapeAnd | labeledShapeNot | labeledNodeConstraint | labeledShape | shapeExprLabel | labeledShapeExternal;
+
+labeledShapeOr {}
+labeledShapeAnd {}
+labeledShapeNot {}
+labeledNodeConstraint {}
+labeledShape {}
+shapeExprLabel {}
+labeledShapeExternal {}
+

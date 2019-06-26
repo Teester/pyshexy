@@ -1,0 +1,5 @@
+doc { street:(NAME|"*"|TEMPLATE) }
+
+@terminals
+NAME : [A-Za-z].*;
+TEMPLATE : '{' .* '}';
