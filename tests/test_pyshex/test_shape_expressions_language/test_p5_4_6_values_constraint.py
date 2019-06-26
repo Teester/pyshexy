@@ -5,7 +5,7 @@ from rdflib.namespace import FOAF
 
 from pyshex.parse_tree.parse_node import ParseNode
 from pyshex.shape_expressions_language.p5_context import Context
-from tests.utils.setup_test import rdf_header, EX, gen_rdf, setup_context
+from tests.test_pyshex.utils.setup_test import rdf_header, EX, gen_rdf, setup_context
 
 shex_1 = """{ "type": "Schema", "shapes": [
   { "id": "http://schema.example/NoActionIssueShape",
