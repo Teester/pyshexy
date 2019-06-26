@@ -4,7 +4,7 @@ from ShExJSG import ShExJ
 from rdflib import Literal
 
 from pyshex.utils.schema_utils import reference_of
-from tests.utils.setup_test import setup_test, setup_context
+from tests.test_pyshex.utils.setup_test import setup_test, setup_context
 
 shex_1 = """{ "type": "Schema", "shapes": [
     { "id": "http://schema.example/IntConstraint",
