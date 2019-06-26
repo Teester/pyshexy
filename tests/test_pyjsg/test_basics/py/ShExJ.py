@@ -309,7 +309,7 @@ class xsFacet(jsg.JSGObject):
                         self.pattern = opts_.pattern
                         self.flags = opts_.flags
                     else:
-                        raise ValueError(f"Unrecognized value type: {opts_}")
+                        raise ValueError("Unrecognized value type: %s" % (opts_))
             elif isinstance(opts_, xsFacet_2_):
                 self.mininclusive = opts_.mininclusive
                 self.minexclusive = opts_.minexclusive
