@@ -11,7 +11,7 @@ shex_1 = """{ "type": "Schema", "shapes": [
       "type": "TripleConstraint", "predicate": "http://schema.example/state",
       "valueExpr": { "type": "NodeConstraint", "nodeKind": "iri" } } } ] }"""
 
-rdf_1 = f"""%s
+rdf_1 = """%s
 :issue1 ex:state ex:HunkyDory .
 :issue2 ex:taste ex:GoodEnough .
 :issue3 ex:state "just fine" .
