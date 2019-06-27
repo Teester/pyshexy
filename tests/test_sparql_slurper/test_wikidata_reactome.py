@@ -41,8 +41,7 @@ class ReactomeTestCase(unittest.TestCase):
         output = io.StringIO()
         with redirect_stdout(output):
             _ = list(g.predicate_objects(WD.Q29017194))
-        if not output.getvalue().startswith("SPARQL: "
-                                            "(SELECT ?s ?p ?o {<http://www.wikidata.org/entity/Q29017194> ?p ?o})"):
+        if not output.getvalue().startswith("SPARQL: (SELECT ?s ?p ?o {<http://www.wikidata.org/entity/Q29017194> ?p ?o})"):
             print("Unexpected:")
             print(output.getvalue())
             self.assertTrue(False)

@@ -9,8 +9,8 @@ from pyjsg.validate_json import JSGPython
 
 class PythonGeneratorUtils(unittest.TestCase):
     cwd = os.path.abspath(os.path.join(os.path.dirname(__file__), 'py'))
-    save_output_files: bool = False
-    save_all_output_files: bool = False
+    save_output_files = False
+    save_all_output_files = False
 
     def tearDown(self):
         self.assertFalse(self.save_output_files, "save_output_files is True")
@@ -33,7 +33,7 @@ class PythonGeneratorUtils(unittest.TestCase):
             if self.save_output_files or self.save_all_output_files:
                 with open(py_file, 'w') as f:
                     f.write(x.python)
-                    print(f"***** {py_file} updated *****")
+                    print("***** %s updated *****" % (py_file))
             self.maxDiff = None
             self.assertEqual(expected, actual)
 
@@ -60,5 +60,5 @@ class PythonGeneratorUtils(unittest.TestCase):
 
         for k, v in failing_vars.items():
             with self.assertRaises(ValueError):
-                vv = f'"{v}"' if isinstance(v, str) else str(v)
-                loads(f'{{"{k}": {vv}}}', module)
+                vv = '"%s"' % (v) if isinstance(v, str) else str(v)
+                loads('{"%s": %s}' % (k, vv), module)

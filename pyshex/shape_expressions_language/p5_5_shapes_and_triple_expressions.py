@@ -205,7 +205,7 @@ def matchesCardinality(cntxt: Context, T: RDFGraph, expr: Union[ShExJ.tripleExpr
     min_ = expr.min if expr.min is not None else 1
     max_ = expr.max if expr.max is not None else 1
 
-    cardinality_text = "{{" + str(min_) + "," + '*' if max_ == -1 else str(max_) + "}}"
+    cardinality_text = "{" + str(min_) + "," + '*' if max_ == -1 else str(max_) + "}"
     if c.debug and (min_ != 0 or len(T) != 0):
         print(cardinality_text + " matching " + len(T) + " triples")
     if min_ == 0 and len(T) == 0:

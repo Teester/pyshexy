@@ -116,7 +116,7 @@ class JSGPairDef(jsgParserVisitor, PythonGeneratorElement):
             if prefix:
                 rval.append("setattr(self, '%s', getattr(%s, '%s')"  % (raw_name, prefix, raw_name))
             else:
-                cons = "{cooked_name} if %s is not %s else _kwargs.get('%s', %s)" % (cooked_name, cooked_name, mt_val, raw_name, mt_val)
+                cons = "%s if %s is not %s else _kwargs.get('%s', %s)" % (cooked_name, cooked_name, mt_val, raw_name, mt_val)
                 rval.append("setattr(self, '%s', %s)" % (raw_name, cons))
         else:
             getter = "_kwargs.get('%s', %s)" % (raw_name, mt_val)

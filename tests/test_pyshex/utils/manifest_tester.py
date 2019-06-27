@@ -11,8 +11,8 @@ from ancilliary.earlreport import EARLPage
 from pyshex.shape_expressions_language.p5_2_validation_definition import isValid
 from pyshex.shape_expressions_language.p5_context import Context
 from pyshex.shapemap_structure_and_language.p3_shapemap_structure import ShapeAssociation, FixedShapeMap, START
-from tests.utils.manifest import ShExManifest, SHT
-from tests.utils.uri_redirector import URIRedirector
+from tests.test_pyshex.utils.manifest import ShExManifest, SHT
+from tests.test_pyshex.utils.uri_redirector import URIRedirector
 
 # TODO: Remove this whenever rdflib issue #124 is fixed (https://github.com/RDFLib/rdflib/issues/804)
 sys.setrecursionlimit(1200)

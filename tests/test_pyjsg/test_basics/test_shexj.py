@@ -12,8 +12,8 @@ from jsonasobj.jsonobj import as_dict, as_json
 from pyjsg.validate_json import JSGPython
 
 shexJSGSource = ""
-# shexTestRepository = "https://api.github.com/repos/shexSpec/shexTest/contents/schemas?ref=master"
-shexTestRepository = os.path.expanduser('~/Development/git/shexSpec/shexTest/schemas')
+shexTestRepository = "https://api.github.com/repos/shexSpec/shexTest/contents/schemas?ref=master"
+#shexTestRepository = os.path.expanduser('~/Development/git/shexSpec/shexTest/schemas')
 
 shexTestJson = ""
 
@@ -131,8 +131,8 @@ class ShExJValidationTestCase(unittest.TestCase):
         validator = FileValidator()
         with open(log_path, 'w') as logf:
             with redirect_stdout(logf):
-                self.assertTrue(validate_shex_schemas(parser, validator), f"See {log_path} for reasons")
-        print(f"{validator.nvalidated} files validated - {validator.nskipped} skipped")
+                self.assertTrue(validate_shex_schemas(parser, validator), "See %s for reasons" % (log_path))
+        print("%d files validated - %d skipped" % (validator.nvalidated, validator.nskipped))
 
 
 if __name__ == '__main__':

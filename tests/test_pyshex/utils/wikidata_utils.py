@@ -1,5 +1,6 @@
 import os
 import unittest
+import collections
 from typing import Optional, List, NamedTuple, Union
 
 import jsonasobj
@@ -14,15 +15,15 @@ from pyshex import PrefixLibrary, ShExEvaluator
 from pyshex.shex_evaluator import EvaluationResult
 
 
-class DataFrame(NamedTuple):
-    item: str
+#class DataFrame(NamedTuple):
+#    item: str
+DataFrame = collections.namedtuple("DataFrame", ["item"])
 
-
-class Triple(NamedTuple):
-    s: Optional[URIRef]
-    p: Optional[URIRef]
-    o: Optional[Union[Literal, URIRef]]
-
+#class Triple(NamedTuple):
+#    s: Optional[URIRef]
+#    p: Optional[URIRef]
+#    o: Optional[Union[Literal, URIRef]]
+Triple = collections.namedtuple("Triple", ["s", "p", "o"])
 
 class WikiDataTestCase(unittest.TestCase):
     save_test_data = False
@@ -42,7 +43,7 @@ class WikiDataTestCase(unittest.TestCase):
 
     def fetch_uri(self, uri: str) -> str:
         req = requests.get(uri)
-        self.assertTrue(req.ok, f"Unable to read {uri}")
+        self.assertTrue(req.ok, "Unable to read %s" % (uri))
         return req.text
 
     def run_test(self, manifest_uri: str, num_entries: Optional[int]=None, verbose: bool=True, debug: bool=False,
@@ -60,7 +61,7 @@ class WikiDataTestCase(unittest.TestCase):
         :return:
         """
         manifest = loads(self.fetch_uri(manifest_uri))
-        rval: List[EvaluationResult] = []
+        rval = []
         for case in manifest:
             if verbose:
                 print(case._as_json_dumps())
@@ -69,19 +70,19 @@ class WikiDataTestCase(unittest.TestCase):
             evaluator = ShExEvaluator(schema=shex, debug=debug)
             prefixes = PrefixLibrary(shex, SKOS=SKOS)
             sparql_query = case.queryMap.replace("SPARQL '''", "").replace("'''@START", "")
-            dfs: List[str] = self.get_sparql_dataframe(sparql_endpoint, sparql_query)
+            dfs = self.get_sparql_dataframe(sparql_endpoint, sparql_query)
             dfs_slice = dfs[:num_entries] if num_entries is not None else dfs
             for df in dfs_slice:
                 slurper = SlurpyGraph(sparql_endpoint)
                 # slurper.debug_slurps = debug_slurps
                 prefixes.add_bindings(slurper)
-                print(f"Evaluating: {df}")
+                print("Evaluating: %s" % (df))
                 results = evaluator.evaluate(rdf=slurper, focus=df, debug=debug, debug_slurps=debug_slurps, over_slurp=False)
                 rval += results
                 if save_graph_dir:
                     element_name = df.rsplit('/', 1)[1]
                     file_name = os.path.join(save_graph_dir, element_name + '.ttl')
-                    print(f"Writing: {file_name}")
+                    print("Writing: %s" % (file_name))
                     slurper.serialize(file_name, format="turtle")
                 if stop_on_fail and not all(r.result for r in results):
                     break

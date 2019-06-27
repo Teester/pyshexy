@@ -28,7 +28,7 @@ class FHIRServerTestCase(unittest.TestCase):
         result = os.path.join(source_dir, 'example-haplotype2.results')
         outf = StringIO()
         with(redirect_stdout(outf)):
-            evaluate_cli(f"{rdf} {shex} -fn http://hl7.org/fhir/Observation/example-haplotype2")
+            evaluate_cli("%s %s -fn http://hl7.org/fhir/Observation/example-haplotype2" % (rdf, shex))
         if not os.path.exists(result):
             with open(result, 'w') as f:
                 f.write(outf.getvalue())

@@ -38,7 +38,7 @@ class ValueTypeTestCase(unittest.TestCase):
             t = cast(JSGValueType, parse(text, "valueType", JSGValueType))
             self.assertEqual(sig, t.signature_type(), text)
             self.assertEqual(typ_, t.python_type(), text)
-            self.assertEqual(f"valueType: builtinValueType: {'jsg.AnyType' if text == '.' else text}", str(t), text)
+            self.assertEqual("valueType: builtinValueType: %s" % ('jsg.AnyType' if text == '.' else text), str(t), text)
             self.assertEqual(mt_typ, t.mt_value(), text)
             self.assertEqual([], t.members_entries(), text)
             self.assertEqual([], t.dependency_list(), text)
@@ -46,9 +46,9 @@ class ValueTypeTestCase(unittest.TestCase):
     def test_refs(self):
         for text, typ in ref_tests:
             t = cast(JSGValueType, parse(text, "valueType", JSGValueType))
-            self.assertEqual(f'Undefined({text})' if typ != 'LEXER_ID_REF' else text, t.signature_type())
-            self.assertEqual(f'Undefined({text})' if typ != 'LEXER_ID_REF' else 'str', t.python_type())
-            self.assertEqual(f"valueType: {typ}: {text}", str(t))
+            self.assertEqual('Undefined(%s)' % (text) if typ != 'LEXER_ID_REF' else text, t.signature_type())
+            self.assertEqual('Undefined(%s)' % (text) if typ != 'LEXER_ID_REF' else 'str', t.python_type())
+            self.assertEqual("valueType: %s: %s" % (typ, text), str(t))
             self.assertEqual([text], t.dependency_list())
             self.assertEqual([], t.members_entries())
             self.assertEqual("None", t.mt_value())

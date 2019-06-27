@@ -65,7 +65,6 @@ class SlurpyGraph(Graph):
         """
         if self.sparql_locked or pattern == (None, None, None):
             return True
-            gquery = "graph" + gn + "{{"
         for resolved_node in self.resolved_nodes:
             if resolved_node != (None, None, None) and \
                     (pattern[0] == resolved_node[0] or resolved_node[0] is None) and \
@@ -83,8 +82,7 @@ class SlurpyGraph(Graph):
         self.total_calls += 1
         if self.graph_name is not None:
             gn = "?g" if not self.graph_name else self.graph_name
-            #gquery = f"graph {gn} {{"
-            gquery = "graph" + gn + "{{"
+            gquery = "graph %s {" % (gn)
             gqueryend = '}'
         else:
             gquery = gqueryend = ''
@@ -92,10 +90,10 @@ class SlurpyGraph(Graph):
             subj = self._repr_element(pattern[0]) if pattern[0] is not None else '?s'
             pred = self._repr_element(pattern[1]) if pattern[1] is not None else '?p'
             obj = self._repr_element(pattern[2]) if pattern[2] is not None else '?o'
-            query = "SELECT ?s ?p ?o {{%s%s %s %s%s}}" % (gquery, subj, pred, obj, gqueryend)
+            query = "SELECT ?s ?p ?o {%s%s %s %s%s}" % (gquery, subj, pred, obj, gqueryend)
             start = time.time()
             if self.debug_slurps:
-                print("SPARQL: %s" % (query), end="")
+                print("SPARQL: (%s)" % (query), end="")
             self.sparql.setQuery(query)
             resp = self.sparql.query().convert()
             elapsed = time.time() - start

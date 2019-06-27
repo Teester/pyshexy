@@ -5,7 +5,7 @@ from tests.test_pyjsg.test_python_generator.utils import PythonGeneratorUtils
 
 
 class MacroTestCase(PythonGeneratorUtils):
-    save_output_files: bool = False
+    save_output_files = False
 
     def test_macro1(self):
         import tests.test_pyjsg.test_python_generator.py.macrotest_1 as doc

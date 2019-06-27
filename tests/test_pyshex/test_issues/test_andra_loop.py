@@ -1,5 +1,4 @@
 import os
-import os
 
 import jsonasobj
 import requests

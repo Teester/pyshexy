@@ -44,7 +44,7 @@ class ShExC:
         rval = reduce(lambda r, p: re.sub(p[0], p[1], r), repl_list, rval)
         rval = rval.replace(self.base, '') if self.base is not None else rval
         if self.base is not None:
-            rval = "BASE <{%s}>\n\n%s" % (self.base, rval)
+            rval = "BASE <%s>\n\n%s" % (self.base, rval)
         return rval
 
     def __repr__(self) -> str:
@@ -68,16 +68,16 @@ class ShExC:
 
     def imports(self, imports: Optional[List[ShExJ.IRIREF]]) -> List[str]:
         if imports is not None:
-            return [f"IMPORT {self.iriref(e)}" for e in imports]
+            return ["IMPORT %s" % (self.iriref(e)) for e in imports]
         return []
 
     def semActs(self, semActs: Optional[List[ShExJ.SemAct]]) -> List[str]:
         rval = []
         if semActs is not None:
             for act in semActs:
-                rval.append(f"%{self.iriref(act.name)}")
+                rval.append("%%%s}" % (self.iriref(act.name)))
                 act_code = self._escape_embedded_code(act.code).replace('%', '\\%') if act.code else None
-                rval.append(("{{%s%}}" % (act_code)) if act_code is not None else "%")
+                rval.append(("{%s%%}" % (act_code)) if act_code is not None else "%")
         return rval
 
     def start(self, start: Optional[ShExJ.shapeExpr]) -> List[str]:
@@ -234,17 +234,17 @@ class ShExC:
                 return '+'
             elif maxv == 1:
                 return ""
-        return f"{{{minv}}}" if minv == maxv else f"{{{minv},{maxv}}}" if maxv != -1 else f"{{{minv},*}}"
+        return "{%s}" % (minv) if minv == maxv else "{%s,%s}" % (minv, maxv) if maxv != -1 else f"{%s,*}" % (minv)
 
     @staticmethod
     def add_facet(facet, label: str) -> str:
-        return f'{label} {facet}' if facet is not None else ''
+        return '%s %s' % (label, facet) if facet is not None else ''
 
     @staticmethod
     def add_pattern(pattern, flags) -> str:
         if pattern:
             pval = re.sub(r'/', r'\/', pattern)
-            return f'/{pval}/' + (flags if flags is not None else '')
+            return '/%s/' % (pval) + (flags if flags is not None else '')
         return ''
 
     def xsFacet(self, nc: ShExJ.NodeConstraint) -> List[str]:
@@ -292,37 +292,37 @@ class ShExC:
             replace("'", "\\'").\
             replace('"', '\\"')
 
-        return f'"{code_val}"' +\
-               (f"@{v.language}" if v.language else f"^^{self.iriref(v.type)}" if v.type else "")
+        return '"%s"' % (code_val) +\
+               ("@%s" % (v.language) if v.language else "^^%s" % (self.iriref(v.type)) if v.type else "")
 
     def iriStem(self, v: ShExJ.IriStem) -> str:
         return self.iriref(v.stem) + '~'
 
     def iriStemRange(self, v: ShExJ.IriStemRange) -> [str]:
         return [('.' if isinstance(v.stem, ShExJ.Wildcard) else self.iriStem(v))] + \
-               [f" - {self.iriref(e) if isinstance(e, ShExJ.IRIREF) else self.iriStem(e)}" for e in v.exclusions]
+               [" - %s" % (self.iriref(e) if isinstance(e, ShExJ.IRIREF) else self.iriStem(e)) for e in v.exclusions]
 
     def literalStem(self, v: ShExJ.LiteralStem) -> str:
         return self.literal(v.stem) + '~'
 
     @staticmethod
     def literal(v) -> str:
-        return f'"{v}"'
+        return '"%s"' % (v)
 
     def literalStemRange(self, v: ShExJ.LiteralStemRange) -> [str]:
         return [('.' if isinstance(v.stem, ShExJ.Wildcard) else self.literalStem(v))] + \
-               [f' - {self.literal(e) if isinstance(e, JSGString) else self.literalStem(e)}' for e in v.exclusions]
+               [' - %s' % (self.literal(e) if isinstance(e, JSGString) else self.literalStem(e)) for e in v.exclusions]
 
     @staticmethod
     def language(v: ShExJ.LANGTAG) -> str:
-        return '@' + str(v)
+        return '@%s' % (str(v))
 
     def languageStem(self, v: ShExJ.LanguageStem) -> str:
         return self.language(v.stem) + '~'
 
     def languageStemRange(self, v: ShExJ.LanguageStemRange) -> [str]:
         return [('.' if isinstance(v.stem, ShExJ.Wildcard) else self.languageStem(v))] + \
-               [f" - {self.language(e) if isinstance(e, ShExJ.LANGTAG) else self.languageStem(e)}"
+               [" - %s" % (self.language(e) if isinstance(e, ShExJ.LANGTAG) else self.languageStem(e))
                 for e in v.exclusions]
 
     def shapeExprLabel(self, shapeExprLabel: ShExJ.shapeExprLabel) -> str:
@@ -330,7 +330,7 @@ class ShExC:
 
     def shapeExprRef(self, shapeExprRef: ShExJ.shapeExprLabel) -> str:
         # TODO: this is an issue in the JSG - the type should be shapeExprRef
-        return '@' + self.exprLabel(shapeExprRef)
+        return '@%s' % (self.exprLabel(shapeExprRef))
 
     def tripleExprLabel(self, tripleExprLabel: ShExJ.tripleExprLabel) -> str:
         return self.exprLabel(tripleExprLabel)
@@ -351,7 +351,7 @@ class ShExC:
 
     @staticmethod
     def iriref(v: ShExJ.IRIREF) -> str:
-        return f"<{v}>"
+        return "<\5s>" % (v)
 
     @staticmethod
     def _escape_embedded_code(s: str) -> str:

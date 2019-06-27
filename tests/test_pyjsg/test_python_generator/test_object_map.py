@@ -4,7 +4,7 @@ from tests.test_pyjsg.test_python_generator.utils import PythonGeneratorUtils
 
 
 class ObjectMapTestCase(PythonGeneratorUtils):
-    save_output_files: bool = False
+    save_output_files = False
 
     def test_simple_map(self):
         import tests.test_pyjsg.test_python_generator.py.objectmap_1 as doc

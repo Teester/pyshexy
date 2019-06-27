@@ -19,7 +19,7 @@ class ShexEvalTestCase(unittest.TestCase):
         result = evaluator.evaluate(debug=False)
         for rslt in result:
             if not rslt.result:
-                print(f"Error: {rslt.reason}")
+                print("Error: %s" % (rslt.reason))
         self.assertTrue(all(r.result for r in result))
 
 

@@ -41,7 +41,7 @@ class JSGArrayExpr(jsgParserVisitor, PythonGeneratorElement):
         return type_list
 
     def signature_type(self) -> str:
-        return "jsg.ArrayFactory('{%s}', _CONTEXT, %s, %d, %d)" % (name, self._inner_signature(), self._ebnf.min, self._ebnf.max)
+        return "jsg.ArrayFactory('{name}', _CONTEXT, %s, %d, %d)" % (self._inner_signature(), self._ebnf.min, self._ebnf.max)
 
     def reference_type(self) -> str:
         return self.signature_type()

@@ -21,7 +21,7 @@ class BuiltinValueTypeTestCase(unittest.TestCase):
             t = cast(JSGValueType, parse(text, "builtinValueType", JSGBuiltinValueType))
             self.assertEqual(sig, t.signature_type(), text)
             self.assertEqual(typ_, t.python_type(), text)
-            self.assertEqual(f"builtinValueType: {text if text != '.' else 'jsg.AnyType'}", str(t), text)
+            self.assertEqual("builtinValueType: %s" % (text if text != '.' else 'jsg.AnyType'), str(t), text)
             self.assertEqual(mt_typ, t.mt_value(), text)
             self.assertEqual([], t.members_entries(), text)
             self.assertEqual([], t.dependency_list(), text)

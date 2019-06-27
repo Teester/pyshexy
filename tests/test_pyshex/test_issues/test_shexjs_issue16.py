@@ -8,15 +8,15 @@ from pyshex import ShExEvaluator
 FHIR = Namespace("http://hl7.org/fhir")
 EX = Namespace("http://example.org/")
 
-shex = f"""PREFIX : <{FHIR}>
-PREFIX xsd: <{XSD}>
+shex = """PREFIX : <%s>
+PREFIX xsd: <%s>
 
 start = @:ObservationShape
 
-:ObservationShape {{               # An Observation has:
+:ObservationShape {               # An Observation has:
   (:status xsd:integer* | :status xsd:string* )*
-}}
-"""
+}
+""" % (FHIR, XSD)
 
 
 class ShexjsIssue16TestCase(unittest.TestCase):

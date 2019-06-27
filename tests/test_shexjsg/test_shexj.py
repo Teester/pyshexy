@@ -32,7 +32,7 @@ VERBOSE = False
 # Files to skip until we reintroduce a manifest reader
 skip = ['coverage.json', 'manifest.json', 'representationTests.json']
 
-TestFile = collections.namedtuple("fullpath", "filename")
+TestFile = collections.namedtuple("TestFile", ["fullpath", "filename"])
 
 
 def compare_json(j1: str, j2: str, log: TextIO) -> bool:

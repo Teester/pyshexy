@@ -33,14 +33,14 @@ rdf_2 = """%s
 :issue7 ex:submittedBy :genContact817 .""" % (rdf_header)
 
 pattern = re.sub(r'\\', r'\\\\', r'^\t\\𝒸\?$')
-shex_3 = """{{ "type": "Schema", "shapes": [
-  {{ "id": "http://schema.example/ProductShape",
-    "type": "Shape", "expression": {{
+shex_3 = """{ "type": "Schema", "shapes": [
+  { "id": "http://schema.example/ProductShape",
+    "type": "Shape", "expression": {
       "type": "TripleConstraint",
       "predicate": "http://schema.example/trademark",
-      "valueExpr": {{ "type": "NodeConstraint",
-                     "pattern": "%s" }}
-}} }} ] }}""" % (pattern)
+      "valueExpr": { "type": "NodeConstraint",
+                     "pattern": "%s" }
+} } ] }""" % (pattern)
 
 # Warning - the editor has to preserve the tab in product6 - if it changes it to spaces, no match
 rdf_3 = """%s

@@ -40,13 +40,11 @@ class JSGArray(list, JSGValidateable):
         :returns: Success indicator and error list """
         errors = []
         if not isinstance(val, list):
-            #errors.append(f"{self._variable_name}: {repr(val)} is not an array")
             errors.append(self._variable_name + ": " + repr(val) + " is not an array")
         else:
             for i in range(0, len(val)):
                 v = val[i]
                 if not conforms(v, self._type, self._context.NAMESPACE):
-                    #errors.append(f"{self._variable_name} element {i}: {v} is not a {self._type.__name__}")
                     errors.append(self._variable_name + " element " + i + ": "+ v + " is not a " + self._type.__name__)
 
             if len(val) < self._min:
@@ -58,7 +56,6 @@ class JSGArray(list, JSGValidateable):
 
             if self._max is not None and len(val) > self._max:
                 errors.append(
-                    #f"{self._variable_name}: no more than {self._max} values permitted - element has {len(val)}")
                     self._variable_name + ": no more than " + self.max + " values permitted - element has " + len(val))
 
         if log:

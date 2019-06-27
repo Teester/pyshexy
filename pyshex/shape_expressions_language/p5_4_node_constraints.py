@@ -126,11 +126,11 @@ def nodeSatisfiesStringFacet(cntxt: Context, n: Node, nc: ShExJ.NodeConstraint, 
            (nc.pattern is None or pattern_match(nc.pattern, nc.flags, lex)):
             return True
         elif nc.length is not None and len(lex) != nc.length:
-            cntxt.fail_reason = "String length mismatch - expected: %f actual: %f" % (nc.length, len(lex))
+            cntxt.fail_reason = "String length mismatch - expected: %d actual: %d" % (nc.length, len(lex))
         elif nc.minlength is not None and len(lex) < nc.minlength:
-            cntxt.fail_reason = "String length violation - minimum: %f actual: %f" % (nc.minlength, len(lex))
+            cntxt.fail_reason = "String length violation - minimum: %d actual: %d" % (nc.minlength, len(lex))
         elif nc.maxlength is not None and len(lex) > nc.maxlength:
-            cntxt.fail_reason = "String length violation - maximum: %f actual: %f" % (nc.maxlength, len(lex))
+            cntxt.fail_reason = "String length violation - maximum: %d actual: %d" % (nc.maxlength, len(lex))
         elif nc.pattern is not None and not pattern_match(nc.pattern, nc.flags, lex):
             cntxt.fail_reason = "Pattern match failure - pattern: %s flags:%s string: %s" % (nc.pattern, nc.flags, lex)
         else:
@@ -168,19 +168,19 @@ def nodeSatisfiesNumericFacet(cntxt: Context, n: Node, nc: ShExJ.NodeConstraint,
                     return True
                 else:
                     if nc.mininclusive is not None and v < nc.mininclusive:
-                        cntxt.fail_reason = "Numeric value violation - minimum inclusive: %f actual: %f" % (nc.mininclusive, v)
+                        cntxt.fail_reason = "Numeric value violation - minimum inclusive: %d actual: %d" % (nc.mininclusive, v)
                     elif nc.minexclusive is not None and v <= nc.minexclusive:
-                        cntxt.fail_reason = "Numeric value violation - minimum exclusive %f actual: %f" % (nc.minexclusive, v)
+                        cntxt.fail_reason = "Numeric value violation - minimum exclusive %d actual: %d" % (nc.minexclusive, v)
                     elif nc.maxinclusive is not None and v > nc.maxinclusive:
-                        cntxt.fail_reason = "Numeric value violation - maximum inclusive: %f actual : %f" % (nc.maxinclusive, v)
+                        cntxt.fail_reason = "Numeric value violation - maximum inclusive: %d actual : %d" % (nc.maxinclusive, v)
                     elif nc.maxexclusive is not None and v >= nc.maxexclusive:
-                        cntxt.fail_reason = "Numeric value violation - maximum exclusive: %f actual: %f" % (nc.maxexclusive, v)
+                        cntxt.fail_reason = "Numeric value violation - maximum exclusive: %d actual: %d" % (nc.maxexclusive, v)
                     elif nc.totaldigits is not None and (total_digits(n) is None or
                                                              total_digits(n) > nc.totaldigits):
-                        cntxt.fail_reason = "Numeric value violation - max total digits: %f value: %f" % (nc.totaldigits, v)
+                        cntxt.fail_reason = "Numeric value violation - max total digits: %d value: %d" % (nc.totaldigits, v)
                     elif nc.fractiondigits is not None and (fraction_digits(n) is None or
                                                                 total_digits(n) > nc.fractiondigits):
-                        cntxt.fail_reason = "Numeric value violation - max fractional digits: %f value: %f" % (nc.fractiondigits, v)
+                        cntxt.fail_reason = "Numeric value violation - max fractional digits: %d value: %d" % (nc.fractiondigits, v)
                     else:
                         cntxt.fail_reason = "Impossible error - kick the programmer"
                     return False

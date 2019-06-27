@@ -6,7 +6,7 @@ from pyshex.shex_evaluator import evaluate_cli
 from tests.test_pyshex import datadir
 from tests.test_pyshex.test_cli.clitests import CLITestCase
 
-update_test_files: bool = False
+update_test_files = False
 
 
 class ShexEvaluatorTestCase(CLITestCase):

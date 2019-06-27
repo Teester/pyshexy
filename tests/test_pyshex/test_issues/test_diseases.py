@@ -20,7 +20,7 @@ class WikiDiseasesTestCase(WikiDataTestCase):
         rslts = self.run_test("https://raw.githubusercontent.com/SuLab/Genewiki-ShEx/master/diseases/manifest_100.json",
                               num_entries=8, debug=False, debug_slurps=False, save_graph_dir=test_data_base)
         for rslt in rslts:
-            print(f"{'CONFORMS' if rslt.result else 'FAIL'}: {rslt.focus}")
+            print("%s: %s" % ('CONFORMS' if rslt.result else 'FAIL', rslt.focus))
         # The following will validate from 1 to 8 entries
         self.assertTrue(all(expected == actual for expected, actual in zip([r.result for r in rslts],
                                                                            self.expected_results)))

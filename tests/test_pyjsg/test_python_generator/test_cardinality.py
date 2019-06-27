@@ -4,7 +4,7 @@ from tests.test_pyjsg.test_python_generator.utils import PythonGeneratorUtils
 
 
 class CardinalityTestCase(PythonGeneratorUtils):
-    save_output_files: bool = False
+    save_output_files = False
 
     def test_list_cardinalities(self):
         import tests.test_pyjsg.test_python_generator.py.cardinality_1 as doc

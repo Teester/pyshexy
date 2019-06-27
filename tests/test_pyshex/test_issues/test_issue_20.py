@@ -19,8 +19,8 @@ class BPM2TestCase(unittest.TestCase):
         pl = PrefixLibrary(rdfpath)
         output = StringIO()
         with redirect_stdout(output):
-            evaluate_cli(f"{rdfpath} {shexpath} -fn {pl.EX.BPM1}")
-            evaluate_cli(f"{rdfpath} {shexpath} -fn {pl.EX.BPM2}")
+            evaluate_cli("%s %s -fn %s" % (rdfpath, shexpath, pl.EX.BPM1))
+            evaluate_cli("%s %s -fn %s" % (rdfpath, shexpath, pl.EX.BPM2))
 
         if not os.path.exists(expectedpath):
             with open(expectedpath, 'w') as f:

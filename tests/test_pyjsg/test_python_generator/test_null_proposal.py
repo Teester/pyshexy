@@ -66,7 +66,7 @@ class JSGNullTestCase(unittest.TestCase):
     def test_various_anys(self):
         j = JSGPython('doc {x: . }')
         for v in ['null', '17', '-22', '-22.0', 'true', '"A string"', '{"x": 243}']:
-            json = f'{{"x": {v}}}'
+            json = '{"x": }' % (v)
             j2 = loads(json, j.module)
             self.assertEqual(json, as_json(j2, indent=None))
         json = '{"x": -17395e-2}'
@@ -75,7 +75,7 @@ class JSGNullTestCase(unittest.TestCase):
     def test_various_optional_anys(self):
         j = JSGPython('doc {x: .? }')
         for v in ['null', '17', '-22', '-22.0', 'false', '"A string"', '{"x": null}']:
-            json = f'{{"x": {v}}}'
+            json = '{"x": %s}' % (v)
             j2 = loads(json, j.module)
             self.assertEqual(json, as_json(j2, indent=None))
         json = '{"x": -17395e-2}'

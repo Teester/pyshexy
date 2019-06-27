@@ -1,5 +1,5 @@
 import unittest
-from dataclasses import dataclass
+#from dataclasses import dataclass
 from typing import cast, Optional
 
 from pyjsg.parser_impl.jsg_ebnf_parser import JSGEbnf
@@ -8,15 +8,16 @@ from pyjsg.parser_impl.jsg_valuetype_parser import JSGValueType
 from tests.test_pyjsg.test_basics.parser import parse
 
 
-@dataclass
+#@dataclass
 class testentry:
-    text: str
-    min: int
-    max: Optional[int]
-    ptype: str
-    oneopt: bool
-    mult: bool
-    stype: str
+    def __init__(text: str, min: int, max: Optional[int], ptype: str, oneopt: bool, mult: bool, stype: str):
+        self.text = text
+        self.min = min
+        self.max = max
+        self.ptype = ptype
+        self.oneopt = oneopt
+        self.mult = mult
+        self.stype = stype
 
 class EBNFTestCase(unittest.TestCase):
     tests = [testentry('*', 0, None, "typing.List[k]", False, True, "jsg.ArrayFactory('{name}', _CONTEXT, k, 0, None)"),

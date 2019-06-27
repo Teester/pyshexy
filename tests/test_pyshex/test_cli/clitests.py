@@ -23,11 +23,11 @@ ArgumentParser.exit = _parser_exit
 
 
 class CLITestCase(unittest.TestCase):
-    testdir: str = None
+    testdir = None
     test_output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), 'output'))
     test_input_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), 'input'))
-    testprog: str = None
-    creation_messages: List[str] = None
+    testprog = None
+    creation_messages = None
 
     @staticmethod
     def prog_ep(argv: List[str]) -> bool:
@@ -82,7 +82,7 @@ class CLITestCase(unittest.TestCase):
         if not os.path.exists(testfile_path):
             with open(testfile_path, 'w') as f:
                 f.write(outf.getvalue())
-                self.creation_messages.append(f'{testfile_path} did not exist - updated')
+                self.creation_messages.append('%s did not exist - updated' % (testfile_path))
 
         if testfile:
             with open(testfile_path) as f:

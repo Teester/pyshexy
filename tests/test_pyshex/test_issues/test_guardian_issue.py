@@ -43,7 +43,7 @@ class ThreeGuardiansTestCase(unittest.TestCase):
                                     schema=schema,
                                     focus=p.INST.Eric,
                                     start=p.SCHOOL.Enrollee).evaluate(debug=False):
-            print(f"{result.focus}: {'Passing' if result.result else 'Failing'}: \n{result.reason}")
+            print("%s: %s: \n%s}" % (result.focus, 'Passing' if result.result else 'Failing', result.reason))
             self.assertFalse(result.result)
 
     def test_fred(self):
@@ -52,7 +52,7 @@ class ThreeGuardiansTestCase(unittest.TestCase):
                                     schema=schema,
                                     focus=p.INST.Fred,
                                     start=p.SCHOOL.Encapsulated).evaluate(debug=False):
-            print(f"{result.focus}: {'Passing' if result.result else 'Failing'}: \n{result.reason}")
+            print("%s: %s: \n%s}" % (result.focus, 'Passing' if result.result else 'Failing', result.reason))
             self.assertFalse(result.result)
 
 

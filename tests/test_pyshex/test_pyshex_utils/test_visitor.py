@@ -4,7 +4,7 @@ from typing import List
 from ShExJSG import ShExJ
 
 from pyshex.shape_expressions_language.p5_context import Context
-from tests.utils.setup_test import setup_test
+from tests.test_pyshex.utils.setup_test import setup_test
 
 shex_1 = """{ "type": "Schema", "shapes": [
   { "id": "http://schema.example/EmployeeShape",

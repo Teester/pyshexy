@@ -261,6 +261,5 @@ class Object(JSGObject):
     def __init__(self, variable_name: str,  _context: JSGContext, value: Optional[JsonObj]):
         self._variable_name = variable_name
         if value is not None and not isinstance(value, JsonObj):
-            #raise ValueError(f'{variable_name}: Invalid {self._class_name} value: "{value}"')
             raise ValueError(variable_name + ": Invalid " + self._class_name + ' value: "' + value + '"')
         super().__init__(_context, **({} if value is None else value.__dict__))

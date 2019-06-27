@@ -10,7 +10,7 @@ from typing import Dict
 from rdflib.parser import URLInputSource
 from rdflib_jsonld import util
 
-context_cache: Dict[str, dict] = {}
+context_cache = {}
 
 util_fcn = util.source_to_json
 

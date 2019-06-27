@@ -4,7 +4,7 @@ from tests.test_pyjsg.test_python_generator.utils import PythonGeneratorUtils
 
 
 class AnyTypeTestCase(PythonGeneratorUtils):
-    save_output_files: bool = False
+    save_output_files = False
 
     def test_any_object(self):
         import tests.test_pyjsg.test_python_generator.py.any_type as doc

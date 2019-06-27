@@ -7,7 +7,7 @@ from rdflib import RDF, URIRef
 
 from pyshex import ShExEvaluator
 from pyshex.shex_evaluator import EvaluationResult, evaluate_cli
-from tests.utils.SortoGraph import SortOGraph
+from tests.test_pyshex.utils.SortoGraph import SortOGraph
 
 rdf = '''
 @prefix ex: <http://example.org/test/> .

@@ -112,7 +112,7 @@ class BPM1HangUnitTest(unittest.TestCase):
             if r.result:
                 print("PASS")
             else:
-                print(f"FAIL: {r.reason}")
+                print("FAIL: %s " % (r.reason))
         self.assertEqual([False], [r.result for r in results])
 
 

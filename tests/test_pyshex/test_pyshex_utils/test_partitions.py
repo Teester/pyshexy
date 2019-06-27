@@ -4,7 +4,7 @@ from rdflib import Graph, RDF, Literal, XSD
 
 from pyshex.shapemap_structure_and_language.p1_notation_and_terminology import RDFGraph, RDFTriple
 from pyshex.utils.partitions import algorithm_u, partition_t, partition_2, filtered_integer_partition, integer_partition
-from tests.utils.setup_test import gen_rdf, rdf_header, EX
+from tests.test_pyshex.utils.setup_test import gen_rdf, rdf_header, EX
 
 
 class PartitionsTestCase(unittest.TestCase):

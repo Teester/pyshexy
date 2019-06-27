@@ -8,28 +8,28 @@ from pyshex import ShExEvaluator
 FHIR = Namespace("http://hl7.org/fhir/")
 EX = Namespace("http://example.org/")
 
-shex = f"""PREFIX : <{FHIR}> 
-PREFIX xsd: <{XSD}>
+shex = """PREFIX : <%s> 
+PREFIX xsd: <%s>
 
 start = @<A>
 
-<A> {{
+<A> {
   :predd xsd:string ;
   ( :test @<A>* | :test @<E>* );
   :test2 @<C> ;
-}}
-<E> {{ :prede xsd:string ; }}
-<A> {{ :subject @<C> ; :preda xsd:string }}
-<C> {{ :subject @<A> ; :predc xsd:string }}
-"""
+}
+<E> { :prede xsd:string ; }
+<A> { :subject @<C> ; :preda xsd:string }
+<C> { :subject @<A> ; :predc xsd:string }
+""" % (FHIR, XSD)
 
-data = f"""PREFIX : <{FHIR}>
-PREFIX xsd: <{XSD}>
+data = """PREFIX : <%s>
+PREFIX xsd: <%s>
 
 :d :predd "final" ; :test <a> ; :test2 <c> .
 <a> :subject   <c> ; :prede    "final" .
 <c> :subject   <a> ; :predc    "final" .
-"""
+""" % (FHIR, XSD)
 
 
 class ShexjsIssue14TestCase(unittest.TestCase):

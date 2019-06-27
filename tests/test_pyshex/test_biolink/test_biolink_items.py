@@ -238,8 +238,8 @@ class BioLinkTestCase(unittest.TestCase):
     def eval_results(results: List[EvaluationResult]) -> bool:
         for r in results:
             if not r.result:
-                print(f"\nshape: {r.start} focus: {r.focus}")
-                print(f"{r.reason}")
+                print("\nshape: %s focus: %s" % (r.start, r.focus))
+                print(r.reason)
         return all(r.result for r in results)
 
     def test_simple(self):

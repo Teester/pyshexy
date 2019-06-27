@@ -16,7 +16,7 @@ OBJ = Node
 #    s = None
 #    p = None
 #    o = None
-RDFTriple = collections.namedtuple("s", ["p", "o"])
+RDFTriple = collections.namedtuple("RDFTriple", ["s", "p", "o"])
 
 class CFGraph(Graph):
     """ Collection Flattening Graph

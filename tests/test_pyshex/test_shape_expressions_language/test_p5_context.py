@@ -54,7 +54,7 @@ class ContextTestCase(unittest.TestCase):
         
     def test_predicate_scan(self):
         c = setup_context(shex_1, rdf_1)
-        predicates: List[URIRef] = []
+        predicates = []
         c.visit_shapes(c.shapeExprFor(IRIREF('http://schema.example/UserShape')), triple_expr_finder, predicates)
         self.assertEqual([RDF.type], predicates)
         # Quick test of the utility function

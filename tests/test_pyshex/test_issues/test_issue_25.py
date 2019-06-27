@@ -16,7 +16,7 @@ class Issue25TestCase(unittest.TestCase):
     def test_nostart(self):
         outf = StringIO()
         with(redirect_stdout(outf)):
-            evaluate_cli(f"{rdffile} {shexfile} -A".split())
+            evaluate_cli(("%s %s -A" % (rdffile ,shexfile)).split())
         self.assertEqual("""Errors:
   Focus: None
   Start: None
@@ -25,13 +25,13 @@ class Issue25TestCase(unittest.TestCase):
     def test_all_nodes(self):
         outf = StringIO()
         with(redirect_stderr(outf)):
-            evaluate_cli(f"{rdffile} {shexfile} -s http://example.org/shapes/S".split())
+            evaluate_cli(("%s %s -s http://example.org/shapes/S" % (rdffile, shexfile)).split())
         self.assertEqual('Error: You must specify one or more graph focus nodes, supply a SPARQL query, '
                          'or use the "-A" option',
                          outf.getvalue().strip())
         outf = StringIO()
         with(redirect_stdout(outf)):
-            evaluate_cli(f"{rdffile} {shexfile}  -A -s http://example.org/shapes/S".split())
+            evaluate_cli(("%s %s  -A -s http://example.org/shapes/S" % (rdffile, shexfile)).split())
         self.assertEqual("""Errors:
   Focus: http://a.example/s1
   Start: http://example.org/shapes/S

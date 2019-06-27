@@ -45,12 +45,10 @@ class JSGPatternedValMeta(type):
 
 
 class JSGPatterned(JSGValidateable, metaclass=JSGPatternedValMeta):
-    #pattern: Optional[JSGPattern] = None
     pattern = None
 
     def __init__(self, val: Any) -> None:
         if not isinstance(val, type(self)):
-            #raise ValueError(f'Invalid {self._class_name} value: "{val}"')
             raise ValueError('Invalid ' + self._class_name + ' value:"' + str(val) + '"')
 
     def _is_valid(self, log: Optional[Logger] = None) -> bool:

@@ -1,4 +1,5 @@
 import os
+import collections
 from argparse import ArgumentParser
 from io import StringIO
 from types import ModuleType
@@ -10,15 +11,16 @@ from pyjsg.jsglib.loader import loads, Logger, is_valid
 from pyjsg.parser_impl.generate_python import parse
 
 
-class ValidationResult(NamedTuple):
-    success: bool
-    fail_reason: str
-    test_name: str
-    type: Optional[str]
+#ValidationResult = collections.namedtuple("ValidationResult", ["success", "fail_reason", "test_name", "type"])
+
+#class ValidationResult(NamedTuple):
+class ValidationResult:
+    def __init__(self, tupleName: collections.namedtuple("ValidationResult", ["success", "fail_reason", "test_name", "type"])):
+        ...
 
     def __str__(self) -> str:
-        return (f"{self.test_name}: " if self.test_name else "") +\
-               (f"Conforms to {self.type}" if self.success else f"FAIL - {self.fail_reason}")
+        return ("%s: " % (self.test_name) if self.test_name else "") +\
+               ("Conforms to %s" % (self.type) if self.success else "FAIL - %s" % (self.fail_reason))
 
 
 class JSGPython:
@@ -100,14 +102,14 @@ def genargs() -> ArgumentParser:
 def validate_json(argv) -> bool:
     def do_validation(entry: str) -> bool:
         if opts.verbose and not validator.is_json(entry):
-            print(f"Validating {entry}... ", end='')
+            print("Validating %s... " % (entry), end='')
         success, reason = validator.conforms(entry)
         if opts.verbose:
             if success:
                 print("Success")
                 return True
             else:
-                print(f"Fail: {reason}")
+                print("Fail: %s" % (reason))
                 return False
 
     opts = genargs().parse_args(argv)

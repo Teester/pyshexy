@@ -5,18 +5,18 @@ from pyshex import ShExEvaluator
 
 EX = Namespace("http://example.org/")
 
-shex = f"""PREFIX : <{EX}> 
-PREFIX xsd: <{XSD}>
+shex = """PREFIX : <%s> 
+PREFIX xsd: <%s>
 
 start = @<A>
 
-<A> {{:p1 xsd:string }}
-"""
+<A> {:p1 xsd:string }
+""" % (EX, XSD)
 
-data = f"""PREFIX : <{EX}>
+data = """PREFIX : <%s>
 
 :d :p1 "final" .
-"""
+""" % (EX)
 
 
 class ShexjsIssue17TestCase(unittest.TestCase):
