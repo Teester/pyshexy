@@ -128,7 +128,7 @@ def nodeSatisfiesStringFacet(cntxt: Context, n: Node, nc: ShExJ.NodeConstraint, 
         elif nc.length is not None and len(lex) != nc.length:
             cntxt.fail_reason = "String length mismatch - expected: %d actual: %d" % (nc.length, len(lex))
         elif nc.minlength is not None and len(lex) < nc.minlength:
-            cntxt.fail_reason = "String lenght violation - minimum: %d actual: %d" % (nc.minlength, len(lex))
+            cntxt.fail_reason = "String length violation - minimum: %d actual: %d" % (nc.minlength, len(lex))
         elif nc.maxlength is not None and len(lex) > nc.maxlength:
             cntxt.fail_reason = "String length violation - maximum: %d actual: %d" % (nc.maxlength, len(lex))
         elif nc.pattern is not None and not pattern_match(nc.pattern, nc.flags, lex):
