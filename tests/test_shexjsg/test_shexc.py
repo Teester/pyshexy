@@ -1,7 +1,6 @@
 import os
 import sys
 import unittest
-import collections
 from io import StringIO
 from typing import NamedTuple, List, TextIO, Dict
 
@@ -55,7 +54,7 @@ for k in list(skip.keys()):
 #class TestFile(NamedTuple):
 #    fullpath: str
 #    filename: str
-TestFile = collections.namedtuple("fullpath", "filename")
+TestFile = NamedTuple("TestFile", [("fullpath", str), ("filename", str)])
 
 
 def compare_json(j1: str, j2: str, log: TextIO) -> bool:

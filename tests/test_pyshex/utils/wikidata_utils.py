@@ -17,13 +17,13 @@ from pyshex.shex_evaluator import EvaluationResult
 
 #class DataFrame(NamedTuple):
 #    item: str
-DataFrame = collections.namedtuple("DataFrame", ["item"])
+DataFrame = NamedTuple("DataFrame", [("item", str)])
 
 #class Triple(NamedTuple):
 #    s: Optional[URIRef]
 #    p: Optional[URIRef]
 #    o: Optional[Union[Literal, URIRef]]
-Triple = collections.namedtuple("Triple", ["s", "p", "o"])
+Triple = NamedTuple("Triple", [("s", Optional[URIRef]), ("p", Optional[URIRef]), ("o", Optional[Union[Literal, URIRef]])])
 
 class WikiDataTestCase(unittest.TestCase):
     save_test_data = False

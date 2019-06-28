@@ -11,9 +11,7 @@ from pyjsg.jsglib.loader import loads, Logger, is_valid
 from pyjsg.parser_impl.generate_python import parse
 
 
-#ValidationResult = collections.namedtuple("ValidationResult", ["success", "fail_reason", "test_name", "type"])
 
-#class ValidationResult(NamedTuple):
 class ValidationResult(namedtuple("ValidationResult", ["success", "fail_reason", "test_name", "type"])):
     def __str__(self) -> str:
         return ("%s: " % (self.test_name) if self.test_name else "") +\

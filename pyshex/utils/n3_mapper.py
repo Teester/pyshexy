@@ -17,11 +17,11 @@ class N3Mapper:
     @property
     def _next_bnode(self) -> str:
         self._cur_bnode_number += 1
-        return "_:b%d" % (self._cur_bnode_number)
+        return "_:b{}".format(self._cur_bnode_number)
 
     def n3(self, node: Union[URIRef, BNode, Literal, Triple, str]) -> str:
         if isinstance_(node, Triple):
-            return "%s %s %s ." % (self.n3(node[0]), self.n3(node[1]), self.n3(node[2]))
+            return "{} {} {} .".format(self.n3(node[0]), self.n3(node[1]), self.n3(node[2]))
         elif isinstance(node, BNode):
             if node not in self._bnode_map:
                 self._bnode_map[node] = self._next_bnode

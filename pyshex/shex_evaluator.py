@@ -14,9 +14,14 @@ from pyshex.shape_expressions_language.p5_context import Context
 from pyshex.shapemap_structure_and_language.p3_shapemap_structure import FixedShapeMap, ShapeAssociation, START, START_TYPE
 from pyshex.utils.schema_loader import SchemaLoader
 from pyshex.utils.sparql_query import SPARQLQuery
-import collections
 
-EvaluationResult = collections.namedtuple("EvaluationResult", ["result", "focus", "start", "reason"])
+#class EvaluationResult(NamedTuple):
+#    result: bool
+#    focus: Optional[URIRef]
+#    start: Optional[URIRef]
+#    reason: Optional[str]
+
+EvaluationResult = NamedTuple("EvaluationResult", [("result", bool), ("focus", Optional[URIRef]), ("start", Optional[URIRef]), ("reason", Optional[str])])
 
 # Handy types
 URI = Union[str, URIRef]                              # URI as an argument
@@ -348,7 +353,7 @@ def evaluate_cli(argv: Optional[Union[str, List[str]]] = None, prog: Optional[st
                 print("Errors:")
             else:
                 print()
-            print("  Focus: %s\n  Start: %s\n  Reason: %s" % (str(rslt.focus), str(rslt.start), str(rslt.reason)))
+            print("  Focus: {}\n  Start: {}\n  Reason: {}".format(rslt.focus, rslt.start, rslt.reason))
             return not opts.stoponerror and (not opts.stopafter or evaluator.nnodes < opts.stopafter)
         return not opts.stopafter or evaluator.nnodes < opts.stopafter
 

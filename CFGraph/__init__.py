@@ -4,7 +4,6 @@ from rdflib import Graph, URIRef, Literal, BNode, RDF
 from rdflib.collection import Collection
 from rdflib.exceptions import UniquenessError
 from rdflib.term import Node
-import collections
 
 QueryTriple = Tuple[Optional[URIRef], Optional[URIRef], Optional[Union[Literal, URIRef]]]
 
@@ -16,7 +15,7 @@ OBJ = Node
 #    s = None
 #    p = None
 #    o = None
-RDFTriple = collections.namedtuple("RDFTriple", ["s", "p", "o"])
+RDFTriple = NamedTuple("RDFTriple", [("s", None), ("p", None), ("o", None)])
 
 class CFGraph(Graph):
     """ Collection Flattening Graph

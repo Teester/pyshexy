@@ -1,7 +1,6 @@
 import os
 import sys
 import unittest
-import collections
 from io import StringIO
 from typing import Optional, TextIO, List, NamedTuple
 
@@ -32,7 +31,7 @@ VERBOSE = False
 # Files to skip until we reintroduce a manifest reader
 skip = ['coverage.json', 'manifest.json', 'representationTests.json']
 
-TestFile = collections.namedtuple("TestFile", ["fullpath", "filename"])
+TestFile = NamedTuple("TestFile", [("fullpath", str), ("filename", str)])
 
 
 def compare_json(j1: str, j2: str, log: TextIO) -> bool:

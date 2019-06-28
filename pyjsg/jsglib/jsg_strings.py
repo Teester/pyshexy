@@ -34,11 +34,8 @@ class JSGPattern:
 
 
 class JSGPatternedValMeta(type):
-    #pattern: Optional[JSGPattern]
-    #python_type: Union[type, Tuple[type]]
-    #def __init__(self, type, pattern: Optional[JSGPattern], python_type: Union[type, Tuple[type]] ):
-    #    self.pattern  = pattern
-    #    self.python_type = python_type
+    pattern = Optional[JSGPattern]
+    python_type = Union[type, Tuple[type]]
 
     def __instancecheck__(self, instance) -> bool:
         return isinstance(instance, self.python_type) and (self.pattern is None or self.pattern.matches(str(instance)))

@@ -15,9 +15,10 @@ class ReactomeTestCase(WikiDataTestCase):
 
         rslts = self.run_test(
             "https://raw.githubusercontent.com/shexSpec/schemas/master/Wikidata/pathways/Reactome/manifest_all.json",
+            #"file:///" + os.path.abspath(os.path.join(os.path.dirname(__file__), 'data', 'manifests', "reactome.json")), 
             num_entries=1, debug=False, debug_slurps=False, save_graph_dir=test_data_base)
         for rslt in rslts:
-            print("%s: %s" % ('CONFORMS' if rslt.result else 'FAIL', rslt.focus))
+            print("{}: {}".format('CONFORMS' if rslt.result else 'FAIL', rslt.focus))
         self.assertTrue(all(expected == actual for expected, actual in zip([r.result for r in rslts],
                                                                             self.expected_results)))
 

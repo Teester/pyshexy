@@ -64,7 +64,7 @@ class ShExC:
         return schema
 
     def implementation_error(self, tkn: Any) -> None:
-        raise NotImplementedError("Unknown token: " % (type(tkn)))
+        raise NotImplementedError("Unknown token: {}".format(type(tkn)))
 
     def imports(self, imports: Optional[List[ShExJ.IRIREF]]) -> List[str]:
         if imports is not None:
@@ -234,7 +234,7 @@ class ShExC:
                 return '+'
             elif maxv == 1:
                 return ""
-        return "{%s}" % (minv) if minv == maxv else "{%s,%s}" % (minv, maxv) if maxv != -1 else f"{%s,*}" % (minv)
+        return "{%s}" % (minv) if minv == maxv else "{%s,%s}" % (minv, maxv) if maxv != -1 else "{%s,*}" % (minv)
 
     @staticmethod
     def add_facet(facet, label: str) -> str:

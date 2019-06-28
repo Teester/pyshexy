@@ -27,7 +27,7 @@ class slurper():
         if self.tracing:
             self.g_triples = self.graph.total_triples
             self.g_time = self.graph.total_slurptime
-            print("# ← <" + self.n + ">@" + self.S.id + " ", end="")
+            print("# ← <{}>@{} ".format(self.n, self.S.id), end="")
             sys.stdout.flush()
         return self.graph
 
@@ -35,7 +35,7 @@ class slurper():
         if self.tracing:
             new_triples = self.graph.total_triples - self.g_triples
             if new_triples:
-                print(" " + new_triples + " triples (" + int((self.graph.total_slurptime - self.g_time) * 1000) + " μs)")
+                print(" {} triples ({} μs)".format(new_triples, int((self.graph.total_slurptime - self.g_time) * 1000)))
             else:
                 print(" (Cached)")
         #return True

@@ -1,7 +1,6 @@
 from typing import Dict, NamedTuple, Union, List, Tuple, Optional, Callable, Type
 
 import time
-import collections
 from SPARQLWrapper import SPARQLWrapper, JSON
 from rdflib import Graph, URIRef, Literal, BNode
 
@@ -9,7 +8,12 @@ QueryTriple = Tuple[Optional[URIRef], Optional[URIRef], Optional[Union[Literal, 
 
 NodeType = Union[URIRef, Literal, BNode]
 
-RDFTriple = collections.namedtuple('RDFTriple', ['s', 'p', 'o'])
+#class RDFTriple(NamedTuple):
+#    s: Union[URIRef, BNode]
+#    p: URIRef
+#    o: Union[Literal, URIRef, BNode]
+
+RDFTriple = NamedTuple('RDFTriple', [('s', Union[URIRef, BNode]), ('p', URIRef), ('o', Union[Literal, URIRef, BNode])])
 
 class SlurpyGraph(Graph):
     """ A Graph that acts as a "cache" for a SPARQL endpoint """

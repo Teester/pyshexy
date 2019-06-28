@@ -6,7 +6,7 @@ from typing import Dict, Optional
 import sys
 from ShExJSG import ShExJ
 from rdflib import URIRef
-
+from pathlib import Path
 from ancilliary.earlreport import EARLPage
 from pyshex.shape_expressions_language.p5_2_validation_definition import isValid
 from pyshex.shape_expressions_language.p5_context import Context
@@ -28,7 +28,7 @@ USE_LOCAL_FILES = True                     # Use local files if possible
 
 # Do Not Change this - must match manifest
 REMOTE_FILE_LOC = "https://raw.githubusercontent.com/shexSpec/shexTest/master/"
-
+#LOCATION = "file:///" + str(Path.cwd().parent.joinpath("validation", "manifest.ttl"))
 
 # Local equivalent of online data files
 shextest_path = os.path.abspath(os.path.join(os.path.dirname(__file__),     # utils
@@ -60,8 +60,8 @@ class ManifestEntryTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.mfst = ShExManifest(os.path.join(BASE_FILE_LOC, 'validation', 'manifest.ttl'),
-                                manifest_format="turtle")
+        cls.mfst = ShExManifest(os.path.join(BASE_FILE_LOC, 'validation', 'manifest.ttl'), manifest_format="turtle")
+        #cls.mfst = ShExManifest(LOCATION, manifest_format="turtle")
         if BASE_FILE_LOC != REMOTE_FILE_LOC:
             cls.mfst.schema_loader.base_location = REMOTE_FILE_LOC
             cls.mfst.schema_loader.redirect_location = BASE_FILE_LOC

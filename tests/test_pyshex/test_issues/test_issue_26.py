@@ -1,5 +1,6 @@
 import os
 import unittest
+from pathlib import Path
 from contextlib import redirect_stdout
 from io import StringIO
 
@@ -15,7 +16,7 @@ class Issue26TestCase(unittest.TestCase):
 
     @unittest.skipIf(False, "Issue 26 needs to be fixed")
     def test_anon_start(self):
-        self.assertEqual(0, evaluate_cli("%s %s -A") % (rdffile, shexfile))
+        self.assertEqual(0, evaluate_cli("{} {} -A".format(rdffile, shexfile)))
 
 
 

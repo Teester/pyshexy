@@ -21,8 +21,7 @@ class JSGNull(JSGValidateable, metaclass=JSGNullMeta):
     def __new__(cls, val):
         if val is None or val is JSGNull:
             return cls
-        #raise ValueError(f"Invalid Null Value: {val}")
-        raise ValueError("Invalid Null Value: %s" % (val))
+        raise ValueError("Invalid Null Value: {}".format(val))
 
     def _is_valid(self, log: Optional[Union[TextIO, Logger]] = None) -> bool:
         return True

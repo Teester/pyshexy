@@ -34,8 +34,7 @@ class JSGObjectMap(JSGObject):
         if not key.startswith("_") and not self._context.unvalidated_parm(key):
             if self._name_filter is not None:
                 if not isinstance(key, self._name_filter):
-                    #raise ValueError(f"Illegal Object Map key: {key}={value}")
-                    raise ValueError("Illegal Object Map key: " + key + "=" + str(value))
+                    raise ValueError("Illegal Object Map key: {}={}".format(key, value))
             if not conforms(value, self._value_type, self._context.NAMESPACE):
                 raise ValueError("Illegal value type {} = {}".format(key, value))
                
@@ -55,8 +54,7 @@ class JSGObjectMap(JSGObject):
     def _is_valid_element(self, log: Logger, name: str, entry: Type[JSGValidateable]) -> bool:
         if self._name_filter is not None:
             if not self._name_filter.matches(name):
-                #if log.log(f"Illegal Object Map key: {name}={entry}"):
-                if log.log("Illegal Object Map key: " + name + "=" + entry):  
+                if log.log("Illegal Object Map key: {}={}".format(name, entry)):  
                     return False
         return super()._is_valid_element(log, name, entry)
 
@@ -65,12 +63,10 @@ class JSGObjectMap(JSGObject):
         nerrors = log.nerrors
         nitems = len(self._strip_nones(self.__dict__))
         if nitems < self._min:
-            #if log.log(f"Number of elements is {nitems} which is less than the minimum number ({self._min})"):
-            if log.log("Number of elements is " + nitems + " which is less than the minimum number (" + self._min + ")"):
+            if log.log("Number of elements is {} which is less than the minimum number ({})".format(nitems, self._min)):
                 return False
         if self._max is not None and nitems > self._max:
-            #if log.log(f"Number of elements is {nitems} which is greater than the minimum number ({self._max})"):
-            if log.log("Number of elements is " + nitems + " which is greater than the minimum number (" + self._max + ")"):
+            if log.log("Number of elements is {} which is greater than the minimum number ({})".format(nitems, self._max)):
                 return False
         super()._is_valid(log)
         return nerrors == log.nerrors

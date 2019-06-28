@@ -29,7 +29,7 @@ class PrefixLibrary:
         """ Return the ShEx representation of the library """
         rval = ""
         for k, v in self:
-            rval += "PREFIX %s: <%s>\n" % (k.lower, str(v))
+            rval += "PREFIX {}: <{}>\n".format(k.lower, str(v))
         return rval + '\n'
 
     def __setitem__(self, key, value):
@@ -93,7 +93,7 @@ class PrefixLibrary:
                 setattr(target, k, v)
                 nret += 1
             else:
-                print("Warning: %s is already defined in namespace %s. Not overridden" % (key, target))
+                print("Warning: {} is already defined in namespace {}. Not overridden".format(key, target))
         return nret
 
     def nsname(self, uri: Union[str, URIRef]) -> str:

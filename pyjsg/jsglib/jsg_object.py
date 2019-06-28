@@ -21,8 +21,8 @@ else:
 
 
 class JSGObjectMeta(type):
-    #_reference_types: List["JSGObject"] = []
-    #_reference_names: List                 # Names of objects in _reference_types
+    _reference_types = []
+    _reference_names = List[str]                # Names of objects in _reference_types
 
     def __init__(cls, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -200,8 +200,7 @@ class JSGObject(JsonObj, JSGValidateable, metaclass=JSGObjectMeta):
                 if typ in self._context.NAMESPACE:
                     typ = self._context.NAMESPACE[typ]
                 else:
-                    #raise ValueError(f"Unknown type: {typ}")
-                    raise ValueError("Unknown typr: " + typ)
+                    raise ValueError("Unknown typr: {}".format(typ))
             typ = proc_forward(typ, self._context.NAMESPACE)
             if is_union(typ):
                 for t in typ.__args__:
@@ -216,12 +215,12 @@ class JSGObject(JsonObj, JSGValidateable, metaclass=JSGObjectMeta):
         et = self._map_jsg_type(name, element, poss_types)
         if et is not None:
             return et
-        raise ValueError("Wrong type for %s: %s - expected: %s got %s" % (name, Logger.json_repr(element), poss_types, type(element.__name__)))
+        raise ValueError("Wrong type for {}: {} - expected: {} got {}".format(name, Logger.json_repr(element), poss_types, type(element).__name__))
         
 class ObjectWrapperMeta(type):
-    #variable_name: str
-    #context: JSGContext
-    #typ: type
+    variable_name = str
+    context = JSGContext
+    typ = type
     def __init__(self, variable_name:str, context: JSGContext, typ: type):
         self.variable_name = variable_name
         self.context = context
@@ -232,9 +231,9 @@ class ObjectWrapperMeta(type):
 
 
 class ObjectWrapper(metaclass=ObjectWrapperMeta):
-    #variable_name: str
-    #context: JSGContext
-    #typ: type
+    variable_name = str
+    context = JSGContext
+    typ = type
     def __init__(self, variable_name:str, context: JSGContext, typ: type):
         self.variable_name = variable_name
         self.context = context
