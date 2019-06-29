@@ -97,31 +97,31 @@ class ShExC:
         return schema
 
     def implementation_error(self, tkn: Any) -> None:
-        raise NotImplementedError("Unknown token: " + type(tkn))
+        raise NotImplementedError("Unknown token: {}".format(type(tkn)))
 
     def prefixes(self) -> List[str]:
         rval = []
         if self.base is not None:
-            rval = ['BASE <' + self.base + '>', HARDBREAK]
+            rval = ['BASE <{}>'.format(self.base), HARDBREAK]
         if self.namespaces is not None:
             for prefix, namespace in self.namespaces.namespaces():
                 if prefix in self.referenced_prefixes:
-                    rval += ['PREFIX ' + prefix + ": <" + namespace + '>'] + [HARDBREAK]
+                    rval += ['PREFIX {}: <{}>'.format(prefix, namespace)] + [HARDBREAK]
             rval.append('\n')
         return rval
 
     def imports(self, imports: Optional[List[ShExJ.IRIREF]]) -> List[str]:
         if imports is not None:
-            return ["IMPORT " + self.iriref(e) for e in imports]
+            return ["IMPORT {}".format(self.iriref(e)) for e in imports]
         return []
 
     def semActs(self, semActs: Optional[List[ShExJ.SemAct]]) -> List[TOKEN]:
         rval = []
         if semActs is not None:
             for act in semActs:
-                rval.append("%" + self.iriref(act.name))
+                rval.append("%{}".format(self.iriref(act.name)))
                 act_code = self._escape_embedded_code(act.code).replace('%', '\\%') if act.code else None
-                rval.append("{" + act_code + "%}" if act_code is not None else '%')
+                rval.append("{{{}%}}".format(act_code) if act_code is not None else '%')
         return rval
 
     def start(self, start: Optional[ShExJ.shapeExpr]) -> List[TOKEN]:
@@ -285,17 +285,17 @@ class ShExC:
                 return '+'
             elif maxv == 1:
                 return ""
-        return "{%d}" % (minv) if minv == maxv else "{%d,%d}" % (minv, maxv) if maxv != -1 else "{%d,*}" % (minv)
+        return "{{{}}}".format(minv) if minv == maxv else "{{{},{}}}".format(minv, maxv) if maxv != -1 else "{{{},*}}".format(minv)
 
     @staticmethod
     def add_facet(facet, label: str) -> str:
-        return label + " " + str(facet) if facet is not None else ''
+        return "{} {}".format(label, facet if facet is not None else '')
 
     @staticmethod
     def add_pattern(pattern, flags) -> str:
         if pattern:
             pval = re.sub(r'/', r'\/', pattern)
-            return '/' + pval + '/' + (flags if flags is not None else '')
+            return '/{}/'.format(pval) + (flags if flags is not None else '')
         return ''
 
     def xsFacet(self, nc: ShExJ.NodeConstraint) -> List[TOKEN]:
@@ -343,25 +343,25 @@ class ShExC:
             replace("'", "\\'").\
             replace('"', '\\"')
 
-        return '"' + code_val + '"' + ("@" + v.language if v.language else "^^" + self.iriref(v.type) if v.type else "")
+        return '"{}"'.format(code_val) + ("@{}".format(v.language) if v.language else "^^{}".format(self.iriref(v.type)) if v.type else "")
 
     def iriStem(self, v: ShExJ.IriStem) -> str:
         return self.iriref(v.stem) + '~'
 
     def iriStemRange(self, v: ShExJ.IriStemRange) -> [str]:
         return [('.' if isinstance(v.stem, ShExJ.Wildcard) else self.iriStem(v))] + \
-               [" - " + self.iriref(e) if isinstance(e, ShExJ.IRIREF) else self.iriStem(e) for e in v.exclusions]
+               [" - {}".format(self.iriref(e) if isinstance(e, ShExJ.IRIREF) else self.iriStem(e)) for e in v.exclusions]
                
     def literalStem(self, v: ShExJ.LiteralStem) -> str:
         return self.literal(v.stem) + '~'
 
     @staticmethod
     def literal(v) -> str:
-        return '"' + v + '"'
+        return '"{}"'.format(v)
 
     def literalStemRange(self, v: ShExJ.LiteralStemRange) -> [str]:
         return [('.' if isinstance(v.stem, ShExJ.Wildcard) else self.literalStem(v))] + \
-               [' - ' + self.literal(e) if isinstance(e, JSGString) else self.literalStem(e) for e in v.exclusions]
+               [' - {}'.format(self.literal(e) if isinstance(e, JSGString) else self.literalStem(e)) for e in v.exclusions]
 
     @staticmethod
     def language(v: ShExJ.LANGTAG) -> str:
@@ -372,8 +372,7 @@ class ShExC:
 
     def languageStemRange(self, v: ShExJ.LanguageStemRange) -> [str]:
         return [('.' if isinstance(v.stem, ShExJ.Wildcard) else self.languageStem(v))] + \
-               [" - " + self.language(e) if isinstance(e, ShExJ.LANGTAG) else self.languageStem(e) 
-               for e in v.exclusions]
+               [" - {}".format(self.language(e) if isinstance(e, ShExJ.LANGTAG) else self.languageStem(e)) for e in v.exclusions]
 
     def shapeExprLabel(self, shapeExprLabel: ShExJ.shapeExprLabel) -> str:
         return self.exprLabel(shapeExprLabel)
@@ -410,16 +409,14 @@ class ShExC:
             if vstr.startswith(self.base):
                 vstr = vstr.replace(self.base, '')
             if '/' not in vstr and '#' not in vstr:
-                #return f"<{vstr}>"
-                return "<" + vstr + ">"
+                return "<{}>".format(vstr)
         if self.namespaces is not None:
             curie = str(URIRef(v).n3(self.namespaces))
             if ':' in curie and curie[1:-1] != v:
                 self.referenced_prefixes.add(curie.split(':')[0])
             return curie
         else:
-            #return f"<{v}>"
-            return "<" + v + ">"
+            return "<{}>".format(v)
 
     @staticmethod
     def _escape_embedded_code(s: str) -> str:

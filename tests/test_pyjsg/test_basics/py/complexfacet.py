@@ -1,5 +1,5 @@
-# Auto generated from tests\test_pyjsg\test_basics\jsg\complexfacet.jsg by PyJSG version 0.9.1
-# Generation date: 2019-06-28 17:43
+# Auto generated from tests\test_pyjsg\test_basics\jsg\complexfacet.jsg by PyJSG version 0.9.2
+# Generation date: 2019-06-29 17:59
 #
 import typing
 import pyjsg.jsglib as jsg
@@ -85,10 +85,10 @@ class reqFacet(jsg.JSGObject):
 
 class listFacet(jsg.JSGObject):
     _reference_types = []
-    _members = {'mininclusive': jsg.ArrayFactory('mininclusive', _CONTEXT, numericLiteral, , ),
-                'minexclusive': jsg.ArrayFactory('minexclusive', _CONTEXT, numericLiteral, , ),
-                'maxinclusive': jsg.ArrayFactory('maxinclusive', _CONTEXT, numericLiteral, , ),
-                'maxexclusive': jsg.ArrayFactory('maxexclusive', _CONTEXT, numericLiteral, , )}
+    _members = {'mininclusive': jsg.ArrayFactory('mininclusive', _CONTEXT, numericLiteral, 0, None),
+                'minexclusive': jsg.ArrayFactory('minexclusive', _CONTEXT, numericLiteral, 0, None),
+                'maxinclusive': jsg.ArrayFactory('maxinclusive', _CONTEXT, numericLiteral, 0, None),
+                'maxexclusive': jsg.ArrayFactory('maxexclusive', _CONTEXT, numericLiteral, 0, None)}
     _strict = True
 
     def __init__(self,
@@ -112,7 +112,7 @@ class optOpt(jsg.JSGObject):
                 'minexclusive': typing.Optional[numericLiteral],
                 'maxinclusive': typing.Optional[numericLiteral],
                 'maxexclusive': typing.Optional[numericLiteral],
-                'last': jsg.ArrayFactory('last', _CONTEXT, STRING, 1, )}
+                'last': jsg.ArrayFactory('last', _CONTEXT, STRING, 1, None)}
     _strict = True
 
     def __init__(self,
@@ -163,12 +163,12 @@ class optReq(jsg.JSGObject):
 
 class optList(jsg.JSGObject):
     _reference_types = [optFacet]
-    _members = {'first': jsg.ArrayFactory('first', _CONTEXT, INTEGER, , ),
-                'mininclusive': jsg.ArrayFactory('mininclusive', _CONTEXT, typing.Optional[numericLiteral], , ),
-                'minexclusive': jsg.ArrayFactory('minexclusive', _CONTEXT, typing.Optional[numericLiteral], , ),
-                'maxinclusive': jsg.ArrayFactory('maxinclusive', _CONTEXT, typing.Optional[numericLiteral], , ),
-                'maxexclusive': jsg.ArrayFactory('maxexclusive', _CONTEXT, typing.Optional[numericLiteral], , ),
-                'last': jsg.ArrayFactory('last', _CONTEXT, STRING, , )}
+    _members = {'first': jsg.ArrayFactory('first', _CONTEXT, INTEGER, 0, None),
+                'mininclusive': jsg.ArrayFactory('mininclusive', _CONTEXT, typing.Optional[numericLiteral], 0, None),
+                'minexclusive': jsg.ArrayFactory('minexclusive', _CONTEXT, typing.Optional[numericLiteral], 0, None),
+                'maxinclusive': jsg.ArrayFactory('maxinclusive', _CONTEXT, typing.Optional[numericLiteral], 0, None),
+                'maxexclusive': jsg.ArrayFactory('maxexclusive', _CONTEXT, typing.Optional[numericLiteral], 0, None),
+                'last': jsg.ArrayFactory('last', _CONTEXT, STRING, 0, None)}
     _strict = True
 
     def __init__(self,
@@ -196,7 +196,7 @@ class reqOpt(jsg.JSGObject):
                 'minexclusive': typing.Optional[numericLiteral],
                 'maxinclusive': typing.Optional[numericLiteral],
                 'maxexclusive': typing.Optional[numericLiteral],
-                'last': jsg.ArrayFactory('last', _CONTEXT, STRING, 1, )}
+                'last': jsg.ArrayFactory('last', _CONTEXT, STRING, 1, None)}
     _strict = True
 
     def __init__(self,
@@ -247,12 +247,12 @@ class reqReq(jsg.JSGObject):
 
 class reqList(jsg.JSGObject):
     _reference_types = [reqFacet]
-    _members = {'first': jsg.ArrayFactory('first', _CONTEXT, INTEGER, , ),
-                'mininclusive': jsg.ArrayFactory('mininclusive', _CONTEXT, numericLiteral, , ),
-                'minexclusive': jsg.ArrayFactory('minexclusive', _CONTEXT, numericLiteral, , ),
-                'maxinclusive': jsg.ArrayFactory('maxinclusive', _CONTEXT, numericLiteral, , ),
-                'maxexclusive': jsg.ArrayFactory('maxexclusive', _CONTEXT, numericLiteral, , ),
-                'last': jsg.ArrayFactory('last', _CONTEXT, STRING, , )}
+    _members = {'first': jsg.ArrayFactory('first', _CONTEXT, INTEGER, 0, None),
+                'mininclusive': jsg.ArrayFactory('mininclusive', _CONTEXT, numericLiteral, 0, None),
+                'minexclusive': jsg.ArrayFactory('minexclusive', _CONTEXT, numericLiteral, 0, None),
+                'maxinclusive': jsg.ArrayFactory('maxinclusive', _CONTEXT, numericLiteral, 0, None),
+                'maxexclusive': jsg.ArrayFactory('maxexclusive', _CONTEXT, numericLiteral, 0, None),
+                'last': jsg.ArrayFactory('last', _CONTEXT, STRING, 0, None)}
     _strict = True
 
     def __init__(self,
@@ -276,11 +276,11 @@ class reqList(jsg.JSGObject):
 class listOpt(jsg.JSGObject):
     _reference_types = [listFacet]
     _members = {'first': typing.Optional[INTEGER],
-                'mininclusive': typing.Optional[jsg.ArrayFactory('mininclusive', _CONTEXT, numericLiteral, , )],
-                'minexclusive': typing.Optional[jsg.ArrayFactory('minexclusive', _CONTEXT, numericLiteral, , )],
-                'maxinclusive': typing.Optional[jsg.ArrayFactory('maxinclusive', _CONTEXT, numericLiteral, , )],
-                'maxexclusive': typing.Optional[jsg.ArrayFactory('maxexclusive', _CONTEXT, numericLiteral, , )],
-                'last': jsg.ArrayFactory('last', _CONTEXT, STRING, 1, )}
+                'mininclusive': typing.Optional[jsg.ArrayFactory('mininclusive', _CONTEXT, numericLiteral, 0, None)],
+                'minexclusive': typing.Optional[jsg.ArrayFactory('minexclusive', _CONTEXT, numericLiteral, 0, None)],
+                'maxinclusive': typing.Optional[jsg.ArrayFactory('maxinclusive', _CONTEXT, numericLiteral, 0, None)],
+                'maxexclusive': typing.Optional[jsg.ArrayFactory('maxexclusive', _CONTEXT, numericLiteral, 0, None)],
+                'last': jsg.ArrayFactory('last', _CONTEXT, STRING, 1, None)}
     _strict = True
 
     def __init__(self,
@@ -304,10 +304,10 @@ class listOpt(jsg.JSGObject):
 class listReq(jsg.JSGObject):
     _reference_types = [listFacet]
     _members = {'first': jsg.Integer,
-                'mininclusive': jsg.ArrayFactory('mininclusive', _CONTEXT, numericLiteral, , ),
-                'minexclusive': jsg.ArrayFactory('minexclusive', _CONTEXT, numericLiteral, , ),
-                'maxinclusive': jsg.ArrayFactory('maxinclusive', _CONTEXT, numericLiteral, , ),
-                'maxexclusive': jsg.ArrayFactory('maxexclusive', _CONTEXT, numericLiteral, , ),
+                'mininclusive': jsg.ArrayFactory('mininclusive', _CONTEXT, numericLiteral, 0, None),
+                'minexclusive': jsg.ArrayFactory('minexclusive', _CONTEXT, numericLiteral, 0, None),
+                'maxinclusive': jsg.ArrayFactory('maxinclusive', _CONTEXT, numericLiteral, 0, None),
+                'maxexclusive': jsg.ArrayFactory('maxexclusive', _CONTEXT, numericLiteral, 0, None),
                 'last': jsg.String}
     _strict = True
 
@@ -331,12 +331,12 @@ class listReq(jsg.JSGObject):
 
 class listList(jsg.JSGObject):
     _reference_types = [listFacet]
-    _members = {'first': jsg.ArrayFactory('first', _CONTEXT, INTEGER, , ),
-                'mininclusive': jsg.ArrayFactory('mininclusive', _CONTEXT, jsg.ArrayFactory('mininclusive', _CONTEXT, numericLiteral, , ), , ),
-                'minexclusive': jsg.ArrayFactory('minexclusive', _CONTEXT, jsg.ArrayFactory('minexclusive', _CONTEXT, numericLiteral, , ), , ),
-                'maxinclusive': jsg.ArrayFactory('maxinclusive', _CONTEXT, jsg.ArrayFactory('maxinclusive', _CONTEXT, numericLiteral, , ), , ),
-                'maxexclusive': jsg.ArrayFactory('maxexclusive', _CONTEXT, jsg.ArrayFactory('maxexclusive', _CONTEXT, numericLiteral, , ), , ),
-                'last': jsg.ArrayFactory('last', _CONTEXT, STRING, , )}
+    _members = {'first': jsg.ArrayFactory('first', _CONTEXT, INTEGER, 0, None),
+                'mininclusive': jsg.ArrayFactory('mininclusive', _CONTEXT, jsg.ArrayFactory('mininclusive', _CONTEXT, numericLiteral, 0, None), 0, None),
+                'minexclusive': jsg.ArrayFactory('minexclusive', _CONTEXT, jsg.ArrayFactory('minexclusive', _CONTEXT, numericLiteral, 0, None), 0, None),
+                'maxinclusive': jsg.ArrayFactory('maxinclusive', _CONTEXT, jsg.ArrayFactory('maxinclusive', _CONTEXT, numericLiteral, 0, None), 0, None),
+                'maxexclusive': jsg.ArrayFactory('maxexclusive', _CONTEXT, jsg.ArrayFactory('maxexclusive', _CONTEXT, numericLiteral, 0, None), 0, None),
+                'last': jsg.ArrayFactory('last', _CONTEXT, STRING, 0, None)}
     _strict = True
 
     def __init__(self,

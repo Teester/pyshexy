@@ -42,8 +42,7 @@ class RDFTriple(tuple):
         return self[2]
 
     def __str__(self) -> str:
-        #return f"<{self.s}> <{self.p}> {self.o} ."
-        return "<" + self.s + "> <" + self.p + "> " + self.o + " ."
+        return "<{}> <{}> {} .".format(self.s, self.p, self.o)
 
 
 class RDFGraph(set):

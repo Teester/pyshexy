@@ -221,10 +221,6 @@ class ObjectWrapperMeta(type):
     variable_name = str
     context = JSGContext
     typ = type
-    def __init__(self, variable_name:str, context: JSGContext, typ: type):
-        self.variable_name = variable_name
-        self.context = context
-        self.typ = typ
 
     def __instancecheck__(self, element: object) -> bool:
         return conforms(element, JSGObject, self.context.NAMESPACE)
@@ -234,10 +230,6 @@ class ObjectWrapper(metaclass=ObjectWrapperMeta):
     variable_name = str
     context = JSGContext
     typ = type
-    def __init__(self, variable_name:str, context: JSGContext, typ: type):
-        self.variable_name = variable_name
-        self.context = context
-        self.typ = typ
         
     def __new__(cls, value):
         return cls.typ(cls.variable_name, cls.context, value)
@@ -260,5 +252,5 @@ class Object(JSGObject):
     def __init__(self, variable_name: str,  _context: JSGContext, value: Optional[JsonObj]):
         self._variable_name = variable_name
         if value is not None and not isinstance(value, JsonObj):
-            raise ValueError(variable_name + ": Invalid " + self._class_name + ' value: "' + value + '"')
+            raise ValueError('{}: Invalid {} value: "{}"'.format(variable_name, self._class_name, value))
         super().__init__(_context, **({} if value is None else value.__dict__))

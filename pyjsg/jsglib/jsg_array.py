@@ -45,18 +45,13 @@ class JSGArray(list, JSGValidateable):
             for i in range(0, len(val)):
                 v = val[i]
                 if not conforms(v, self._type, self._context.NAMESPACE):
-                    errors.append(self._variable_name + " element " + i + ": "+ v + " is not a " + self._type.__name__)
+                    errors.append("{} element {}: {} is not a {}".format(self._variable_name, i, v, self._type.__name__))
 
             if len(val) < self._min:
-                errors.append(
-                    #f"{self._variable_name}: at least {self._min} value{'s' if self._min > 1 else ''} required - "
-                    self._variable_name + ": at least " + self._min + " value {'s' if self._min >1 else ''} required - "
-                    #f"element has {len(val) if len(val) else 'none'}")
-                    "element has " + len(val) if len(val) else 'none')
+                errors.append("{}: at least {} value{} required - element has {}".format(self._variable_name, self._min, 's' if self._min > 1 else '', len(val) if len(val) else 'none'))
 
             if self._max is not None and len(val) > self._max:
-                errors.append(
-                    self._variable_name + ": no more than " + self.max + " values permitted - element has " + len(val))
+                errors.append("{}: no more than {} values permitted - element has {}".format(self._variable_name, self._max, len(val)))
 
         if log:
             for error in errors:
@@ -65,14 +60,11 @@ class JSGArray(list, JSGValidateable):
 
 
 class ArrayWrapperMeta(type):
-    #variable_name: str
-    #context: JSGContext
-    #typ: type
-    #min: int
-    #max: Optional[int]
-    def __init__(self, type, variable_name, context):
-        self.variable_name = variable_name
-        self.context = context
+    variable_name = str
+    context = JSGContext
+    typ = type
+    min = int
+    max = Optional[int]
 
     def __instancecheck__(self, instance: list) -> bool:
         if not isinstance(instance, list):
@@ -84,17 +76,11 @@ class ArrayWrapperMeta(type):
 
 
 class ArrayWrapper(metaclass=ArrayWrapperMeta):
-    #variable_name: str
-    #context: JSGContext
-    #typ: type
-    #min: int
-    #max: Optional[int]
-    #def __init__(self, variable_name, context, typ, min, max):
-    #    self.variable_name = variable_name
-    #    self.context = context
-    #    self.typ = typ
-    #    self.min = min
-    #    self.max = max
+    variable_name = str
+    context = JSGContext
+    typ = type
+    min = int
+    max = Optional[int]
 
     def __new__(cls, value):
         return JSGArray(cls.variable_name, cls.context, cls.typ, cls.min, cls.max, value)

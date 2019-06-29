@@ -2,7 +2,7 @@
 
 from ShExJSG import ShExJ
 from pyjsg.jsglib import isinstance_
-8
+
 from pyshex.shape_expressions_language.p5_4_node_constraints import satisfiesNodeConstraint
 from pyshex.shape_expressions_language.p5_5_shapes_and_triple_expressions import satisfiesShape
 from pyshex.shape_expressions_language.p5_context import Context, DebugContext
@@ -48,8 +48,7 @@ def satisfies(cntxt: Context, n: Node, se: ShExJ.shapeExpr) -> bool:
     elif isinstance_(se, ShExJ.shapeExprLabel):
         rval = satisfiesShapeExprRef(cntxt, n, se)
     else:
-        #raise NotImplementedError(f"Unrecognized shapeExpr: {type(se)}")
-        raise NotImplementedError("Unrecognized shapeExpr: " + type(se))
+        raise NotImplementedError("Unrecognized shapeExpr: {}".format(type(se)))
     return rval
 
 
@@ -82,13 +81,11 @@ def satisfiesExternal(cntxt: Context, n: Node, se: ShExJ.ShapeExternal, c: Debug
      success.
      """
     if c.debug:
-        #print(f"id: {se.id}")
-        print("id: "+ se.id)
+        print("id: {}".format(se.id))
     extern_shape = cntxt.external_shape_for(se.id)
     if extern_shape:
         return satisfies(cntxt, n, extern_shape)
-    #cntxt.fail_reason = f"{se.id}: Shape is not in Schema"
-    cntxt.fail_reason = se.id + ": Shape is not in Schema"
+    cntxt.fail_reason = "{}: Shape is not in Schema".format(se.id)
     return False
 
 
@@ -98,11 +95,9 @@ def satisfiesShapeExprRef(cntxt: Context, n: Node, se: ShExJ.shapeExprLabel, c: 
      and satisfies(n, se2, G, m).
      """
     if c.debug:
-        #print(f"id: {se}")
-        print("id: " + se)
+        print("id: {}".format(se))
     for shape in cntxt.schema.shapes:
         if shape.id == se:
             return satisfies(cntxt, n, shape)
-    #cntxt.fail_reason = f"{se}: Shape is not in Schema"
-    cntxt.fail_readon = se + ": Shape is not in Sxhema"
+    cntxt.fail_reason = "{}: Shape is not in Schema".format(se)
     return False

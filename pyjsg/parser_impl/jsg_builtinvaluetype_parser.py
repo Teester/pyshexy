@@ -5,19 +5,23 @@ from pyjsg.parser.jsgParser import *
 from pyjsg.parser.jsgParserVisitor import jsgParserVisitor
 from pyjsg.parser_impl.jsg_doc_context import JSGDocContext, PythonGeneratorElement
 
-
+        
 class JSGBuiltinValueType(jsgParserVisitor, PythonGeneratorElement):
     #@dataclass
     class TypeInfo:
-        #sig_type: str
-        #ref_type: str
-        #py_type: type
-        #mt_value: str
-        def __init__(self, sig_type: str, ref_type: str, py_type: type, mt_value: str):
+        def __init__(self, sig_type, ref_type, py_type, mt_value):
             self.sig_type = sig_type
             self.ref_type = ref_type
             self.py_type = py_type
             self.mt_value = mt_value
+            
+        def __repr__(self):
+            return ("{}(sig_type={}!r, ref_type={}!r, py_type={}!r, mt_value={}!r)".format(self.__class__.__name__, sig_type, ref_type, py_type, mt_value))
+
+        def __eq__(self, other):
+            if other.__class__ is not self.__class__:
+                return NotImplemented
+            return (self.sig_type, self.ref_type, self.py_type, self.mt_value) == (other.sig_type, other.ref_type, other.py_type, other.mt_value)
 
     parserTypeToImplClass = \
         {"@string": TypeInfo("jsg.String", "jsg.String", str, "None"),
@@ -39,7 +43,7 @@ class JSGBuiltinValueType(jsgParserVisitor, PythonGeneratorElement):
             self.visit(ctx)
 
     def __str__(self):
-        return "builtinValueType: %s" % (self._value_type_text if self._value_type_text != '.' else 'jsg.AnyType')
+        return "builtinValueType: {}".format(self._value_type_text if self._value_type_text != '.' else 'jsg.AnyType')
 
     def python_type(self) -> str:
         return "type(None)" if self._typeinfo.py_type is type(None) else self._typeinfo.py_type.__name__

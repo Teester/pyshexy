@@ -1,5 +1,5 @@
-# Auto generated from tests\test_pyjsg_standalone\test_jsg_readme\jsg\ge2.jsg by PyJSG version 0.9.1
-# Generation date: 2019-06-26 14:26
+# Auto generated from tests\test_pyjsg_standalone\test_jsg_readme\jsg\ge2.jsg by PyJSG version 0.9.2
+# Generation date: 2019-06-29 17:59
 #
 import typing
 import pyjsg.jsglib as jsg
@@ -147,7 +147,7 @@ class object_options(jsg.JSGObject):
             elif isinstance(opts_, object_options_3_):
                 pass
             else:
-                raise ValueError(f"Unrecognized value type: {opts_}")
+                raise ValueError("Unrecognized value type: {opts_}"
 
 
 
@@ -166,7 +166,7 @@ class object_options_2(jsg.JSGObject):
             elif isinstance(opts_, object_options_2_2_):
                 pass
             else:
-                raise ValueError(f"Unrecognized value type: {opts_}")
+                raise ValueError("Unrecognized value type: {opts_}"
 
 
 

@@ -15,7 +15,8 @@ OBJ = Node
 #    s = None
 #    p = None
 #    o = None
-RDFTriple = NamedTuple("RDFTriple", [("s", None), ("p", None), ("o", None)])
+RDFTriple = NamedTuple("RDFTriple", [("s", SUBJ), ("p", PRED), ("o", OBJ)])
+RDFTriple.__new__.__defaults__ = (None,) * len(RDFTriple._fields)
 
 class CFGraph(Graph):
     """ Collection Flattening Graph

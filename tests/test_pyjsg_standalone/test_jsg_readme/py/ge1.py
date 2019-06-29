@@ -1,5 +1,5 @@
-# Auto generated from tests\test_pyjsg_standalone\test_jsg_readme\jsg\ge1.jsg by PyJSG version 0.9.1
-# Generation date: 2019-06-28 17:43
+# Auto generated from tests\test_pyjsg_standalone\test_jsg_readme\jsg\ge1.jsg by PyJSG version 0.9.2
+# Generation date: 2019-06-29 17:59
 #
 import typing
 import pyjsg.jsglib as jsg
@@ -32,7 +32,7 @@ class person(jsg.JSGObject):
     _members = {'name': jsg.String,
                 'gender': _Anon1,
                 'active': jsg.Boolean,
-                'id': jsg.ArrayFactory('id', _CONTEXT, jsg.String, , )}
+                'id': jsg.ArrayFactory('id', _CONTEXT, jsg.String, 0, None)}
     _strict = True
 
     def __init__(self,
@@ -53,7 +53,7 @@ class company(jsg.JSGObject):
     _reference_types = []
     _members = {'name': jsg.String,
                 'year founded': typing.Optional[jsg.Integer],
-                'employees': jsg.ArrayFactory('employees', _CONTEXT, person, 2, )}
+                'employees': jsg.ArrayFactory('employees', _CONTEXT, person, 2, None)}
     _strict = True
 
     def __init__(self,

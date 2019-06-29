@@ -11,16 +11,21 @@ from pyjsg.jsglib.loader import loads, Logger, is_valid
 from pyjsg.parser_impl.generate_python import parse
 
 
-
+#class ValidationResult(NamedTuple):
+#    success: bool
+#    fail_reason: str
+#    test_name: str
+#    type: Optional[str]
 class ValidationResult(namedtuple("ValidationResult", ["success", "fail_reason", "test_name", "type"])):
     def __str__(self) -> str:
-        return ("%s: " % (self.test_name) if self.test_name else "") +\
-               ("Conforms to %s" % (self.type) if self.success else "FAIL - %s" % (self.fail_reason))
+        return ("{}: ".format(self.test_name) if self.test_name else "") +\
+               ("Conforms to {}".format(self.type) if self.success else "FAIL - {}".format(self.fail_reason))
 
 
 class JSGPython:
     def __init__(self, jsg: Optional[str]=None, python: Optional[str]=None, print_python: bool=False) -> None:
         """ Construct a jsg validation module
+
         :param jsg: JSG specification.  If none, use python
         :param python: Python specification.
         :param print_python: True means print Python to stdout
@@ -55,7 +60,7 @@ class JSGPython:
         if '://' in inp:
             req = requests.get(inp)
             if not req.ok:
-                raise ValueError("Unable to read " + inp)
+                raise ValueError("Unable to read {}".format(inp))
             return req.text
         else:
             with open(inp) as infile:
@@ -63,6 +68,7 @@ class JSGPython:
 
     def conforms(self, json: str, name: str = "", verbose: bool=False) -> ValidationResult:
         """ Determine whether json conforms with the JSG specification
+
         :param json: JSON string, URI to JSON or file name with JSON
         :param name: Test name for ValidationResult -- printed in dx if present
         :param verbose: True means print the response
@@ -83,6 +89,7 @@ class JSGPython:
 def genargs() -> ArgumentParser:
     """
     Create a command line parser
+
     :return: parser
     """
     parser = ArgumentParser()
@@ -97,14 +104,14 @@ def genargs() -> ArgumentParser:
 def validate_json(argv) -> bool:
     def do_validation(entry: str) -> bool:
         if opts.verbose and not validator.is_json(entry):
-            print("Validating %s... " % (entry), end='')
+            print("Validating {}... ".format(entry), end='')
         success, reason = validator.conforms(entry)
         if opts.verbose:
             if success:
                 print("Success")
                 return True
             else:
-                print("Fail: %s" % (reason))
+                print("Fail: {}".format(reason))
                 return False
 
     opts = genargs().parse_args(argv)

@@ -30,7 +30,7 @@ class JSGLexerRuleBlock(jsgParserVisitor, PythonGeneratorElement):
             self.visit(ctx)
 
     def __str__(self):
-        return "pattern: r'%s'" % (self._rulePattern)
+        return "pattern: r'{}'".format(self._rulePattern)
 
     def dependency_list(self) -> List[str]:
         return list(self._ruleTokens)
@@ -59,8 +59,7 @@ class JSGLexerRuleBlock(jsgParserVisitor, PythonGeneratorElement):
     def as_python(self, name: str) -> str:
         """ Return the python representation """
         if self._ruleTokens:
-            pattern = "jsg.JSGPattern(r'{}'.format({}))".\
-                format(self._rulePattern, ', '.join(['{v}={v}.pattern'.format(v=v) for v in sorted(self._ruleTokens)]))
+            pattern = "jsg.JSGPattern(r'{}'.format({}))".format(self._rulePattern, ', '.join(['{v}={v}.pattern'.format(v=v) for v in sorted(self._ruleTokens)]))
         else:
             pattern = "jsg.JSGPattern(r'{}')".format(self._rulePattern)
         base_type = self._jsontype.signature_type() if self._jsontype else "jsg.JSGString"

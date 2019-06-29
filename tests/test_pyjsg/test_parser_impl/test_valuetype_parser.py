@@ -202,7 +202,7 @@ class ValueTypeTestCase(unittest.TestCase):
             elif isinstance(opts_, _Anon1_2_):
                 self.flags = opts_.flags
             else:
-                raise ValueError(f"Unrecognized value type: {opts_}")""", t.as_python('stringFacet').strip())
+                raise ValueError("Unrecognized value type: {}".format(opts_))""", t.as_python('stringFacet').strip())
         self.assertEqual(['INTEGER', 'STRING', '_Anon1_1_', '_Anon1_2_'], t.dependency_list())
 
         t = cast(JSGObjectExpr, parse("x = a:@number | b:@null | ;", "objectMacro", JSGObjectExpr))
@@ -224,7 +224,7 @@ class ValueTypeTestCase(unittest.TestCase):
             elif isinstance(opts_, _Anon1_3_):
                 pass
             else:
-                raise ValueError(f"Unrecognized value type: {opts_}")""",
+                raise ValueError("Unrecognized value type: {}".format(opts_))""",
                          t.as_python('stringFacet').strip())
         self.assertEqual(['_Anon1_1_', '_Anon1_2_', '_Anon1_3_'], t.dependency_list())
 

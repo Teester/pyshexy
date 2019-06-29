@@ -64,5 +64,5 @@ class SchemaLoader:
         else:
             rval = schema_location
         if self.schema_format:
-            rval = re.sub(r'\.[^.]+?(tern)?$','.' + self.schema_format + '\\1', rval)
+            rval = re.sub(r'\.[^.]+?(tern)?$','.{}\\1'.format(self.schema_format), rval)
         return rval

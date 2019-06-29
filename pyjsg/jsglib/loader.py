@@ -49,11 +49,10 @@ def loads_loader(load_module: types.ModuleType, pairs: Dict[str, str]) -> Option
         return getattr(load_module, cntxt.TYPE_EXCEPTIONS[0])(**pairs)
 
     if cntxt.TYPE in pairs:
-        #raise ValueError(f'Unknown reference type: "{cntxt.TYPE}": "{pairs[cntxt.TYPE]}"')
-        raise ValueError('Unknown reference type: "' + cntxt.TYPE + '": "' + pairs[cntxt.TYPE] + '"')
+        raise ValueError('Unknown reference type: "{}": "{}"'.format(cntxt.TYPE, pairs[cntxt.TYPE]))
     else:
-        #raise ValueError(f'Missing "{cntxt.TYPE}" element')
-        raise ValueError('Missing "' + cntxt.TYPE + '" element')
+        raise ValueError('Missing "{}" element'.format(cntxt.TYPE))
+
 
 def loads(s: str, load_module: types.ModuleType, **kwargs):
     """ Convert a JSON string into a JSGObject

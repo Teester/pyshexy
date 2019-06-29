@@ -8,20 +8,21 @@ from pyshex.shape_expressions_language.p5_context import Context
 from pyshex.shapemap_structure_and_language.p1_notation_and_terminology import Node
 
 class slurper():
+
     def __init__(self, cntxt: Context, n: Node, S: ShExJ.Shape):
         self.graph = cntxt.graph
         self.tracing = isinstance(self.graph, SlurpyGraph) and cntxt.debug_context.trace_slurps
         self.n = n
         self.S = S
 
-    def __iter__(self):
-        return self
+    #def __iter__(self):
+    #    return self
 
-    def __next__(self):
-        return self
+    #def __next__(self):
+    #    return self
 
-    def throw(self, type, val, traceback):
-        return
+    #def throw(self, type, val, traceback):
+    #    return
 
     def __enter__(self) -> Graph:
         if self.tracing:
@@ -38,4 +39,3 @@ class slurper():
                 print(" {} triples ({} μs)".format(new_triples, int((self.graph.total_slurptime - self.g_time) * 1000)))
             else:
                 print(" (Cached)")
-        #return True

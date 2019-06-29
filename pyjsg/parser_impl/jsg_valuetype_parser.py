@@ -31,15 +31,15 @@ class JSGValueType(jsgParserVisitor, PythonGeneratorElement):
     def __str__(self):
         if self._typeid:
             if self._context.is_anon(self._typeid):
-                typ = "(anonymous: %s): %s" % (self._typeid, self._context.reference(self._typeid))
+                typ = "(anonymous: {}): {}".format(self._typeid, self._context.reference(self._typeid))
             else:
-                typ = "ID: %s" % (self._typeid)
+                typ = "ID: {}".format(self._typeid)
         elif self._builtintype:
             typ = str(self._builtintype)
         elif self._alttypelist:
-            lid_str = "(%s) | " % (self._lexerid_str()) if self._lexeridref else ""
+            lid_str = "({}) | ".format(self._lexerid_str()) if self._lexeridref else ""
             alts_str = ' | '.join(ta.signature_type() for ta in self._alttypelist)
-            typ = "(%s%s)" % (lid_str, alts_str)
+            typ = "({}{})".format(lid_str, alts_str)
         elif self._lexeridref:
             typ = self._lexerid_str()
         elif self._arrayDef:

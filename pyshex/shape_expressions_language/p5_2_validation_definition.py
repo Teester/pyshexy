@@ -28,14 +28,12 @@ def isValid(cntxt: Context, m: FixedShapeMap) -> Tuple[bool, List[str]]:
     for nodeshapepair in m:
         n = nodeshapepair.nodeSelector
         if not isinstance_(n, Node):
-            #return False, [f"{n}: Triple patterns are not implemented"]
-            return False, [n + ":Triple patterns are not implemented"]
+            return False, ["{} :Triple patterns are not implemented".format(n)]
         # The third test below is because the spec asserts that completely empty graphs pass in certain circumstances
         elif not (next(cntxt.graph.predicate_objects(nodeshapepair.nodeSelector), None) or
                   next(cntxt.graph.subject_predicates(nodeshapepair.nodeSelector), None) or
                   not next(cntxt.graph.triples((None, None, None)), None)):
-            #return False, [f"Focus: {nodeshapepair.nodeSelector} not in graph"]
-            return False, ["Focus: " + nodeshapepair.nodeSelector + " not in graph"]
+            return False, ["Focus: {} not in graph".format(nodeshapepair.nodeSelector)]
         else:
             s = cntxt.shapeExprFor(START if nodeshapepair.shapeLabel is None or nodeshapepair.shapeLabel is START
                                    else nodeshapepair.shapeLabel)
@@ -44,8 +42,7 @@ def isValid(cntxt: Context, m: FixedShapeMap) -> Tuple[bool, List[str]]:
                 if nodeshapepair.shapeLabel is START or nodeshapepair.shapeLabel is None:
                     cntxt.fail_reason = "START node is not specified or is invalid"
                 else:
-                    #cntxt.fail_reason = f"Shape: {nodeshapepair.shapeLabel} not found in Schema"
-                    cntxt.fail.reason = "Shape: " + nodeshapepair.shapeLabel + " not found in Schema"
+                    cntxt.fail.reason = "Shape: {} not found in Schema".format(nodeshapepair.shapeLabel)
                 return False, cntxt.process_reasons()
             parse_nodes.append(cntxt.current_node)
             if not satisfies(cntxt, n, s):

@@ -46,7 +46,7 @@ class JSGPatterned(JSGValidateable, metaclass=JSGPatternedValMeta):
 
     def __init__(self, val: Any) -> None:
         if not isinstance(val, type(self)):
-            raise ValueError('Invalid ' + self._class_name + ' value:"' + str(val) + '"')
+            raise ValueError('Invalid {} value:"{}"'.format(self._class_name, val))
 
     def _is_valid(self, log: Optional[Logger] = None) -> bool:
         return True
@@ -85,7 +85,7 @@ class Integer(int, JSGPatterned):
 
     def __new__(cls, v):
         if isinstance(v, bool) or not isinstance(v, Integer):
-            raise ValueError("Invalid %s value: %s" % (cls.__name__, str(v)))
+            raise ValueError("Invalid {} value: {}".format(cls.__name__, v))
         return super().__new__(cls, v)
 
 
@@ -97,7 +97,7 @@ class Boolean(JSGValidateable, metaclass=JSGPatternedValMeta):
 
     def __new__(cls, v) -> bool:
         if not isinstance(v, cls):
-            raise ValueError("Invalid %s value: %s" % (cls.__name__, str(v)))
+            raise ValueError("Invalid {} value: {}".format(cls.__name__, v))
 
         return v if isinstance(v, bool) else cls.true_pattern.matches(str(v))
 

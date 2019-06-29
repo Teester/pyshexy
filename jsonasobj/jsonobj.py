@@ -1,4 +1,5 @@
-from flask import json
+import json
+import chardet
 from typing import Union, List, Dict, Tuple, Optional
 from urllib.request import Request, urlopen
 
@@ -100,7 +101,8 @@ def loads(s: str, **kwargs) -> JsonObj:
     :return: JsonObj representing the json string
     """
     if isinstance(s, (bytes, bytearray)):
-        s = s.decode(json.detect_encoding(s), 'surrogatepass')
+        #s = s.decode(json.detect_encoding(s), 'surrogatepass')
+        s = s.decode(chardet.detect(s)['encoding'], 'surrogatepass')
     return json.loads(s, object_hook=lambda pairs: JsonObj(**pairs), **kwargs)
 
 

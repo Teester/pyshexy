@@ -40,5 +40,6 @@ def union_conforms(element: Union, etype, namespace: Dict[str, Any], conforms: C
     :param conforms: conformance test function
     :return: True if element conforms to at least one type in etype
     """
+    #union_vals = etype.__union_params__ if sys.version_info < (3, 6) else etype.__args__
     union_vals = etype.__args__
     return any(conforms(element, t, namespace) for t in union_vals)

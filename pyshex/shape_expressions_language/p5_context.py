@@ -31,8 +31,7 @@ class DebugContext:
 
     def d(self) -> str:
         """ Return a depth indicator """
-        #return f"({self.trace_depth})"
-        return "(" + self.trace_depth + ")"
+        return "({})".format(self.trace_depth)
 
     def splus(self) -> None:
         self.trace_depth += 1
@@ -176,8 +175,7 @@ class Context:
                 if not imp_shape:
                     # TODO: what to do on import failure
                     self.is_valid = False
-                    #self.error_list.append(f"Import failure on {uri}")
-                    self.error_list.append("Import failure on " + uri)
+                    self.error_list.append("Import failure on {}".format(uri))
 
         if self.schema.start is not None:
             if not isinstance_(self.schema.start, ShExJ.shapeExprLabel) and\
@@ -404,8 +402,7 @@ class Context:
             self.assumptions[key] = False
             return False, True
         else:
-            #self.fail_reason = f"{s.id}: Inconsistent recursive shape reference"
-            self.fail_reason = s.id + ": Inconsistent recursive shape reference"
+            self.fail_reason = "{}: Inconsistent recursive shape reference".format(s.id)
             return True, False
 
     def process_reasons(self) -> List[str]:
@@ -421,13 +418,12 @@ class Context:
         if self.current_node._fail_reason is None:
             self.current_node._fail_reason = reason_text
         else:
-            self.current_node._fail_reason += '\n' + reason_text
+            self.current_node._fail_reason += '\n{}'.format(reason_text)
         self.current_node.reason_stack = copy(self.evaluate_stack)
 
     def dump_bnode(self, n: Union[URIRef, BNode, Literal]) -> None:
         if isinstance(n, BNode):
-            #self.fail_reason = f"    {self.n3_mapper.n3(n)} context:"
-            self.fail_reason = "    " + self.n3_mapper.n3(n) + " context:"
+            self.fail_reason = "    {} context:".format(self.n3_mapper.n3(n))
             for entry in self.current_node.dump_bnodes(self.graph, n, '      '):
                 self.fail_reason = entry
 

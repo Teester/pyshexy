@@ -33,9 +33,9 @@ class JSGPairDef(jsgParserVisitor, PythonGeneratorElement):
                 namelist = '(' + ' | '.join(name for name in names) + ')'
             else:
                 namelist = names[0]
-            return "pairDef: %s : %s%s" % (namelist, self._typ, self._ebnf)
+            return "pairDef: {} : {}{}".format(namelist, self._typ, self._ebnf)
         else:
-            return "pairDef: typeReference: %s%s" % (self._type_reference, self._ebnf)
+            return "pairDef: typeReference: {}{}".format(self._type_reference, self._ebnf)
 
     def is_reference_type(self) -> bool:
         return self._type_reference is not None
@@ -87,10 +87,10 @@ class JSGPairDef(jsgParserVisitor, PythonGeneratorElement):
             # This assumes that references are to things that have signatures
             ref = self._context.reference(self._type_reference)
             if not getattr(ref, 'signatures', None):
-                raise NotImplementedError("Reference to " + self._type_reference + " is not valid")
+                raise NotImplementedError("Reference to {} is not valid".format(self._type_reference))
             return self._context.reference(self._type_reference).signatures(all_are_optional)
         else:
-            return ["%s: %s = %s" % (self._names[rn], self.python_type(), self._ebnf.mt_value(self._typ)) for rn, cn in self._names.items() if is_valid_python(cn)]
+            return ["{}: {} = {}".format(self._names[rn], self.python_type(), self._ebnf.mt_value(self._typ)) for rn, cn in self._names.items() if is_valid_python(cn)]
 
     def _initializer_for(self, raw_name: str, cooked_name: str, prefix: Optional[str]) -> List[str]:
         """Create an initializer entry for the entry
@@ -108,22 +108,22 @@ class JSGPairDef(jsgParserVisitor, PythonGeneratorElement):
         if is_valid_python(raw_name):
             if prefix:
                 # If a prefix exists, the input has already been processed - no if clause is necessary
-                rval.append("self.%s = %s.%s" % (raw_name, prefix, raw_name))
+                rval.append("self.{} = {}.{}".format(raw_name, prefix, raw_name))
             else:
                 cons = raw_name
-                rval.append("self.%s = %s" % (raw_name, cons))
+                rval.append("self.{} = {}".format(raw_name, cons))
         elif is_valid_python(cooked_name):
             if prefix:
-                rval.append("setattr(self, '%s', getattr(%s, '%s')"  % (raw_name, prefix, raw_name))
+                rval.append("setattr(self, '{}', getattr({}, '{}')".format(raw_name, prefix, raw_name))
             else:
-                cons = "%s if %s is not %s else _kwargs.get('%s', %s)" % (cooked_name, cooked_name, mt_val, raw_name, mt_val)
-                rval.append("setattr(self, '%s', %s)" % (raw_name, cons))
+                cons = "{} if {} is not {} else _kwargs.get('{}', {})".format(cooked_name, cooked_name, mt_val, raw_name, mt_val)
+                rval.append("setattr(self, '{}', {})".format(raw_name, cons))
         else:
-            getter = "_kwargs.get('%s', %s)" % (raw_name, mt_val)
+            getter = "_kwargs.get('{}', {})".format(raw_name, mt_val)
             if prefix:
-                rval.append("setattr(self, '%s', getattr(%s, '%s')" % (raw_name, prefix, getter))
+                rval.append("setattr(self, '{}', getattr({}, '{}')".format(raw_name, prefix, getter))
             else:
-                rval.append("setattr(self, '%s', %s)" % (raw_name, getter))
+                rval.append("setattr(self, '{}', {})".format(raw_name, getter))
 
         return rval
 
@@ -134,7 +134,7 @@ class JSGPairDef(jsgParserVisitor, PythonGeneratorElement):
             # TODO: Remove this check once we are certian things are good
             ref = self._context.reference(self._type_reference)
             if not getattr(ref, 'signatures', None):
-                raise NotImplementedError("Reference to " + self._type_reference + " is not valid")
+                raise NotImplementedError("Reference to {} is not valid".format(self._type_reference))
             return self._context.reference(self._type_reference).initializers(prefix)
         else:
             return flatten([self._initializer_for(rn, cn, prefix) for rn, cn in self._names.items()])

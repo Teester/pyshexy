@@ -41,15 +41,14 @@ def nodeSatisfiesNodeKind(cntxt: Context, n: Node, nc: ShExJ.NodeConstraint, c: 
         * v = "nonliteral" and n is an IRI or blank node.
     """
     if c.debug and nc.nodeKind is not None:
-        #print(f" Kind: {nc.nodeKind}")
-        print("Kind: " + nc.nodeKind)
+        print("Kind: {}".format(nc.nodeKind))
     if nc.nodeKind is None or \
         (nc.nodeKind == 'iri' and isinstance(n, URIRef)) or \
         (nc.nodeKind == 'bnode' and isinstance(n, BNode)) or \
         (nc.nodeKind == 'literal' and isinstance(n, Literal)) or \
         (nc.nodeKind == 'nonliteral' and isinstance(n, (URIRef, BNode))):
         return True
-    cntxt.fail_reason = "Node kind mismatch have: %s expected: %s" % (type(n).__name__, nc.nodeKind)
+    cntxt.fail_reason = "Node kind mismatch have: {} expected: {}".format(type(n).__name__, nc.nodeKind)
     return False
 
 
@@ -65,20 +64,16 @@ def nodeSatisfiesDataType(cntxt: Context, n: Node, nc: ShExJ.NodeConstraint, c: 
     if nc.datatype is None:
         return True
     if c.debug:
-        #print(f" Datatype: {nc.datatype}")
-        print(" Datatype: " + nc.datatype)
+        print(" Datatype: {}".format(nc.datatype))
     if not isinstance(n, Literal):
-        #cntxt.fail_reason = f"Datatype constraint ({nc.datatype}) " \
-        #    f"does not match {type(n).__name__} {cntxt.n3_mapper.n3(n)}"
-        cntxt.fail_reason = "Datatype constraint " + nc.datatype + " does not match " + type(n).__name__ +" " + cntxt.n3_mapper.n3(n)    
+        cntxt.fail_reason = "Datatype constraint ({}) does not match {} {}".format(nc.datatype, type(n).__name__, cntxt.n3_mapper.n3(n))    
         cntxt.dump_bnode(n)
         return False
     actual_datatype = _datatype(n)
     if actual_datatype == str(nc.datatype) or \
         (is_sparql_operand_datatype(nc.datatype) and can_cast_to(n, nc.datatype)):
         return True
-    #cntxt.fail_reason = f"Datatype mismatch - expected: {nc.datatype} actual: {actual_datatype}"
-    cntxt.fail_reason = "Datatype mismatch - expected: "+ nc.datatype + " actual: "+ actual_datatype
+    cntxt.fail_reason = "Datatype mismatch - expected: {} actual: {}".format(nc.datatype, actual_datatype)
     return False
 
 
@@ -126,13 +121,13 @@ def nodeSatisfiesStringFacet(cntxt: Context, n: Node, nc: ShExJ.NodeConstraint, 
            (nc.pattern is None or pattern_match(nc.pattern, nc.flags, lex)):
             return True
         elif nc.length is not None and len(lex) != nc.length:
-            cntxt.fail_reason = "String length mismatch - expected: %d actual: %d" % (nc.length, len(lex))
+            cntxt.fail_reason = "String length mismatch - expected: {} actual: {}".format(nc.length, len(lex))
         elif nc.minlength is not None and len(lex) < nc.minlength:
-            cntxt.fail_reason = "String length violation - minimum: %d actual: %d" % (nc.minlength, len(lex))
+            cntxt.fail_reason = "String length violation - minimum: {} actual: {}".format(nc.minlength, len(lex))
         elif nc.maxlength is not None and len(lex) > nc.maxlength:
-            cntxt.fail_reason = "String length violation - maximum: %d actual: %d" % (nc.maxlength, len(lex))
+            cntxt.fail_reason = "String length violation - maximum: {} actual: {}".format(nc.maxlength, len(lex))
         elif nc.pattern is not None and not pattern_match(nc.pattern, nc.flags, lex):
-            cntxt.fail_reason = "Pattern match failure - pattern: %s flags:%s string: %s" % (nc.pattern, nc.flags, lex)
+            cntxt.fail_reason = "Pattern match failure - pattern: {} flags:{} string: {}".format(nc.pattern, nc.flags, lex)
         else:
             cntxt.fail_reason = "Programming error - flame the programmer"
         return False
@@ -168,27 +163,27 @@ def nodeSatisfiesNumericFacet(cntxt: Context, n: Node, nc: ShExJ.NodeConstraint,
                     return True
                 else:
                     if nc.mininclusive is not None and v < nc.mininclusive:
-                        cntxt.fail_reason = "Numeric value violation - minimum inclusive: %d actual: %d" % (nc.mininclusive, v)
+                        cntxt.fail_reason = "Numeric value violation - minimum inclusive: {} actual: {}".format(nc.mininclusive, v)
                     elif nc.minexclusive is not None and v <= nc.minexclusive:
-                        cntxt.fail_reason = "Numeric value violation - minimum exclusive %d actual: %d" % (nc.minexclusive, v)
+                        cntxt.fail_reason = "Numeric value violation - minimum exclusive {} actual: {}".format(nc.minexclusive, v)
                     elif nc.maxinclusive is not None and v > nc.maxinclusive:
-                        cntxt.fail_reason = "Numeric value violation - maximum inclusive: %d actual : %d" % (nc.maxinclusive, v)
+                        cntxt.fail_reason = "Numeric value violation - maximum inclusive: {} actual : {}".format(nc.maxinclusive, v)
                     elif nc.maxexclusive is not None and v >= nc.maxexclusive:
-                        cntxt.fail_reason = "Numeric value violation - maximum exclusive: %d actual: %d" % (nc.maxexclusive, v)
+                        cntxt.fail_reason = "Numeric value violation - maximum exclusive: {} actual: {}".format(nc.maxexclusive, v)
                     elif nc.totaldigits is not None and (total_digits(n) is None or
                                                              total_digits(n) > nc.totaldigits):
-                        cntxt.fail_reason = "Numeric value violation - max total digits: %d value: %d" % (nc.totaldigits, v)
+                        cntxt.fail_reason = "Numeric value violation - max total digits: {} value: {}".format(nc.totaldigits, v)
                     elif nc.fractiondigits is not None and (fraction_digits(n) is None or
                                                                 total_digits(n) > nc.fractiondigits):
-                        cntxt.fail_reason = "Numeric value violation - max fractional digits: %d value: %d" % (nc.fractiondigits, v)
+                        cntxt.fail_reason = "Numeric value violation - max fractional digits: {} value: {}".format(nc.fractiondigits, v)
                     else:
                         cntxt.fail_reason = "Impossible error - kick the programmer"
                     return False
             else:
-                cntxt.fail_reason = "Numeric test on non-number: " + v
+                cntxt.fail_reason = "Numeric test on non-number: {}".format(v)
                 return False
         else:
-            cntxt.fail_reason = "Numeric test on non-number: " + n
+            cntxt.fail_reason = "Numeric test on non-number: {}".format(n)
             return False
     return True
 
@@ -205,7 +200,7 @@ def nodeSatisfiesValues(cntxt: Context, n: Node, nc: ShExJ.NodeConstraint, _c: D
         if any(_nodeSatisfiesValue(cntxt, n, vsv) for vsv in nc.values):
             return True
         else:
-            cntxt.fail_reason = "Node: " + cntxt.n3_mapper.n3(n) + " not in value set:\n\t" + as_json(cntxt.type_last(nc), indent=None)[:60] + "..." 
+            cntxt.fail_reason = "Node: {} not in value set:\n\t {}...".format(cntxt.n3_mapper.n3(n), as_json(cntxt.type_last(nc), indent=None)[:60])
             return False
 
 

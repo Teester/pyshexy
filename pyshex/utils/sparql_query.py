@@ -22,7 +22,7 @@ class SPARQLQuery:
         elif ':/' in sparql_file_uri_or_text:
             req = requests.get(sparql_file_uri_or_text)
             if not req.ok:
-                raise ValueError("Unable to read " + sparql_file_uri_or_text)
+                raise ValueError("Unable to read {}".format(sparql_file_uri_or_text))
             self.query = req.text
         else:
             with open(sparql_file_uri_or_text) as f:

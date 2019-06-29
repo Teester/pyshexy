@@ -16,23 +16,23 @@ def fetch_uri(self, url: str, base: str="") -> Optional[str]:
     if req.ok:
         return req.text
     else:
-        print("%s %s" % (base + url, req.reason))
+        print("{} {}".format(base + url, req.reason))
         return None
 
 
 class ManifestEntry(JsonObj):
-    #schemaLabel: str
-    #schemaURL: str
-    #dataLabel: str
-    #dataURL : str
-    #queryMap: str
-    #status: str
-    #_manifest: "Manifest"
+    schemaLabel = str
+    schemaURL = str
+    dataLabel = str
+    dataURL = str
+    queryMap = str
+    status = str
+    _manifest = "Manifest"
 
-    #_schema_text: str
-    #_schema: Schema
-    #_rdf_text: str
-    #_rdf: Graph
+    _schema_text = str
+    _schema = Schema
+    _rdf_text = str
+    _rdf = Graph
 
     def resolve(self) -> bool:
         """ Resolve the schema and data

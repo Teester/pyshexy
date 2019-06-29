@@ -42,11 +42,11 @@ class JSGDocParser(jsgParserVisitor):
             if isinstance(v, (JSGLexerRuleBlock, JSGObjectExpr)):
                 body += v.as_python(k)
                 if isinstance(v, JSGObjectExpr) and not self._context.has_typeid:
-                    self._context.directives.append('_CONTEXT.TYPE_EXCEPTIONS.append("%s")' % (k))
+                    self._context.directives.append('_CONTEXT.TYPE_EXCEPTIONS.append("{}")'.format(k))
             elif isinstance(v, JSGForwardRef):
                 pass
             elif isinstance(v, (JSGValueType, JSGArrayExpr)):
-                body += "\n\n\n%s = %s" % (k, v.signature_type())
+                body += "\n\n\n{} = {}".format(k, v.signature_type())
             else:
                 raise NotImplementedError("Unknown grammar elt for {}".format(k))
             self._context.forward_refs.pop(k, None)

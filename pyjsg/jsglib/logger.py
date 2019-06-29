@@ -31,8 +31,7 @@ class Logger:
 
     @staticmethod
     def json_repr(item: Any) -> str:
-        #return f"'{item}'" if isinstance(item, str) else item
-        return "'" + item + "'" if isinstance(item, str) else item
+        return "'{}'".format(item) if isinstance(item, str) else item
 
     @property
     def logging(self):

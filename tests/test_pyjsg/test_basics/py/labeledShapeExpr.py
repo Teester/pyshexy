@@ -1,5 +1,5 @@
-# Auto generated from tests\test_pyjsg\test_basics\jsg\labeledShapeExpr.jsg by PyJSG version 0.9.1
-# Generation date: 2019-06-26 14:26
+# Auto generated from tests\test_pyjsg\test_basics\jsg\labeledShapeExpr.jsg by PyJSG version 0.9.2
+# Generation date: 2019-06-29 17:59
 #
 import typing
 import pyjsg.jsglib as jsg
@@ -202,7 +202,7 @@ class expr(jsg.JSGObject):
             elif isinstance(opts_, expr_7_):
                 pass
             else:
-                raise ValueError(f"Unrecognized value type: {opts_}")
+                raise ValueError("Unrecognized value type: {opts_}"
 
 
 _CONTEXT.NAMESPACE = locals()

@@ -41,15 +41,15 @@ class JSGEbnf(jsgParserVisitor):
         :return: Typed subject
         """
         if self.multiple_elements:
-            rval = "typing.List[%s]" % (subject)
+            rval = "typing.List[{}]".format(subject)
         elif self.one_optional_element:
-            rval = subject if subject.startswith("typing.Optional[") else "typing.Optional[%s]" % (subject)
+            rval = subject if subject.startswith("typing.Optional[") else "typing.Optional[{}]".format(subject)
         elif self.max == 0:
             rval = "type(None)"
         else:
             rval = subject
         if all_are_optional and not self.one_optional_element:
-            rval = "typing.Optional[%s]" % (rval)
+            rval = "typing.Optional[{}]".format(rval)
         return rval
 
     def signature_cardinality(self, subject: str, all_are_optional: bool = False) -> str:
@@ -60,15 +60,15 @@ class JSGEbnf(jsgParserVisitor):
         :return: Typed subject
         """
         if self.multiple_elements:
-            rval = "jsg.ArrayFactory('{name}', _CONTEXT, %s, %s, %s)" % (subject, str(self.min or ""), str(self.max or ""))
+            rval = "jsg.ArrayFactory('{{name}}', _CONTEXT, {}, {}, {})".format(subject, self.min, self.max)
         elif self.one_optional_element:
-            rval = subject if subject.startswith("typing.Optional[") else "typing.Optional[%s]" % (subject)
+            rval = subject if subject.startswith("typing.Optional[") else "typing.Optional[{}]".format(subject)
         elif self.max == 0:
             rval = "type(None)"
         else:
             rval = subject
         if all_are_optional and not self.one_optional_element:
-            rval = "typing.Optional[%s]" % (rval)
+            rval = "typing.Optional[{}]".format(rval)
         return rval
 
     def mt_value(self, typ: JSGValueType) -> str:

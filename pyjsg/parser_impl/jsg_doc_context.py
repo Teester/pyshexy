@@ -40,7 +40,7 @@ class PythonGeneratorElement(metaclass=ABCMeta):
 
 class UndefinedElement(PythonGeneratorElement):
     def __init__(self, name) -> None:
-        self.name = "Undefined(%s)" % (name)
+        self.name = "Undefined({})".format(name)
 
     def __str__(self):
         return self.name
@@ -76,7 +76,7 @@ class JSGForwardRef:
 
     @property
     def label(self) -> str:
-        return '"%s"' % (self._ref)
+        return '"{}"'.format(self._ref)
 
 
 class JSGDocContext:

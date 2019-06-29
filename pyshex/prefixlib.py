@@ -5,6 +5,7 @@ from pyshexc.parser_impl.generate_shexj import load_shex_file
 from rdflib import Namespace, Graph, RDF, RDFS, XSD, URIRef
 from rdflib.namespace import DOAP, FOAF, DC, DCTERMS, SKOS, OWL, XMLNS, _RDFNamespace
 
+
 class PrefixLibrary:
     unique_token = object()
 

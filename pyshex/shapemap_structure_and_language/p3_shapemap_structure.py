@@ -5,7 +5,7 @@ from jsonasobj import JsonObj
 from rdflib import URIRef, Literal
 from pyshex.utils.stringtoken import StringToken
 from pyshex.shapemap_structure_and_language.p1_notation_and_terminology import Node
-import collections
+
 from ShExJSG import ShExJ
 
 
@@ -40,7 +40,7 @@ class QueryVariable:
 #    subject: Union[RDF_Term, QueryVariable]
 #    predicate: Union[URIRef, QueryVariable]
 #    object: Union[RDF_Term, QueryVariable]
-SparqlTriplePattern = collections.namedtuple("subject", ["predicate", "object"])
+SparqlTriplePattern = NamedTuple("SparqlTriplePattern", [("subject", Union[RDF_Term, QueryVariable]), ("predicate", Union[RDF_Term, QueryVariable]), ("object",Union[RDF_Term, QueryVariable])])
 
 class FOCUS(StringToken):
     pass
@@ -58,7 +58,6 @@ class WILD_CARD(StringToken):
 #    * V (the set of variables) is either a fresh variable or a known token to identify the focus node.
 #    * The focus node token appears in either the subject or the object position.
 #    * The predicate position is filled by an IRI (I in the SPARQL definitions).
-
 class SubjectFocusPattern(StringToken):
 #    subject: FOCUS
 #    predicate: URIRef

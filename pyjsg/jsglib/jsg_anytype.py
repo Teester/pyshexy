@@ -55,22 +55,16 @@ class AnyType(JSGValidateable, metaclass=AnyTypeMeta):
 
 
 class AnyTypeWrapperMeta(type):
-    #variable_name: str
-    #context: JSGContext
-    def __init__(self, type, variable_name: str, context: JSGContext):
-        self.variable_name = variable_name
-        self.context = context
+    variable_name = str
+    context = JSGContext
 
     def __instancecheck__(self, instance: Any) -> bool:
         return instance is not Empty
 
 
 class AnyTypeWrapper(metaclass=AnyTypeWrapperMeta):
-    #variable_name: str
-    #context: JSGContext
-    def __init(self, metaclass, variable_name, JSGContext):
-        self.variable_name = variable_name
-        self.context = context
+    variable_name = str
+    context = JSGContext
 
     def __new__(cls, value):
         return AnyType(cls.variable_name, cls.context, value)

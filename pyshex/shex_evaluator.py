@@ -11,22 +11,23 @@ from sparql_slurper import SlurpyGraph, QueryResultPrinter
 from pyshex import PrefixLibrary
 from pyshex.shape_expressions_language.p5_2_validation_definition import isValid
 from pyshex.shape_expressions_language.p5_context import Context
-from pyshex.shapemap_structure_and_language.p3_shapemap_structure import FixedShapeMap, ShapeAssociation, START, START_TYPE
+from pyshex.shapemap_structure_and_language.p3_shapemap_structure import FixedShapeMap, ShapeAssociation, START, \
+    START_TYPE
 from pyshex.utils.schema_loader import SchemaLoader
 from pyshex.utils.sparql_query import SPARQLQuery
+
 
 #class EvaluationResult(NamedTuple):
 #    result: bool
 #    focus: Optional[URIRef]
 #    start: Optional[URIRef]
 #    reason: Optional[str]
-
 EvaluationResult = NamedTuple("EvaluationResult", [("result", bool), ("focus", Optional[URIRef]), ("start", Optional[URIRef]), ("reason", Optional[str])])
 
 # Handy types
-URI = Union[str, URIRef]                              # URI as an argument
-URILIST = Iterator[URI]                               # List of URI's as an argument
-URIPARM = Union[URI, URILIST]                         # Choice of URI or list
+URI = Union[str, URIRef]        # URI as an argument
+URILIST = Iterator[URI]             # List of URI's as an argument
+URIPARM = Union[URI, URILIST]       # Choice of URI or list
 STARTPARM = [Union[Type[START], START_TYPE, URILIST]]
 
 
@@ -353,7 +354,7 @@ def evaluate_cli(argv: Optional[Union[str, List[str]]] = None, prog: Optional[st
                 print("Errors:")
             else:
                 print()
-            print("  Focus: {}\n  Start: {}\n  Reason: {}".format(rslt.focus, rslt.start, rslt.reason))
+            print("  Focus: {}\n  Start: {}\n  Reason: {}".format(rslt.focus, rslt.start, str(rslt.reason)))
             return not opts.stoponerror and (not opts.stopafter or evaluator.nnodes < opts.stopafter)
         return not opts.stopafter or evaluator.nnodes < opts.stopafter
 

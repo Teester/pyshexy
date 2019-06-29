@@ -37,7 +37,6 @@ class JSGObjectMap(JSGObject):
                     raise ValueError("Illegal Object Map key: {}={}".format(key, value))
             if not conforms(value, self._value_type, self._context.NAMESPACE):
                 raise ValueError("Illegal value type {} = {}".format(key, value))
-               
             if not isinstance(value, JSGValidateable):
                 value = self._value_type('', self._context, value) \
                     if self._value_type is AnyType else self._value_type(value)
