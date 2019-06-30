@@ -57,7 +57,7 @@ def run_shex_manifest():
                 results = evaluator.evaluate(rdf=slurpeddata, focus=wdid, debug=False, debug_slurps=True)
                 for result in results:
                     if result.result:
-                        print(str(result.focus) + ": CONFORMS")
+                        print("{}: CONFORMS".format(result.focus))
                     else:
                         if str(result.focus) in [
                             "http://www.wikidata.org/entity/Q33525",
@@ -65,8 +65,7 @@ def run_shex_manifest():
                             "http://www.wikidata.org/entity/Q112670"
                         ]:
                             continue
-                        print(
-                            "item with issue: " + str(result.focus) + " - " + "shape applied: " + str(result.start))
+                        print("item with issue: {} - shape applied: {}".format(result.focus, result.start))
 
 
 # run_shex_manifest()
