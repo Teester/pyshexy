@@ -37,13 +37,13 @@ o6 = URIRef("http://a.example/o6")
 o7 = URIRef("http://a.example/o7")
 
 rdf = """
-<%s> <%s> ("a" "b" "c" "d" "e" <%s> "b").
-<%s> <%s> "a", "b", "c", "d", "e", <%s>, "b".
-<%s> <%s> ().
-<%s> <%s> (17.0).
-<%s> <%s> (1 2), <%s>.
-<%s> <%s> (1 2 <%s>), <%s>; <%s> <%s>, (<%s>).
-""" % (s1, p1, o1, s2, p2, o2, s3, p3, s4, p4, s5, p5, o5, s6, p6, o6, o6, p7, o6, o7)
+<{}> <{}> ("a" "b" "c" "d" "e" <{}> "b").
+<{}> <{}> "a", "b", "c", "d", "e", <{}>, "b".
+<{}> <{}> ().
+<{}> <{}> (17.0).
+<{}> <{}> (1 2), <{}>.
+<{}> <{}> (1 2 <{}>), <{}>; <{}> <{}>, (<{}>).
+""".format(s1, p1, o1, s2, p2, o2, s3, p3, s4, p4, s5, p5, o5, s6, p6, o6, o6, p7, o6, o7)
 
 
 
@@ -100,7 +100,7 @@ class ListTestCase(unittest.TestCase):
                          sorted(g.triples(None, None, None)))
 
     def test_notebook(self):
-        rdf = '<%s> <%s> ("a" "b" "c" "d" "e" <%s> "b").' % (s1, p1, o1)
+        rdf = '<{}> <{}> ("a" "b" "c" "d" "e" <{}> "b").'.format(s1, p1, o1)
         g = CFGraph()
         g.parse(data=rdf, format="turtle")
         self.assertEqual([(s1, p1)], sorted(g.subject_predicates(o1)))
