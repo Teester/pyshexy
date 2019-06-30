@@ -207,7 +207,7 @@ class ManifestEntryTestCase(unittest.TestCase):
             else:
                 rslt = all(self.eval_entry(k) for k in self.mfst.entries.keys())
 
-        print("\n{} Tests\n\t{} Passed\n\t{} Failed\n\t%{} Skips".format(self.nfailed + self.npassed + self.nskipped, self.npassed, self.nfailed, self.skipped))
+        print("\n{} Tests\n\t{} Passed\n\t{} Failed\n\t%{} Skips".format(self.nfailed + self.npassed + self.nskipped, self.npassed, self.nfailed, self.nskipped))
 
         from pprint import PrettyPrinter
         pp = PrettyPrinter().pprint
