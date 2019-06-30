@@ -9,12 +9,12 @@ from tests.test_pyjsg.test_basics.parser import parse
 
 #@dataclass
 class TestEntry:
-    text: str
-    name: str
-    deps: List[str]
-    sigs: List[str]
-    membs: List[Tuple[str, str]]
-    inits: List[str]
+    #text: str
+    #name: str
+    #deps: List[str]
+    #sigs: List[str]
+    #membs: List[Tuple[str, str]]
+    #inits: List[str]
     
     def __init__(self, text: str, name: str, deps: List[str], sigs: List[str], membs: List[Tuple[str, str]], inits: List[str]):
         self.text = text
