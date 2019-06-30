@@ -33,7 +33,7 @@ class PythonGeneratorUtils(unittest.TestCase):
             if self.save_output_files or self.save_all_output_files:
                 with open(py_file, 'w') as f:
                     f.write(x.python)
-                    print("***** %s updated *****" % (py_file))
+                    print("***** {} updated *****".format(py_file))
             self.maxDiff = None
             self.assertEqual(expected, actual)
 
@@ -60,5 +60,5 @@ class PythonGeneratorUtils(unittest.TestCase):
 
         for k, v in failing_vars.items():
             with self.assertRaises(ValueError):
-                vv = '"%s"' % (v) if isinstance(v, str) else str(v)
-                loads('{"%s": %s}' % (k, vv), module)
+                vv = '"{}"'.format(v) if isinstance(v, str) else str(v)
+                loads('{{"{}": {}}}'.format(k, vv), module)
