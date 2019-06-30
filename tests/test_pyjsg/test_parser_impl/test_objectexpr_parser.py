@@ -16,7 +16,7 @@ class TestEntry:
     membs: List[Tuple[str, str]]
     inits: List[str]
     
-    def __init__(text: str, name: str, deps: List[str], sigs: List[str], membs: List[Tuple[str, str]], inits: List[str]):
+    def __init__(self, text: str, name: str, deps: List[str], sigs: List[str], membs: List[Tuple[str, str]], inits: List[str]):
         self.text = text
         self.name = name
         self.deps = deps
