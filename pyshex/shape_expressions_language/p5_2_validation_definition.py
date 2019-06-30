@@ -42,7 +42,7 @@ def isValid(cntxt: Context, m: FixedShapeMap) -> Tuple[bool, List[str]]:
                 if nodeshapepair.shapeLabel is START or nodeshapepair.shapeLabel is None:
                     cntxt.fail_reason = "START node is not specified or is invalid"
                 else:
-                    cntxt.fail.reason = "Shape: {} not found in Schema".format(nodeshapepair.shapeLabel)
+                    cntxt.fail_reason = "Shape: {} not found in Schema".format(nodeshapepair.shapeLabel)
                 return False, cntxt.process_reasons()
             parse_nodes.append(cntxt.current_node)
             if not satisfies(cntxt, n, s):
