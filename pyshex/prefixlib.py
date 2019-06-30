@@ -30,7 +30,7 @@ class PrefixLibrary:
         """ Return the ShEx representation of the library """
         rval = ""
         for k, v in self:
-            rval += "PREFIX {}: <{}>\n".format(k.lower, str(v))
+            rval += "PREFIX {}: <{}>\n".format(k.lower(), str(v))
         return rval + '\n'
 
     def __setitem__(self, key, value):
