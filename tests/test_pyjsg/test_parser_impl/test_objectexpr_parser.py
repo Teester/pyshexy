@@ -143,7 +143,7 @@ o7 = TestEntry(text='{b: .? c: . | d: .*, e: .+ | f: a, }',
                       '    else:',
                       '        raise ValueError("Unrecognized value type: {}".format(opts_))'])
 
-test_entries: List[Tuple[str, TestEntry, TestEntry]] = [
+test_entries = [
     ('{}', i0, o0),
     ('{,}', i1, o1),
     ('{a: @int}', i2, o2),
