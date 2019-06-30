@@ -179,7 +179,7 @@ class ObjectExprParserTestCase(unittest.TestCase):
         for te in test_entries:
             e = te[2]
             t = cast(JSGObjectExpr, parse(te[0], "objectExpr", JSGObjectExpr))
-            self.assertIsNotNone(t, f"Parse error: {e.text}")
+            self.assertIsNotNone(t, "Parse error: {}".format(e.text))
             self.assertEqual(e.name, str(t))
             self.assertEqual('_Anon1', t.signature_type(), e.text)
             self.assertEqual('_Anon1', t.python_type(), e.text)
@@ -191,7 +191,7 @@ class ObjectExprParserTestCase(unittest.TestCase):
     def test_opt_choice_branch(self):
         text = '{id: @string |}'
         t = cast(JSGObjectExpr, parse(text, 'objectExpr', JSGObjectExpr))
-        self.assertIsNotNone(t, f"Parse error")
+        self.assertIsNotNone(t, "Parse error")
         self.assertEqual('objectExpr: object choices', str(t))
         self.assertEqual('_Anon1', t.signature_type(), text)
         self.assertEqual('_Anon1', t.python_type(), text)
