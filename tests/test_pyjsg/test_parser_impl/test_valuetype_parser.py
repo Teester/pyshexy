@@ -38,7 +38,7 @@ class ValueTypeTestCase(unittest.TestCase):
             t = cast(JSGValueType, parse(text, "valueType", JSGValueType))
             self.assertEqual(sig, t.signature_type(), text)
             self.assertEqual(typ_, t.python_type(), text)
-            self.assertEqual("valueType: builtinValueType: %s" % ('jsg.AnyType' if text == '.' else text), str(t), text)
+            self.assertEqual("valueType: builtinValueType: {}".format('jsg.AnyType' if text == '.' else text), str(t), text)
             self.assertEqual(mt_typ, t.mt_value(), text)
             self.assertEqual([], t.members_entries(), text)
             self.assertEqual([], t.dependency_list(), text)
@@ -46,9 +46,9 @@ class ValueTypeTestCase(unittest.TestCase):
     def test_refs(self):
         for text, typ in ref_tests:
             t = cast(JSGValueType, parse(text, "valueType", JSGValueType))
-            self.assertEqual('Undefined(%s)' % (text) if typ != 'LEXER_ID_REF' else text, t.signature_type())
-            self.assertEqual('Undefined(%s)' % (text) if typ != 'LEXER_ID_REF' else 'str', t.python_type())
-            self.assertEqual("valueType: %s: %s" % (typ, text), str(t))
+            self.assertEqual('Undefined({})'.format(text) if typ != 'LEXER_ID_REF' else text, t.signature_type())
+            self.assertEqual('Undefined({})'.format(text) if typ != 'LEXER_ID_REF' else 'str', t.python_type())
+            self.assertEqual("valueType: {}: {}".format(typ, text), str(t))
             self.assertEqual([text], t.dependency_list())
             self.assertEqual([], t.members_entries())
             self.assertEqual("None", t.mt_value())
@@ -202,7 +202,7 @@ class ValueTypeTestCase(unittest.TestCase):
             elif isinstance(opts_, _Anon1_2_):
                 self.flags = opts_.flags
             else:
-                raise ValueError("Unrecognized value type: {}".format(opts_))""", t.as_python('stringFacet').strip())
+                raise ValueError("Unrecognized value type: {opts_}")""", t.as_python('stringFacet').strip())
         self.assertEqual(['INTEGER', 'STRING', '_Anon1_1_', '_Anon1_2_'], t.dependency_list())
 
         t = cast(JSGObjectExpr, parse("x = a:@number | b:@null | ;", "objectMacro", JSGObjectExpr))
@@ -224,7 +224,7 @@ class ValueTypeTestCase(unittest.TestCase):
             elif isinstance(opts_, _Anon1_3_):
                 pass
             else:
-                raise ValueError("Unrecognized value type: {}".format(opts_))""",
+                raise ValueError("Unrecognized value type: {opts_}")""",
                          t.as_python('stringFacet').strip())
         self.assertEqual(['_Anon1_1_', '_Anon1_2_', '_Anon1_3_'], t.dependency_list())
 

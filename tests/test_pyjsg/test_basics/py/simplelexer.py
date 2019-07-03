@@ -1,5 +1,5 @@
-# Auto generated from tests\test_pyjsg\test_basics\jsg\simplelexer.jsg by PyJSG version 0.9.1
-# Generation date: 2019-06-26 14:26
+# Auto generated from tests\test_pyjsg\test_basics\jsg\simplelexer.jsg by PyJSG version 0.9.2
+# Generation date: 2019-07-03 17:37
 #
 import typing
 import pyjsg.jsglib as jsg
@@ -18,6 +18,6 @@ class EXPONENT(jsg.JSGString):
 
 
 class LANGTAG(jsg.JSGString):
-    pattern = jsg.JSGPattern(r'@[a-zA-Z]+(\-[a-zA-Z0-9]+)*')
+    pattern = jsg.JSGPattern(r'\@[a-zA-Z]+(\-[a-zA-Z0-9]+)*')
 
 _CONTEXT.NAMESPACE = locals()

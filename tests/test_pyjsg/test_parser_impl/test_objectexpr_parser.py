@@ -9,14 +9,14 @@ from tests.test_pyjsg.test_basics.parser import parse
 
 #@dataclass
 class TestEntry:
-    text: str
-    name: str
-    deps: List[str]
-    sigs: List[str]
-    membs: List[Tuple[str, str]]
-    inits: List[str]
+    #text: str
+    #name: str
+    #deps: List[str]
+    #sigs: List[str]
+    #membs: List[Tuple[str, str]]
+    #inits: List[str]
     
-    def __init__(text: str, name: str, deps: List[str], sigs: List[str], membs: List[Tuple[str, str]], inits: List[str]):
+    def __init__(self, text: str, name: str, deps: List[str], sigs: List[str], membs: List[Tuple[str, str]], inits: List[str]):
         self.text = text
         self.name = name
         self.deps = deps
@@ -59,7 +59,7 @@ i5 = TestEntry(text='a {b: @int c:@string |, }',
                membs=[('b', 'typing.Optional[jsg.Integer]'), ('c', 'typing.Optional[jsg.String]')],
                inits=['if opts_ is not None:', '    if isinstance(opts_, a_1_):', '        self.b = opts_.b',
                       '        self.c = opts_.c', '    elif isinstance(opts_, a_2_):', '        pass', '    else:',
-                      '        raise ValueError("Unrecognized value type: {}".format(opts_))')'])
+                      '        raise ValueError("Unrecognized value type: {opts_}")'])
 i6 = TestEntry(text='a {b: . | c: .}', 
                name='objectExpr: object choices', 
                deps=['a_1_', 'a_2_'], 
@@ -68,7 +68,7 @@ i6 = TestEntry(text='a {b: . | c: .}',
                       ('c', "typing.Optional[jsg.AnyTypeFactory('c', _CONTEXT)]")],
                inits=['if opts_ is not None:', '    if isinstance(opts_, a_1_):', '        self.b = opts_.b',
                       '    elif isinstance(opts_, a_2_):', '        self.c = opts_.c', '    else:',
-                      '        raise ValueError("Unrecognized value type: {}".format(opts_))')'])
+                      '        raise ValueError("Unrecognized value type: {opts_}")'])
 i7 = TestEntry(text='a {b: .? c: . | d: .*, e: .+ | f: a, }', 
                name='objectExpr: object choices', 
                deps=['a_1_', 'a_2_', 'a', 'a_3_'], 
@@ -84,7 +84,7 @@ i7 = TestEntry(text='a {b: .? c: . | d: .*, e: .+ | f: a, }',
                       '        self.c = opts_.c', '    elif isinstance(opts_, a_2_):', '        self.d = opts_.d',
                       '        self.e = opts_.e', '    elif isinstance(opts_, a_3_):', '        self.f = opts_.f',
                       '    else:',
-                      '        raise ValueError("Unrecognized value type: {}".format(opts_))'])
+                      '        raise ValueError("Unrecognized value type: {opts_}")'])
 
 
 o0 = TestEntry(text='{}', name='objectExpr: simple object', deps=[], sigs=[], membs=[], inits=[])
@@ -116,7 +116,7 @@ o5 = TestEntry(text='{b: @int c:@string |, }',
                membs=[('b', 'typing.Optional[jsg.Integer]'), ('c', 'typing.Optional[jsg.String]')],
                inits=['if opts_ is not None:', '    if isinstance(opts_, _Anon1_1_):', '        self.b = opts_.b',
                       '        self.c = opts_.c', '    elif isinstance(opts_, _Anon1_2_):', '        pass', '    else:',
-                      '        raise ValueError("Unrecognized value type: {}".format(opts_))')'])
+                      '        raise ValueError("Unrecognized value type: {opts_}")'])
 o6 = TestEntry(text='{b: . | c: .}', 
                name='objectExpr: object choices', 
                deps=['_Anon1_1_', '_Anon1_2_'], 
@@ -125,7 +125,7 @@ o6 = TestEntry(text='{b: . | c: .}',
                       ('c', "typing.Optional[jsg.AnyTypeFactory('c', _CONTEXT)]")],
                inits=['if opts_ is not None:', '    if isinstance(opts_, _Anon1_1_):', '        self.b = opts_.b',
                       '    elif isinstance(opts_, _Anon1_2_):', '        self.c = opts_.c', '    else:',
-                      '        raise ValueError("Unrecognized value type: {}".format(opts_))')'])
+                      '        raise ValueError("Unrecognized value type: {opts_}")'])
 o7 = TestEntry(text='{b: .? c: . | d: .*, e: .+ | f: a, }', 
                name='objectExpr: object choices', 
                deps=['_Anon1_1_', '_Anon1_2_', 'a', '_Anon1_3_'], 
@@ -141,9 +141,9 @@ o7 = TestEntry(text='{b: .? c: . | d: .*, e: .+ | f: a, }',
                       '        self.c = opts_.c', '    elif isinstance(opts_, _Anon1_2_):', '        self.d = opts_.d',
                       '        self.e = opts_.e', '    elif isinstance(opts_, _Anon1_3_):', '        self.f = opts_.f',
                       '    else:',
-                      '        raise ValueError("Unrecognized value type: {}".format(opts_))'])
+                      '        raise ValueError("Unrecognized value type: {opts_}")'])
 
-test_entries: List[Tuple[str, TestEntry, TestEntry]] = [
+test_entries = [
     ('{}', i0, o0),
     ('{,}', i1, o1),
     ('{a: @int}', i2, o2),
@@ -162,10 +162,10 @@ class ObjectExprParserTestCase(unittest.TestCase):
         self.assertEqual("None", t.mt_value())
 
         for te in test_entries:
-            text = "a " + te[0]
+            text = "a {}".format(te[0])
             e = te[1]
             d = cast(JSGDocParser, parse(text, "objectDef", JSGDocParser))
-            self.assertIsNotNone(d, f"Parse error: {text}")
+            self.assertIsNotNone(d, "Parse error: {}".format(text))
             t = d._context.reference('a')
             self.assertEqual(e.name, str(t))
             self.assertEqual('a', t.signature_type(), text)
@@ -179,7 +179,7 @@ class ObjectExprParserTestCase(unittest.TestCase):
         for te in test_entries:
             e = te[2]
             t = cast(JSGObjectExpr, parse(te[0], "objectExpr", JSGObjectExpr))
-            self.assertIsNotNone(t, f"Parse error: {e.text}")
+            self.assertIsNotNone(t, "Parse error: {}".format(e.text))
             self.assertEqual(e.name, str(t))
             self.assertEqual('_Anon1', t.signature_type(), e.text)
             self.assertEqual('_Anon1', t.python_type(), e.text)
@@ -191,7 +191,7 @@ class ObjectExprParserTestCase(unittest.TestCase):
     def test_opt_choice_branch(self):
         text = '{id: @string |}'
         t = cast(JSGObjectExpr, parse(text, 'objectExpr', JSGObjectExpr))
-        self.assertIsNotNone(t, f"Parse error")
+        self.assertIsNotNone(t, "Parse error")
         self.assertEqual('objectExpr: object choices', str(t))
         self.assertEqual('_Anon1', t.signature_type(), text)
         self.assertEqual('_Anon1', t.python_type(), text)
@@ -205,7 +205,7 @@ class ObjectExprParserTestCase(unittest.TestCase):
             '    elif isinstance(opts_, _Anon1_2_):',
             '        pass',
             '    else:',
-            '        raise ValueError("Unrecognized value type: {}".format(opts_))')'], t.initializers(), text)
+            '        raise ValueError("Unrecognized value type: {opts_}")'], t.initializers(), text)
 
 
 if __name__ == '__main__':

@@ -1,5 +1,5 @@
 # Auto generated from tests\test_pyjsg_standalone\test_jsg_readme\jsg\ge1.jsg by PyJSG version 0.9.2
-# Generation date: 2019-06-29 17:59
+# Generation date: 2019-07-03 17:39
 #
 import typing
 import pyjsg.jsglib as jsg

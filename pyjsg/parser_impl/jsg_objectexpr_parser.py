@@ -188,7 +188,7 @@ class JSGObjectExpr(jsgParserVisitor, PythonGeneratorElement):
 
             # Error checker
             rval.append(t() + 'else:')
-            rval.append(t(2) + 'raise ValueError("Unrecognized value type: {{{}}}"'.format(prefix))
+            rval.append(t(2) + 'raise ValueError("Unrecognized value type: {{{}}}")'.format(prefix))
             return rval
         else:
             return flatten([pairdef.initializers(prefix) for pairdef in self._members])

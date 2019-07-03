@@ -82,7 +82,7 @@ class CLITestCase(unittest.TestCase):
         if not os.path.exists(testfile_path):
             with open(testfile_path, 'w') as f:
                 f.write(outf.getvalue())
-                self.creation_messages.append('%s did not exist - updated' % (testfile_path))
+                self.creation_messages.append('{} did not exist - updated'.format(testfile_path))
 
         if testfile:
             with open(testfile_path) as f:

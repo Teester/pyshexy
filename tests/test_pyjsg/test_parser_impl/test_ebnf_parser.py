@@ -10,7 +10,7 @@ from tests.test_pyjsg.test_basics.parser import parse
 
 #@dataclass
 class testentry:
-    def __init__(text: str, min: int, max: Optional[int], ptype: str, oneopt: bool, mult: bool, stype: str):
+    def __init__(self, text: str, min: int, max: Optional[int], ptype: str, oneopt: bool, mult: bool, stype: str):
         self.text = text
         self.min = min
         self.max = max

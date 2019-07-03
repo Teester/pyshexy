@@ -1,5 +1,5 @@
 # Auto generated from tests\test_pyjsg\test_basics\jsg\ShExJ.jsg by PyJSG version 0.9.2
-# Generation date: 2019-06-29 17:59
+# Generation date: 2019-07-03 17:39
 #
 import typing
 import pyjsg.jsglib as jsg
@@ -191,7 +191,7 @@ class stringFacet(jsg.JSGObject):
                 self.pattern = opts_.pattern
                 self.flags = opts_.flags
             else:
-                raise ValueError("Unrecognized value type: {opts_}"
+                raise ValueError("Unrecognized value type: {opts_}")
 
 
 
@@ -259,7 +259,7 @@ class xsFacet_1_(jsg.JSGObject):
                 self.pattern = opts_.pattern
                 self.flags = opts_.flags
             else:
-                raise ValueError("Unrecognized value type: {opts_}"
+                raise ValueError("Unrecognized value type: {opts_}")
 
 
 
@@ -309,7 +309,7 @@ class xsFacet(jsg.JSGObject):
                         self.pattern = opts_.pattern
                         self.flags = opts_.flags
                     else:
-                        raise ValueError("Unrecognized value type: {opts_}"
+                        raise ValueError("Unrecognized value type: {opts_}")
             elif isinstance(opts_, xsFacet_2_):
                 self.mininclusive = opts_.mininclusive
                 self.minexclusive = opts_.minexclusive
@@ -318,7 +318,7 @@ class xsFacet(jsg.JSGObject):
                 self.totaldigits = opts_.totaldigits
                 self.fractiondigits = opts_.fractiondigits
             else:
-                raise ValueError("Unrecognized value type: {opts_}"
+                raise ValueError("Unrecognized value type: {opts_}")
 
 
 
@@ -468,7 +468,7 @@ class NodeConstraint(jsg.JSGObject):
                         self.pattern = opts_.pattern
                         self.flags = opts_.flags
                     else:
-                        raise ValueError("Unrecognized value type: {opts_}"
+                        raise ValueError("Unrecognized value type: {opts_}")
             elif isinstance(opts_, xsFacet_2_):
                 self.mininclusive = opts_.mininclusive
                 self.minexclusive = opts_.minexclusive
@@ -477,7 +477,7 @@ class NodeConstraint(jsg.JSGObject):
                 self.totaldigits = opts_.totaldigits
                 self.fractiondigits = opts_.fractiondigits
             else:
-                raise ValueError("Unrecognized value type: {opts_}"
+                raise ValueError("Unrecognized value type: {opts_}")
         self.values = values
 
 
