@@ -194,7 +194,6 @@ class stringFacet(jsg.JSGObject):
                 raise ValueError("Unrecognized value type: {opts_}")
 
 
-
 class LiteralStemRange(jsg.JSGObject):
     _reference_types = []
     _members = {'stem': typing.Union[jsg.String, Wildcard],
@@ -262,7 +261,6 @@ class xsFacet_1_(jsg.JSGObject):
                 raise ValueError("Unrecognized value type: {opts_}")
 
 
-
 class LanguageStemRange(jsg.JSGObject):
     _reference_types = []
     _members = {'stem': typing.Union[LANGTAG, Wildcard],
@@ -309,7 +307,7 @@ class xsFacet(jsg.JSGObject):
                         self.pattern = opts_.pattern
                         self.flags = opts_.flags
                     else:
-                        raise ValueError("Unrecognized value type: {opts_}")
+                        raise ValueError("Unrecognized value type: {}".format (opts_))
             elif isinstance(opts_, xsFacet_2_):
                 self.mininclusive = opts_.mininclusive
                 self.minexclusive = opts_.minexclusive
@@ -318,8 +316,7 @@ class xsFacet(jsg.JSGObject):
                 self.totaldigits = opts_.totaldigits
                 self.fractiondigits = opts_.fractiondigits
             else:
-                raise ValueError("Unrecognized value type: {opts_}")
-
+                raise ValueError("Unrecognized value type: {}".format (opts_))
 
 
 class ObjectLiteral(jsg.JSGObject):

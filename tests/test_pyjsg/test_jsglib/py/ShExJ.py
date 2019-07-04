@@ -262,7 +262,6 @@ class xsFacet_1_(jsg.JSGObject):
                 raise ValueError("Unrecognized value type: {opts_}")
 
 
-
 class LanguageStemRange(jsg.JSGObject):
     _reference_types = []
     _members = {'stem': typing.Union[LANGTAG, Wildcard],
@@ -319,7 +318,6 @@ class xsFacet(jsg.JSGObject):
                 self.fractiondigits = opts_.fractiondigits
             else:
                 raise ValueError("Unrecognized value type: {opts_}")
-
 
 
 class ObjectLiteral(jsg.JSGObject):
