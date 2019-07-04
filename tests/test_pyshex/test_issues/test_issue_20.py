@@ -23,7 +23,7 @@ class BPM2TestCase(unittest.TestCase):
             evaluate_cli("%s %s -fn %s" % (rdfpath, shexpath, pl.EX.BPM2))
 
         if not os.path.exists(expectedpath):
-            with open(expectedpath, 'w') as f:
+            with open(expectedpath, 'w+') as f:
                 f.write(output.getvalue())
             self.assertTrue(False, "Output created, rerun")
         with open(expectedpath) as f:

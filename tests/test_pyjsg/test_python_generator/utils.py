@@ -31,7 +31,7 @@ class PythonGeneratorUtils(unittest.TestCase):
         actual = self._strip_details(x.python)
         if expected != actual:
             if self.save_output_files or self.save_all_output_files:
-                with open(py_file, 'w') as f:
+                with open(py_file, 'w+') as f:
                     f.write(x.python)
                     print("***** {} updated *****".format(py_file))
             self.maxDiff = None

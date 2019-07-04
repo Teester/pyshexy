@@ -16,7 +16,7 @@ class BioLinkShexCTestCase(unittest.TestCase):
         self.assertIsNotNone(shexc)
         shexc_text = str(shexc)
         if update_output:
-            with open(outfile, 'w') as outf:
+            with open(outfile, 'w+') as outf:
                 outf.write(shexc_text)
         with open(outfile) as outf:
             target_shexc = outf.read()

@@ -119,7 +119,7 @@ def validate_json(argv) -> bool:
     all_pass = True
 
     if opts.outfile:
-        with open(opts.outfile, 'w') as outf:
+        with open(opts.outfile, 'w+') as outf:
             outf.write(validator.python)
 
     if opts.indir:

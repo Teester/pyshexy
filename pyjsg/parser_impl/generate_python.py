@@ -45,7 +45,7 @@ def do_parse(infilename: str, outfilename: str, verbose: bool) -> bool:
     """
     python = parse(FileStream(infilename, encoding="utf-8"), infilename)
     if python is not None:
-        with open(outfilename, 'w') as outfile:
+        with open(outfilename, 'w+') as outfile:
             outfile.write(python)
         if verbose:
             print("Output written to {}".format(outfilename))

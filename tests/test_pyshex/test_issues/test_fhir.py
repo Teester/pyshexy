@@ -30,7 +30,7 @@ class FHIRServerTestCase(unittest.TestCase):
         with(redirect_stdout(outf)):
             evaluate_cli("%s %s -fn http://hl7.org/fhir/Observation/example-haplotype2" % (rdf, shex))
         if not os.path.exists(result):
-            with open(result, 'w') as f:
+            with open(result, 'w+') as f:
                 f.write(outf.getvalue())
             self.assertTrue(False, "Created test file -- rerun ")
         with open(result) as f:

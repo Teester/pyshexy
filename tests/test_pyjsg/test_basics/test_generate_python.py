@@ -15,7 +15,7 @@ class GeneratePythonTestCase(unittest.TestCase):
         self.assertTrue(generate([os.path.join(basedir, "jsg", "complexfacet.jsg"), "-o", goodfile, "-e"]))
 
         # Make sure that we can detect exceptions and errors
-        with open(badfile, 'w') as bf:
+        with open(badfile, 'w+') as bf:
             bf.write("i=1/0")
             with open(goodfile) as gf:
                 bf.write(gf.read())
