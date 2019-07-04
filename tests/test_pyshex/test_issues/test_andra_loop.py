@@ -2,6 +2,7 @@ import os
 
 import jsonasobj
 import requests
+import toolforge
 from SPARQLWrapper import SPARQLWrapper, JSON
 from ShExJSG import ShExC
 from sparql_slurper import SlurpyGraph
@@ -13,7 +14,8 @@ def get_sparql_dataframe(service, query):
     """
     Helper function to convert SPARQL results into a Pandas data frame.
     """
-    sparql = SPARQLWrapper(service)
+    user_agent = toolforge.set_user_agent("pyshexy")
+    sparql = SPARQLWrapper(service, agent=user_agent)
     sparql.setQuery(query)
     sparql.setReturnFormat(JSON)
     result = sparql.query()
@@ -57,7 +59,7 @@ def run_shex_manifest():
                 results = evaluator.evaluate(rdf=slurpeddata, focus=wdid, debug=False, debug_slurps=True)
                 for result in results:
                     if result.result:
-                        print(str(result.focus) + ": CONFORMS")
+                        print("{}: CONFORMS".format(result.focus))
                     else:
                         if str(result.focus) in [
                             "http://www.wikidata.org/entity/Q33525",
@@ -65,8 +67,7 @@ def run_shex_manifest():
                             "http://www.wikidata.org/entity/Q112670"
                         ]:
                             continue
-                        print(
-                            "item with issue: " + str(result.focus) + " - " + "shape applied: " + str(result.start))
+                        print("item with issue: {} - shape applied: {}".format(result.focus, result.start))
 
 
 # run_shex_manifest()

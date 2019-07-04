@@ -1,5 +1,5 @@
 from typing import List
-
+import toolforge
 import jsonasobj
 import requests
 from SPARQLWrapper import SPARQLWrapper, JSON
@@ -16,6 +16,7 @@ class SPARQLQuery:
         :param print_query: Print the sparql results query
         :param print_results: Print query results
         """
+        
         self.print_results = print_results
         if '\n' in sparql_file_uri_or_text or '\r' in sparql_file_uri_or_text or ' ' in sparql_file_uri_or_text:
             self.query = sparql_file_uri_or_text
@@ -30,7 +31,10 @@ class SPARQLQuery:
         if print_query:
             print("SPARQL:")
             print(self.query)
-        self.endpoint = SPARQLWrapper(sparql_endpoint)
+            
+        user_agent = toolforge.set_user_agent("pyshexy")
+        
+        self.endpoint = SPARQLWrapper(sparql_endpoint, agent=user_agent)
         self.endpoint.setQuery(self.query)
         self.endpoint.setReturnFormat(JSON)
 

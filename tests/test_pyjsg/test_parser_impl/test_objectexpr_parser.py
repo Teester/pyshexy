@@ -68,6 +68,7 @@ i6 = TestEntry(text='a {b: . | c: .}',
                       ('c', "typing.Optional[jsg.AnyTypeFactory('c', _CONTEXT)]")],
                inits=['if opts_ is not None:', '    if isinstance(opts_, a_1_):', '        self.b = opts_.b',
                       '    elif isinstance(opts_, a_2_):', '        self.c = opts_.c', '    else:',
+
                       '        raise ValueError("Unrecognized value type: {opts_}")'])
 i7 = TestEntry(text='a {b: .? c: . | d: .*, e: .+ | f: a, }', 
                name='objectExpr: object choices', 

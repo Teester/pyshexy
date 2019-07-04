@@ -40,7 +40,7 @@ shextest_path = os.path.abspath(os.path.join(os.path.dirname(__file__),     # ut
 
 BASE_FILE_LOC = shextest_path if USE_LOCAL_FILES and os.path.exists(shextest_path) else REMOTE_FILE_LOC
 BASE_FILE_LOC = BASE_FILE_LOC + ('/' if not BASE_FILE_LOC.endswith('/') else '')
-print("*****> Running test from %s\n" % (BASE_FILE_LOC))
+print("*****> Running test from {}\n".format(BASE_FILE_LOC))
 
 
 # Reasons for skipping things
@@ -112,7 +112,7 @@ class ManifestEntryTestCase(unittest.TestCase):
                 else:
                     self.started = True
                     if VERBOSE:
-                        print("STARTED - Skipped %d entries" % (self.start_skipped))
+                        print("STARTED - Skipped {} entries".format(self.start_skipped))
 
             # Determine whether this entry should be skipped
             should_skip = False
@@ -121,7 +121,7 @@ class ManifestEntryTestCase(unittest.TestCase):
             skipped_traits = list(me.traits.intersection(skip_traits))
             if skipped_traits:
                 if VERBOSE:
-                    print("Skipping %s (%s) - Skipped trait" % (me.name, ', '.join([self.URIname(t) for t in me.traits])))
+                    print("Skipping {} ({}) - Skipped trait".format(me.name, ', '.join([self.URIname(t) for t in me.traits])))
                 key = str(skipped_traits[0]).replace(str(SHT), 'sht:')
                 if key not in self.skip_reasons:
                     self.skip_reasons[key] = 0
@@ -130,7 +130,7 @@ class ManifestEntryTestCase(unittest.TestCase):
                 should_skip = True
             elif me.name in self.expected_failures:
                 if VERBOSE:
-                    print("Skipping %s (%s) - %s" % (', '.join(me.name, [self.URIname(t) for t in me.traits]), self.expected_failures[me.name]))
+                    print("Skipping {} ({}) - {}".format(', '.join(me.name, [self.URIname(t) for t in me.traits]), self.expected_failures[me.name]))
                 key = self.expected_failures[me.name]
                 if key not in self.skip_reasons:
                     self.skip_reasons[key] = 0
@@ -147,16 +147,16 @@ class ManifestEntryTestCase(unittest.TestCase):
                 shex_uri = self.mfst.schema_loader.location_rewrite(me.schema_uri)
                 data_uri = self.mfst.data_redirector.uri_for(me.data_uri) \
                     if self.mfst.data_redirector else me.data_uri
-                print("Testing %s (%s): %s - %s" % (me.name, 'P' if me.should_pass else 'F', shex_uri, data_uri))
+                print("Testing {} ({}): {} - {}".format(me.name, 'P' if me.should_pass else 'F', shex_uri, data_uri))
             g, s = me.data_graph(), me.shex_schema()
             if g is None and me.data_uri:
                 print("\t ERROR: Unable to load data file")
-                print("\t TRAITS: (%s)" % (','.join(me.traits)))
+                print("\t TRAITS: ({})".format(','.join(me.traits)))
                 self.skip(me.name)
                 return True
             if not s:
-                print("\t ERROR: Unable to load schema %s" % (me.schema_uri))
-                print("\t TRAITS: (%s)" % (','.join(me.traits)))
+                print("\t ERROR: Unable to load schema {}".format(me.schema_uri))
+                print("\t TRAITS: ({})".format(','.join(me.traits)))
                 self.nskipped += 1
                 self.skip(me.name)
                 return False
@@ -167,8 +167,8 @@ class ManifestEntryTestCase(unittest.TestCase):
             focus = self.mfst.data_uri(me.focus)
             if not focus:
                 print("\t***** FAIL *****")
-                print("\tFocus: %s not in schema" % (me.focus))
-                print("\t TRAITS: (%s)" % (','.join(me.traits)))
+                print("\tFocus: {} not in schema".format(me.focus))
+                print("\t TRAITS: ({})".format(','.join(me.traits)))
                 self.fail(me.name)
                 return False
             # if ':' not in focus:
@@ -184,16 +184,16 @@ class ManifestEntryTestCase(unittest.TestCase):
 
             # Analyze the result
             if not VERBOSE and not test_result:
-                print("Failed %s (%s): %s - %s" % (me.name, 'P' if me.should_pass else 'F', me.schema_uri, me.data_uri))
-                print("\t TRAITS: (%s)" % (','.join(me.traits)))
+                print("Failed {} ({}): {} - {}".format(me.name, 'P' if me.should_pass else 'F', me.schema_uri, me.data_uri))
+                print("\t TRAITS: ({})".format(','.join(me.traits)))
             if test_result:
                 self.pass_(me.name)
             else:
                 if VERBOSE:
                     print("\t**** FAIL *****")
-                    print("\t TRAITS: (%s)" % (','.join(me.traits)))
+                    print("\t TRAITS: ({})".format(','.join(me.traits)))
                     for reason in reasons:
-                        print("\t%s" % (reason))
+                        print("\t{}".format(reason))
                 self.fail(me.name)
             return test_result
 
@@ -207,7 +207,7 @@ class ManifestEntryTestCase(unittest.TestCase):
             else:
                 rslt = all(self.eval_entry(k) for k in self.mfst.entries.keys())
 
-        print("\n%s Tests\n\t%d Passed\n\t%d Failed\n\t%d Skips" % (self.nfailed + self.npassed + self.nskipped, self.npassed, self.nfailed, nself.skipped))
+        print("\n{} Tests\n\t{} Passed\n\t{} Failed\n\t{} Skips".format(self.nfailed + self.npassed + self.nskipped, self.npassed, self.nfailed, self.nskipped))
 
         from pprint import PrettyPrinter
         pp = PrettyPrinter().pprint

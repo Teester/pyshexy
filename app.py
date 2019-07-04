@@ -1,4 +1,4 @@
-import urllib.request
+import requests
 from flask import Flask, request, json
 from flask_cors import CORS, cross_origin
 from sparql_slurper import SlurpyGraph
@@ -49,21 +49,19 @@ def checkShex(shexc, entitySchema, entity, query, endpoint):
     return result
  
 def processShex(shex):
-    fp = urllib.request.urlopen(shex)
-    mybytes = fp.read()
-    shexString = mybytes.decode("utf8")
-    fp.close()
+    r = requests.get(shex)
+    shexString = r.text
      
     # Replace import statements with the contents of those schemas since PyShEx doesn't do imports
     for line in shexString.splitlines():
         if line.startswith("IMPORT"):
             importString = line[line.find("<")+1:line.find(">")]
-            pq = urllib.request.urlopen(importString)
-            mybytes2 = pq.read()
-            importString2 = mybytes2.decode("UTF-8")
-            pq.close()
-            shexString = shexString.replace(line, importString2)
-     
+            s = requests.get(importString)
+            shexString = shexString.replace(line, s.text)
+
+    # Replace some definitions in the shex in order to mitigate a bug in PyShEx
+    shexString = shexString.replace("http://www.w3.org/1999/02/22-rdf-syntax-ns#", "http://www.w3.org/2001/XMLSchema#")
+    shexString = shexString.replace("rdf:langString", "rdf:string")
     return shexString
 
 if __name__ == '__main__':

@@ -28,7 +28,7 @@ class ShExManifestEntry:
         self.owner = owner
         # Action appears to have been removed.  If it isn't present, we pull what we need from the root
         action = self.g.value(self.entryuri, MF.action, any=False)
-        assert action, "%s : Invalid action list in entry" % (self.entryuri)
+        assert action, "{} : Invalid action list in entry".format(self.entryuri)
         self.action_ = {p: o for p, o in g.predicate_objects(action)}
         assert self.action_, "No actions"
 
@@ -103,7 +103,7 @@ class ShExManifestEntry:
     def data_graph(self, fmt="turtle") -> Optional[Graph]:
         g = Graph()
         base = generate_base(self.owner.data_uri(self.data_uri))
-        data_ttl = "@base <%s> .\n %s" % (base, self.data())
+        data_ttl = "@base <{}> .\n {}".format(base, self.data())
         g.parse(data=data_ttl, format=fmt)
         return g
 

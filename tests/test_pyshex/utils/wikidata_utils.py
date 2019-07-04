@@ -5,6 +5,7 @@ from typing import Optional, List, NamedTuple, Union
 
 import jsonasobj
 import requests
+import toolforge
 from SPARQLWrapper import SPARQLWrapper, JSON
 from jsonasobj import loads
 from rdflib import URIRef, Literal
@@ -33,7 +34,8 @@ class WikiDataTestCase(unittest.TestCase):
         """
         Helper function to convert SPARQL results into a Pandas data frame.
         """
-        sparql = SPARQLWrapper(service)
+        user_agent = toolforge.set_user_agent("pyshexy")
+        sparql = SPARQLWrapper(service, agent=user_agent)
         sparql.setQuery(query)
         sparql.setReturnFormat(JSON)
         result = sparql.query()

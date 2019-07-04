@@ -131,8 +131,8 @@ class ShExJValidationTestCase(unittest.TestCase):
         validator = FileValidator()
         with open(log_path, 'w') as logf:
             with redirect_stdout(logf):
-                self.assertTrue(validate_shex_schemas(parser, validator), "See %s for reasons" % (log_path))
-        print("%d files validated - %d skipped" % (validator.nvalidated, validator.nskipped))
+                self.assertTrue(validate_shex_schemas(parser, validator), "See {} for reasons".format(log_path))
+        print("{} files validated - {} skipped".format(validator.nvalidated, validator.nskipped))
 
 
 if __name__ == '__main__':
