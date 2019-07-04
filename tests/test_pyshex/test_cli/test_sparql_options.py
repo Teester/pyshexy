@@ -10,7 +10,7 @@ from tests.test_pyshex.test_cli.clitests import CLITestCase
 
 def elapsed_filter(txt: str) -> str:
     #return re.sub(r'\(\d+(\.\d+)? ([a-zA-Z]*)\)', '(n.nn \\2)', txt)
-    return re.sub(r'\(\d+(\.\d+)? ([a-zA-Z]*)\)', '(0 \\2)'
+    return re.sub(r'\(\d+(\.\d+)? ([a-zA-Z]*)\)', '(0 \\2)', txt)
 
 class SparqlQueryTestCase(CLITestCase):
     testdir = "evaluate"
