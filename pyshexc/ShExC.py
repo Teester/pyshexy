@@ -7,7 +7,7 @@ from pyjsg.jsglib import *
 
 from pyshexc.parser_impl import generate_shexj
 
-repl_list: List[Tuple[str, str]] = [
+repl_list [
     (r'"([0-9]+)"\^\^<http://www.w3.org/2001/XMLSchema#integer>\n?', r'\1')
 ]
 
@@ -55,7 +55,7 @@ class ShExC:
         return ' '.join(e for e in self.tokenize() if e)
 
     def tokenize(self) -> List[str]:
-        schema: List[str] = []
+        schema = []
 
         schema += self.imports(self.schema.imports)
         schema += self.semActs(self.schema.startActs)

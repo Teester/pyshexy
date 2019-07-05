@@ -23,7 +23,7 @@ class SimpleShexTestCase(unittest.TestCase):
             return compare_dicts(d1._as_dict, d2._as_dict, d1name="expected", d2name="actual  ", filtr=json_filtr), log
 
     def shexc_to_shexj(self, shexc, base=None) -> ShExJ.Schema:
-        shex: ShExJ.Schema = parse(shexc, default_base=base)
+        shex = parse(shexc, default_base=base)
         self.assertIsNotNone(shex, "Compile error")
         shex['@context'] = "http://www.w3.org/ns/shex.jsonld"
         return shex
@@ -34,7 +34,7 @@ class SimpleShexTestCase(unittest.TestCase):
         rslt, log = self.compare_shexj(shex, shexj)
         msg = "ShExC to ShExJ Conversion Error"
         if not rslt:
-            print(f"***** {msg} *****")
+            print("***** {} *****".format(msg))
             print(log.getvalue())
             print("\n***** Actual ShExJ *****")
             print(as_json(shex))
@@ -47,7 +47,7 @@ class SimpleShexTestCase(unittest.TestCase):
         msg = "ShExJ to ShExC Conversion Error"
         print(shexc_rev)
         if not rslt:
-            print(f"***** {msg} *****")
+            print("***** {} *****".format(msg))
             print(log.getvalue())
             print("\n***** Actual ShExC *****")
             print(shexc_rev)

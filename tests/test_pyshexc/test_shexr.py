@@ -12,8 +12,8 @@ import requests
 from rdflib import Graph, URIRef, Namespace
 from rdflib.term import Identifier, BNode
 
-from tests import schemas_base, RDFLIB_PARSING_ISSUE_FIXED
-from tests.utils.build_test_harness import ValidationTestCase
+from tests.test_pyshexc import schemas_base, RDFLIB_PARSING_ISSUE_FIXED
+from tests.test_pyshexc.utils.build_test_harness import ValidationTestCase
 
 # Comment this line out if you don't want context caching
 from pyshexc.rdflib import contextcache
@@ -92,7 +92,7 @@ def compare_rdf(ttl_text: str, shex_ttl_url: str) -> bool:
     try:
         g1 = Graph().parse(data=ttl_text, format="turtle")
     except rdflib.plugins.parsers.notation3.BadSyntax as e:
-        print(f"*****> RDFLIB Parsing Failure: {e}")
+        print("*****> RDFLIB Parsing Failure: {}".format(e))
         return False
     if ':' in shex_json_url:
         resp = requests.get(shex_json_url)
@@ -117,20 +117,20 @@ def compare_rdf(ttl_text: str, shex_ttl_url: str) -> bool:
     g2_subjs = set([s for s in g2.subjects() if isinstance(s, URIRef) or bare_bnode(s, g2)])
     for s in g1_subjs - g2_subjs:
         if not isinstance(s, BNode):
-            print(f"Missed: {s}")
+            print("Missed: {}".format(s))
 
     for s in g2_subjs - g2_subjs:
         if not isinstance(s, BNode):
-            print(f"Added: {s}")
+            print("Added: {}".format(s))
 
     rval = True
     for s in g1_subjs.intersection(g2_subjs):
         s_in_g1 = complete_definition(s, g1)
         s_in_g2 = complete_definition(s, g2)
         if not s_in_g1.isomorphic(s_in_g2):
-            print(f"{shex_json_url}")
+            print(shex_json_url)
             print(strip_prefixes(s_in_g1.serialize(format="turtle").decode()))
-            print(f"{shex_ttl_url}")
+            print(shex_ttl_url)
             print(strip_prefixes(s_in_g2.serialize(format="turtle").decode()))
             rval = False
 

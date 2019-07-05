@@ -22,7 +22,7 @@ shexTestRepository = schemas_base
 
 # If not empty, validate this single file
 # testShexFile: str = "1dotCodeWithEscapes1.json"
-testShexFile: str = ""
+testShexFile = ""
 
 STOP_ON_ERROR = False       # True means go until you hit the first error
 
@@ -44,10 +44,10 @@ for k in list(skip.keys()):
         del skip[k]
 
 
-class TestFile(NamedTuple):
-    fullpath: str
-    filename: str
-
+#class TestFile(NamedTuple):
+#    fullpath: str
+#    filename: str
+TestFile = NamedTuple("TestFile", [("fullpath", str), (filename, str)])
 
 def compare_json(j1: str, j2: str, log: TextIO) -> bool:
     """

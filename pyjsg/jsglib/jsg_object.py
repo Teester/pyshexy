@@ -200,7 +200,7 @@ class JSGObject(JsonObj, JSGValidateable, metaclass=JSGObjectMeta):
                 if typ in self._context.NAMESPACE:
                     typ = self._context.NAMESPACE[typ]
                 else:
-                    raise ValueError("Unknown typr: {}".format(typ))
+                    raise ValueError("Unknown type: {}".format(typ))
             typ = proc_forward(typ, self._context.NAMESPACE)
             if is_union(typ):
                 for t in typ.__args__:

@@ -3,7 +3,7 @@ import unittest
 
 from rdflib import Graph
 
-from tests import RDFLIB_PARSING_ISSUE_FIXED
+from tests.test_pyshexc import RDFLIB_PARSING_ISSUE_FIXED
 
 
 class RdflibParserTestCase(unittest.TestCase):

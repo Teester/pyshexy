@@ -7,7 +7,7 @@ from ShExJSG import ShExJ
 from pyshexc.parser_impl.generate_shexj import parse
 from tests import git_branch
 
-BASE = Namespace(f"https://raw.githubusercontent.com/shexSpec/shexTest/{git_branch}/validation/")
+BASE = Namespace("https://raw.githubusercontent.com/shexSpec/shexTest/{}/validation/".format(git_branch))
 FOO = Namespace("/some/location/file/")
 EX = Namespace("http://example.org/")
 
@@ -29,7 +29,7 @@ class TestIssue2(unittest.TestCase):
         self.assertEqual(str(BASE.o1), str(shex.shapes[0].expression.valueExpr.values[0]))
 
     def test_explicit_base(self):
-        shex_str = f'BASE <{str(FOO)}>\n<S1> {{<p1> [<o1>]}}'
+        shex_str = 'BASE <{}>\n<S1> {{<p1> [<o1>]}}'.format(str(FOO))
         shex: ShExJ.Schema = parse(shex_str, str(BASE))
         self.assertEqual(str(FOO.S1),
                          str(shex.shapes[0].id))
@@ -37,11 +37,11 @@ class TestIssue2(unittest.TestCase):
         self.assertEqual(str(FOO.o1), str(shex.shapes[0].expression.valueExpr.values[0]))
 
     def test_explicit_uris(self):
-        shex_str = f"""
-BASE <{str(FOO)}>
-PREFIX ex: <{EX}>
+        shex_str = """
+BASE <{}>
+PREFIX ex: <{}>
 
-ex:S1 {{ex:p1 [ex:o1]}}"""
+ex:S1 {{ex:p1 [ex:o1]}}""".format(str(FOO), EX)
         shex: ShExJ.Schema = parse(shex_str, str(BASE))
         self.assertEqual(str(EX.S1),
                          str(shex.shapes[0].id))

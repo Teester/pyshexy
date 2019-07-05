@@ -1,6 +1,6 @@
 import unittest
 
-from tests.utils.simple_shex_test import SimpleShexTestCase
+from tests.test_pyshexc.utils.simple_shex_test import SimpleShexTestCase
 
 shexc = """IMPORT <1dot>
 
