@@ -1,6 +1,6 @@
 import os
 import unittest
-
+from pathlib import Path
 from pyjsg.validate_json import JSGPython
 
 json = """
@@ -35,7 +35,8 @@ class ObjectLiteralTestCase(unittest.TestCase):
     def test_ol(self):
         """ Test that the 'type' variable in the ObjectLiteral is not mistaken as a real, unresolved type.
         """
-        shexj_jsg = os.path.join(os.path.dirname(__file__), '..', '..', 'tests', 'test_pyjsg', 'test_basics', 'jsg', 'ShExJ.jsg')
+        #shexj_jsg = os.path.join(os.path.dirname(__file__), '..', '..', 'tests', 'test_pyjsg', 'test_basics', 'jsg', 'ShExJ.jsg')
+        shexj_jsg = str(Path(__file__).resolve().parent.parent.parent.joinpath('test_pyjsg', 'test_basics', 'jsg', 'ShExJ.jsg'))
         rval = JSGPython(shexj_jsg).conforms(json, "1val1DECIMAL")
         self.assertEqual("1val1DECIMAL: Conforms to Schema", str(rval))
         self.assertTrue(rval.success)
