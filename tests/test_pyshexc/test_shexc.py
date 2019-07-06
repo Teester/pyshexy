@@ -16,7 +16,7 @@ from pyjsg.jsglib.loader import is_valid
 from pyshexc.ShExC import ShExC
 
 # Repository to validate against
-from tests import schemas_base
+from tests.test_pyshexc import schemas_base
 
 shexTestRepository = schemas_base
 

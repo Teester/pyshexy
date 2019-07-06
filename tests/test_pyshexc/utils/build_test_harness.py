@@ -9,12 +9,12 @@ import requests
 class ValidationTestCase(unittest.TestCase):
     longMessage = True
 
-    repo_url: str = None            #
-    file_suffix: str = None         # file suffix (e.g. ".shex")
-    start_at: Optional[str] = ""    # Start at or after this
-    skip: Dict[str, str] = dict()   # Filename / reason array
-    validation_function: Callable[[str, str], bool] = None      #
-    single_file: bool = False       # True means process exactly one file
+    repo_url = None            #
+    file_suffix = None         # file suffix (e.g. ".shex")
+    start_at = ""    # Start at or after this
+    skip = dict()   # Filename / reason array
+    validation_function = None      #
+    single_file = False       # True means process exactly one file
 
     @classmethod
     def make_test_function(cls, url):
@@ -37,7 +37,7 @@ class ValidationTestCase(unittest.TestCase):
                         if cls.single_file:
                             break
                     else:
-                        print(f"***** Skipped: {fname} - {cls.skip[fname]}")
+                        print("***** Skipped: {} - {}".format(fname, cls.skip[fname]))
 
     @staticmethod
     def enumerate_http_files(url) -> Tuple[str, str]:

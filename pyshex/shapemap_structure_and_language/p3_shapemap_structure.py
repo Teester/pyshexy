@@ -59,24 +59,14 @@ class WILD_CARD(StringToken):
 #    * The focus node token appears in either the subject or the object position.
 #    * The predicate position is filled by an IRI (I in the SPARQL definitions).
 class SubjectFocusPattern(StringToken):
-#    subject: FOCUS
-#    predicate: URIRef
-#    object: Union[URIRef, Literal, WILD_CARD]
-#SubjectFocusPattern = StringToken("subject", ["predicate", "object"])
-    def __init__(self, subject: FOCUS, predicate: URIRef, object: Union[URIRef, Literal, WILD_CARD]):
-        self.subject = subject
-        self.predicate = predicate
-        self.object = object
+    subject = FOCUS
+    predicate = URIRef
+    object = Union[URIRef, Literal, WILD_CARD]
 
 class ObjectFocusPattern(StringToken):
-#    subject: Union[URIRef, WILD_CARD]
-#    predicate: URIRef
-#    object: FOCUS
-#ObjectFocusPattern = StringToken("subject", ["predicate", "object"])
-    def __init__(self, subject: Union[URIRef, WILD_CARD], predicate: URIRef, object: FOCUS):
-        self.subject = subject
-        self.predicate = predicate
-        self.object = object
+    subject = Union[URIRef, WILD_CARD]
+    predicate = URIRef
+    object = FOCUS
 
 TriplePattern = Union[SubjectFocusPattern, ObjectFocusPattern]
 

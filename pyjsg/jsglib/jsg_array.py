@@ -40,7 +40,7 @@ class JSGArray(list, JSGValidateable):
         :returns: Success indicator and error list """
         errors = []
         if not isinstance(val, list):
-            errors.append(self._variable_name + ": " + repr(val) + " is not an array")
+            errors.append("{}: {} is not an array".format(self._variable_name, repr(val)))
         else:
             for i in range(0, len(val)):
                 v = val[i]

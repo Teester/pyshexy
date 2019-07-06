@@ -11,8 +11,8 @@ from pyjsg.jsglib.loader import loads as jsg_loads
 from pyjsg.jsglib.logger import Logger
 
 from pyshexc.parser_impl.generate_shexj import parse
-from tests import schemas_base
-from tests.utils.build_test_harness import ValidationTestCase
+from tests.test_pyshexc import schemas_base
+from tests.test_pyshexc.utils.build_test_harness import ValidationTestCase
 
 #
 # Starting file name (full URL) (with or without ".shex" suffix)

@@ -59,7 +59,7 @@ class SlurpyGraph(Graph):
 
     @staticmethod
     def _repr_element(node: Union[URIRef, BNode, Literal]) -> str:
-        return "<" + node  + ">" if isinstance(node, URIRef) else "_:" + node if isinstance(node, BNode) else '"' + node + '"'
+        return "<{}>".format(node) if isinstance(node, URIRef) else "_:{}".format(node) if isinstance(node, BNode) else '"{}"'.format(node)
 
     def already_resolved(self, pattern: QueryTriple) -> bool:
         """ Determine whether pattern has already been loaded into the cache.
@@ -88,7 +88,7 @@ class SlurpyGraph(Graph):
         self.total_calls += 1
         if self.graph_name is not None:
             gn = "?g" if not self.graph_name else self.graph_name
-            gquery = "graph %s {" % (gn)
+            gquery = "graph {} {{".format(gn)
             gqueryend = '}'
         else:
             gquery = gqueryend = ''
@@ -96,10 +96,10 @@ class SlurpyGraph(Graph):
             subj = self._repr_element(pattern[0]) if pattern[0] is not None else '?s'
             pred = self._repr_element(pattern[1]) if pattern[1] is not None else '?p'
             obj = self._repr_element(pattern[2]) if pattern[2] is not None else '?o'
-            query = "SELECT ?s ?p ?o {%s%s %s %s%s}" % (gquery, subj, pred, obj, gqueryend)
+            query = "SELECT ?s ?p ?o {{{}{} {} {}{}}}".format(gquery, subj, pred, obj, gqueryend)
             start = time.time()
             if self.debug_slurps:
-                print("SPARQL: (%s)" % (query), end="")
+                print("SPARQL: ({})".format(query), end="")
             self.sparql.setQuery(query)
             resp = self.sparql.query().convert()
             elapsed = time.time() - start
@@ -108,7 +108,7 @@ class SlurpyGraph(Graph):
             self.total_triples += ntriples
             self.total_queries += 1
             if self.debug_slurps:
-                print(" %d secs - %d triples" % (round(elapsed, 2), ntriples))
+                print(" {} secs - {} triples".format(round(elapsed, 2), ntriples))
             query_result = self._query_result_hook(self) if self._query_result_hook is not None else None
             for row in resp['results']['bindings']:
                 triple = RDFTriple(pattern[0] if pattern[0] is not None else self._map_type(row['s']),

@@ -35,7 +35,7 @@ class ParseNode:
             for s, p in g.subject_predicates(node):
                 rval.append("{}  {} {} {} .".format(indent, self.n3m.n3(s), self.n3m.n3(p), self.n3m.n3(node)))
         for p, o in sorted(g.predicate_objects(node)):
-            rval += ["{}    {} {} {} .".format(indent, self.n3m.n3(node), self.n3m.n3(p), self.n3m.n3(o))]
+            rval += ["{}     {} {} {} .".format(indent, self.n3m.n3(node), self.n3m.n3(p), self.n3m.n3(o))]
             if isinstance(o, BNode):
                 rval += self.dump_bnodes(g, o, indent, top=False)
         return rval

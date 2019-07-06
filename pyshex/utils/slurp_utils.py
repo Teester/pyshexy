@@ -1,4 +1,5 @@
 import sys
+#from contextlib import AbstractContextManager
 
 from ShExJSG import ShExJ
 from rdflib import Graph
@@ -7,6 +8,8 @@ from sparql_slurper import SlurpyGraph
 from pyshex.shape_expressions_language.p5_context import Context
 from pyshex.shapemap_structure_and_language.p1_notation_and_terminology import Node
 
+
+#class slurper(AbstractContextManager):
 class slurper():
 
     def __init__(self, cntxt: Context, n: Node, S: ShExJ.Shape):
@@ -14,15 +17,6 @@ class slurper():
         self.tracing = isinstance(self.graph, SlurpyGraph) and cntxt.debug_context.trace_slurps
         self.n = n
         self.S = S
-
-    #def __iter__(self):
-    #    return self
-
-    #def __next__(self):
-    #    return self
-
-    #def throw(self, type, val, traceback):
-    #    return
 
     def __enter__(self) -> Graph:
         if self.tracing:

@@ -321,6 +321,6 @@ def matchesTripleExprRef(cntxt: Context, T: RDFGraph, expr: ShExJ.tripleExprLabe
     """
     expr = cntxt.tripleExprFor(expr)
     if expr is None:
-        cntxt.fail_reason = "{} : Reference not found".format(expr)
+        cntxt.fail_reason = "{}: Reference not found".format(expr)
         return False
     return matchesExpr(cntxt, T, expr)

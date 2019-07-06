@@ -61,7 +61,8 @@ class JSGString(str, JSGPatterned):
     A lexerRuleSpec implementation
     """
     pattern = None
-    python_type = (str, str)
+    python_type = str
+
 
 class String(JSGString):
     """ Implementation of JSG @string type """

@@ -1,7 +1,7 @@
 import unittest
 
 from pyshexc.ShExC import ShExC
-from tests.utils.simple_shex_test import SimpleShexTestCase
+from tests.test_pyshexc.utils.simple_shex_test import SimpleShexTestCase
 
 shexc = """abstract <A>      /sA.........$/
               and { <p> [0 1 2 3 4 5 6 7 8 9]+}

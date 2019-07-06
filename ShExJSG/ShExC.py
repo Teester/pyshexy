@@ -289,7 +289,7 @@ class ShExC:
 
     @staticmethod
     def add_facet(facet, label: str) -> str:
-        return "{} {}".format(label, facet if facet is not None else '')
+        return "{} {}".format(label, facet) if facet is not None else ''
 
     @staticmethod
     def add_pattern(pattern, flags) -> str:

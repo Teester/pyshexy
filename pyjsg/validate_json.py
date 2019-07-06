@@ -1,5 +1,4 @@
 import os
-from collections import namedtuple
 from argparse import ArgumentParser
 from io import StringIO
 from types import ModuleType
@@ -16,11 +15,14 @@ from pyjsg.parser_impl.generate_python import parse
 #    fail_reason: str
 #    test_name: str
 #    type: Optional[str]
-class ValidationResult(namedtuple("ValidationResult", ["success", "fail_reason", "test_name", "type"])):
-    def __str__(self) -> str:
-        return ("{}: ".format(self.test_name) if self.test_name else "") +\
-               ("Conforms to {}".format(self.type) if self.success else "FAIL - {}".format(self.fail_reason))
 
+#    def __str__(self) -> str:
+#        return (f"{self.test_name}: " if self.test_name else "") +\
+#               (f"Conforms to {self.type}" if self.success else f"FAIL - {self.fail_reason}")
+ValidationResult = NamedTuple("ValidationResult", [("success", bool), ("fail_reason", str), ("test_name", str), ("type", Optional[str])])
+def getString(self) -> str:
+    return ("{}: ".format(self.test_name) if self.test_name else "") + ("Conforms to {}".format(self.type) if self.success else "FAIL - {}".format(self.fail_reason))
+ValidationResult.__str__ = getString
 
 class JSGPython:
     def __init__(self, jsg: Optional[str]=None, python: Optional[str]=None, print_python: bool=False) -> None:
