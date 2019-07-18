@@ -44,10 +44,8 @@ for k in list(skip.keys()):
         del skip[k]
 
 
-#class TestFile(NamedTuple):
-#    fullpath: str
-#    filename: str
-TestFile = NamedTuple("TestFile", [("fullpath", str), (filename, str)])
+TestFile = NamedTuple("TestFile", [("fullpath", str), ("filename", str)])
+
 
 def compare_json(j1: str, j2: str, log: TextIO) -> bool:
     """
@@ -72,7 +70,7 @@ def validate_shexc_json(json_str: str, input_fname: str) -> bool:
     logger = StringIO()
 
     # Load the JSON image of the good object and make sure it is valid
-    shex_json: ShExJ.Schema = jsg_loads(json_str, ShExJ)
+    shex_json = jsg_loads(json_str, ShExJ)  # type: ShExJ.Schema
     if not is_valid(shex_json, logger):
         print("File: {} - ".format(input_fname))
         print(logger.getvalue())
@@ -85,7 +83,7 @@ def validate_shexc_json(json_str: str, input_fname: str) -> bool:
     output_shex_obj = ShExC(shexc_str).schema
     if output_shex_obj is None:
         for number, line in enumerate(shexc_str.split('\n')):
-            print(f"{number + 1}: {line}")
+            print("{}: {}".format(number + 1, line))
         return False
     output_shex_obj["@context"] = "http://www.w3.org/ns/shex.jsonld"
     rval = compare_json(json_str, as_json(output_shex_obj), logger)
@@ -98,14 +96,14 @@ def validate_shexc_json(json_str: str, input_fname: str) -> bool:
 class Stats:
     def __init__(self):
         self.total = self.passed = self.skipped = self.failed = 0
-        self.skipreasons: Dict[str, int] = {}
+        self.skipreasons = {}  # type: Dict[str, int]
 
     def __str__(self):
-        return f"*** Total tests: {self.total}\n" + \
-               f"\tPassed: {self.passed}\n" + \
-               f"\tSkipped: {self.skipped}\n" + \
-               f"\tFailed: {self.failed}\n\n" + \
-               "*** Skip Reasons ***\n" + '\n'.join(f"\t{r} : {self.skipreasons[r]}" for r in self.skipreasons.keys())
+        return "*** Total tests: {}\n".format(self.total) + \
+               "\tPassed: {}\n".format(self.passed) + \
+               "\tSkipped: {}\n".format(self.skipped) + \
+               "\tFailed: {}\n\n".format(self.failed) + \
+               "*** Skip Reasons ***\n" + '\n'.join("\t{} : {}".format(r, self.skipreasons[r]) for r in self.skipreasons.keys())
 
 
 def validate_file(file: TestFile, stats: Stats) -> bool:
@@ -138,7 +136,7 @@ def validate_file(file: TestFile, stats: Stats) -> bool:
                 stats.failed += 1
                 rval = False
         if not rval:
-            print(f"\nLoading: '{file.filename}'")
+            print("\nLoading: '{}'".format(file.filename))
             print(log.getvalue())
             return False
         return True
@@ -159,8 +157,8 @@ def validate_shex_schemas() -> bool:
     """
     stats = Stats()
     if not testShexFile:
-        test_list: List[TestFile] = enumerate_http_files(shexTestRepository) if ':' in shexTestRepository else \
-            enumerate_directory(shexTestRepository)
+        test_list = enumerate_http_files(shexTestRepository) if ':' in shexTestRepository else \
+            enumerate_directory(shexTestRepository) # type: List[TestFile]
         if test_list is None:
             rval = True
         elif STOP_ON_ERROR:

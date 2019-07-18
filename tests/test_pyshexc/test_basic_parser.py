@@ -74,7 +74,7 @@ def compare_json(shex_url: str, shex_json: str, log: Logger) -> bool:
             with open(json_url) as f:
                 json_text = f.read()
         except FileNotFoundError:
-            print(f"****> {json_url} not found. Comparison not done ***")
+            print("****> {} not found. Comparison not done ***".format(json_url))
             return True
     d1 = jao_loads(json_text)
     d2 = jao_loads(shex_json)

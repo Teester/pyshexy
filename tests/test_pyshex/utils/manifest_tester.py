@@ -61,7 +61,7 @@ class ManifestEntryTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.mfst = ShExManifest(os.path.join(BASE_FILE_LOC, 'validation', 'manifest.ttl'), manifest_format="turtle")
-        #cls.mfst = ShExManifest(LOCATION, manifest_format="turtle")
+        # cls.mfst = ShExManifest(LOCATION, manifest_format="turtle")
         if BASE_FILE_LOC != REMOTE_FILE_LOC:
             cls.mfst.schema_loader.base_location = REMOTE_FILE_LOC
             cls.mfst.schema_loader.redirect_location = BASE_FILE_LOC
@@ -78,7 +78,6 @@ class ManifestEntryTestCase(unittest.TestCase):
     def __init__(self, methodname: str=None, expected_failures: Dict[str, str]=None):
         super().__init__(methodname)
         self.expected_failures = {} if expected_failures is None else expected_failures
-
 
     @staticmethod
     def URIname(uri: URIRef) -> str:
@@ -121,7 +120,8 @@ class ManifestEntryTestCase(unittest.TestCase):
             skipped_traits = list(me.traits.intersection(skip_traits))
             if skipped_traits:
                 if VERBOSE:
-                    print("Skipping {} ({}) - Skipped trait".format(me.name, ', '.join([self.URIname(t) for t in me.traits])))
+                    print("Skipping {} ({}) - Skipped trait".format(me.name,
+                                                                    ', '.join([self.URIname(t) for t in me.traits])))
                 key = str(skipped_traits[0]).replace(str(SHT), 'sht:')
                 if key not in self.skip_reasons:
                     self.skip_reasons[key] = 0
@@ -130,7 +130,9 @@ class ManifestEntryTestCase(unittest.TestCase):
                 should_skip = True
             elif me.name in self.expected_failures:
                 if VERBOSE:
-                    print("Skipping {} ({}) - {}".format(', '.join(me.name, [self.URIname(t) for t in me.traits]), self.expected_failures[me.name]))
+                    print("Skipping {} ({}) - {}".format(me.name,
+                                                         ', '.join([self.URIname(t) for t in me.traits]),
+                                                         self.expected_failures[me.name]))
                 key = self.expected_failures[me.name]
                 if key not in self.skip_reasons:
                     self.skip_reasons[key] = 0

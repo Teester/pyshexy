@@ -15,14 +15,14 @@ EX = Namespace("http://example.org/")
 class TestIssue2(unittest.TestCase):
     def test_no_base(self):
         shex_str = '<S1> {<p1> [<o1>]}'
-        shex: ShExJ.Schema = parse(shex_str)
+        shex = parse(shex_str)  # type: ShExJ.Schema
         self.assertEqual("S1", str(shex.shapes[0].id))
         self.assertEqual("p1", str(shex.shapes[0].expression.predicate))
         self.assertEqual("o1", str(shex.shapes[0].expression.valueExpr.values[0]))
 
     def test_default_base(self):
         shex_str = '<S1> {<p1> [<o1>]}'
-        shex: ShExJ.Schema = parse(shex_str, str(BASE))
+        shex = parse(shex_str, str(BASE))  # type: ShExJ.Schema
         self.assertEqual(str(BASE.S1),
                          str(shex.shapes[0].id))
         self.assertEqual(str(BASE.p1), str(shex.shapes[0].expression.predicate))
@@ -30,7 +30,7 @@ class TestIssue2(unittest.TestCase):
 
     def test_explicit_base(self):
         shex_str = 'BASE <{}>\n<S1> {{<p1> [<o1>]}}'.format(str(FOO))
-        shex: ShExJ.Schema = parse(shex_str, str(BASE))
+        shex = parse(shex_str, str(BASE))  # type: ShExJ.Schema
         self.assertEqual(str(FOO.S1),
                          str(shex.shapes[0].id))
         self.assertEqual(str(FOO.p1), str(shex.shapes[0].expression.predicate))
@@ -42,7 +42,7 @@ BASE <{}>
 PREFIX ex: <{}>
 
 ex:S1 {{ex:p1 [ex:o1]}}""".format(str(FOO), EX)
-        shex: ShExJ.Schema = parse(shex_str, str(BASE))
+        shex = parse(shex_str, str(BASE))  # type: ShExJ.Schema
         self.assertEqual(str(EX.S1),
                          str(shex.shapes[0].id))
         self.assertEqual(str(EX.p1), str(shex.shapes[0].expression.predicate))
