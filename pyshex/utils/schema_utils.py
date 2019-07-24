@@ -7,9 +7,8 @@ from pyshex.shape_expressions_language.p5_context import Context
 from pyshex.shapemap_structure_and_language.p3_shapemap_structure import START, shapeLabel
 
 
-def reference_of(selector: shapeLabel, cntxt: Union[Context, ShExJ.Schema] ) -> Optional[ShExJ.shapeExpr]:
+def reference_of(selector: shapeLabel, cntxt: Union[Context, ShExJ.Schema]) -> Optional[ShExJ.shapeExpr]:
     """ Return the shape expression in the schema referenced by selector, if any
-
     :param cntxt: Context node or ShEx Schema
     :param selector: identifier of element to select within the schema
     :return:
@@ -25,7 +24,7 @@ def reference_of(selector: shapeLabel, cntxt: Union[Context, ShExJ.Schema] ) -> 
 
 def triple_reference_of(label: ShExJ.tripleExprLabel, cntxt: Context) -> Optional[ShExJ.tripleExpr]:
     """ Search for the label in a Schema """
-    te = None
+    te = None  # type: Optional[ShExJ.tripleExpr]
     if cntxt.schema.start is not None:
         te = triple_in_shape(cntxt.schema.start, label, cntxt)
     if te is None:
@@ -55,7 +54,7 @@ def triple_in_shape(expr: ShExJ.shapeExpr, label: ShExJ.tripleExprLabel, cntxt: 
 
 
 def triple_constraints_in_expression(expression: ShExJ.shapeExpr, cntxt: Context) -> List[ShExJ.TripleConstraint]:
-    tes = []
+    tes = []  # type: List[ShExJ.TripleConstraint]
 
     def triple_expr_visitor(tes: List[ShExJ.TripleConstraint], expr: ShExJ.TripleConstraint, _: Context) -> None:
         if isinstance(expr, ShExJ.TripleConstraint):
@@ -67,9 +66,8 @@ def triple_constraints_in_expression(expression: ShExJ.shapeExpr, cntxt: Context
 
 def predicates_in_expression(expression: ShExJ.shapeExpr, cntxt: Context) -> List[IRIREF]:
     """ Return the set of predicates that "appears in a TripleConstraint in an expression
-    
-    See: `5.5.2 Semantics <http://shex.io/shex-semantics/#triple-expressions-semantics>`_ for details
 
+    See: `5.5.2 Semantics <http://shex.io/shex-semantics/#triple-expressions-semantics>`_ for details
     :param expression: Expression to scan for predicates
     :param cntxt: Context of evaluation
     :return: List of predicates
@@ -92,12 +90,11 @@ class PredDirection:
 def directed_predicates_in_expression(expression: ShExJ.shapeExpr, cntxt: Context) -> Dict[IRIREF, PredDirection]:
     """ Directed predicates in expression -- return all predicates in shapeExpr along with which direction(s) they
     evaluate
-
     :param expression: Expression to scan
     :param cntxt:
     :return:
     """
-    dir_predicates = {}
+    dir_predicates = {}  # type: Dict[IRIREF, PredDirection]
 
     def predicate_finder(predicates: Dict[IRIREF, PredDirection], tc: ShExJ.TripleConstraint, _: Context) -> None:
         if isinstance(tc, ShExJ.TripleConstraint):
@@ -113,7 +110,7 @@ def directed_predicates_in_expression(expression: ShExJ.shapeExpr, cntxt: Contex
 
 
 def predicates_in_tripleexpr(expression: ShExJ.tripleExpr, cntxt: Context) -> Set[IRIREF]:
-    predicates = set()
+    predicates = set()  # type: Set[IRIREF]
 
     def triple_expr_visitor(predicates: Set[IRIREF], expr: ShExJ.tripleExpr, cntxt_: Context) -> None:
         if isinstance(expr, ShExJ.TripleConstraint):

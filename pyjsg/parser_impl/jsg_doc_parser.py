@@ -22,7 +22,6 @@ import pyjsg.jsglib as jsg
 {original_shex}
 # .TYPE and .IGNORE settings
 _CONTEXT = jsg.JSGContext(){body}
-
 _CONTEXT.NAMESPACE = locals()
 '''
 
@@ -31,9 +30,9 @@ class JSGDocParser(jsgParserVisitor):
     def __init__(self, context: Optional[JSGDocContext] = None):
         jsgParserVisitor.__init__(self)
         self._context = JSGDocContext() if context is None else context
-        self.text = ""
+        self.text = ""  # type: str
 
-    def as_python(self, infile, include_original_shex: bool=False):
+    def as_python(self, infile, include_original_shex: bool = False):
         """ Return the python representation of the document """
         self._context.resolve_circular_references()            # add forwards for any circular entries
         body = ''

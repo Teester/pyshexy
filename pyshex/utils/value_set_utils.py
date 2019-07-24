@@ -9,9 +9,7 @@ from pyshex.shapemap_structure_and_language.p1_notation_and_terminology import N
 
 def objectValueMatches(n: Node, vsv: ShExJ.objectValue) -> bool:
     """ http://shex.io/shex-semantics/#values
-
     Implements "n = vsv" where vsv is an objectValue and n is a Node
-
     Note that IRIREF is a string pattern, so the matching type is str
     """
     return \

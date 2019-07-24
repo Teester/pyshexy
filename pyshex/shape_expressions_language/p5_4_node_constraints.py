@@ -19,7 +19,6 @@ from pyshex.utils.value_set_utils import objectValueMatches, uriref_startswith_i
 @trace_satisfies()
 def satisfiesNodeConstraint(cntxt: Context, n: Node, nc: ShExJ.NodeConstraint, _: DebugContext) -> bool:
     """ `5.4.1 Semantics <http://shex.io/shex-semantics/#node-constraint-semantics>`_
-
     For a node n and constraint nc, satisfies2(n, nc) if and only if for every nodeKind, datatype, xsFacet and
     values constraint value v present in nc nodeSatisfies(n, v). The following sections define nodeSatisfies for
     each of these types of constraints:
@@ -32,16 +31,14 @@ def satisfiesNodeConstraint(cntxt: Context, n: Node, nc: ShExJ.NodeConstraint, _
 @trace_satisfies(newline=False, skip_trace=lambda nc: nc.nodeKind is None)
 def nodeSatisfiesNodeKind(cntxt: Context, n: Node, nc: ShExJ.NodeConstraint, c: DebugContext) -> bool:
     """ `5.4.2 Node Kind Constraints <http://shex.io/shex-semantics/#nodeKind>`_
-
     For a node n and constraint value v, nodeSatisfies(n, v) if:
-
         * v = "iri" and n is an IRI.
         * v = "bnode" and n is a blank node.
         * v = "literal" and n is a Literal.
         * v = "nonliteral" and n is an IRI or blank node.
     """
     if c.debug and nc.nodeKind is not None:
-        print("Kind: {}".format(nc.nodeKind))
+        print(" Kind: {}".format(nc.nodeKind))
     if nc.nodeKind is None or \
         (nc.nodeKind == 'iri' and isinstance(n, URIRef)) or \
         (nc.nodeKind == 'bnode' and isinstance(n, BNode)) or \
@@ -55,7 +52,6 @@ def nodeSatisfiesNodeKind(cntxt: Context, n: Node, nc: ShExJ.NodeConstraint, c: 
 @trace_satisfies(newline=False, skip_trace=lambda nc: nc.datatype is None)
 def nodeSatisfiesDataType(cntxt: Context, n: Node, nc: ShExJ.NodeConstraint, c: DebugContext) -> bool:
     """ `5.4.3 Datatype Constraints <http://shex.io/shex-semantics/#datatype>`_
-
     For a node n and constraint value v, nodeSatisfies(n, v) if n is an Literal with the datatype v and, if v is in
     the set of SPARQL operand data types[sparql11-query], an XML schema string with a value of the lexical form of
     n can be cast to the target type v per XPath Functions 3.1 section 19 Casting[xpath-functions]. Only datatypes
@@ -66,7 +62,8 @@ def nodeSatisfiesDataType(cntxt: Context, n: Node, nc: ShExJ.NodeConstraint, c: 
     if c.debug:
         print(" Datatype: {}".format(nc.datatype))
     if not isinstance(n, Literal):
-        cntxt.fail_reason = "Datatype constraint ({}) does not match {} {}".format(nc.datatype, type(n).__name__, cntxt.n3_mapper.n3(n))    
+        cntxt.fail_reason = "Datatype constraint ({}) ".format(nc.datatype) +\
+            "does not match {} {}".format(type(n).__name__, cntxt.n3_mapper.n3(n))
         cntxt.dump_bnode(n)
         return False
     actual_datatype = _datatype(n)
@@ -87,7 +84,6 @@ def _datatype(n: Literal) -> str:
                                        nc.maxlength is None and nc.pattern is None)
 def nodeSatisfiesStringFacet(cntxt: Context, n: Node, nc: ShExJ.NodeConstraint, _c: DebugContext) -> bool:
     """ `5.4.5 XML Schema String Facet Constraints <ttp://shex.io/shex-semantics/#xs-string>`_
-
      String facet constraints apply to the lexical form of the RDF Literals and IRIs and blank node
      identifiers (see note below regarding access to blank node identifiers).
     """
@@ -127,7 +123,8 @@ def nodeSatisfiesStringFacet(cntxt: Context, n: Node, nc: ShExJ.NodeConstraint, 
         elif nc.maxlength is not None and len(lex) > nc.maxlength:
             cntxt.fail_reason = "String length violation - maximum: {} actual: {}".format(nc.maxlength, len(lex))
         elif nc.pattern is not None and not pattern_match(nc.pattern, nc.flags, lex):
-            cntxt.fail_reason = "Pattern match failure - pattern: {} flags:{} string: {}".format(nc.pattern, nc.flags, lex)
+            cntxt.fail_reason = "Pattern match failure - pattern: {} flags:{}".format(nc.pattern, nc.flags) +\
+                                             " string: {}".format(lex)
         else:
             cntxt.fail_reason = "Programming error - flame the programmer"
         return False
@@ -142,7 +139,6 @@ def nodeSatisfiesStringFacet(cntxt: Context, n: Node, nc: ShExJ.NodeConstraint, 
                                                  nc.totaldigits is None and nc.fractiondigits is None)
 def nodeSatisfiesNumericFacet(cntxt: Context, n: Node, nc: ShExJ.NodeConstraint, _c: DebugContext) -> bool:
     """ `5.4.5 XML Schema Numeric Facet Constraints <http://shex.io/shex-semantics/#xs-numeric>`_
-
     Numeric facet constraints apply to the numeric value of RDF Literals with datatypes listed in SPARQL 1.1
     Operand Data Types[sparql11-query]. Numeric constraints on non-numeric values fail. totaldigits and
     fractiondigits constraints on values not derived from xsd:decimal fail.
@@ -163,27 +159,33 @@ def nodeSatisfiesNumericFacet(cntxt: Context, n: Node, nc: ShExJ.NodeConstraint,
                     return True
                 else:
                     if nc.mininclusive is not None and v < nc.mininclusive:
-                        cntxt.fail_reason = "Numeric value violation - minimum inclusive: {} actual: {}".format(nc.mininclusive, v)
+                        cntxt.fail_reason = "Numeric value volation - minimum inclusive: " \
+                                                         "{} actual: {}".format(nc.mininclusive, v)
                     elif nc.minexclusive is not None and v <= nc.minexclusive:
-                        cntxt.fail_reason = "Numeric value violation - minimum exclusive {} actual: {}".format(nc.minexclusive, v)
+                        cntxt.fail_reason = "Numeric value volation - minimum exclusive: " \
+                                                         "{} actual: {}".format(nc.minexclusive, v)
                     elif nc.maxinclusive is not None and v > nc.maxinclusive:
-                        cntxt.fail_reason = "Numeric value violation - maximum inclusive: {} actual : {}".format(nc.maxinclusive, v)
+                        cntxt.fail_reason = "Numeric value volation - maximum inclusive: " \
+                                                         "{} actual: {}".format(nc.maxinclusive, v)
                     elif nc.maxexclusive is not None and v >= nc.maxexclusive:
-                        cntxt.fail_reason = "Numeric value violation - maximum exclusive: {} actual: {}".format(nc.maxexclusive, v)
+                        cntxt.fail_reason = "Numeric value volation - maximum exclusive: " \
+                                                         "{} actual: {}".format(nc.maxexclusive, v)
                     elif nc.totaldigits is not None and (total_digits(n) is None or
                                                              total_digits(n) > nc.totaldigits):
-                        cntxt.fail_reason = "Numeric value violation - max total digits: {} value: {}".format(nc.totaldigits, v)
+                        cntxt.fail_reason = "Numeric value volation - max total digits: " \
+                                                         "{} value: {}".format(nc.totaldigits, v)
                     elif nc.fractiondigits is not None and (fraction_digits(n) is None or
                                                                 total_digits(n) > nc.fractiondigits):
-                        cntxt.fail_reason = "Numeric value violation - max fractional digits: {} value: {}".format(nc.fractiondigits, v)
+                        cntxt.fail_reason = "Numeric value volation - max fractional digits: " \
+                                                         "{} value: {}".format(nc.fractiondigits, v)
                     else:
                         cntxt.fail_reason = "Impossible error - kick the programmer"
                     return False
             else:
-                cntxt.fail_reason = "Numeric test on non-number: {}".format(v)
+                cntxt.fail_reason = "Numeric test on non-number: {v}"
                 return False
         else:
-            cntxt.fail_reason = "Numeric test on non-number: {}".format(n)
+            cntxt.fail_reason = "Numeric test on non-number: {n}"
             return False
     return True
 
@@ -191,7 +193,6 @@ def nodeSatisfiesNumericFacet(cntxt: Context, n: Node, nc: ShExJ.NodeConstraint,
 @trace_satisfies(skip_trace=lambda nc: nc.values is None)
 def nodeSatisfiesValues(cntxt: Context, n: Node, nc: ShExJ.NodeConstraint, _c: DebugContext) -> bool:
     """ `5.4.5 Values Constraint <http://shex.io/shex-semantics/#values>`_
-
      For a node n and constraint value v, nodeSatisfies(n, v) if n matches some valueSetValue vsv in v.
     """
     if nc.values is None:
@@ -200,7 +201,8 @@ def nodeSatisfiesValues(cntxt: Context, n: Node, nc: ShExJ.NodeConstraint, _c: D
         if any(_nodeSatisfiesValue(cntxt, n, vsv) for vsv in nc.values):
             return True
         else:
-            cntxt.fail_reason = "Node: {} not in value set:\n\t {}...".format(cntxt.n3_mapper.n3(n), as_json(cntxt.type_last(nc), indent=None)[:60])
+            cntxt.fail_reason = "Node: {} not in value set:\n\t ".format(cntxt.n3_mapper.n3(n)) +\
+                "{}...".format(as_json(cntxt.type_last(nc), indent=None)[:60])
             return False
 
 
@@ -213,16 +215,12 @@ def _nodeSatisfiesValue(cntxt: Context, n: Node, vsv: ShExJ.valueSetValue) -> bo
         * vsv is a IriStemRange, LiteralStemRange or LanguageStemRange with stem st and exclusions excls and
           nodeIn(n, st) and there is no x in excls such that nodeIn(n, excl).
         * vsv is a Wildcard with exclusions excls and there is no x in excls such that nodeIn(n, excl).
-
     Note that ObjectLiteral is *not* typed in ShExJ.jsg, so we identify it by a lack of a 'type' variable
-
     .. note:: Mismatch with spec
         This won't work correctly if the stem value is passed in to nodeIn, as there will be no way to know whether
         we're matching an IRI or other type
-
     ... note:: Language issue
         The stem range spec shouldn't have the first element in the exclusions
-
     """
     vsv = map_object_literal(vsv)
     if isinstance_(vsv, ShExJ.objectValue):
@@ -264,7 +262,6 @@ def nodeInIriStem(_: Context, n: Node, s: ShExJ.IriStem) -> bool:
     """
        **nodeIn**: asserts that an RDF node n is equal to an RDF term s or is in a set defined by a
        :py:class:`ShExJ.IriStem`, :py:class:`LiteralStem` or :py:class:`LanguageStem`.
-
        The expression `nodeInIriStem(n, s)` is satisfied iff:
         #) `s` is a :py:class:`ShExJ.WildCard` or
         #) `n` is an :py:class:`rdflib.URIRef` and fn:starts-with(`n`, `s`)
@@ -275,10 +272,8 @@ def nodeInIriStem(_: Context, n: Node, s: ShExJ.IriStem) -> bool:
 
 def nodeInLiteralStem(_: Context, n: Node, s: ShExJ.LiteralStem) -> bool:
     """ http://shex.io/shex-semantics/#values
-
         **nodeIn**: asserts that an RDF node n is equal to an RDF term s or is in a set defined by a
         :py:class:`ShExJ.IriStem`, :py:class:`LiteralStem` or :py:class:`LanguageStem`.
-
         The expression `nodeInLiteralStem(n, s)` is satisfied iff:
          #) `s` is a :py:class:`ShExJ.WildCard` or
          #) `n` is an :py:class:`rdflib.Literal` and fn:starts-with(`n`, `s`)
@@ -289,10 +284,8 @@ def nodeInLiteralStem(_: Context, n: Node, s: ShExJ.LiteralStem) -> bool:
 
 def nodeInLanguageStem(_: Context, n: Node, s: ShExJ.LanguageStem) -> bool:
     """ http://shex.io/shex-semantics/#values
-
         **nodeIn**: asserts that an RDF node n is equal to an RDF term s or is in a set defined by a
         :py:class:`ShExJ.IriStem`, :py:class:`LiteralStem` or :py:class:`LanguageStem`.
-
         The expression `nodeInLanguageStem(n, s)` is satisfied iff:
          #) `s` is a :py:class:`ShExJ.WildCard` or
          #) `n` is a language-tagged string and fn:starts-with(`n.language`, `s`)
@@ -303,14 +296,11 @@ def nodeInLanguageStem(_: Context, n: Node, s: ShExJ.LanguageStem) -> bool:
 
 def nodeInBnodeStem(_cntxt: Context, _n: Node, _s: Union[str, ShExJ.Wildcard]) -> bool:
     """ http://shex.io/shex-semantics/#values
-
         **nodeIn**: asserts that an RDF node n is equal to an RDF term s or is in a set defined by a
         :py:class:`ShExJ.IriStem`, :py:class:`LiteralStem` or :py:class:`LanguageStem`.
-
         The expression `nodeInBnodeStem(n, s)` is satisfied iff:
          #) `s` is a :py:class:`ShExJ.WildCard` or
          #) `n` is a language-tagged string and fn:starts-with(`n.language`, `s`)
-
     """
     # TODO: resolve issue #79 to figure out how to do this
     return False

@@ -40,7 +40,6 @@ class doc(jsg.JSGObject):
         setattr(self, 'raise', raise_ if raise_ is not None else _kwargs.get('raise', None))
 
 
-
 class another_object(jsg.JSGObject):
     _reference_types = []
     _members = {}

@@ -18,7 +18,7 @@ class PersistentBnodeTestCase(unittest.TestCase):
         self.assertTrue(isinstance(evidence, BNode))
         peptide_name = g.value(evidence, NEXTPROT.peptideName)
         if peptide_name != "NX_PEPT00119967":
-            print("Warning: %s does not support persistent BNodes!" % (g.sparql.endpoint))
+            print("Warning: %s does not support persistent BNodes!" % g.sparql.endpoint)
 
 
 if __name__ == '__main__':

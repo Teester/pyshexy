@@ -19,10 +19,10 @@ class ParseNode:
         self.expr = expr
         self.graph = obj if isinstance(obj, RDFGraph) else None
         self.node = obj if isinstance_(obj, Node) else None
-        self.result = None
-        self._fail_reason = None
-        self.reason_stack = []
-        self.nodes = []
+        self.result = None  # type: bool
+        self._fail_reason = None  # type: Optional[str]
+        self.reason_stack = []  # type: List[Tuple[Union[BNode, URIRef], Optional[str]]]
+        self.nodes = []  # type: List[ParseNode]
         self.n3m = cntxt.n3_mapper
 
     def dump_bnodes(self, g: Graph, node: BNode, indent: str, top: bool = True) -> List[str]:
@@ -66,7 +66,6 @@ class ParseNode:
 
     def set_result(self, rval: bool) -> None:
         """ Set the result of the evaluation. If the result is true, prune all of the children that didn't cut it
-
         :param rval: Result of evaluation
         """
         self.result = rval

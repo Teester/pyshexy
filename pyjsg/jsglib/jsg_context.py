@@ -6,24 +6,23 @@ class JSGContext:
     def __init__(self):
         # the object member name, if any, that identifies the type of object. If present, must match the name of
         # a JSGObject
-        self.TYPE = ""
+        self.TYPE = ""  # type:str
 
         # Objects that lack type identifiers.  Any objects lacking a TYPE variable will be matched against
         # the list below in order
-        self.TYPE_EXCEPTIONS = []
+        self.TYPE_EXCEPTIONS = []  # type: List[str]
 
         # Object pair names that can always exist in an object
-        self.IGNORE = []
+        self.IGNORE = []  # type: List[str]
 
         # True means that we allow JSON_LD constructs (parameters starting with "@")
         self.JSON_LD = True
 
         # NAMESPACE prevents references from being resolved against other JSG modules
-        self.NAMESPACE = None
+        self.NAMESPACE = None  # type: Dict[str, Any]
 
     def unvalidated_parm(self, parm: str) -> bool:
         """Return true if the pair name should be ignored
-
         :param parm: string part of pair string:value
         :return: True if it should be accepted
         """

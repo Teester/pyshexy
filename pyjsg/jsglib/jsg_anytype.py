@@ -8,7 +8,7 @@ from pyjsg.jsglib.jsg_null import JSGNull
 from pyjsg.jsglib.jsg_strings import Boolean, Integer, Number, String
 from pyjsg.jsglib.logger import Logger
 
-any_types = [JSGNull, Boolean, Integer, Number, String]
+any_types = [JSGNull, Boolean, Integer, Number, String]  # type: List[type(JSGValidateable)]
 
 
 class AnyTypeMeta(type):
@@ -18,16 +18,13 @@ class AnyTypeMeta(type):
 
 class AnyType(JSGValidateable, metaclass=AnyTypeMeta):
     """ Wild card type - can hold any JSON type including JSGNull
-
     Assigning 'None' or 'JSGNull' to an AnyType attribute creates a JSGNull
     Assigning 'Empty' to an AnyType attribute removes it
-
     """
     _strict = False
 
     def __init__(self, variable_name: str, context: JSGContext,  value: Any, **kwargs):
         """ Construct a wild card variable
-
         :param variable_name: name of attribute for error reporting
         :param context: context for use in JSGArrays
         :param val: value
@@ -55,16 +52,16 @@ class AnyType(JSGValidateable, metaclass=AnyTypeMeta):
 
 
 class AnyTypeWrapperMeta(type):
-    variable_name = str
-    context = JSGContext
+    variable_name = ...  # type: str
+    context = ...  # type: JSGContext
 
     def __instancecheck__(self, instance: Any) -> bool:
         return instance is not Empty
 
 
 class AnyTypeWrapper(metaclass=AnyTypeWrapperMeta):
-    variable_name = str
-    context = JSGContext
+    variable_name = ...  # type: str
+    context = ...  # type: JSGContext
 
     def __new__(cls, value):
         return AnyType(cls.variable_name, cls.context, value)

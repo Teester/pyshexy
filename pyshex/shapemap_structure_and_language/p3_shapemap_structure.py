@@ -36,11 +36,14 @@ class QueryVariable:
 #
 # A triple pattern is member of the set:
 # (RDF-T ∪ V) x (I ∪ V) x (RDF-T ∪ V)
-#class SparqlTriplePattern(NamedTuple):
+# class SparqlTriplePattern(NamedTuple):
 #    subject: Union[RDF_Term, QueryVariable]
 #    predicate: Union[URIRef, QueryVariable]
 #    object: Union[RDF_Term, QueryVariable]
-SparqlTriplePattern = NamedTuple("SparqlTriplePattern", [("subject", Union[RDF_Term, QueryVariable]), ("predicate", Union[RDF_Term, QueryVariable]), ("object",Union[RDF_Term, QueryVariable])])
+SparqlTriplePattern = NamedTuple("SparqlTriplePattern", [("subject", Union[RDF_Term, QueryVariable]),
+                                                         ("predicate", Union[URIRef, QueryVariable]),
+                                                         ("object", Union[RDF_Term, QueryVariable])])
+
 
 class FOCUS(StringToken):
     pass
@@ -59,14 +62,16 @@ class WILD_CARD(StringToken):
 #    * The focus node token appears in either the subject or the object position.
 #    * The predicate position is filled by an IRI (I in the SPARQL definitions).
 class SubjectFocusPattern(StringToken):
-    subject = FOCUS
-    predicate = URIRef
-    object = Union[URIRef, Literal, WILD_CARD]
+    subject = ...  # type: FOCUS
+    predicate = ...  # type: URIRef
+    object = ...  # type: Union[URIRef, Literal, WILD_CARD]
+
 
 class ObjectFocusPattern(StringToken):
-    subject = Union[URIRef, WILD_CARD]
-    predicate = URIRef
-    object = FOCUS
+    subject = ...  # type: Union[URIRef, WILD_CARD]
+    predicate = ...  # type: URIRef
+    object = ...  # type: FOCUS
+
 
 TriplePattern = Union[SubjectFocusPattern, ObjectFocusPattern]
 

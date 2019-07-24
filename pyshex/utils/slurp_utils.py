@@ -1,5 +1,5 @@
 import sys
-#from contextlib import AbstractContextManager
+# from contextlib import AbstractContextManager
 
 from ShExJSG import ShExJ
 from rdflib import Graph
@@ -9,11 +9,11 @@ from pyshex.shape_expressions_language.p5_context import Context
 from pyshex.shapemap_structure_and_language.p1_notation_and_terminology import Node
 
 
-#class slurper(AbstractContextManager):
+# class slurper(AbstractContextManager):
 class slurper():
 
     def __init__(self, cntxt: Context, n: Node, S: ShExJ.Shape):
-        self.graph = cntxt.graph
+        self.graph = cntxt.graph  # type: SlurpyGraph
         self.tracing = isinstance(self.graph, SlurpyGraph) and cntxt.debug_context.trace_slurps
         self.n = n
         self.S = S
@@ -30,6 +30,7 @@ class slurper():
         if self.tracing:
             new_triples = self.graph.total_triples - self.g_triples
             if new_triples:
-                print(" {} triples ({} μs)".format(new_triples, int((self.graph.total_slurptime - self.g_time) * 1000)))
+                print(" {} triples ".format(new_triples) +
+                      "({} μs)".format(int((self.graph.total_slurptime - self.g_time) * 1000)))
             else:
                 print(" (Cached)")

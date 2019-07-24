@@ -12,8 +12,8 @@ class JSGArrayExpr(jsgParserVisitor, PythonGeneratorElement):
         from pyjsg.parser_impl.jsg_ebnf_parser import JSGEbnf
 
         self._context = context
-        self._types = None
-        self._ebnf = JSGEbnf(context)
+        self._types = None  # type: List[JSGValueType]
+        self._ebnf = JSGEbnf(context)  # type: JSGEbnf
         self._ebnf.min = 0
         self._ebnf.max = None
         self.text = ""

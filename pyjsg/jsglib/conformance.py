@@ -27,7 +27,6 @@ def element_conforms(element, etype) -> bool:
 
 def conforms(element, etype, namespace: Dict[str, Any]) -> bool:
     """ Determine whether element conforms to etype
-
     :param element: Element to test for conformance
     :param etype: Type to test against
     :param namespace: Namespace to use to resolve forward references

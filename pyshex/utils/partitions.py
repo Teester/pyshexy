@@ -11,7 +11,6 @@ from pyshex.shapemap_structure_and_language.p1_notation_and_terminology import R
 def algorithm_u(ns, m):
     """
     taken from `Stack Overflow <https://codereview.stackexchange.com/questions/1526/finding-all-k-subset-partitions>`_
-
     """
     def visit(nv, av):
         ps = [[] for _ in range(m)]
@@ -97,7 +96,7 @@ def integer_partition(size: int, nparts: int) -> Iterator[List[List[int]]]:
 
 
 def filtered_integer_partition(nelements: int, nparts: int) -> Iterator[Tuple[Tuple[int]]]:
-    seen = set()
+    seen = set()  # type: Set[Tuple[Tuple[int, ...], ...]]
 
     # Start with the entire set
     if nelements == 0:
@@ -146,12 +145,11 @@ def partition_t(T: RDFGraph, nparts: int) -> Iterator[Tuple[RDFGraph, ...]]:
     :param T: Set of RDF triples to be partitioned
     :param nparts: number of partitions (e.g. 2 means return all possible 2 set partitions
     :return: Iterator that returns partitions
-
     We don't actually partition the triples directly -- instead, we partition a set of integers that
     reference elements in the (ordered) set and return those
     """
     def partition_map(partition: List[List[int]]) -> Tuple[RDFGraph, ...]:
-        rval = []
+        rval = []  # type: List[RDFGraph, ...]
         for part in partition:
             if len(part) == 1 and part[0] >= t_list_len:
                 rval.append(RDFGraph())

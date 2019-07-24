@@ -13,7 +13,7 @@ inst:Issue1
 ex:User2
     foaf:name     "Bob Smith" ;
     foaf:mbox     <mailto:bob@example.org> .
-""" % (rdf_header)
+""" % rdf_header
 
 
 class TerminologyTestCase(unittest.TestCase):

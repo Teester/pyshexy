@@ -1,7 +1,7 @@
 # Generated from /Users/mrf7578/Development/git/hsolbrig/pyjsg/grammar/jsgParser.g4 by ANTLR 4.7
 from antlr4 import *
 from io import StringIO
-from typing.io import TextIO
+from typing import TextIO
 import sys
 
 
@@ -171,5 +171,3 @@ class jsgParserLexer(Lexer):
         self._interp = LexerATNSimulator(self, self.atn, self.decisionsToDFA, PredictionContextCache())
         self._actions = None
         self._predicates = None
-
-

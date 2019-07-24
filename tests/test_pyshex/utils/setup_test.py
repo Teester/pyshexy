@@ -46,4 +46,4 @@ def gen_rdf(rdf_fragment: str) -> str:
     """ Edit rdf_fragment from the spec to be complete. We
     1) Add the rdf header and
     2) convert relative URI's into URI's based in the default space """
-    return """%s""" % (rdf_header) + re.sub(r'<([^.:>]+)>', r':\1', rdf_fragment)
+    return """%s""" % rdf_header + re.sub(r'<([^.:>]+)>', r':\1', rdf_fragment)

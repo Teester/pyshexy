@@ -22,12 +22,9 @@ from pyshex.utils.value_set_utils import uriref_matches_iriref, iriref_to_uriref
 @trace_satisfies()
 def satisfiesShape(cntxt: Context, n: Node, S: ShExJ.Shape, c: DebugContext) -> bool:
     """ `5.5.2 Semantics <http://shex.io/shex-semantics/#triple-expressions-semantics>`_
-
     For a node `n`, shape `S`, graph `G`, and shapeMap `m`, `satisfies(n, S, G, m)` if and only if:
-
     * `neigh(G, n)` can be partitioned into two sets matched and remainder such that
       `matches(matched, expression, m)`. If expression is absent, remainder = `neigh(G, n)`.
-
     :param n: focus node
     :param S: Shape to be satisfied
     :param cntxt: Evaluation context
@@ -69,7 +66,7 @@ def satisfiesShape(cntxt: Context, n: Node, S: ShExJ.Shape, c: DebugContext) -> 
                 cntxt.fail_reason = '\n'.join("\t{}".format(t) for t in non_matchables)
                 if c.debug:
                     print(c.i(0,
-                              "<--- Satisfies shape {} FAIL - ".format(c.d()),
+                              "<--- Satisfies shape {} FAIL - ".format(c.d()) +
                               "{} non-matching triples on a closed shape".format(len(non_matchables))))
                     print(c.i(1, "", list(non_matchables)))
                     print()
@@ -110,16 +107,11 @@ def satisfiesShape(cntxt: Context, n: Node, S: ShExJ.Shape, c: DebugContext) -> 
 def valid_remainder(cntxt: Context, n: Node, matchables: RDFGraph, S: ShExJ.Shape) -> bool:
     """
     Let **outs** be the arcsOut in remainder: `outs = remainder ∩ arcsOut(G, n)`.
-
     Let **matchables** be the triples in outs whose predicate appears in a TripleConstraint in `expression`. If
     `expression` is absent, matchables = Ø (the empty set).
-
     * There is no triple in **matchables** which matches a TripleConstraint in expression
-
     * There is no triple in **matchables** whose predicate does not appear in extra.
-
     * closed is false or unmatchables is empty
-
     :param cntxt: evaluation context
     :param n: focus node
     :param matchables: non-matched triples
@@ -158,7 +150,6 @@ def matches(cntxt: Context, T: RDFGraph, expr: ShExJ.tripleExpr) -> bool:
     **matches**: asserts that a triple expression is matched by a set of triples that come from the neighbourhood of a
     node in an RDF graph. The expression `matches(T, expr, m)` indicates that a set of triples `T` can satisfy these
     rules:
-
     * expr has semActs and `matches(T, expr, m)` by the remaining rules in this list and the evaluation
       of semActs succeeds according to the section below on Semantic Actions.
     * expr has a cardinality of min and/or max not equal to 1, where a max of -1 is treated as unbounded, and T
@@ -196,7 +187,6 @@ def matchesTripleExprLabel(cntxt: Context, T: RDFGraph, expr: ShExJ.tripleExprLa
 def matchesCardinality(cntxt: Context, T: RDFGraph, expr: Union[ShExJ.tripleExpr, ShExJ.tripleExprLabel],
                        c: DebugContext) -> bool:
     """ Evaluate cardinality expression
-
     expr has a cardinality of min and/or max not equal to 1, where a max of -1 is treated as unbounded, and
     T can be partitioned into k subsets T1, T2,…Tk such that min ≤ k ≤ max and for each Tn,
     matches(Tn, expr, m) by the remaining rules in this list.
@@ -256,7 +246,6 @@ def _partitions(T: RDFGraph, min_: Optional[int], max_: Optional[int]) -> List[L
 @trace_matches()
 def matchesExpr(cntxt: Context, T: RDFGraph, expr: ShExJ.tripleExpr, _: DebugContext) -> bool:
     """ Evaluate the expression
-
     """
 
     if isinstance(expr, ShExJ.OneOf):
@@ -292,12 +281,10 @@ def matchesEachOf(cntxt: Context, T: RDFGraph, expr: ShExJ.EachOf, _: DebugConte
 def matchesTripleConstraint(cntxt: Context, t: RDFTriple, expr: ShExJ.TripleConstraint, c: DebugContext) -> bool:
     """
     expr is a TripleConstraint and:
-
     * t is a triple
     * t's predicate equals expr's predicate.
       Let value be t's subject if inverse is true, else t's object.
     * if inverse is true, t is in arcsIn, else t is in arcsOut.
-
     """
     from pyshex.shape_expressions_language.p5_3_shape_expressions import satisfies
 
@@ -319,8 +306,8 @@ def matchesTripleExprRef(cntxt: Context, T: RDFGraph, expr: ShExJ.tripleExprLabe
     expr is an tripleExprRef and satisfies(value, tripleExprWithId(tripleExprRef), G, m).
     The tripleExprWithId function is defined in Triple Expression Reference Requirement below.
     """
-    expr = cntxt.tripleExprFor(expr)
-    if expr is None:
+    tefor_expr = cntxt.tripleExprFor(expr)
+    if tefor_expr is None:
         cntxt.fail_reason = "{}: Reference not found".format(expr)
         return False
-    return matchesExpr(cntxt, T, expr)
+    return matchesExpr(cntxt, T, tefor_expr)

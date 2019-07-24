@@ -17,11 +17,11 @@ class JSGValueType(jsgParserVisitor, PythonGeneratorElement):
         self._context = context
 
         # With the exception of lexeridref and alttypelist, all options below are mutually exclusive
-        self._typeid = None              # The name of a referenced (possibly anonymous) type
-        self._arrayDef = None   # Type is an array
-        self._lexeridref = None          # The name of a (possibly anonymous) string match pattern
-        self._builtintype = None  # Type is a builtin type
-        self._alttypelist = []      # Two or more alternative types
+        self._typeid = None  # type: Optional[str]            # The name of a referenced (possibly anonymous) type
+        self._arrayDef = None  # type: Optional[JSGArrayExpr]  # Type is an array
+        self._lexeridref = None  # type: Optional[str]        # The name of a (possibly anonymous) string match pattern
+        self._builtintype = None  # type: Optional[JSGBuiltinValueType]  # Type is a builtin type
+        self._alttypelist = []  # type: List[JSGValueType]    # Two or more alternative types
         self.text = ""
 
         if ctx:
@@ -136,7 +136,7 @@ class JSGValueType(jsgParserVisitor, PythonGeneratorElement):
             self.visitChildren(ctx)
 
     def visitNonRefValueType(self, ctx: jsgParser.NonRefValueTypeContext):
-        """ nonRefValueType: LEXER_ID_REF | STRING | builtinValueType | objectExpr | arrayExpr  
+        """ nonRefValueType: LEXER_ID_REF | STRING | builtinValueType | objectExpr | arrayExpr
                              | OPREN typeAlternatives CPREN | ANY """
         if ctx.LEXER_ID_REF():                  # Reference to a lexer token
             self._lexeridref = as_token(ctx)

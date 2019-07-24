@@ -5,7 +5,6 @@ import os
 
 def generate_base(path: str) -> str:
     """ Convert path, which can be a URL or a file path into a base URI
-
     :param path: file location or url
     :return: file location or url sans actual name
     """

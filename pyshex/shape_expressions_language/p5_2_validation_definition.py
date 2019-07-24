@@ -13,11 +13,9 @@ from pyshex.shapemap_structure_and_language.p3_shapemap_structure import FixedSh
 
 def isValid(cntxt: Context, m: FixedShapeMap) -> Tuple[bool, List[str]]:
     """`5.2 Validation Definition <http://shex.io/shex-semantics/#validation>`_
-
     The expression isValid(G, m) indicates that for every nodeSelector/shapeLabel pair (n, s) in m, s has a
         corresponding shape expression se and satisfies(n, se, G, m). satisfies is defined below for each form
         of shape expression
-
     :param cntxt: evaluation context - includes graph and schema
     :param m: list of NodeShape pairs to test
     :return: Success/failure indicator and, if fail, a list of failure reasons

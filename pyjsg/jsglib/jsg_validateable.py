@@ -11,7 +11,6 @@ class JSGValidateable:
     @abstractmethod
     def _is_valid(self, log: Optional[Union[TextIO, Logger]] = None) -> bool:
         """ Determine whether the element is valid
-
         :param log: Logger or IO device to record errors
         :return: True if valid, false otherwise
         """

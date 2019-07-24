@@ -33,7 +33,7 @@ class ManifestShexShexCTestCase(ManifestEntryTestCase):
         self.do_test(earlpage)
         earl_report = os.path.join(os.path.abspath(os.path.dirname(__file__)), '..', 'data', 'earl_report.ttl')
         earlpage.g.serialize(earl_report, format="turtle")
-        print("EARL report generated in %s" % (earl_report))
+        print("EARL report generated in %s" % earl_report)
 
 if __name__ == '__main__':
     unittest.main()

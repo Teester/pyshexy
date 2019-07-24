@@ -9,15 +9,17 @@ QueryTriple = Tuple[Optional[URIRef], Optional[URIRef], Optional[Union[Literal, 
 
 NodeType = Union[URIRef, Literal, BNode]
 
-#class RDFTriple(NamedTuple):
+# class RDFTriple(NamedTuple):
 #    s: Union[URIRef, BNode]
 #    p: URIRef
 #    o: Union[Literal, URIRef, BNode]
 
 RDFTriple = NamedTuple('RDFTriple', [('s', Union[URIRef, BNode]), ('p', URIRef), ('o', Union[Literal, URIRef, BNode])])
 
+
 class SlurpyGraph(Graph):
     """ A Graph that acts as a "cache" for a SPARQL endpoint """
+
     def __init__(self, endpoint: str, *args, persistent_bnodes: bool = False, **kwargs) -> None:
         """ Create a graph
 
@@ -55,11 +57,13 @@ class SlurpyGraph(Graph):
             raise ValueError("SlurpyGraph cannot process BNodes")
         return URIRef(node['value']) if node['type'] == 'uri' else \
             BNode(node['value']) if node['type'] == 'bnode' else \
-            Literal(node['value'], datatype=node.get('datatype'))
+                Literal(node['value'], datatype=node.get('datatype'))
 
     @staticmethod
     def _repr_element(node: Union[URIRef, BNode, Literal]) -> str:
-        return "<{}>".format(node) if isinstance(node, URIRef) else "_:{}".format(node) if isinstance(node, BNode) else '"{}"'.format(node)
+        return "<{}>".format(node) if isinstance(node, URIRef) else "_:{}".format(node) if isinstance(node,
+                                                                                                      BNode) else '"{}"'.format(
+            node)
 
     def already_resolved(self, pattern: QueryTriple) -> bool:
         """ Determine whether pattern has already been loaded into the cache.
@@ -74,7 +78,7 @@ class SlurpyGraph(Graph):
         for resolved_node in self.resolved_nodes:
             if resolved_node != (None, None, None) and \
                     (pattern[0] == resolved_node[0] or resolved_node[0] is None) and \
-                    (pattern[1] == resolved_node[1] or resolved_node[1] is None) and\
+                    (pattern[1] == resolved_node[1] or resolved_node[1] is None) and \
                     (pattern[2] == resolved_node[2] or resolved_node[2] is None):
                 return True
         return False

@@ -11,20 +11,14 @@ from pyjsg.parser_impl.parser_utils import t, flatten
 from .parser_utils import as_token, flatten_unique, is_valid_python
 
 _class_template = """
-
-
 class {name}(jsg.JSGObject):
     _reference_types = [{reference_types}]
     _members = {{{members}}}
     _strict = {strict}
-
 {init_fctn}"""
 
 _map_template = """
-
-
 class {name}(jsg.JSGObjectMap):{name_filter}{value_type}
-
     def __init__(self,
                  **_kwargs):
         super().__init__(_CONTEXT, **_kwargs)"""
@@ -51,13 +45,13 @@ class JSGObjectExpr(jsgParserVisitor, PythonGeneratorElement):
         self._strict = True
 
         # _members, _choices and _map_name_type are mutually exclusive
-        self._members = []
-        self._choices = []
+        self._members = []  # type: List[JSGPairDef]
+        self._choices = []  # type: List[str]
 
         # _map is for a map style definition
-        self._map_name_type = None               # Name of a lexer rule block
-        self._map_valuetype = None
-        self._map_ebnf = None
+        self._map_name_type = None  # type: Optional[Union[str, JSGLexerRuleBlock]]        # Name of a lexer rule block
+        self._map_valuetype = None  # type: Optional[JSGValueType]
+        self._map_ebnf = None  # type: Optional[JSGEbnf]
         self.text = ""
 
         if ctx:
@@ -139,7 +133,7 @@ class JSGObjectExpr(jsgParserVisitor, PythonGeneratorElement):
     def mt_value(self) -> str:
         return 'None'
 
-    def signatures(self, _: bool=False) -> List[str]:
+    def signatures(self, _: bool = False) -> List[str]:
         if self._map_valuetype:
             return []
         elif self._choices:
@@ -188,14 +182,13 @@ class JSGObjectExpr(jsgParserVisitor, PythonGeneratorElement):
 
             # Error checker
             rval.append(t() + 'else:')
-            rval.append(t(2) + 'raise ValueError("Unrecognized value type: {{{}}}")'.format(prefix))
+            rval.append(t(2) + 'raise ValueError("Unrecognized value type: {{}}".format({}))'.format(prefix))
             return rval
         else:
             return flatten([pairdef.initializers(prefix) for pairdef in self._members])
 
-    def members_entries(self, all_are_optional: bool=False) -> List[Tuple[str, str]]:
+    def members_entries(self, all_are_optional: bool = False) -> List[Tuple[str, str]]:
         """ Return an ordered list of elements for the _members section
-
         :param all_are_optional: True means we're in a choice situation so everything is optional
         :return:
         """
@@ -222,7 +215,7 @@ class JSGObjectExpr(jsgParserVisitor, PythonGeneratorElement):
     #   Visitors
     # ***************
     def visitObjectExpr(self, ctx: jsgParser.ObjectExprContext):
-        """ objectExpr: OBRACE membersDef? CBRACE 
+        """ objectExpr: OBRACE membersDef? CBRACE
                         OBRACE (LEXER_ID_REF | ANY)? MAPSTO valueType ebnfSuffix? CBRACE
         """
         if not self._name:

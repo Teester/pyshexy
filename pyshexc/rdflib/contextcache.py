@@ -1,6 +1,5 @@
 """
 Cache function for rdflib-jsonld
-
 json-ld conversions can often involve hundreds of thousands of JSON objects, each with its own context(s).  It is
 horribly inefficient to fetch the context for each go-around.  This function caches contexts.
 """
@@ -10,7 +9,7 @@ from typing import Dict
 from rdflib.parser import URLInputSource
 from rdflib_jsonld import util
 
-context_cache = {}
+context_cache = {}  # type: Dict[str, dict]
 
 util_fcn = util.source_to_json
 

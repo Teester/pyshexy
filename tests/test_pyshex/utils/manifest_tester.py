@@ -20,7 +20,7 @@ sys.setrecursionlimit(1200)
 ENTRY_NAME = ''                          # Individual element to test
 START_AFTER = ''                         # Element to start at (or after)
 
-CONTINUE_ON_FAIL = not(START_AFTER)
+CONTINUE_ON_FAIL = not START_AFTER
 VERBOSE = False
 DEBUG = bool(ENTRY_NAME) or bool(START_AFTER)
 TEST_SKIPS_ONLY = False                     # Double check that all skips need skipping

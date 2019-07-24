@@ -21,7 +21,7 @@ def trace_satisfies(newline: bool=True, skip_trace: Callable[[JSGObject], bool]=
                 c.print(c.i(0, '--> {} {} node: {}'.format(f.__name__, c.d(), cntxt.n3_mapper.n3(n))), not newline)
             rval = f(cntxt, n, expr, c)
             if c.debug and not skip_trace(expr):
-                c.print(c.i(0, '<-- {} {} node: {}:{}'.format(f.__name__, c.d(), cntxt.n3_mapper.n3(n), rval)))
+                c.print(c.i(0, '<-- {} {} node: {}: {}'.format(f.__name__, c.d(), cntxt.n3_mapper.n3(n), rval)))
             c.sminus()
             cntxt.current_node.set_result(rval)
             cntxt.current_node = parent_parse_node

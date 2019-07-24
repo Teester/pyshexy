@@ -11,7 +11,6 @@ class PrefixLibrary:
 
     def __init__(self, schema: Optional[str] = None, **kwlibs: Union[str, Namespace]) -> None:
         """ Generate a prefix library from a ShEx schema
-
         :param schema: ShExC Schema
         :param kwlibs: Additional key/value pairs
         """
@@ -38,7 +37,6 @@ class PrefixLibrary:
 
     def add_shex(self, schema: str) -> "PrefixLibrary":
         """ Add a ShExC schema to the library
-
         :param schema: ShExC schema text, URL or file name
         :return: prefix library object
         """
@@ -71,7 +69,6 @@ class PrefixLibrary:
 
     def add_bindings(self, g: Graph) -> "PrefixLibrary":
         """ Add bindings in the library to the graph
-
         :param g: graph to add prefixes to
         :return: PrefixLibrary object
         """
@@ -100,7 +97,6 @@ class PrefixLibrary:
     def nsname(self, uri: Union[str, URIRef]) -> str:
         """
         Return the 'ns:name' format of URI
-
         :param uri: URI to transform
         :return: nsname format of URI or straight URI if no mapping
         """

@@ -2,7 +2,7 @@ from typing import Optional
 
 from pyjsg.parser.jsgParser import *
 from pyjsg.parser.jsgParserVisitor import jsgParserVisitor
-from pyjsg.parser_impl.jsg_doc_context import JSGDocContext, PythonGeneratorElement
+from pyjsg.parser_impl.jsg_doc_context import JSGDocContext
 from pyjsg.parser_impl.jsg_valuetype_parser import JSGValueType
 
 
@@ -35,7 +35,6 @@ class JSGEbnf(jsgParserVisitor):
 
     def python_cardinality(self, subject: str, all_are_optional: bool = False) -> str:
         """Add the appropriate python typing to subject (e.g. Optional, List, ...)
-
         :param subject: Subject to be decorated
         :param all_are_optional: Force everything to be optional
         :return: Typed subject
@@ -54,7 +53,6 @@ class JSGEbnf(jsgParserVisitor):
 
     def signature_cardinality(self, subject: str, all_are_optional: bool = False) -> str:
         """Add the appropriate python typing to subject (e.g. Optional, List, ...)
-
         :param subject: Subject to be decorated
         :param all_are_optional: Force everything to be optional
         :return: Typed subject

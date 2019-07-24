@@ -22,7 +22,7 @@ rdf_1 = """%s
 :issue3 ex:submittedOn "2016-07-08T01:23:45Zz"^^xsd:dateTime .
 :issue3a ex:submittedOn "2016-07a"^^xsd:date .
 :issue3b ex:submittedOn "a2016-07"^^xsd:date .
-""" % (rdf_header)
+""" % rdf_header
 
 shex_2 = """{ "type": "Schema", "shapes": [
   { "id": "http://schema.example/IssueShape",
@@ -37,7 +37,7 @@ shex_2 = """{ "type": "Schema", "shapes": [
 rdf_2 = """%s
 :issue3 rdfs:label "emits dense black smoke"@en .
 :issue4 rdfs:label "unexpected odor" .
-""" % (rdf_header)
+""" % rdf_header
 
 
 class DataTypeTestCase(unittest.TestCase):

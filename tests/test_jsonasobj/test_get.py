@@ -22,5 +22,6 @@ class GetTestCase(unittest.TestCase):
         self.assertIsNone(py_obj._get('e1'))
         self.assertEqual("abc", py_obj._get('e2', 'abc'))
 
+
 if __name__ == '__main__':
     unittest.main()

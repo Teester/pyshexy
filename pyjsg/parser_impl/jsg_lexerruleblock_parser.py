@@ -9,8 +9,6 @@ from pyjsg.parser.jsgParserVisitor import jsgParserVisitor
 from pyjsg.parser_impl.jsg_doc_context import JSGDocContext, PythonGeneratorElement
 
 python_template = """
-
-
 class {name}({base_type}):
     pattern = {pattern}"""
 
@@ -20,9 +18,9 @@ class JSGLexerRuleBlock(jsgParserVisitor, PythonGeneratorElement):
     def __init__(self, context: JSGDocContext, ctx: Optional[jsgParser.lexerRuleBlock] = None) -> None:
         self._context = context
 
-        self._rulePattern = ""
-        self._ruleTokens = set()
-        self._jsontype = None
+        self._rulePattern = ""  # type: str
+        self._ruleTokens = set()  # type: Set[str]
+        self._jsontype = None  # type: Optional[JSGBuiltinValueType]
         self.text = ""
 
         if ctx:
@@ -35,7 +33,7 @@ class JSGLexerRuleBlock(jsgParserVisitor, PythonGeneratorElement):
     def dependency_list(self) -> List[str]:
         return list(self._ruleTokens)
 
-    def members_entries(self, all_are_optional: bool=False) -> List[Tuple[str, str]]:
+    def members_entries(self, all_are_optional: bool = False) -> List[Tuple[str, str]]:
         return []
 
     def python_type(self) -> str:
@@ -59,7 +57,8 @@ class JSGLexerRuleBlock(jsgParserVisitor, PythonGeneratorElement):
     def as_python(self, name: str) -> str:
         """ Return the python representation """
         if self._ruleTokens:
-            pattern = "jsg.JSGPattern(r'{}'.format({}))".format(self._rulePattern, ', '.join(['{v}={v}.pattern'.format(v=v) for v in sorted(self._ruleTokens)]))
+            pattern = "jsg.JSGPattern(r'{}'.format({}))".\
+                format(self._rulePattern, ', '.join(['{v}={v}.pattern'.format(v=v) for v in sorted(self._ruleTokens)]))
         else:
             pattern = "jsg.JSGPattern(r'{}')".format(self._rulePattern)
         base_type = self._jsontype.signature_type() if self._jsontype else "jsg.JSGString"

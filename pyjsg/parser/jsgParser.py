@@ -2,7 +2,7 @@
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
-from typing.io import TextIO
+from typing import TextIO
 import sys
 
 def serializedATN():
@@ -157,33 +157,33 @@ def serializedATN():
         return buf.getvalue()
 
 
-class jsgParser ( Parser ):
+class jsgParser (Parser):
 
     grammarFileName = "jsgParser.g4"
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
-    decisionsToDFA = [ DFA(ds, i) for i, ds in enumerate(atn.decisionToState) ]
+    decisionsToDFA = [DFA(ds, i) for i, ds in enumerate(atn.decisionToState)]
 
     sharedContextCache = PredictionContextCache()
 
-    literalNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "'@terminals'", "'.TYPE'", 
-                     "'.IGNORE'", "'->'", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "'['", "']'", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "'='" ]
+    literalNames = ["<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                    "<INVALID>", "<INVALID>", "'@terminals'", "'.TYPE'",
+                    "'.IGNORE'", "'->'", "<INVALID>", "<INVALID>", "<INVALID>",
+                    "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                    "'['", "']'", "<INVALID>", "<INVALID>", "<INVALID>",
+                    "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                    "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                    "<INVALID>", "'='"]
 
-    symbolicNames = [ "<INVALID>", "LEXER_ID_REF", "ID", "STRING", "INT", 
-                      "ANY", "TERMINALS", "TYPE", "IGNORE", "MAPSTO", "JSON_STRING", 
-                      "JSON_NUMBER", "JSON_INT", "JSON_BOOL", "JSON_NULL", 
-                      "JSON_ARRAY", "JSON_OBJECT", "OBRACKET", "CBRACKET", 
-                      "SEMI", "DASH", "OBRACE", "CBRACE", "COMMA", "STAR", 
-                      "QMARK", "PLUS", "OPREN", "CPREN", "BAR", "COLON", 
-                      "EQUALS", "PASS", "COMMENT", "LEXER_ID", "LEXER_CHAR_SET", 
-                      "LEXER_PASS", "LEXER_COMMENT" ]
+    symbolicNames = ["<INVALID>", "LEXER_ID_REF", "ID", "STRING", "INT",
+                     "ANY", "TERMINALS", "TYPE", "IGNORE", "MAPSTO", "JSON_STRING",
+                     "JSON_NUMBER", "JSON_INT", "JSON_BOOL", "JSON_NULL",
+                     "JSON_ARRAY", "JSON_OBJECT", "OBRACKET", "CBRACKET",
+                     "SEMI", "DASH", "OBRACE", "CBRACE", "COMMA", "STAR",
+                     "QMARK", "PLUS", "OPREN", "CPREN", "BAR", "COLON",
+                     "EQUALS", "PASS", "COMMENT", "LEXER_ID", "LEXER_CHAR_SET",
+                     "LEXER_PASS", "LEXER_COMMENT"]
 
     RULE_doc = 0
     RULE_typeDirective = 1
@@ -219,61 +219,59 @@ class jsgParser ( Parser ):
     RULE_lexerAtom = 31
     RULE_lexerTerminal = 32
 
-    ruleNames =  [ "doc", "typeDirective", "typeExceptions", "ignoreDirective", 
-                   "grammarElt", "objectDef", "objectExpr", "membersDef", 
-                   "altMemberDef", "member", "lastComma", "pairDef", "name", 
-                   "arrayDef", "arrayExpr", "objectMacro", "valueTypeMacro", 
-                   "builtinValueType", "valueType", "nonRefValueType", "typeAlternatives", 
-                   "idref", "ebnfSuffix", "lexerRules", "lexerRuleSpec", 
-                   "lexerRuleBlock", "lexerAltList", "lexerAlt", "lexerElements", 
-                   "lexerElement", "lexerBlock", "lexerAtom", "lexerTerminal" ]
+    ruleNames = ["doc", "typeDirective", "typeExceptions", "ignoreDirective",
+                 "grammarElt", "objectDef", "objectExpr", "membersDef",
+                 "altMemberDef", "member", "lastComma", "pairDef", "name",
+                 "arrayDef", "arrayExpr", "objectMacro", "valueTypeMacro",
+                 "builtinValueType", "valueType", "nonRefValueType", "typeAlternatives",
+                 "idref", "ebnfSuffix", "lexerRules", "lexerRuleSpec",
+                 "lexerRuleBlock", "lexerAltList", "lexerAlt", "lexerElements",
+                 "lexerElement", "lexerBlock", "lexerAtom", "lexerTerminal"]
 
     EOF = Token.EOF
-    LEXER_ID_REF=1
-    ID=2
-    STRING=3
-    INT=4
-    ANY=5
-    TERMINALS=6
-    TYPE=7
-    IGNORE=8
-    MAPSTO=9
-    JSON_STRING=10
-    JSON_NUMBER=11
-    JSON_INT=12
-    JSON_BOOL=13
-    JSON_NULL=14
-    JSON_ARRAY=15
-    JSON_OBJECT=16
-    OBRACKET=17
-    CBRACKET=18
-    SEMI=19
-    DASH=20
-    OBRACE=21
-    CBRACE=22
-    COMMA=23
-    STAR=24
-    QMARK=25
-    PLUS=26
-    OPREN=27
-    CPREN=28
-    BAR=29
-    COLON=30
-    EQUALS=31
-    PASS=32
-    COMMENT=33
-    LEXER_ID=34
-    LEXER_CHAR_SET=35
-    LEXER_PASS=36
-    LEXER_COMMENT=37
+    LEXER_ID_REF = 1
+    ID = 2
+    STRING = 3
+    INT = 4
+    ANY = 5
+    TERMINALS = 6
+    TYPE = 7
+    IGNORE = 8
+    MAPSTO = 9
+    JSON_STRING = 10
+    JSON_NUMBER = 11
+    JSON_INT = 12
+    JSON_BOOL = 13
+    JSON_NULL = 14
+    JSON_ARRAY = 15
+    JSON_OBJECT = 16
+    OBRACKET = 17
+    CBRACKET = 18
+    SEMI = 19
+    DASH = 20
+    OBRACE = 21
+    CBRACE = 22
+    COMMA = 23
+    STAR = 24
+    QMARK = 25
+    PLUS = 26
+    OPREN = 27
+    CPREN = 28
+    BAR = 29
+    COLON = 30
+    EQUALS = 31
+    PASS = 32
+    COMMENT = 33
+    LEXER_ID = 34
+    LEXER_CHAR_SET = 35
+    LEXER_PASS = 36
+    LEXER_COMMENT = 37
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
         self.checkVersion("4.7.1")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
-
-
 
     class DocContext(ParserRuleContext):
 
@@ -315,14 +313,11 @@ class jsgParser ( Parser ):
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def doc(self):
 
         localctx = jsgParser.DocContext(self, self._ctx, self.state)
         self.enterRule(localctx, 0, self.RULE_doc)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 67
@@ -332,11 +327,10 @@ class jsgParser ( Parser ):
                 self.state = 66
                 self.typeDirective()
 
-
             self.state = 72
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==jsgParser.IGNORE:
+            while _la == jsgParser.IGNORE:
                 self.state = 69
                 self.ignoreDirective()
                 self.state = 74
@@ -346,7 +340,7 @@ class jsgParser ( Parser ):
             self.state = 78
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==jsgParser.ID:
+            while _la == jsgParser.ID:
                 self.state = 75
                 self.grammarElt()
                 self.state = 80
@@ -359,7 +353,6 @@ class jsgParser ( Parser ):
             if _la==jsgParser.TERMINALS:
                 self.state = 81
                 self.lexerRules()
-
 
             self.state = 84
             self.match(jsgParser.EOF)
@@ -400,9 +393,6 @@ class jsgParser ( Parser ):
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def typeDirective(self):
 
         localctx = jsgParser.TypeDirectiveContext(self, self._ctx, self.state)
@@ -420,7 +410,6 @@ class jsgParser ( Parser ):
             if _la==jsgParser.DASH:
                 self.state = 88
                 self.typeExceptions()
-
 
             self.state = 91
             self.match(jsgParser.SEMI)
@@ -456,9 +445,6 @@ class jsgParser ( Parser ):
                 return visitor.visitTypeExceptions(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def typeExceptions(self):
 
@@ -840,13 +826,13 @@ class jsgParser ( Parser ):
                 pass
             elif token in [jsgParser.ID, jsgParser.STRING, jsgParser.OPREN]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 137 
+                self.state = 137
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while True:
                     self.state = 136
                     self.member()
-                    self.state = 139 
+                    self.state = 139
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << jsgParser.ID) | (1 << jsgParser.STRING) | (1 << jsgParser.OPREN))) != 0)):
@@ -860,7 +846,7 @@ class jsgParser ( Parser ):
                         self.state = 141
                         self.match(jsgParser.BAR)
                         self.state = 142
-                        self.altMemberDef() 
+                        self.altMemberDef()
                     self.state = 147
                     self._errHandler.sync(self)
                     _alt = self._interp.adaptivePredict(self._input,13,self._ctx)
@@ -1115,13 +1101,13 @@ class jsgParser ( Parser ):
                 self.enterOuterAlt(localctx, 3)
                 self.state = 176
                 self.match(jsgParser.OPREN)
-                self.state = 178 
+                self.state = 178
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while True:
                     self.state = 177
                     self.name()
-                    self.state = 180 
+                    self.state = 180
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if not (_la==jsgParser.ID or _la==jsgParser.STRING):
@@ -1681,8 +1667,7 @@ class jsgParser ( Parser ):
             else:
                 return self.getTypedRuleContext(jsgParser.ValueTypeContext,i)
 
-
-        def BAR(self, i:int=None):
+        def BAR(self, i: int = None):
             if i is None:
                 return self.getTokens(jsgParser.BAR)
             else:
@@ -1697,9 +1682,6 @@ class jsgParser ( Parser ):
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def typeAlternatives(self):
 
         localctx = jsgParser.TypeAlternativesContext(self, self._ctx, self.state)
@@ -1709,7 +1691,7 @@ class jsgParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 243
             self.valueType()
-            self.state = 246 
+            self.state = 246
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
@@ -1717,7 +1699,7 @@ class jsgParser ( Parser ):
                 self.match(jsgParser.BAR)
                 self.state = 245
                 self.valueType()
-                self.state = 248 
+                self.state = 248
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not (_la==jsgParser.BAR):
@@ -1748,9 +1730,6 @@ class jsgParser ( Parser ):
                 return visitor.visitIdref(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def idref(self):
 
@@ -1807,9 +1786,6 @@ class jsgParser ( Parser ):
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def ebnfSuffix(self):
 
         localctx = jsgParser.EbnfSuffixContext(self, self._ctx, self.state)
@@ -1858,9 +1834,6 @@ class jsgParser ( Parser ):
                             self._errHandler.reportMatch(self)
                             self.consume()
 
-
-
-
                 self.state = 263
                 self.match(jsgParser.CBRACE)
                 pass
@@ -1890,7 +1863,6 @@ class jsgParser ( Parser ):
             else:
                 return self.getTypedRuleContext(jsgParser.LexerRuleSpecContext,i)
 
-
         def getRuleIndex(self):
             return jsgParser.RULE_lexerRules
 
@@ -1899,9 +1871,6 @@ class jsgParser ( Parser ):
                 return visitor.visitLexerRules(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerRules(self):
 
@@ -1958,9 +1927,6 @@ class jsgParser ( Parser ):
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def lexerRuleSpec(self):
 
         localctx = jsgParser.LexerRuleSpecContext(self, self._ctx, self.state)
@@ -2006,9 +1972,6 @@ class jsgParser ( Parser ):
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def lexerRuleBlock(self):
 
         localctx = jsgParser.LexerRuleBlockContext(self, self._ctx, self.state)
@@ -2024,7 +1987,6 @@ class jsgParser ( Parser ):
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << jsgParser.ANY) | (1 << jsgParser.JSON_STRING) | (1 << jsgParser.JSON_NUMBER) | (1 << jsgParser.JSON_INT) | (1 << jsgParser.JSON_BOOL) | (1 << jsgParser.JSON_NULL) | (1 << jsgParser.JSON_ARRAY) | (1 << jsgParser.JSON_OBJECT))) != 0):
                 self.state = 279
                 self.builtinValueType()
-
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2046,7 +2008,6 @@ class jsgParser ( Parser ):
             else:
                 return self.getTypedRuleContext(jsgParser.LexerAltContext,i)
 
-
         def BAR(self, i:int=None):
             if i is None:
                 return self.getTokens(jsgParser.BAR)
@@ -2061,9 +2022,6 @@ class jsgParser ( Parser ):
                 return visitor.visitLexerAltList(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerAltList(self):
 
@@ -2113,9 +2071,6 @@ class jsgParser ( Parser ):
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def lexerAlt(self):
 
         localctx = jsgParser.LexerAltContext(self, self._ctx, self.state)
@@ -2134,7 +2089,6 @@ class jsgParser ( Parser ):
                 self.enterOuterAlt(localctx, 2)
 
                 pass
-
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2166,16 +2120,13 @@ class jsgParser ( Parser ):
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def lexerElements(self):
 
         localctx = jsgParser.LexerElementsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 56, self.RULE_lexerElements)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 295 
+            self.state = 295
             self._errHandler.sync(self)
             _alt = 1
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
@@ -2185,7 +2136,7 @@ class jsgParser ( Parser ):
 
                 else:
                     raise NoViableAltException(self)
-                self.state = 297 
+                self.state = 297
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,36,self._ctx)
 
@@ -2224,9 +2175,6 @@ class jsgParser ( Parser ):
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def lexerElement(self):
 
         localctx = jsgParser.LexerElementContext(self, self._ctx, self.state)
@@ -2246,8 +2194,6 @@ class jsgParser ( Parser ):
                 if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << jsgParser.OBRACE) | (1 << jsgParser.STAR) | (1 << jsgParser.QMARK) | (1 << jsgParser.PLUS))) != 0):
                     self.state = 300
                     self.ebnfSuffix()
-
-
                 pass
             elif token in [jsgParser.OPREN]:
                 self.enterOuterAlt(localctx, 2)
@@ -2259,8 +2205,6 @@ class jsgParser ( Parser ):
                 if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << jsgParser.OBRACE) | (1 << jsgParser.STAR) | (1 << jsgParser.QMARK) | (1 << jsgParser.PLUS))) != 0):
                     self.state = 304
                     self.ebnfSuffix()
-
-
                 pass
             else:
                 raise NoViableAltException(self)
@@ -2285,7 +2229,6 @@ class jsgParser ( Parser ):
         def lexerAltList(self):
             return self.getTypedRuleContext(jsgParser.LexerAltListContext,0)
 
-
         def CPREN(self):
             return self.getToken(jsgParser.CPREN, 0)
 
@@ -2297,9 +2240,6 @@ class jsgParser ( Parser ):
                 return visitor.visitLexerBlock(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerBlock(self):
 
@@ -2330,7 +2270,6 @@ class jsgParser ( Parser ):
         def lexerTerminal(self):
             return self.getTypedRuleContext(jsgParser.LexerTerminalContext,0)
 
-
         def LEXER_CHAR_SET(self):
             return self.getToken(jsgParser.LEXER_CHAR_SET, 0)
 
@@ -2345,9 +2284,6 @@ class jsgParser ( Parser ):
                 return visitor.visitLexerAtom(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerAtom(self):
 
@@ -2404,9 +2340,6 @@ class jsgParser ( Parser ):
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def lexerTerminal(self):
 
         localctx = jsgParser.LexerTerminalContext(self, self._ctx, self.state)
@@ -2428,8 +2361,3 @@ class jsgParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
-
-
-
-

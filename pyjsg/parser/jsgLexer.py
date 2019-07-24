@@ -1,7 +1,7 @@
 # Generated from jsgLexer.g4 by ANTLR 4.7.1
 from antlr4 import *
 from io import StringIO
-from typing.io import TextIO
+from typing import TextIO
 import sys
 
 
@@ -331,5 +331,3 @@ class jsgLexer(Lexer):
         self._interp = LexerATNSimulator(self, self.atn, self.decisionsToDFA, PredictionContextCache())
         self._actions = None
         self._predicates = None
-
-

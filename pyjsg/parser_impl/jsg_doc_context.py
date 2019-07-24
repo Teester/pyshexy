@@ -89,12 +89,12 @@ class JSGDocContext:
         from pyjsg.parser_impl.jsg_arrayexpr_parser import JSGArrayExpr
         from pyjsg.parser_impl.jsg_builtinvaluetype_parser import JSGBuiltinValueType
 
-        self.directives = []
-        self.grammarelts = OrderedDict()
-        self.dependency_map = {}
-        self.forward_refs = {}
-        self.depths = {}
-        self.has_typeid = False
+        self.directives = []  # type: List[str]
+        self.grammarelts = OrderedDict()  # type: Dict[str, Union[JSGLexerRuleBlock, JSGObjectExpr, JSGArrayExpr, JSGForwardRef, JSGBuiltinValueType]]
+        self.dependency_map = {}  # type: Dict[str, List[str]]
+        self.forward_refs = {}  # type: Dict[str, str]
+        self.depths = {}  # type: Dict[str, int]
+        self.has_typeid = False  # type: bool
 
         self._id_factory = AnonymousIdentifierFactory()
 

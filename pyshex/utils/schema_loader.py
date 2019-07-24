@@ -12,7 +12,6 @@ from pyshexc.parser_impl.generate_shexj import load_shex_file
 class SchemaLoader:
     def __init__(self, base_location=None, redirect_location=None, schema_type_suffix=None) -> None:
         """ ShEx Schema loader, with the ability to redirect URI's to local directories or other URL's
-
         :param base_location: Location base supplied to `load` function
         :param redirect_location: Location to replace base for actual load
         :param schema_type_suffix: Replace schema file type suffix with this
@@ -25,7 +24,6 @@ class SchemaLoader:
 
     def load(self, schema_file: Union[str, TextIO], schema_location: Optional[str]=None) -> ShExJ.Schema:
         """ Load a ShEx Schema from schema_location
-
         :param schema_file:  name or file-like object to deserialize
         :param schema_location: URL or file name of schema.  Used to create the base_location
         :return: ShEx Schema represented by schema_location
@@ -46,7 +44,6 @@ class SchemaLoader:
 
     def loads(self, schema_txt: str) -> ShExJ.Schema:
         """ Parse and return schema as a ShExJ Schema
-
         :param schema_txt: ShExC or ShExJ representation of a ShEx Schema
         :return: ShEx Schema representation of schema
         """

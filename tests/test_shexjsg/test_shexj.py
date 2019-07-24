@@ -76,7 +76,7 @@ def validate_file(file: TestFile) -> bool:
     """
     if file.filename not in skip:
         if VERBOSE:
-            print("Testing %s" % (file.fullpath))
+            print("Testing %s" % file.fullpath)
         if ':' in file.fullpath:
             resp = requests.get(file.fullpath)
             if resp.ok:

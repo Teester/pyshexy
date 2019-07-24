@@ -20,7 +20,7 @@ shex_1 = """{ "type": "Schema", "shapes": [
 rdf_1 = """%s
 :issue1 ex:state ex:Resolved .
 :issue2 ex:state ex:Unresolved .
-""" % (rdf_header)
+""" % rdf_header
 
 shex_2 = """{ "type": "Schema", "shapes": [
   { "id": "http://schema.example/EmployeeShape",

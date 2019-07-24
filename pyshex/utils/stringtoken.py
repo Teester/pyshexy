@@ -1,4 +1,3 @@
-
 class StringTokenSingleton(type):
     """ The ShEx spec uses a number of literal tokens, such as the string 'START'.  This implements
     a StringToken class

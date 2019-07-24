@@ -1,4 +1,5 @@
 import requests
+import urllib
 from flask import Flask, request, json
 from flask_cors import CORS
 from sparql_slurper import SlurpyGraph
@@ -34,7 +35,7 @@ def check_shex(shexc, entity_schema, entity, query, endpoint):
         shex = "https://www.wikidata.org/wiki/Special:EntitySchemaText/%s" % entity_schema
         shex_string = process_shex(shex)
     else:
-        shex_string = shexc
+        shex_string = urllib.parse.unquote(shexc)
 
     results = ShExEvaluator(SlurpyGraph(endpoint),
                             shex_string,

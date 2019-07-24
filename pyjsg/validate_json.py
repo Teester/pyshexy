@@ -10,24 +10,33 @@ from pyjsg.jsglib.loader import loads, Logger, is_valid
 from pyjsg.parser_impl.generate_python import parse
 
 
-#class ValidationResult(NamedTuple):
-#    success: bool
-#    fail_reason: str
-#    test_name: str
-#    type: Optional[str]
+# class ValidationResult(NamedTuple):
+#    success = ...  # type: bool
+#    fail_reason = ...  # type: str
+#    test_name = ...  # type: str
+#    type = ...  # type: Optional[str]
 
 #    def __str__(self) -> str:
-#        return (f"{self.test_name}: " if self.test_name else "") +\
-#               (f"Conforms to {self.type}" if self.success else f"FAIL - {self.fail_reason}")
-ValidationResult = NamedTuple("ValidationResult", [("success", bool), ("fail_reason", str), ("test_name", str), ("type", Optional[str])])
-def getString(self) -> str:
-    return ("{}: ".format(self.test_name) if self.test_name else "") + ("Conforms to {}".format(self.type) if self.success else "FAIL - {}".format(self.fail_reason))
-ValidationResult.__str__ = getString
+#        return ("{}: ".format(self.test_name) if self.test_name else "") +\
+#               ("Conforms to {}".format(self.type) if self.success else "FAIL - {}".format(self.fail_reason))
+
+ValidationResult = NamedTuple("ValidationResult", [("success", bool),
+                                                   ("fail_reason", str),
+                                                   ("test_name", str),
+                                                   ("type", Optional[str])])
+
+
+def get_string(self) -> str:
+    return ("{}: ".format(self.test_name) if self.test_name else "") +\
+           ("Conforms to {}".format(self.type) if self.success else "FAIL - {}".format(self.fail_reason))
+
+
+ValidationResult.__str__ = get_string
+
 
 class JSGPython:
     def __init__(self, jsg: Optional[str]=None, python: Optional[str]=None, print_python: bool=False) -> None:
         """ Construct a jsg validation module
-
         :param jsg: JSG specification.  If none, use python
         :param python: Python specification.
         :param print_python: True means print Python to stdout
@@ -70,7 +79,6 @@ class JSGPython:
 
     def conforms(self, json: str, name: str = "", verbose: bool=False) -> ValidationResult:
         """ Determine whether json conforms with the JSG specification
-
         :param json: JSON string, URI to JSON or file name with JSON
         :param name: Test name for ValidationResult -- printed in dx if present
         :param verbose: True means print the response
@@ -91,7 +99,6 @@ class JSGPython:
 def genargs() -> ArgumentParser:
     """
     Create a command line parser
-
     :return: parser
     """
     parser = ArgumentParser()

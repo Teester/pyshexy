@@ -24,7 +24,7 @@ class N3MapperUnitTest(unittest.TestCase):
                                                     key=lambda t: (1, t) if isinstance(t[0], BNode) else (0, t))])
                 tpath = os.path.join(target_dir, f)
                 if not os.path.exists(tpath):
-                    print("Creating: %s" % (tpath))
+                    print("Creating: %s" % tpath)
                     with open(tpath, 'w+') as t:
                         t.write(result)
                     new_files = True

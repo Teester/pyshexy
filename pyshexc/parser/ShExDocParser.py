@@ -2,8 +2,9 @@
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
-from typing.io import TextIO
+from typing import TextIO
 import sys
+
 
 def serializedATN():
     with StringIO() as buf:
@@ -358,49 +359,48 @@ def serializedATN():
         return buf.getvalue()
 
 
-class ShExDocParser ( Parser ):
-
+class ShExDocParser(Parser):
     grammarFileName = "ShExDoc.g4"
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
-    decisionsToDFA = [ DFA(ds, i) for i, ds in enumerate(atn.decisionToState) ]
+    decisionsToDFA = [DFA(ds, i) for i, ds in enumerate(atn.decisionToState)]
 
     sharedContextCache = PredictionContextCache()
 
-    literalNames = [ "<INVALID>", "'='", "'('", "')'", "'.'", "'@'", "'{'", 
-                     "'}'", "'|'", "';'", "'$'", "'+'", "'?'", "','", "'^'", 
-                     "'['", "']'", "'-'", "'&'", "'//'", "'%'", "'^^'", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "'true'", "'false'", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "'a'", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "'~'", "'*'" ]
+    literalNames = ["<INVALID>", "'='", "'('", "')'", "'.'", "'@'", "'{'",
+                    "'}'", "'|'", "';'", "'$'", "'+'", "'?'", "','", "'^'",
+                    "'['", "']'", "'-'", "'&'", "'//'", "'%'", "'^^'",
+                    "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                    "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                    "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                    "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                    "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                    "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                    "<INVALID>", "<INVALID>", "<INVALID>", "'true'", "'false'",
+                    "<INVALID>", "<INVALID>", "<INVALID>", "'a'", "<INVALID>",
+                    "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                    "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                    "<INVALID>", "<INVALID>", "<INVALID>", "'~'", "'*'"]
 
-    symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "KW_ABSTRACT", "KW_BASE", 
-                      "KW_EXTENDS", "KW_IMPORT", "KW_RESTRICTS", "KW_EXTERNAL", 
-                      "KW_PREFIX", "KW_START", "KW_VIRTUAL", "KW_CLOSED", 
-                      "KW_EXTRA", "KW_LITERAL", "KW_IRI", "KW_NONLITERAL", 
-                      "KW_BNODE", "KW_AND", "KW_OR", "KW_MININCLUSIVE", 
-                      "KW_MINEXCLUSIVE", "KW_MAXINCLUSIVE", "KW_MAXEXCLUSIVE", 
-                      "KW_LENGTH", "KW_MINLENGTH", "KW_MAXLENGTH", "KW_TOTALDIGITS", 
-                      "KW_FRACTIONDIGITS", "KW_NOT", "KW_TRUE", "KW_FALSE", 
-                      "PASS", "COMMENT", "CODE", "RDF_TYPE", "IRIREF", "PNAME_NS", 
-                      "PNAME_LN", "ATPNAME_NS", "ATPNAME_LN", "REGEXP", 
-                      "REGEXP_FLAGS", "BLANK_NODE_LABEL", "LANGTAG", "INTEGER", 
-                      "DECIMAL", "DOUBLE", "STEM_MARK", "UNBOUNDED", "STRING_LITERAL1", 
-                      "STRING_LITERAL2", "STRING_LITERAL_LONG1", "STRING_LITERAL_LONG2" ]
+    symbolicNames = ["<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "KW_ABSTRACT", "KW_BASE",
+                     "KW_EXTENDS", "KW_IMPORT", "KW_RESTRICTS", "KW_EXTERNAL",
+                     "KW_PREFIX", "KW_START", "KW_VIRTUAL", "KW_CLOSED",
+                     "KW_EXTRA", "KW_LITERAL", "KW_IRI", "KW_NONLITERAL",
+                     "KW_BNODE", "KW_AND", "KW_OR", "KW_MININCLUSIVE",
+                     "KW_MINEXCLUSIVE", "KW_MAXINCLUSIVE", "KW_MAXEXCLUSIVE",
+                     "KW_LENGTH", "KW_MINLENGTH", "KW_MAXLENGTH", "KW_TOTALDIGITS",
+                     "KW_FRACTIONDIGITS", "KW_NOT", "KW_TRUE", "KW_FALSE",
+                     "PASS", "COMMENT", "CODE", "RDF_TYPE", "IRIREF", "PNAME_NS",
+                     "PNAME_LN", "ATPNAME_NS", "ATPNAME_LN", "REGEXP",
+                     "REGEXP_FLAGS", "BLANK_NODE_LABEL", "LANGTAG", "INTEGER",
+                     "DECIMAL", "DOUBLE", "STEM_MARK", "UNBOUNDED", "STRING_LITERAL1",
+                     "STRING_LITERAL2", "STRING_LITERAL_LONG1", "STRING_LITERAL_LONG2"]
 
     RULE_shExDoc = 0
     RULE_directive = 1
@@ -480,164 +480,157 @@ class ShExDocParser ( Parser ):
     RULE_extension = 75
     RULE_restrictions = 76
 
-    ruleNames =  [ "shExDoc", "directive", "baseDecl", "prefixDecl", "importDecl", 
-                   "notStartAction", "start", "startActions", "statement", 
-                   "shapeExprDecl", "shapeExpression", "inlineShapeExpression", 
-                   "shapeOr", "inlineShapeOr", "shapeAnd", "inlineShapeAnd", 
-                   "shapeNot", "inlineShapeNot", "shapeAtom", "inlineShapeAtom", 
-                   "shapeOrRef", "inlineShapeOrRef", "shapeRef", "inlineLitNodeConstraint", 
-                   "litNodeConstraint", "inlineNonLitNodeConstraint", "nonLitNodeConstraint", 
-                   "nonLiteralKind", "xsFacet", "stringFacet", "stringLength", 
-                   "numericFacet", "numericRange", "numericLength", "rawNumeric", 
-                   "shapeDefinition", "inlineShapeDefinition", "qualifier", 
-                   "extraPropertySet", "tripleExpression", "oneOfTripleExpr", 
-                   "multiElementOneOf", "groupTripleExpr", "singleElementGroup", 
-                   "multiElementGroup", "unaryTripleExpr", "bracketedTripleExpr", 
-                   "tripleConstraint", "cardinality", "repeatRange", "senseFlags", 
-                   "valueSet", "valueSetValue", "iriRange", "iriExclusion", 
-                   "literalRange", "literalExclusion", "languageRange", 
-                   "languageExclusion", "include", "annotation", "semanticAction", 
-                   "literal", "predicate", "rdfType", "datatype", "shapeExprLabel", 
-                   "tripleExprLabel", "numericLiteral", "rdfLiteral", "booleanLiteral", 
-                   "string", "iri", "prefixedName", "blankNode", "extension", 
-                   "restrictions" ]
+    ruleNames = ["shExDoc", "directive", "baseDecl", "prefixDecl", "importDecl",
+                 "notStartAction", "start", "startActions", "statement",
+                 "shapeExprDecl", "shapeExpression", "inlineShapeExpression",
+                 "shapeOr", "inlineShapeOr", "shapeAnd", "inlineShapeAnd",
+                 "shapeNot", "inlineShapeNot", "shapeAtom", "inlineShapeAtom",
+                 "shapeOrRef", "inlineShapeOrRef", "shapeRef", "inlineLitNodeConstraint",
+                 "litNodeConstraint", "inlineNonLitNodeConstraint", "nonLitNodeConstraint",
+                 "nonLiteralKind", "xsFacet", "stringFacet", "stringLength",
+                 "numericFacet", "numericRange", "numericLength", "rawNumeric",
+                 "shapeDefinition", "inlineShapeDefinition", "qualifier",
+                 "extraPropertySet", "tripleExpression", "oneOfTripleExpr",
+                 "multiElementOneOf", "groupTripleExpr", "singleElementGroup",
+                 "multiElementGroup", "unaryTripleExpr", "bracketedTripleExpr",
+                 "tripleConstraint", "cardinality", "repeatRange", "senseFlags",
+                 "valueSet", "valueSetValue", "iriRange", "iriExclusion",
+                 "literalRange", "literalExclusion", "languageRange",
+                 "languageExclusion", "include", "annotation", "semanticAction",
+                 "literal", "predicate", "rdfType", "datatype", "shapeExprLabel",
+                 "tripleExprLabel", "numericLiteral", "rdfLiteral", "booleanLiteral",
+                 "string", "iri", "prefixedName", "blankNode", "extension",
+                 "restrictions"]
 
     EOF = Token.EOF
-    T__0=1
-    T__1=2
-    T__2=3
-    T__3=4
-    T__4=5
-    T__5=6
-    T__6=7
-    T__7=8
-    T__8=9
-    T__9=10
-    T__10=11
-    T__11=12
-    T__12=13
-    T__13=14
-    T__14=15
-    T__15=16
-    T__16=17
-    T__17=18
-    T__18=19
-    T__19=20
-    T__20=21
-    KW_ABSTRACT=22
-    KW_BASE=23
-    KW_EXTENDS=24
-    KW_IMPORT=25
-    KW_RESTRICTS=26
-    KW_EXTERNAL=27
-    KW_PREFIX=28
-    KW_START=29
-    KW_VIRTUAL=30
-    KW_CLOSED=31
-    KW_EXTRA=32
-    KW_LITERAL=33
-    KW_IRI=34
-    KW_NONLITERAL=35
-    KW_BNODE=36
-    KW_AND=37
-    KW_OR=38
-    KW_MININCLUSIVE=39
-    KW_MINEXCLUSIVE=40
-    KW_MAXINCLUSIVE=41
-    KW_MAXEXCLUSIVE=42
-    KW_LENGTH=43
-    KW_MINLENGTH=44
-    KW_MAXLENGTH=45
-    KW_TOTALDIGITS=46
-    KW_FRACTIONDIGITS=47
-    KW_NOT=48
-    KW_TRUE=49
-    KW_FALSE=50
-    PASS=51
-    COMMENT=52
-    CODE=53
-    RDF_TYPE=54
-    IRIREF=55
-    PNAME_NS=56
-    PNAME_LN=57
-    ATPNAME_NS=58
-    ATPNAME_LN=59
-    REGEXP=60
-    REGEXP_FLAGS=61
-    BLANK_NODE_LABEL=62
-    LANGTAG=63
-    INTEGER=64
-    DECIMAL=65
-    DOUBLE=66
-    STEM_MARK=67
-    UNBOUNDED=68
-    STRING_LITERAL1=69
-    STRING_LITERAL2=70
-    STRING_LITERAL_LONG1=71
-    STRING_LITERAL_LONG2=72
+    T__0 = 1
+    T__1 = 2
+    T__2 = 3
+    T__3 = 4
+    T__4 = 5
+    T__5 = 6
+    T__6 = 7
+    T__7 = 8
+    T__8 = 9
+    T__9 = 10
+    T__10 = 11
+    T__11 = 12
+    T__12 = 13
+    T__13 = 14
+    T__14 = 15
+    T__15 = 16
+    T__16 = 17
+    T__17 = 18
+    T__18 = 19
+    T__19 = 20
+    T__20 = 21
+    KW_ABSTRACT = 22
+    KW_BASE = 23
+    KW_EXTENDS = 24
+    KW_IMPORT = 25
+    KW_RESTRICTS = 26
+    KW_EXTERNAL = 27
+    KW_PREFIX = 28
+    KW_START = 29
+    KW_VIRTUAL = 30
+    KW_CLOSED = 31
+    KW_EXTRA = 32
+    KW_LITERAL = 33
+    KW_IRI = 34
+    KW_NONLITERAL = 35
+    KW_BNODE = 36
+    KW_AND = 37
+    KW_OR = 38
+    KW_MININCLUSIVE = 39
+    KW_MINEXCLUSIVE = 40
+    KW_MAXINCLUSIVE = 41
+    KW_MAXEXCLUSIVE = 42
+    KW_LENGTH = 43
+    KW_MINLENGTH = 44
+    KW_MAXLENGTH = 45
+    KW_TOTALDIGITS = 46
+    KW_FRACTIONDIGITS = 47
+    KW_NOT = 48
+    KW_TRUE = 49
+    KW_FALSE = 50
+    PASS = 51
+    COMMENT = 52
+    CODE = 53
+    RDF_TYPE = 54
+    IRIREF = 55
+    PNAME_NS = 56
+    PNAME_LN = 57
+    ATPNAME_NS = 58
+    ATPNAME_LN = 59
+    REGEXP = 60
+    REGEXP_FLAGS = 61
+    BLANK_NODE_LABEL = 62
+    LANGTAG = 63
+    INTEGER = 64
+    DECIMAL = 65
+    DOUBLE = 66
+    STEM_MARK = 67
+    UNBOUNDED = 68
+    STRING_LITERAL1 = 69
+    STRING_LITERAL2 = 70
+    STRING_LITERAL_LONG1 = 71
+    STRING_LITERAL_LONG2 = 72
 
-    def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
+    def __init__(self, input: TokenStream, output: TextIO = sys.stdout):
         super().__init__(input, output)
         self.checkVersion("4.7.1")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
 
-
-
     class ShExDocContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def EOF(self):
             return self.getToken(ShExDocParser.EOF, 0)
 
-        def directive(self, i:int=None):
+        def directive(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.DirectiveContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.DirectiveContext,i)
-
+                return self.getTypedRuleContext(ShExDocParser.DirectiveContext, i)
 
         def notStartAction(self):
-            return self.getTypedRuleContext(ShExDocParser.NotStartActionContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.NotStartActionContext, 0)
 
         def startActions(self):
-            return self.getTypedRuleContext(ShExDocParser.StartActionsContext,0)
+            return self.getTypedRuleContext(ShExDocParser.StartActionsContext, 0)
 
-
-        def statement(self, i:int=None):
+        def statement(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.StatementContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.StatementContext,i)
-
+                return self.getTypedRuleContext(ShExDocParser.StatementContext, i)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_shExDoc
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitShExDoc" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitShExDoc"):
                 return visitor.visitShExDoc(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def shExDoc(self):
 
         localctx = ShExDocParser.ShExDocContext(self, self._ctx, self.state)
         self.enterRule(localctx, 0, self.RULE_shExDoc)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 157
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShExDocParser.KW_BASE) | (1 << ShExDocParser.KW_IMPORT) | (1 << ShExDocParser.KW_PREFIX))) != 0):
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                    (1 << ShExDocParser.KW_BASE) | (1 << ShExDocParser.KW_IMPORT) | (
+                    1 << ShExDocParser.KW_PREFIX))) != 0):
                 self.state = 154
                 self.directive()
                 self.state = 159
@@ -647,11 +640,15 @@ class ShExDocParser ( Parser ):
             self.state = 170
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShExDocParser.T__19) | (1 << ShExDocParser.KW_ABSTRACT) | (1 << ShExDocParser.KW_START) | (1 << ShExDocParser.IRIREF) | (1 << ShExDocParser.PNAME_NS) | (1 << ShExDocParser.PNAME_LN) | (1 << ShExDocParser.BLANK_NODE_LABEL))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                    (1 << ShExDocParser.T__19) | (1 << ShExDocParser.KW_ABSTRACT) | (1 << ShExDocParser.KW_START) | (
+                    1 << ShExDocParser.IRIREF) | (1 << ShExDocParser.PNAME_NS) | (1 << ShExDocParser.PNAME_LN) | (
+                            1 << ShExDocParser.BLANK_NODE_LABEL))) != 0):
                 self.state = 162
                 self._errHandler.sync(self)
                 token = self._input.LA(1)
-                if token in [ShExDocParser.KW_ABSTRACT, ShExDocParser.KW_START, ShExDocParser.IRIREF, ShExDocParser.PNAME_NS, ShExDocParser.PNAME_LN, ShExDocParser.BLANK_NODE_LABEL]:
+                if token in [ShExDocParser.KW_ABSTRACT, ShExDocParser.KW_START, ShExDocParser.IRIREF,
+                             ShExDocParser.PNAME_NS, ShExDocParser.PNAME_LN, ShExDocParser.BLANK_NODE_LABEL]:
                     self.state = 160
                     self.notStartAction()
                     pass
@@ -665,14 +662,17 @@ class ShExDocParser ( Parser ):
                 self.state = 167
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShExDocParser.KW_ABSTRACT) | (1 << ShExDocParser.KW_BASE) | (1 << ShExDocParser.KW_IMPORT) | (1 << ShExDocParser.KW_PREFIX) | (1 << ShExDocParser.KW_START) | (1 << ShExDocParser.IRIREF) | (1 << ShExDocParser.PNAME_NS) | (1 << ShExDocParser.PNAME_LN) | (1 << ShExDocParser.BLANK_NODE_LABEL))) != 0):
+                while (((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                        (1 << ShExDocParser.KW_ABSTRACT) | (1 << ShExDocParser.KW_BASE) | (
+                        1 << ShExDocParser.KW_IMPORT) | (1 << ShExDocParser.KW_PREFIX) | (
+                                1 << ShExDocParser.KW_START) | (1 << ShExDocParser.IRIREF) | (
+                                1 << ShExDocParser.PNAME_NS) | (1 << ShExDocParser.PNAME_LN) | (
+                                1 << ShExDocParser.BLANK_NODE_LABEL))) != 0):
                     self.state = 164
                     self.statement()
                     self.state = 169
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
-
-
 
             self.state = 172
             self.match(ShExDocParser.EOF)
@@ -686,33 +686,27 @@ class ShExDocParser ( Parser ):
 
     class DirectiveContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def baseDecl(self):
-            return self.getTypedRuleContext(ShExDocParser.BaseDeclContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.BaseDeclContext, 0)
 
         def prefixDecl(self):
-            return self.getTypedRuleContext(ShExDocParser.PrefixDeclContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.PrefixDeclContext, 0)
 
         def importDecl(self):
-            return self.getTypedRuleContext(ShExDocParser.ImportDeclContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.ImportDeclContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_directive
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitDirective" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitDirective"):
                 return visitor.visitDirective(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def directive(self):
 
@@ -750,7 +744,7 @@ class ShExDocParser ( Parser ):
 
     class BaseDeclContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -763,14 +757,11 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_baseDecl
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitBaseDecl" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitBaseDecl"):
                 return visitor.visitBaseDecl(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def baseDecl(self):
 
@@ -792,7 +783,7 @@ class ShExDocParser ( Parser ):
 
     class PrefixDeclContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -808,14 +799,11 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_prefixDecl
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitPrefixDecl" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitPrefixDecl"):
                 return visitor.visitPrefixDecl(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def prefixDecl(self):
 
@@ -839,7 +827,7 @@ class ShExDocParser ( Parser ):
 
     class ImportDeclContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -852,14 +840,11 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_importDecl
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitImportDecl" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitImportDecl"):
                 return visitor.visitImportDecl(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def importDecl(self):
 
@@ -881,29 +866,24 @@ class ShExDocParser ( Parser ):
 
     class NotStartActionContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def start(self):
-            return self.getTypedRuleContext(ShExDocParser.StartContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.StartContext, 0)
 
         def shapeExprDecl(self):
-            return self.getTypedRuleContext(ShExDocParser.ShapeExprDeclContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.ShapeExprDeclContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_notStartAction
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitNotStartAction" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitNotStartAction"):
                 return visitor.visitNotStartAction(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def notStartAction(self):
 
@@ -918,7 +898,8 @@ class ShExDocParser ( Parser ):
                 self.state = 189
                 self.start()
                 pass
-            elif token in [ShExDocParser.KW_ABSTRACT, ShExDocParser.IRIREF, ShExDocParser.PNAME_NS, ShExDocParser.PNAME_LN, ShExDocParser.BLANK_NODE_LABEL]:
+            elif token in [ShExDocParser.KW_ABSTRACT, ShExDocParser.IRIREF, ShExDocParser.PNAME_NS,
+                           ShExDocParser.PNAME_LN, ShExDocParser.BLANK_NODE_LABEL]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 190
                 self.shapeExprDecl()
@@ -936,7 +917,7 @@ class ShExDocParser ( Parser ):
 
     class StartContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -944,20 +925,16 @@ class ShExDocParser ( Parser ):
             return self.getToken(ShExDocParser.KW_START, 0)
 
         def shapeExpression(self):
-            return self.getTypedRuleContext(ShExDocParser.ShapeExpressionContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.ShapeExpressionContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_start
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitStart" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitStart"):
                 return visitor.visitStart(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def start(self):
 
@@ -981,46 +958,42 @@ class ShExDocParser ( Parser ):
 
     class StartActionsContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def semanticAction(self, i:int=None):
+        def semanticAction(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.SemanticActionContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.SemanticActionContext,i)
-
+                return self.getTypedRuleContext(ShExDocParser.SemanticActionContext, i)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_startActions
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitStartActions" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitStartActions"):
                 return visitor.visitStartActions(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def startActions(self):
 
         localctx = ShExDocParser.StartActionsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 14, self.RULE_startActions)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 198 
+            self.state = 198
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
                 self.state = 197
                 self.semanticAction()
-                self.state = 200 
+                self.state = 200
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not (_la==ShExDocParser.T__19):
+                if not (_la == ShExDocParser.T__19):
                     break
 
         except RecognitionException as re:
@@ -1033,29 +1006,24 @@ class ShExDocParser ( Parser ):
 
     class StatementContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def directive(self):
-            return self.getTypedRuleContext(ShExDocParser.DirectiveContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.DirectiveContext, 0)
 
         def notStartAction(self):
-            return self.getTypedRuleContext(ShExDocParser.NotStartActionContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.NotStartActionContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_statement
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitStatement" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitStatement"):
                 return visitor.visitStatement(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def statement(self):
 
@@ -1070,7 +1038,8 @@ class ShExDocParser ( Parser ):
                 self.state = 202
                 self.directive()
                 pass
-            elif token in [ShExDocParser.KW_ABSTRACT, ShExDocParser.KW_START, ShExDocParser.IRIREF, ShExDocParser.PNAME_NS, ShExDocParser.PNAME_LN, ShExDocParser.BLANK_NODE_LABEL]:
+            elif token in [ShExDocParser.KW_ABSTRACT, ShExDocParser.KW_START, ShExDocParser.IRIREF,
+                           ShExDocParser.PNAME_NS, ShExDocParser.PNAME_LN, ShExDocParser.BLANK_NODE_LABEL]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 203
                 self.notStartAction()
@@ -1088,17 +1057,15 @@ class ShExDocParser ( Parser ):
 
     class ShapeExprDeclContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def shapeExprLabel(self):
-            return self.getTypedRuleContext(ShExDocParser.ShapeExprLabelContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.ShapeExprLabelContext, 0)
 
         def shapeExpression(self):
-            return self.getTypedRuleContext(ShExDocParser.ShapeExpressionContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.ShapeExpressionContext, 0)
 
         def KW_EXTERNAL(self):
             return self.getToken(ShExDocParser.KW_EXTERNAL, 0)
@@ -1106,46 +1073,41 @@ class ShExDocParser ( Parser ):
         def KW_ABSTRACT(self):
             return self.getToken(ShExDocParser.KW_ABSTRACT, 0)
 
-        def restrictions(self, i:int=None):
+        def restrictions(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.RestrictionsContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.RestrictionsContext,i)
-
+                return self.getTypedRuleContext(ShExDocParser.RestrictionsContext, i)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_shapeExprDecl
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitShapeExprDecl" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitShapeExprDecl"):
                 return visitor.visitShapeExprDecl(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def shapeExprDecl(self):
 
         localctx = ShExDocParser.ShapeExprDeclContext(self, self._ctx, self.state)
         self.enterRule(localctx, 18, self.RULE_shapeExprDecl)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 207
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ShExDocParser.KW_ABSTRACT:
+            if _la == ShExDocParser.KW_ABSTRACT:
                 self.state = 206
                 self.match(ShExDocParser.KW_ABSTRACT)
-
 
             self.state = 209
             self.shapeExprLabel()
             self.state = 213
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ShExDocParser.T__16 or _la==ShExDocParser.KW_RESTRICTS:
+            while _la == ShExDocParser.T__16 or _la == ShExDocParser.KW_RESTRICTS:
                 self.state = 210
                 self.restrictions()
                 self.state = 215
@@ -1155,7 +1117,15 @@ class ShExDocParser ( Parser ):
             self.state = 218
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [ShExDocParser.T__1, ShExDocParser.T__3, ShExDocParser.T__4, ShExDocParser.T__5, ShExDocParser.T__14, ShExDocParser.T__17, ShExDocParser.KW_EXTENDS, ShExDocParser.KW_CLOSED, ShExDocParser.KW_EXTRA, ShExDocParser.KW_LITERAL, ShExDocParser.KW_IRI, ShExDocParser.KW_NONLITERAL, ShExDocParser.KW_BNODE, ShExDocParser.KW_MININCLUSIVE, ShExDocParser.KW_MINEXCLUSIVE, ShExDocParser.KW_MAXINCLUSIVE, ShExDocParser.KW_MAXEXCLUSIVE, ShExDocParser.KW_LENGTH, ShExDocParser.KW_MINLENGTH, ShExDocParser.KW_MAXLENGTH, ShExDocParser.KW_TOTALDIGITS, ShExDocParser.KW_FRACTIONDIGITS, ShExDocParser.KW_NOT, ShExDocParser.IRIREF, ShExDocParser.PNAME_NS, ShExDocParser.PNAME_LN, ShExDocParser.ATPNAME_NS, ShExDocParser.ATPNAME_LN, ShExDocParser.REGEXP]:
+            if token in [ShExDocParser.T__1, ShExDocParser.T__3, ShExDocParser.T__4, ShExDocParser.T__5,
+                         ShExDocParser.T__14, ShExDocParser.T__17, ShExDocParser.KW_EXTENDS, ShExDocParser.KW_CLOSED,
+                         ShExDocParser.KW_EXTRA, ShExDocParser.KW_LITERAL, ShExDocParser.KW_IRI,
+                         ShExDocParser.KW_NONLITERAL, ShExDocParser.KW_BNODE, ShExDocParser.KW_MININCLUSIVE,
+                         ShExDocParser.KW_MINEXCLUSIVE, ShExDocParser.KW_MAXINCLUSIVE, ShExDocParser.KW_MAXEXCLUSIVE,
+                         ShExDocParser.KW_LENGTH, ShExDocParser.KW_MINLENGTH, ShExDocParser.KW_MAXLENGTH,
+                         ShExDocParser.KW_TOTALDIGITS, ShExDocParser.KW_FRACTIONDIGITS, ShExDocParser.KW_NOT,
+                         ShExDocParser.IRIREF, ShExDocParser.PNAME_NS, ShExDocParser.PNAME_LN, ShExDocParser.ATPNAME_NS,
+                         ShExDocParser.ATPNAME_LN, ShExDocParser.REGEXP]:
                 self.state = 216
                 self.shapeExpression()
                 pass
@@ -1176,25 +1146,21 @@ class ShExDocParser ( Parser ):
 
     class ShapeExpressionContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def shapeOr(self):
-            return self.getTypedRuleContext(ShExDocParser.ShapeOrContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.ShapeOrContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_shapeExpression
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitShapeExpression" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitShapeExpression"):
                 return visitor.visitShapeExpression(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def shapeExpression(self):
 
@@ -1214,25 +1180,21 @@ class ShExDocParser ( Parser ):
 
     class InlineShapeExpressionContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def inlineShapeOr(self):
-            return self.getTypedRuleContext(ShExDocParser.InlineShapeOrContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.InlineShapeOrContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_inlineShapeExpression
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInlineShapeExpression" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitInlineShapeExpression"):
                 return visitor.visitInlineShapeExpression(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def inlineShapeExpression(self):
 
@@ -1252,18 +1214,17 @@ class ShExDocParser ( Parser ):
 
     class ShapeOrContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def shapeAnd(self, i:int=None):
+        def shapeAnd(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.ShapeAndContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.ShapeAndContext,i)
+                return self.getTypedRuleContext(ShExDocParser.ShapeAndContext, i)
 
-
-        def KW_OR(self, i:int=None):
+        def KW_OR(self, i: int = None):
             if i is None:
                 return self.getTokens(ShExDocParser.KW_OR)
             else:
@@ -1272,20 +1233,17 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_shapeOr
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitShapeOr" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitShapeOr"):
                 return visitor.visitShapeOr(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def shapeOr(self):
 
         localctx = ShExDocParser.ShapeOrContext(self, self._ctx, self.state)
         self.enterRule(localctx, 24, self.RULE_shapeOr)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 224
@@ -1293,7 +1251,7 @@ class ShExDocParser ( Parser ):
             self.state = 229
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ShExDocParser.KW_OR:
+            while _la == ShExDocParser.KW_OR:
                 self.state = 225
                 self.match(ShExDocParser.KW_OR)
                 self.state = 226
@@ -1312,18 +1270,17 @@ class ShExDocParser ( Parser ):
 
     class InlineShapeOrContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def inlineShapeAnd(self, i:int=None):
+        def inlineShapeAnd(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.InlineShapeAndContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.InlineShapeAndContext,i)
+                return self.getTypedRuleContext(ShExDocParser.InlineShapeAndContext, i)
 
-
-        def KW_OR(self, i:int=None):
+        def KW_OR(self, i: int = None):
             if i is None:
                 return self.getTokens(ShExDocParser.KW_OR)
             else:
@@ -1332,20 +1289,17 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_inlineShapeOr
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInlineShapeOr" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitInlineShapeOr"):
                 return visitor.visitInlineShapeOr(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def inlineShapeOr(self):
 
         localctx = ShExDocParser.InlineShapeOrContext(self, self._ctx, self.state)
         self.enterRule(localctx, 26, self.RULE_inlineShapeOr)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 232
@@ -1353,7 +1307,7 @@ class ShExDocParser ( Parser ):
             self.state = 237
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ShExDocParser.KW_OR:
+            while _la == ShExDocParser.KW_OR:
                 self.state = 233
                 self.match(ShExDocParser.KW_OR)
                 self.state = 234
@@ -1372,18 +1326,17 @@ class ShExDocParser ( Parser ):
 
     class ShapeAndContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def shapeNot(self, i:int=None):
+        def shapeNot(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.ShapeNotContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.ShapeNotContext,i)
+                return self.getTypedRuleContext(ShExDocParser.ShapeNotContext, i)
 
-
-        def KW_AND(self, i:int=None):
+        def KW_AND(self, i: int = None):
             if i is None:
                 return self.getTokens(ShExDocParser.KW_AND)
             else:
@@ -1392,20 +1345,17 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_shapeAnd
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitShapeAnd" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitShapeAnd"):
                 return visitor.visitShapeAnd(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def shapeAnd(self):
 
         localctx = ShExDocParser.ShapeAndContext(self, self._ctx, self.state)
         self.enterRule(localctx, 28, self.RULE_shapeAnd)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 240
@@ -1413,7 +1363,7 @@ class ShExDocParser ( Parser ):
             self.state = 245
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ShExDocParser.KW_AND:
+            while _la == ShExDocParser.KW_AND:
                 self.state = 241
                 self.match(ShExDocParser.KW_AND)
                 self.state = 242
@@ -1432,18 +1382,17 @@ class ShExDocParser ( Parser ):
 
     class InlineShapeAndContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def inlineShapeNot(self, i:int=None):
+        def inlineShapeNot(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.InlineShapeNotContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.InlineShapeNotContext,i)
+                return self.getTypedRuleContext(ShExDocParser.InlineShapeNotContext, i)
 
-
-        def KW_AND(self, i:int=None):
+        def KW_AND(self, i: int = None):
             if i is None:
                 return self.getTokens(ShExDocParser.KW_AND)
             else:
@@ -1452,20 +1401,17 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_inlineShapeAnd
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInlineShapeAnd" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitInlineShapeAnd"):
                 return visitor.visitInlineShapeAnd(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def inlineShapeAnd(self):
 
         localctx = ShExDocParser.InlineShapeAndContext(self, self._ctx, self.state)
         self.enterRule(localctx, 30, self.RULE_inlineShapeAnd)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 248
@@ -1473,7 +1419,7 @@ class ShExDocParser ( Parser ):
             self.state = 253
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ShExDocParser.KW_AND:
+            while _la == ShExDocParser.KW_AND:
                 self.state = 249
                 self.match(ShExDocParser.KW_AND)
                 self.state = 250
@@ -1492,13 +1438,12 @@ class ShExDocParser ( Parser ):
 
     class ShapeNotContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def shapeAtom(self):
-            return self.getTypedRuleContext(ShExDocParser.ShapeAtomContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.ShapeAtomContext, 0)
 
         def KW_NOT(self):
             return self.getToken(ShExDocParser.KW_NOT, 0)
@@ -1506,29 +1451,25 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_shapeNot
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitShapeNot" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitShapeNot"):
                 return visitor.visitShapeNot(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def shapeNot(self):
 
         localctx = ShExDocParser.ShapeNotContext(self, self._ctx, self.state)
         self.enterRule(localctx, 32, self.RULE_shapeNot)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 257
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ShExDocParser.KW_NOT:
+            if _la == ShExDocParser.KW_NOT:
                 self.state = 256
                 self.match(ShExDocParser.KW_NOT)
-
 
             self.state = 259
             self.shapeAtom()
@@ -1542,13 +1483,12 @@ class ShExDocParser ( Parser ):
 
     class InlineShapeNotContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def inlineShapeAtom(self):
-            return self.getTypedRuleContext(ShExDocParser.InlineShapeAtomContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.InlineShapeAtomContext, 0)
 
         def KW_NOT(self):
             return self.getToken(ShExDocParser.KW_NOT, 0)
@@ -1556,29 +1496,25 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_inlineShapeNot
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInlineShapeNot" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitInlineShapeNot"):
                 return visitor.visitInlineShapeNot(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def inlineShapeNot(self):
 
         localctx = ShExDocParser.InlineShapeNotContext(self, self._ctx, self.state)
         self.enterRule(localctx, 34, self.RULE_inlineShapeNot)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 262
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ShExDocParser.KW_NOT:
+            if _la == ShExDocParser.KW_NOT:
                 self.state = 261
                 self.match(ShExDocParser.KW_NOT)
-
 
             self.state = 264
             self.inlineShapeAtom()
@@ -1592,118 +1528,103 @@ class ShExDocParser ( Parser ):
 
     class ShapeAtomContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_shapeAtom
 
-     
-        def copyFrom(self, ctx:ParserRuleContext):
+        def copyFrom(self, ctx: ParserRuleContext):
             super().copyFrom(ctx)
-
-
 
     class ShapeAtomShapeOrRefContext(ShapeAtomContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.ShapeAtomContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.ShapeAtomContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def shapeOrRef(self):
-            return self.getTypedRuleContext(ShExDocParser.ShapeOrRefContext,0)
+            return self.getTypedRuleContext(ShExDocParser.ShapeOrRefContext, 0)
 
         def nonLitNodeConstraint(self):
-            return self.getTypedRuleContext(ShExDocParser.NonLitNodeConstraintContext,0)
+            return self.getTypedRuleContext(ShExDocParser.NonLitNodeConstraintContext, 0)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitShapeAtomShapeOrRef" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitShapeAtomShapeOrRef"):
                 return visitor.visitShapeAtomShapeOrRef(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class ShapeAtomNonLitNodeConstraintContext(ShapeAtomContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.ShapeAtomContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.ShapeAtomContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def nonLitNodeConstraint(self):
-            return self.getTypedRuleContext(ShExDocParser.NonLitNodeConstraintContext,0)
+            return self.getTypedRuleContext(ShExDocParser.NonLitNodeConstraintContext, 0)
 
         def shapeOrRef(self):
-            return self.getTypedRuleContext(ShExDocParser.ShapeOrRefContext,0)
+            return self.getTypedRuleContext(ShExDocParser.ShapeOrRefContext, 0)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitShapeAtomNonLitNodeConstraint" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitShapeAtomNonLitNodeConstraint"):
                 return visitor.visitShapeAtomNonLitNodeConstraint(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class ShapeAtomLitNodeConstraintContext(ShapeAtomContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.ShapeAtomContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.ShapeAtomContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def litNodeConstraint(self):
-            return self.getTypedRuleContext(ShExDocParser.LitNodeConstraintContext,0)
+            return self.getTypedRuleContext(ShExDocParser.LitNodeConstraintContext, 0)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitShapeAtomLitNodeConstraint" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitShapeAtomLitNodeConstraint"):
                 return visitor.visitShapeAtomLitNodeConstraint(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class ShapeAtomShapeExpressionContext(ShapeAtomContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.ShapeAtomContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.ShapeAtomContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def shapeExpression(self):
-            return self.getTypedRuleContext(ShExDocParser.ShapeExpressionContext,0)
+            return self.getTypedRuleContext(ShExDocParser.ShapeExpressionContext, 0)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitShapeAtomShapeExpression" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitShapeAtomShapeExpression"):
                 return visitor.visitShapeAtomShapeExpression(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class ShapeAtomAnyContext(ShapeAtomContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.ShapeAtomContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.ShapeAtomContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitShapeAtomAny" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitShapeAtomAny"):
                 return visitor.visitShapeAtomAny(self)
             else:
                 return visitor.visitChildren(self)
-
-
 
     def shapeAtom(self):
 
         localctx = ShExDocParser.ShapeAtomContext(self, self._ctx, self.state)
         self.enterRule(localctx, 36, self.RULE_shapeAtom)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 280
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,19,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 19, self._ctx)
             if la_ == 1:
                 localctx = ShExDocParser.ShapeAtomNonLitNodeConstraintContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
@@ -1712,10 +1633,13 @@ class ShExDocParser ( Parser ):
                 self.state = 268
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShExDocParser.T__4) | (1 << ShExDocParser.T__5) | (1 << ShExDocParser.T__17) | (1 << ShExDocParser.KW_EXTENDS) | (1 << ShExDocParser.KW_CLOSED) | (1 << ShExDocParser.KW_EXTRA) | (1 << ShExDocParser.ATPNAME_NS) | (1 << ShExDocParser.ATPNAME_LN))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                        (1 << ShExDocParser.T__4) | (1 << ShExDocParser.T__5) | (1 << ShExDocParser.T__17) | (
+                        1 << ShExDocParser.KW_EXTENDS) | (1 << ShExDocParser.KW_CLOSED) | (
+                                1 << ShExDocParser.KW_EXTRA) | (1 << ShExDocParser.ATPNAME_NS) | (
+                                1 << ShExDocParser.ATPNAME_LN))) != 0):
                     self.state = 267
                     self.shapeOrRef()
-
 
                 pass
 
@@ -1734,10 +1658,13 @@ class ShExDocParser ( Parser ):
                 self.state = 273
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShExDocParser.KW_IRI) | (1 << ShExDocParser.KW_NONLITERAL) | (1 << ShExDocParser.KW_BNODE) | (1 << ShExDocParser.KW_LENGTH) | (1 << ShExDocParser.KW_MINLENGTH) | (1 << ShExDocParser.KW_MAXLENGTH) | (1 << ShExDocParser.REGEXP))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                        (1 << ShExDocParser.KW_IRI) | (1 << ShExDocParser.KW_NONLITERAL) | (
+                        1 << ShExDocParser.KW_BNODE) | (1 << ShExDocParser.KW_LENGTH) | (
+                                1 << ShExDocParser.KW_MINLENGTH) | (1 << ShExDocParser.KW_MAXLENGTH) | (
+                                1 << ShExDocParser.REGEXP))) != 0):
                     self.state = 272
                     self.nonLitNodeConstraint()
-
 
                 pass
 
@@ -1770,118 +1697,103 @@ class ShExDocParser ( Parser ):
 
     class InlineShapeAtomContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_inlineShapeAtom
 
-     
-        def copyFrom(self, ctx:ParserRuleContext):
+        def copyFrom(self, ctx: ParserRuleContext):
             super().copyFrom(ctx)
-
-
 
     class InlineShapeAtomShapeExpressionContext(InlineShapeAtomContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.InlineShapeAtomContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.InlineShapeAtomContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def shapeExpression(self):
-            return self.getTypedRuleContext(ShExDocParser.ShapeExpressionContext,0)
+            return self.getTypedRuleContext(ShExDocParser.ShapeExpressionContext, 0)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInlineShapeAtomShapeExpression" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitInlineShapeAtomShapeExpression"):
                 return visitor.visitInlineShapeAtomShapeExpression(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class InlineShapeAtomLitNodeConstraintContext(InlineShapeAtomContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.InlineShapeAtomContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.InlineShapeAtomContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def inlineLitNodeConstraint(self):
-            return self.getTypedRuleContext(ShExDocParser.InlineLitNodeConstraintContext,0)
+            return self.getTypedRuleContext(ShExDocParser.InlineLitNodeConstraintContext, 0)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInlineShapeAtomLitNodeConstraint" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitInlineShapeAtomLitNodeConstraint"):
                 return visitor.visitInlineShapeAtomLitNodeConstraint(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class InlineShapeAtomShapeOrRefContext(InlineShapeAtomContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.InlineShapeAtomContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.InlineShapeAtomContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def inlineShapeOrRef(self):
-            return self.getTypedRuleContext(ShExDocParser.InlineShapeOrRefContext,0)
+            return self.getTypedRuleContext(ShExDocParser.InlineShapeOrRefContext, 0)
 
         def inlineNonLitNodeConstraint(self):
-            return self.getTypedRuleContext(ShExDocParser.InlineNonLitNodeConstraintContext,0)
+            return self.getTypedRuleContext(ShExDocParser.InlineNonLitNodeConstraintContext, 0)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInlineShapeAtomShapeOrRef" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitInlineShapeAtomShapeOrRef"):
                 return visitor.visitInlineShapeAtomShapeOrRef(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class InlineShapeAtomAnyContext(InlineShapeAtomContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.InlineShapeAtomContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.InlineShapeAtomContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInlineShapeAtomAny" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitInlineShapeAtomAny"):
                 return visitor.visitInlineShapeAtomAny(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class InlineShapeAtomNonLitNodeConstraintContext(InlineShapeAtomContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.InlineShapeAtomContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.InlineShapeAtomContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def inlineNonLitNodeConstraint(self):
-            return self.getTypedRuleContext(ShExDocParser.InlineNonLitNodeConstraintContext,0)
+            return self.getTypedRuleContext(ShExDocParser.InlineNonLitNodeConstraintContext, 0)
 
         def inlineShapeOrRef(self):
-            return self.getTypedRuleContext(ShExDocParser.InlineShapeOrRefContext,0)
+            return self.getTypedRuleContext(ShExDocParser.InlineShapeOrRefContext, 0)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInlineShapeAtomNonLitNodeConstraint" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitInlineShapeAtomNonLitNodeConstraint"):
                 return visitor.visitInlineShapeAtomNonLitNodeConstraint(self)
             else:
                 return visitor.visitChildren(self)
-
-
 
     def inlineShapeAtom(self):
 
         localctx = ShExDocParser.InlineShapeAtomContext(self, self._ctx, self.state)
         self.enterRule(localctx, 38, self.RULE_inlineShapeAtom)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 296
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,22,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 22, self._ctx)
             if la_ == 1:
                 localctx = ShExDocParser.InlineShapeAtomNonLitNodeConstraintContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
@@ -1889,11 +1801,10 @@ class ShExDocParser ( Parser ):
                 self.inlineNonLitNodeConstraint()
                 self.state = 284
                 self._errHandler.sync(self)
-                la_ = self._interp.adaptivePredict(self._input,20,self._ctx)
+                la_ = self._interp.adaptivePredict(self._input, 20, self._ctx)
                 if la_ == 1:
                     self.state = 283
                     self.inlineShapeOrRef()
-
 
                 pass
 
@@ -1912,10 +1823,13 @@ class ShExDocParser ( Parser ):
                 self.state = 289
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShExDocParser.KW_IRI) | (1 << ShExDocParser.KW_NONLITERAL) | (1 << ShExDocParser.KW_BNODE) | (1 << ShExDocParser.KW_LENGTH) | (1 << ShExDocParser.KW_MINLENGTH) | (1 << ShExDocParser.KW_MAXLENGTH) | (1 << ShExDocParser.REGEXP))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                        (1 << ShExDocParser.KW_IRI) | (1 << ShExDocParser.KW_NONLITERAL) | (
+                        1 << ShExDocParser.KW_BNODE) | (1 << ShExDocParser.KW_LENGTH) | (
+                                1 << ShExDocParser.KW_MINLENGTH) | (1 << ShExDocParser.KW_MAXLENGTH) | (
+                                1 << ShExDocParser.REGEXP))) != 0):
                     self.state = 288
                     self.inlineNonLitNodeConstraint()
-
 
                 pass
 
@@ -1948,29 +1862,24 @@ class ShExDocParser ( Parser ):
 
     class ShapeOrRefContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def shapeDefinition(self):
-            return self.getTypedRuleContext(ShExDocParser.ShapeDefinitionContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.ShapeDefinitionContext, 0)
 
         def shapeRef(self):
-            return self.getTypedRuleContext(ShExDocParser.ShapeRefContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.ShapeRefContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_shapeOrRef
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitShapeOrRef" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitShapeOrRef"):
                 return visitor.visitShapeOrRef(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def shapeOrRef(self):
 
@@ -1980,7 +1889,8 @@ class ShExDocParser ( Parser ):
             self.state = 300
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [ShExDocParser.T__5, ShExDocParser.T__17, ShExDocParser.KW_EXTENDS, ShExDocParser.KW_CLOSED, ShExDocParser.KW_EXTRA]:
+            if token in [ShExDocParser.T__5, ShExDocParser.T__17, ShExDocParser.KW_EXTENDS, ShExDocParser.KW_CLOSED,
+                         ShExDocParser.KW_EXTRA]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 298
                 self.shapeDefinition()
@@ -2003,29 +1913,24 @@ class ShExDocParser ( Parser ):
 
     class InlineShapeOrRefContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def inlineShapeDefinition(self):
-            return self.getTypedRuleContext(ShExDocParser.InlineShapeDefinitionContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.InlineShapeDefinitionContext, 0)
 
         def shapeRef(self):
-            return self.getTypedRuleContext(ShExDocParser.ShapeRefContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.ShapeRefContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_inlineShapeOrRef
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInlineShapeOrRef" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitInlineShapeOrRef"):
                 return visitor.visitInlineShapeOrRef(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def inlineShapeOrRef(self):
 
@@ -2035,7 +1940,8 @@ class ShExDocParser ( Parser ):
             self.state = 304
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [ShExDocParser.T__5, ShExDocParser.T__17, ShExDocParser.KW_EXTENDS, ShExDocParser.KW_CLOSED, ShExDocParser.KW_EXTRA]:
+            if token in [ShExDocParser.T__5, ShExDocParser.T__17, ShExDocParser.KW_EXTENDS, ShExDocParser.KW_CLOSED,
+                         ShExDocParser.KW_EXTRA]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 302
                 self.inlineShapeDefinition()
@@ -2058,7 +1964,7 @@ class ShExDocParser ( Parser ):
 
     class ShapeRefContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -2069,20 +1975,16 @@ class ShExDocParser ( Parser ):
             return self.getToken(ShExDocParser.ATPNAME_NS, 0)
 
         def shapeExprLabel(self):
-            return self.getTypedRuleContext(ShExDocParser.ShapeExprLabelContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.ShapeExprLabelContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_shapeRef
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitShapeRef" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitShapeRef"):
                 return visitor.visitShapeRef(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def shapeRef(self):
 
@@ -2122,137 +2024,123 @@ class ShExDocParser ( Parser ):
 
     class InlineLitNodeConstraintContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_inlineLitNodeConstraint
 
-     
-        def copyFrom(self, ctx:ParserRuleContext):
+        def copyFrom(self, ctx: ParserRuleContext):
             super().copyFrom(ctx)
-
-
 
     class NodeConstraintNumericFacetContext(InlineLitNodeConstraintContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.InlineLitNodeConstraintContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.InlineLitNodeConstraintContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def numericFacet(self, i:int=None):
+        def numericFacet(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.NumericFacetContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.NumericFacetContext,i)
+                return self.getTypedRuleContext(ShExDocParser.NumericFacetContext, i)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitNodeConstraintNumericFacet" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitNodeConstraintNumericFacet"):
                 return visitor.visitNodeConstraintNumericFacet(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class NodeConstraintLiteralContext(InlineLitNodeConstraintContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.InlineLitNodeConstraintContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.InlineLitNodeConstraintContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def KW_LITERAL(self):
             return self.getToken(ShExDocParser.KW_LITERAL, 0)
-        def xsFacet(self, i:int=None):
+
+        def xsFacet(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.XsFacetContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.XsFacetContext,i)
+                return self.getTypedRuleContext(ShExDocParser.XsFacetContext, i)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitNodeConstraintLiteral" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitNodeConstraintLiteral"):
                 return visitor.visitNodeConstraintLiteral(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class NodeConstraintNonLiteralContext(InlineLitNodeConstraintContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.InlineLitNodeConstraintContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.InlineLitNodeConstraintContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def nonLiteralKind(self):
-            return self.getTypedRuleContext(ShExDocParser.NonLiteralKindContext,0)
+            return self.getTypedRuleContext(ShExDocParser.NonLiteralKindContext, 0)
 
-        def stringFacet(self, i:int=None):
+        def stringFacet(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.StringFacetContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.StringFacetContext,i)
+                return self.getTypedRuleContext(ShExDocParser.StringFacetContext, i)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitNodeConstraintNonLiteral" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitNodeConstraintNonLiteral"):
                 return visitor.visitNodeConstraintNonLiteral(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class NodeConstraintDatatypeContext(InlineLitNodeConstraintContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.InlineLitNodeConstraintContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.InlineLitNodeConstraintContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def datatype(self):
-            return self.getTypedRuleContext(ShExDocParser.DatatypeContext,0)
+            return self.getTypedRuleContext(ShExDocParser.DatatypeContext, 0)
 
-        def xsFacet(self, i:int=None):
+        def xsFacet(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.XsFacetContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.XsFacetContext,i)
+                return self.getTypedRuleContext(ShExDocParser.XsFacetContext, i)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitNodeConstraintDatatype" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitNodeConstraintDatatype"):
                 return visitor.visitNodeConstraintDatatype(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class NodeConstraintValueSetContext(InlineLitNodeConstraintContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.InlineLitNodeConstraintContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.InlineLitNodeConstraintContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def valueSet(self):
-            return self.getTypedRuleContext(ShExDocParser.ValueSetContext,0)
+            return self.getTypedRuleContext(ShExDocParser.ValueSetContext, 0)
 
-        def xsFacet(self, i:int=None):
+        def xsFacet(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.XsFacetContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.XsFacetContext,i)
+                return self.getTypedRuleContext(ShExDocParser.XsFacetContext, i)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitNodeConstraintValueSet" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitNodeConstraintValueSet"):
                 return visitor.visitNodeConstraintValueSet(self)
             else:
                 return visitor.visitChildren(self)
-
-
 
     def inlineLitNodeConstraint(self):
 
         localctx = ShExDocParser.InlineLitNodeConstraintContext(self, self._ctx, self.state)
         self.enterRule(localctx, 46, self.RULE_inlineLitNodeConstraint)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 345
             self._errHandler.sync(self)
@@ -2265,7 +2153,12 @@ class ShExDocParser ( Parser ):
                 self.state = 316
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShExDocParser.KW_MININCLUSIVE) | (1 << ShExDocParser.KW_MINEXCLUSIVE) | (1 << ShExDocParser.KW_MAXINCLUSIVE) | (1 << ShExDocParser.KW_MAXEXCLUSIVE) | (1 << ShExDocParser.KW_LENGTH) | (1 << ShExDocParser.KW_MINLENGTH) | (1 << ShExDocParser.KW_MAXLENGTH) | (1 << ShExDocParser.KW_TOTALDIGITS) | (1 << ShExDocParser.KW_FRACTIONDIGITS) | (1 << ShExDocParser.REGEXP))) != 0):
+                while (((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                        (1 << ShExDocParser.KW_MININCLUSIVE) | (1 << ShExDocParser.KW_MINEXCLUSIVE) | (
+                        1 << ShExDocParser.KW_MAXINCLUSIVE) | (1 << ShExDocParser.KW_MAXEXCLUSIVE) | (
+                                1 << ShExDocParser.KW_LENGTH) | (1 << ShExDocParser.KW_MINLENGTH) | (
+                                1 << ShExDocParser.KW_MAXLENGTH) | (1 << ShExDocParser.KW_TOTALDIGITS) | (
+                                1 << ShExDocParser.KW_FRACTIONDIGITS) | (1 << ShExDocParser.REGEXP))) != 0):
                     self.state = 313
                     self.xsFacet()
                     self.state = 318
@@ -2281,7 +2174,9 @@ class ShExDocParser ( Parser ):
                 self.state = 323
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShExDocParser.KW_LENGTH) | (1 << ShExDocParser.KW_MINLENGTH) | (1 << ShExDocParser.KW_MAXLENGTH) | (1 << ShExDocParser.REGEXP))) != 0):
+                while (((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                        (1 << ShExDocParser.KW_LENGTH) | (1 << ShExDocParser.KW_MINLENGTH) | (
+                        1 << ShExDocParser.KW_MAXLENGTH) | (1 << ShExDocParser.REGEXP))) != 0):
                     self.state = 320
                     self.stringFacet()
                     self.state = 325
@@ -2297,7 +2192,12 @@ class ShExDocParser ( Parser ):
                 self.state = 330
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShExDocParser.KW_MININCLUSIVE) | (1 << ShExDocParser.KW_MINEXCLUSIVE) | (1 << ShExDocParser.KW_MAXINCLUSIVE) | (1 << ShExDocParser.KW_MAXEXCLUSIVE) | (1 << ShExDocParser.KW_LENGTH) | (1 << ShExDocParser.KW_MINLENGTH) | (1 << ShExDocParser.KW_MAXLENGTH) | (1 << ShExDocParser.KW_TOTALDIGITS) | (1 << ShExDocParser.KW_FRACTIONDIGITS) | (1 << ShExDocParser.REGEXP))) != 0):
+                while (((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                        (1 << ShExDocParser.KW_MININCLUSIVE) | (1 << ShExDocParser.KW_MINEXCLUSIVE) | (
+                        1 << ShExDocParser.KW_MAXINCLUSIVE) | (1 << ShExDocParser.KW_MAXEXCLUSIVE) | (
+                                1 << ShExDocParser.KW_LENGTH) | (1 << ShExDocParser.KW_MINLENGTH) | (
+                                1 << ShExDocParser.KW_MAXLENGTH) | (1 << ShExDocParser.KW_TOTALDIGITS) | (
+                                1 << ShExDocParser.KW_FRACTIONDIGITS) | (1 << ShExDocParser.REGEXP))) != 0):
                     self.state = 327
                     self.xsFacet()
                     self.state = 332
@@ -2313,7 +2213,12 @@ class ShExDocParser ( Parser ):
                 self.state = 337
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShExDocParser.KW_MININCLUSIVE) | (1 << ShExDocParser.KW_MINEXCLUSIVE) | (1 << ShExDocParser.KW_MAXINCLUSIVE) | (1 << ShExDocParser.KW_MAXEXCLUSIVE) | (1 << ShExDocParser.KW_LENGTH) | (1 << ShExDocParser.KW_MINLENGTH) | (1 << ShExDocParser.KW_MAXLENGTH) | (1 << ShExDocParser.KW_TOTALDIGITS) | (1 << ShExDocParser.KW_FRACTIONDIGITS) | (1 << ShExDocParser.REGEXP))) != 0):
+                while (((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                        (1 << ShExDocParser.KW_MININCLUSIVE) | (1 << ShExDocParser.KW_MINEXCLUSIVE) | (
+                        1 << ShExDocParser.KW_MAXINCLUSIVE) | (1 << ShExDocParser.KW_MAXEXCLUSIVE) | (
+                                1 << ShExDocParser.KW_LENGTH) | (1 << ShExDocParser.KW_MINLENGTH) | (
+                                1 << ShExDocParser.KW_MAXLENGTH) | (1 << ShExDocParser.KW_TOTALDIGITS) | (
+                                1 << ShExDocParser.KW_FRACTIONDIGITS) | (1 << ShExDocParser.REGEXP))) != 0):
                     self.state = 334
                     self.xsFacet()
                     self.state = 339
@@ -2321,19 +2226,25 @@ class ShExDocParser ( Parser ):
                     _la = self._input.LA(1)
 
                 pass
-            elif token in [ShExDocParser.KW_MININCLUSIVE, ShExDocParser.KW_MINEXCLUSIVE, ShExDocParser.KW_MAXINCLUSIVE, ShExDocParser.KW_MAXEXCLUSIVE, ShExDocParser.KW_TOTALDIGITS, ShExDocParser.KW_FRACTIONDIGITS]:
+            elif token in [ShExDocParser.KW_MININCLUSIVE, ShExDocParser.KW_MINEXCLUSIVE, ShExDocParser.KW_MAXINCLUSIVE,
+                           ShExDocParser.KW_MAXEXCLUSIVE, ShExDocParser.KW_TOTALDIGITS,
+                           ShExDocParser.KW_FRACTIONDIGITS]:
                 localctx = ShExDocParser.NodeConstraintNumericFacetContext(self, localctx)
                 self.enterOuterAlt(localctx, 5)
-                self.state = 341 
+                self.state = 341
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while True:
                     self.state = 340
                     self.numericFacet()
-                    self.state = 343 
+                    self.state = 343
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
-                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShExDocParser.KW_MININCLUSIVE) | (1 << ShExDocParser.KW_MINEXCLUSIVE) | (1 << ShExDocParser.KW_MAXINCLUSIVE) | (1 << ShExDocParser.KW_MAXEXCLUSIVE) | (1 << ShExDocParser.KW_TOTALDIGITS) | (1 << ShExDocParser.KW_FRACTIONDIGITS))) != 0)):
+                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                            (1 << ShExDocParser.KW_MININCLUSIVE) | (1 << ShExDocParser.KW_MINEXCLUSIVE) | (
+                            1 << ShExDocParser.KW_MAXINCLUSIVE) | (1 << ShExDocParser.KW_MAXEXCLUSIVE) | (
+                                    1 << ShExDocParser.KW_TOTALDIGITS) | (
+                                    1 << ShExDocParser.KW_FRACTIONDIGITS))) != 0)):
                         break
 
                 pass
@@ -2350,45 +2261,39 @@ class ShExDocParser ( Parser ):
 
     class LitNodeConstraintContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def inlineLitNodeConstraint(self):
-            return self.getTypedRuleContext(ShExDocParser.InlineLitNodeConstraintContext,0)
+            return self.getTypedRuleContext(ShExDocParser.InlineLitNodeConstraintContext, 0)
 
-
-        def annotation(self, i:int=None):
+        def annotation(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.AnnotationContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.AnnotationContext,i)
+                return self.getTypedRuleContext(ShExDocParser.AnnotationContext, i)
 
-
-        def semanticAction(self, i:int=None):
+        def semanticAction(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.SemanticActionContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.SemanticActionContext,i)
-
+                return self.getTypedRuleContext(ShExDocParser.SemanticActionContext, i)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_litNodeConstraint
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLitNodeConstraint" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLitNodeConstraint"):
                 return visitor.visitLitNodeConstraint(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def litNodeConstraint(self):
 
         localctx = ShExDocParser.LitNodeConstraintContext(self, self._ctx, self.state)
         self.enterRule(localctx, 48, self.RULE_litNodeConstraint)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 347
@@ -2396,7 +2301,7 @@ class ShExDocParser ( Parser ):
             self.state = 351
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ShExDocParser.T__18:
+            while _la == ShExDocParser.T__18:
                 self.state = 348
                 self.annotation()
                 self.state = 353
@@ -2406,7 +2311,7 @@ class ShExDocParser ( Parser ):
             self.state = 357
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ShExDocParser.T__19:
+            while _la == ShExDocParser.T__19:
                 self.state = 354
                 self.semanticAction()
                 self.state = 359
@@ -2423,69 +2328,62 @@ class ShExDocParser ( Parser ):
 
     class InlineNonLitNodeConstraintContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_inlineNonLitNodeConstraint
 
-     
-        def copyFrom(self, ctx:ParserRuleContext):
+        def copyFrom(self, ctx: ParserRuleContext):
             super().copyFrom(ctx)
-
-
 
     class LitNodeConstraintStringFacetContext(InlineNonLitNodeConstraintContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.InlineNonLitNodeConstraintContext
+        def __init__(self, parser,
+                     ctx: ParserRuleContext):  # actually a ShExDocParser.InlineNonLitNodeConstraintContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def stringFacet(self, i:int=None):
+        def stringFacet(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.StringFacetContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.StringFacetContext,i)
+                return self.getTypedRuleContext(ShExDocParser.StringFacetContext, i)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLitNodeConstraintStringFacet" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLitNodeConstraintStringFacet"):
                 return visitor.visitLitNodeConstraintStringFacet(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class LitNodeConstraintLiteralContext(InlineNonLitNodeConstraintContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.InlineNonLitNodeConstraintContext
+        def __init__(self, parser,
+                     ctx: ParserRuleContext):  # actually a ShExDocParser.InlineNonLitNodeConstraintContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def nonLiteralKind(self):
-            return self.getTypedRuleContext(ShExDocParser.NonLiteralKindContext,0)
+            return self.getTypedRuleContext(ShExDocParser.NonLiteralKindContext, 0)
 
-        def stringFacet(self, i:int=None):
+        def stringFacet(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.StringFacetContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.StringFacetContext,i)
+                return self.getTypedRuleContext(ShExDocParser.StringFacetContext, i)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLitNodeConstraintLiteral" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLitNodeConstraintLiteral"):
                 return visitor.visitLitNodeConstraintLiteral(self)
             else:
                 return visitor.visitChildren(self)
-
-
 
     def inlineNonLitNodeConstraint(self):
 
         localctx = ShExDocParser.InlineNonLitNodeConstraintContext(self, self._ctx, self.state)
         self.enterRule(localctx, 50, self.RULE_inlineNonLitNodeConstraint)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 372
             self._errHandler.sync(self)
@@ -2498,7 +2396,9 @@ class ShExDocParser ( Parser ):
                 self.state = 364
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShExDocParser.KW_LENGTH) | (1 << ShExDocParser.KW_MINLENGTH) | (1 << ShExDocParser.KW_MAXLENGTH) | (1 << ShExDocParser.REGEXP))) != 0):
+                while (((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                        (1 << ShExDocParser.KW_LENGTH) | (1 << ShExDocParser.KW_MINLENGTH) | (
+                        1 << ShExDocParser.KW_MAXLENGTH) | (1 << ShExDocParser.REGEXP))) != 0):
                     self.state = 361
                     self.stringFacet()
                     self.state = 366
@@ -2506,19 +2406,22 @@ class ShExDocParser ( Parser ):
                     _la = self._input.LA(1)
 
                 pass
-            elif token in [ShExDocParser.KW_LENGTH, ShExDocParser.KW_MINLENGTH, ShExDocParser.KW_MAXLENGTH, ShExDocParser.REGEXP]:
+            elif token in [ShExDocParser.KW_LENGTH, ShExDocParser.KW_MINLENGTH, ShExDocParser.KW_MAXLENGTH,
+                           ShExDocParser.REGEXP]:
                 localctx = ShExDocParser.LitNodeConstraintStringFacetContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 368 
+                self.state = 368
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while True:
                     self.state = 367
                     self.stringFacet()
-                    self.state = 370 
+                    self.state = 370
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
-                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShExDocParser.KW_LENGTH) | (1 << ShExDocParser.KW_MINLENGTH) | (1 << ShExDocParser.KW_MAXLENGTH) | (1 << ShExDocParser.REGEXP))) != 0)):
+                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                            (1 << ShExDocParser.KW_LENGTH) | (1 << ShExDocParser.KW_MINLENGTH) | (
+                            1 << ShExDocParser.KW_MAXLENGTH) | (1 << ShExDocParser.REGEXP))) != 0)):
                         break
 
                 pass
@@ -2535,45 +2438,39 @@ class ShExDocParser ( Parser ):
 
     class NonLitNodeConstraintContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def inlineNonLitNodeConstraint(self):
-            return self.getTypedRuleContext(ShExDocParser.InlineNonLitNodeConstraintContext,0)
+            return self.getTypedRuleContext(ShExDocParser.InlineNonLitNodeConstraintContext, 0)
 
-
-        def annotation(self, i:int=None):
+        def annotation(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.AnnotationContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.AnnotationContext,i)
+                return self.getTypedRuleContext(ShExDocParser.AnnotationContext, i)
 
-
-        def semanticAction(self, i:int=None):
+        def semanticAction(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.SemanticActionContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.SemanticActionContext,i)
-
+                return self.getTypedRuleContext(ShExDocParser.SemanticActionContext, i)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_nonLitNodeConstraint
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitNonLitNodeConstraint" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitNonLitNodeConstraint"):
                 return visitor.visitNonLitNodeConstraint(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def nonLitNodeConstraint(self):
 
         localctx = ShExDocParser.NonLitNodeConstraintContext(self, self._ctx, self.state)
         self.enterRule(localctx, 52, self.RULE_nonLitNodeConstraint)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 374
@@ -2581,7 +2478,7 @@ class ShExDocParser ( Parser ):
             self.state = 378
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ShExDocParser.T__18:
+            while _la == ShExDocParser.T__18:
                 self.state = 375
                 self.annotation()
                 self.state = 380
@@ -2591,7 +2488,7 @@ class ShExDocParser ( Parser ):
             self.state = 384
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ShExDocParser.T__19:
+            while _la == ShExDocParser.T__19:
                 self.state = 381
                 self.semanticAction()
                 self.state = 386
@@ -2608,7 +2505,7 @@ class ShExDocParser ( Parser ):
 
     class NonLiteralKindContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -2624,25 +2521,24 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_nonLiteralKind
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitNonLiteralKind" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitNonLiteralKind"):
                 return visitor.visitNonLiteralKind(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def nonLiteralKind(self):
 
         localctx = ShExDocParser.NonLiteralKindContext(self, self._ctx, self.state)
         self.enterRule(localctx, 54, self.RULE_nonLiteralKind)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 387
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShExDocParser.KW_IRI) | (1 << ShExDocParser.KW_NONLITERAL) | (1 << ShExDocParser.KW_BNODE))) != 0)):
+            if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                    (1 << ShExDocParser.KW_IRI) | (1 << ShExDocParser.KW_NONLITERAL) | (
+                    1 << ShExDocParser.KW_BNODE))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -2657,29 +2553,24 @@ class ShExDocParser ( Parser ):
 
     class XsFacetContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def stringFacet(self):
-            return self.getTypedRuleContext(ShExDocParser.StringFacetContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.StringFacetContext, 0)
 
         def numericFacet(self):
-            return self.getTypedRuleContext(ShExDocParser.NumericFacetContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.NumericFacetContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_xsFacet
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitXsFacet" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitXsFacet"):
                 return visitor.visitXsFacet(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def xsFacet(self):
 
@@ -2689,12 +2580,15 @@ class ShExDocParser ( Parser ):
             self.state = 391
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [ShExDocParser.KW_LENGTH, ShExDocParser.KW_MINLENGTH, ShExDocParser.KW_MAXLENGTH, ShExDocParser.REGEXP]:
+            if token in [ShExDocParser.KW_LENGTH, ShExDocParser.KW_MINLENGTH, ShExDocParser.KW_MAXLENGTH,
+                         ShExDocParser.REGEXP]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 389
                 self.stringFacet()
                 pass
-            elif token in [ShExDocParser.KW_MININCLUSIVE, ShExDocParser.KW_MINEXCLUSIVE, ShExDocParser.KW_MAXINCLUSIVE, ShExDocParser.KW_MAXEXCLUSIVE, ShExDocParser.KW_TOTALDIGITS, ShExDocParser.KW_FRACTIONDIGITS]:
+            elif token in [ShExDocParser.KW_MININCLUSIVE, ShExDocParser.KW_MINEXCLUSIVE, ShExDocParser.KW_MAXINCLUSIVE,
+                           ShExDocParser.KW_MAXEXCLUSIVE, ShExDocParser.KW_TOTALDIGITS,
+                           ShExDocParser.KW_FRACTIONDIGITS]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 390
                 self.numericFacet()
@@ -2712,13 +2606,12 @@ class ShExDocParser ( Parser ):
 
     class StringFacetContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def stringLength(self):
-            return self.getTypedRuleContext(ShExDocParser.StringLengthContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.StringLengthContext, 0)
 
         def INTEGER(self):
             return self.getToken(ShExDocParser.INTEGER, 0)
@@ -2732,20 +2625,17 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_stringFacet
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitStringFacet" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitStringFacet"):
                 return visitor.visitStringFacet(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def stringFacet(self):
 
         localctx = ShExDocParser.StringFacetContext(self, self._ctx, self.state)
         self.enterRule(localctx, 58, self.RULE_stringFacet)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 400
             self._errHandler.sync(self)
@@ -2764,10 +2654,9 @@ class ShExDocParser ( Parser ):
                 self.state = 398
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==ShExDocParser.REGEXP_FLAGS:
+                if _la == ShExDocParser.REGEXP_FLAGS:
                     self.state = 397
                     self.match(ShExDocParser.REGEXP_FLAGS)
-
 
                 pass
             else:
@@ -2783,7 +2672,7 @@ class ShExDocParser ( Parser ):
 
     class StringLengthContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -2799,25 +2688,24 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_stringLength
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitStringLength" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitStringLength"):
                 return visitor.visitStringLength(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def stringLength(self):
 
         localctx = ShExDocParser.StringLengthContext(self, self._ctx, self.state)
         self.enterRule(localctx, 60, self.RULE_stringLength)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 402
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShExDocParser.KW_LENGTH) | (1 << ShExDocParser.KW_MINLENGTH) | (1 << ShExDocParser.KW_MAXLENGTH))) != 0)):
+            if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                    (1 << ShExDocParser.KW_LENGTH) | (1 << ShExDocParser.KW_MINLENGTH) | (
+                    1 << ShExDocParser.KW_MAXLENGTH))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -2832,21 +2720,18 @@ class ShExDocParser ( Parser ):
 
     class NumericFacetContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def numericRange(self):
-            return self.getTypedRuleContext(ShExDocParser.NumericRangeContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.NumericRangeContext, 0)
 
         def rawNumeric(self):
-            return self.getTypedRuleContext(ShExDocParser.RawNumericContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.RawNumericContext, 0)
 
         def numericLength(self):
-            return self.getTypedRuleContext(ShExDocParser.NumericLengthContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.NumericLengthContext, 0)
 
         def INTEGER(self):
             return self.getToken(ShExDocParser.INTEGER, 0)
@@ -2854,14 +2739,11 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_numericFacet
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitNumericFacet" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitNumericFacet"):
                 return visitor.visitNumericFacet(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def numericFacet(self):
 
@@ -2871,7 +2753,8 @@ class ShExDocParser ( Parser ):
             self.state = 410
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [ShExDocParser.KW_MININCLUSIVE, ShExDocParser.KW_MINEXCLUSIVE, ShExDocParser.KW_MAXINCLUSIVE, ShExDocParser.KW_MAXEXCLUSIVE]:
+            if token in [ShExDocParser.KW_MININCLUSIVE, ShExDocParser.KW_MINEXCLUSIVE, ShExDocParser.KW_MAXINCLUSIVE,
+                         ShExDocParser.KW_MAXEXCLUSIVE]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 404
                 self.numericRange()
@@ -2898,7 +2781,7 @@ class ShExDocParser ( Parser ):
 
     class NumericRangeContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -2917,25 +2800,24 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_numericRange
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitNumericRange" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitNumericRange"):
                 return visitor.visitNumericRange(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def numericRange(self):
 
         localctx = ShExDocParser.NumericRangeContext(self, self._ctx, self.state)
         self.enterRule(localctx, 64, self.RULE_numericRange)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 412
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShExDocParser.KW_MININCLUSIVE) | (1 << ShExDocParser.KW_MINEXCLUSIVE) | (1 << ShExDocParser.KW_MAXINCLUSIVE) | (1 << ShExDocParser.KW_MAXEXCLUSIVE))) != 0)):
+            if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                    (1 << ShExDocParser.KW_MININCLUSIVE) | (1 << ShExDocParser.KW_MINEXCLUSIVE) | (
+                    1 << ShExDocParser.KW_MAXINCLUSIVE) | (1 << ShExDocParser.KW_MAXEXCLUSIVE))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -2950,7 +2832,7 @@ class ShExDocParser ( Parser ):
 
     class NumericLengthContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -2963,25 +2845,22 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_numericLength
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitNumericLength" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitNumericLength"):
                 return visitor.visitNumericLength(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def numericLength(self):
 
         localctx = ShExDocParser.NumericLengthContext(self, self._ctx, self.state)
         self.enterRule(localctx, 66, self.RULE_numericLength)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 414
             _la = self._input.LA(1)
-            if not(_la==ShExDocParser.KW_TOTALDIGITS or _la==ShExDocParser.KW_FRACTIONDIGITS):
+            if not (_la == ShExDocParser.KW_TOTALDIGITS or _la == ShExDocParser.KW_FRACTIONDIGITS):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -2996,7 +2875,7 @@ class ShExDocParser ( Parser ):
 
     class RawNumericContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -3012,25 +2891,24 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_rawNumeric
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRawNumeric" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitRawNumeric"):
                 return visitor.visitRawNumeric(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def rawNumeric(self):
 
         localctx = ShExDocParser.RawNumericContext(self, self._ctx, self.state)
         self.enterRule(localctx, 68, self.RULE_rawNumeric)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 416
             _la = self._input.LA(1)
-            if not(((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (ShExDocParser.INTEGER - 64)) | (1 << (ShExDocParser.DECIMAL - 64)) | (1 << (ShExDocParser.DOUBLE - 64)))) != 0)):
+            if not (((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & (
+                    (1 << (ShExDocParser.INTEGER - 64)) | (1 << (ShExDocParser.DECIMAL - 64)) | (
+                    1 << (ShExDocParser.DOUBLE - 64)))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -3045,45 +2923,39 @@ class ShExDocParser ( Parser ):
 
     class ShapeDefinitionContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def inlineShapeDefinition(self):
-            return self.getTypedRuleContext(ShExDocParser.InlineShapeDefinitionContext,0)
+            return self.getTypedRuleContext(ShExDocParser.InlineShapeDefinitionContext, 0)
 
-
-        def annotation(self, i:int=None):
+        def annotation(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.AnnotationContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.AnnotationContext,i)
+                return self.getTypedRuleContext(ShExDocParser.AnnotationContext, i)
 
-
-        def semanticAction(self, i:int=None):
+        def semanticAction(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.SemanticActionContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.SemanticActionContext,i)
-
+                return self.getTypedRuleContext(ShExDocParser.SemanticActionContext, i)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_shapeDefinition
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitShapeDefinition" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitShapeDefinition"):
                 return visitor.visitShapeDefinition(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def shapeDefinition(self):
 
         localctx = ShExDocParser.ShapeDefinitionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 70, self.RULE_shapeDefinition)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 418
@@ -3091,7 +2963,7 @@ class ShExDocParser ( Parser ):
             self.state = 422
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ShExDocParser.T__18:
+            while _la == ShExDocParser.T__18:
                 self.state = 419
                 self.annotation()
                 self.state = 424
@@ -3101,7 +2973,7 @@ class ShExDocParser ( Parser ):
             self.state = 428
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ShExDocParser.T__19:
+            while _la == ShExDocParser.T__19:
                 self.state = 425
                 self.semanticAction()
                 self.state = 430
@@ -3118,44 +2990,41 @@ class ShExDocParser ( Parser ):
 
     class InlineShapeDefinitionContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def qualifier(self, i:int=None):
+        def qualifier(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.QualifierContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.QualifierContext,i)
-
+                return self.getTypedRuleContext(ShExDocParser.QualifierContext, i)
 
         def tripleExpression(self):
-            return self.getTypedRuleContext(ShExDocParser.TripleExpressionContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.TripleExpressionContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_inlineShapeDefinition
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInlineShapeDefinition" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitInlineShapeDefinition"):
                 return visitor.visitInlineShapeDefinition(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def inlineShapeDefinition(self):
 
         localctx = ShExDocParser.InlineShapeDefinitionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 72, self.RULE_inlineShapeDefinition)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 434
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShExDocParser.T__17) | (1 << ShExDocParser.KW_EXTENDS) | (1 << ShExDocParser.KW_CLOSED) | (1 << ShExDocParser.KW_EXTRA))) != 0):
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                    (1 << ShExDocParser.T__17) | (1 << ShExDocParser.KW_EXTENDS) | (1 << ShExDocParser.KW_CLOSED) | (
+                    1 << ShExDocParser.KW_EXTRA))) != 0):
                 self.state = 431
                 self.qualifier()
                 self.state = 436
@@ -3167,10 +3036,12 @@ class ShExDocParser ( Parser ):
             self.state = 439
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShExDocParser.T__1) | (1 << ShExDocParser.T__9) | (1 << ShExDocParser.T__13) | (1 << ShExDocParser.T__17) | (1 << ShExDocParser.RDF_TYPE) | (1 << ShExDocParser.IRIREF) | (1 << ShExDocParser.PNAME_NS) | (1 << ShExDocParser.PNAME_LN))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                    (1 << ShExDocParser.T__1) | (1 << ShExDocParser.T__9) | (1 << ShExDocParser.T__13) | (
+                    1 << ShExDocParser.T__17) | (1 << ShExDocParser.RDF_TYPE) | (1 << ShExDocParser.IRIREF) | (
+                            1 << ShExDocParser.PNAME_NS) | (1 << ShExDocParser.PNAME_LN))) != 0):
                 self.state = 438
                 self.tripleExpression()
-
 
             self.state = 441
             self.match(ShExDocParser.T__6)
@@ -3184,17 +3055,15 @@ class ShExDocParser ( Parser ):
 
     class QualifierContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def extension(self):
-            return self.getTypedRuleContext(ShExDocParser.ExtensionContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.ExtensionContext, 0)
 
         def extraPropertySet(self):
-            return self.getTypedRuleContext(ShExDocParser.ExtraPropertySetContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.ExtraPropertySetContext, 0)
 
         def KW_CLOSED(self):
             return self.getToken(ShExDocParser.KW_CLOSED, 0)
@@ -3202,14 +3071,11 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_qualifier
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitQualifier" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitQualifier"):
                 return visitor.visitQualifier(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def qualifier(self):
 
@@ -3247,51 +3113,49 @@ class ShExDocParser ( Parser ):
 
     class ExtraPropertySetContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def KW_EXTRA(self):
             return self.getToken(ShExDocParser.KW_EXTRA, 0)
 
-        def predicate(self, i:int=None):
+        def predicate(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.PredicateContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.PredicateContext,i)
-
+                return self.getTypedRuleContext(ShExDocParser.PredicateContext, i)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_extraPropertySet
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitExtraPropertySet" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitExtraPropertySet"):
                 return visitor.visitExtraPropertySet(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def extraPropertySet(self):
 
         localctx = ShExDocParser.ExtraPropertySetContext(self, self._ctx, self.state)
         self.enterRule(localctx, 76, self.RULE_extraPropertySet)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 448
             self.match(ShExDocParser.KW_EXTRA)
-            self.state = 450 
+            self.state = 450
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
                 self.state = 449
                 self.predicate()
-                self.state = 452 
+                self.state = 452
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShExDocParser.RDF_TYPE) | (1 << ShExDocParser.IRIREF) | (1 << ShExDocParser.PNAME_NS) | (1 << ShExDocParser.PNAME_LN))) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                        (1 << ShExDocParser.RDF_TYPE) | (1 << ShExDocParser.IRIREF) | (1 << ShExDocParser.PNAME_NS) | (
+                        1 << ShExDocParser.PNAME_LN))) != 0)):
                     break
 
         except RecognitionException as re:
@@ -3304,25 +3168,21 @@ class ShExDocParser ( Parser ):
 
     class TripleExpressionContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def oneOfTripleExpr(self):
-            return self.getTypedRuleContext(ShExDocParser.OneOfTripleExprContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.OneOfTripleExprContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_tripleExpression
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTripleExpression" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTripleExpression"):
                 return visitor.visitTripleExpression(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def tripleExpression(self):
 
@@ -3342,29 +3202,24 @@ class ShExDocParser ( Parser ):
 
     class OneOfTripleExprContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def groupTripleExpr(self):
-            return self.getTypedRuleContext(ShExDocParser.GroupTripleExprContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.GroupTripleExprContext, 0)
 
         def multiElementOneOf(self):
-            return self.getTypedRuleContext(ShExDocParser.MultiElementOneOfContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.MultiElementOneOfContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_oneOfTripleExpr
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitOneOfTripleExpr" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitOneOfTripleExpr"):
                 return visitor.visitOneOfTripleExpr(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def oneOfTripleExpr(self):
 
@@ -3373,7 +3228,7 @@ class ShExDocParser ( Parser ):
         try:
             self.state = 458
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,49,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 49, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 456
@@ -3397,39 +3252,35 @@ class ShExDocParser ( Parser ):
 
     class MultiElementOneOfContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def groupTripleExpr(self, i:int=None):
+        def groupTripleExpr(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.GroupTripleExprContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.GroupTripleExprContext,i)
-
+                return self.getTypedRuleContext(ShExDocParser.GroupTripleExprContext, i)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_multiElementOneOf
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitMultiElementOneOf" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitMultiElementOneOf"):
                 return visitor.visitMultiElementOneOf(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def multiElementOneOf(self):
 
         localctx = ShExDocParser.MultiElementOneOfContext(self, self._ctx, self.state)
         self.enterRule(localctx, 82, self.RULE_multiElementOneOf)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 460
             self.groupTripleExpr()
-            self.state = 463 
+            self.state = 463
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
@@ -3437,10 +3288,10 @@ class ShExDocParser ( Parser ):
                 self.match(ShExDocParser.T__7)
                 self.state = 462
                 self.groupTripleExpr()
-                self.state = 465 
+                self.state = 465
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not (_la==ShExDocParser.T__7):
+                if not (_la == ShExDocParser.T__7):
                     break
 
         except RecognitionException as re:
@@ -3453,29 +3304,24 @@ class ShExDocParser ( Parser ):
 
     class GroupTripleExprContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def singleElementGroup(self):
-            return self.getTypedRuleContext(ShExDocParser.SingleElementGroupContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.SingleElementGroupContext, 0)
 
         def multiElementGroup(self):
-            return self.getTypedRuleContext(ShExDocParser.MultiElementGroupContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.MultiElementGroupContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_groupTripleExpr
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitGroupTripleExpr" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitGroupTripleExpr"):
                 return visitor.visitGroupTripleExpr(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def groupTripleExpr(self):
 
@@ -3484,7 +3330,7 @@ class ShExDocParser ( Parser ):
         try:
             self.state = 469
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,51,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 51, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 467
@@ -3508,31 +3354,27 @@ class ShExDocParser ( Parser ):
 
     class SingleElementGroupContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def unaryTripleExpr(self):
-            return self.getTypedRuleContext(ShExDocParser.UnaryTripleExprContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.UnaryTripleExprContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_singleElementGroup
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitSingleElementGroup" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitSingleElementGroup"):
                 return visitor.visitSingleElementGroup(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def singleElementGroup(self):
 
         localctx = ShExDocParser.SingleElementGroupContext(self, self._ctx, self.state)
         self.enterRule(localctx, 86, self.RULE_singleElementGroup)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 471
@@ -3540,7 +3382,7 @@ class ShExDocParser ( Parser ):
             self.state = 473
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ShExDocParser.T__8:
+            if _la == ShExDocParser.T__8:
                 self.state = 472
                 self.match(ShExDocParser.T__8)
 
@@ -3555,42 +3397,38 @@ class ShExDocParser ( Parser ):
 
     class MultiElementGroupContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def unaryTripleExpr(self, i:int=None):
+        def unaryTripleExpr(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.UnaryTripleExprContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.UnaryTripleExprContext,i)
-
+                return self.getTypedRuleContext(ShExDocParser.UnaryTripleExprContext, i)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_multiElementGroup
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitMultiElementGroup" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitMultiElementGroup"):
                 return visitor.visitMultiElementGroup(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def multiElementGroup(self):
 
         localctx = ShExDocParser.MultiElementGroupContext(self, self._ctx, self.state)
         self.enterRule(localctx, 88, self.RULE_multiElementGroup)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 475
             self.unaryTripleExpr()
-            self.state = 478 
+            self.state = 478
             self._errHandler.sync(self)
             _alt = 1
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
                 if _alt == 1:
                     self.state = 476
                     self.match(ShExDocParser.T__8)
@@ -3599,14 +3437,14 @@ class ShExDocParser ( Parser ):
 
                 else:
                     raise NoViableAltException(self)
-                self.state = 480 
+                self.state = 480
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,53,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 53, self._ctx)
 
             self.state = 483
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ShExDocParser.T__8:
+            if _la == ShExDocParser.T__8:
                 self.state = 482
                 self.match(ShExDocParser.T__8)
 
@@ -3621,63 +3459,57 @@ class ShExDocParser ( Parser ):
 
     class UnaryTripleExprContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tripleConstraint(self):
-            return self.getTypedRuleContext(ShExDocParser.TripleConstraintContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.TripleConstraintContext, 0)
 
         def bracketedTripleExpr(self):
-            return self.getTypedRuleContext(ShExDocParser.BracketedTripleExprContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.BracketedTripleExprContext, 0)
 
         def tripleExprLabel(self):
-            return self.getTypedRuleContext(ShExDocParser.TripleExprLabelContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.TripleExprLabelContext, 0)
 
         def include(self):
-            return self.getTypedRuleContext(ShExDocParser.IncludeContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.IncludeContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_unaryTripleExpr
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitUnaryTripleExpr" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitUnaryTripleExpr"):
                 return visitor.visitUnaryTripleExpr(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def unaryTripleExpr(self):
 
         localctx = ShExDocParser.UnaryTripleExprContext(self, self._ctx, self.state)
         self.enterRule(localctx, 90, self.RULE_unaryTripleExpr)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 494
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [ShExDocParser.T__1, ShExDocParser.T__9, ShExDocParser.T__13, ShExDocParser.RDF_TYPE, ShExDocParser.IRIREF, ShExDocParser.PNAME_NS, ShExDocParser.PNAME_LN]:
+            if token in [ShExDocParser.T__1, ShExDocParser.T__9, ShExDocParser.T__13, ShExDocParser.RDF_TYPE,
+                         ShExDocParser.IRIREF, ShExDocParser.PNAME_NS, ShExDocParser.PNAME_LN]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 487
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==ShExDocParser.T__9:
+                if _la == ShExDocParser.T__9:
                     self.state = 485
                     self.match(ShExDocParser.T__9)
                     self.state = 486
                     self.tripleExprLabel()
 
-
                 self.state = 491
                 self._errHandler.sync(self)
                 token = self._input.LA(1)
-                if token in [ShExDocParser.T__13, ShExDocParser.RDF_TYPE, ShExDocParser.IRIREF, ShExDocParser.PNAME_NS, ShExDocParser.PNAME_LN]:
+                if token in [ShExDocParser.T__13, ShExDocParser.RDF_TYPE, ShExDocParser.IRIREF, ShExDocParser.PNAME_NS,
+                             ShExDocParser.PNAME_LN]:
                     self.state = 489
                     self.tripleConstraint()
                     pass
@@ -3707,49 +3539,42 @@ class ShExDocParser ( Parser ):
 
     class BracketedTripleExprContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tripleExpression(self):
-            return self.getTypedRuleContext(ShExDocParser.TripleExpressionContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.TripleExpressionContext, 0)
 
         def cardinality(self):
-            return self.getTypedRuleContext(ShExDocParser.CardinalityContext,0)
+            return self.getTypedRuleContext(ShExDocParser.CardinalityContext, 0)
 
-
-        def annotation(self, i:int=None):
+        def annotation(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.AnnotationContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.AnnotationContext,i)
+                return self.getTypedRuleContext(ShExDocParser.AnnotationContext, i)
 
-
-        def semanticAction(self, i:int=None):
+        def semanticAction(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.SemanticActionContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.SemanticActionContext,i)
-
+                return self.getTypedRuleContext(ShExDocParser.SemanticActionContext, i)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_bracketedTripleExpr
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitBracketedTripleExpr" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitBracketedTripleExpr"):
                 return visitor.visitBracketedTripleExpr(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def bracketedTripleExpr(self):
 
         localctx = ShExDocParser.BracketedTripleExprContext(self, self._ctx, self.state)
         self.enterRule(localctx, 92, self.RULE_bracketedTripleExpr)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 496
@@ -3761,15 +3586,16 @@ class ShExDocParser ( Parser ):
             self.state = 500
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if ((((_la - 6)) & ~0x3f) == 0 and ((1 << (_la - 6)) & ((1 << (ShExDocParser.T__5 - 6)) | (1 << (ShExDocParser.T__10 - 6)) | (1 << (ShExDocParser.T__11 - 6)) | (1 << (ShExDocParser.UNBOUNDED - 6)))) != 0):
+            if ((((_la - 6)) & ~0x3f) == 0 and ((1 << (_la - 6)) & (
+                    (1 << (ShExDocParser.T__5 - 6)) | (1 << (ShExDocParser.T__10 - 6)) | (
+                    1 << (ShExDocParser.T__11 - 6)) | (1 << (ShExDocParser.UNBOUNDED - 6)))) != 0):
                 self.state = 499
                 self.cardinality()
-
 
             self.state = 505
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ShExDocParser.T__18:
+            while _la == ShExDocParser.T__18:
                 self.state = 502
                 self.annotation()
                 self.state = 507
@@ -3779,7 +3605,7 @@ class ShExDocParser ( Parser ):
             self.state = 511
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ShExDocParser.T__19:
+            while _la == ShExDocParser.T__19:
                 self.state = 508
                 self.semanticAction()
                 self.state = 513
@@ -3796,66 +3622,56 @@ class ShExDocParser ( Parser ):
 
     class TripleConstraintContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def predicate(self):
-            return self.getTypedRuleContext(ShExDocParser.PredicateContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.PredicateContext, 0)
 
         def inlineShapeExpression(self):
-            return self.getTypedRuleContext(ShExDocParser.InlineShapeExpressionContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.InlineShapeExpressionContext, 0)
 
         def senseFlags(self):
-            return self.getTypedRuleContext(ShExDocParser.SenseFlagsContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.SenseFlagsContext, 0)
 
         def cardinality(self):
-            return self.getTypedRuleContext(ShExDocParser.CardinalityContext,0)
+            return self.getTypedRuleContext(ShExDocParser.CardinalityContext, 0)
 
-
-        def annotation(self, i:int=None):
+        def annotation(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.AnnotationContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.AnnotationContext,i)
+                return self.getTypedRuleContext(ShExDocParser.AnnotationContext, i)
 
-
-        def semanticAction(self, i:int=None):
+        def semanticAction(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.SemanticActionContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.SemanticActionContext,i)
-
+                return self.getTypedRuleContext(ShExDocParser.SemanticActionContext, i)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_tripleConstraint
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTripleConstraint" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTripleConstraint"):
                 return visitor.visitTripleConstraint(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def tripleConstraint(self):
 
         localctx = ShExDocParser.TripleConstraintContext(self, self._ctx, self.state)
         self.enterRule(localctx, 94, self.RULE_tripleConstraint)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 515
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ShExDocParser.T__13:
+            if _la == ShExDocParser.T__13:
                 self.state = 514
                 self.senseFlags()
-
 
             self.state = 517
             self.predicate()
@@ -3864,15 +3680,16 @@ class ShExDocParser ( Parser ):
             self.state = 520
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if ((((_la - 6)) & ~0x3f) == 0 and ((1 << (_la - 6)) & ((1 << (ShExDocParser.T__5 - 6)) | (1 << (ShExDocParser.T__10 - 6)) | (1 << (ShExDocParser.T__11 - 6)) | (1 << (ShExDocParser.UNBOUNDED - 6)))) != 0):
+            if ((((_la - 6)) & ~0x3f) == 0 and ((1 << (_la - 6)) & (
+                    (1 << (ShExDocParser.T__5 - 6)) | (1 << (ShExDocParser.T__10 - 6)) | (
+                    1 << (ShExDocParser.T__11 - 6)) | (1 << (ShExDocParser.UNBOUNDED - 6)))) != 0):
                 self.state = 519
                 self.cardinality()
-
 
             self.state = 525
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ShExDocParser.T__18:
+            while _la == ShExDocParser.T__18:
                 self.state = 522
                 self.annotation()
                 self.state = 527
@@ -3882,7 +3699,7 @@ class ShExDocParser ( Parser ):
             self.state = 531
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ShExDocParser.T__19:
+            while _la == ShExDocParser.T__19:
                 self.state = 528
                 self.semanticAction()
                 self.state = 533
@@ -3899,79 +3716,66 @@ class ShExDocParser ( Parser ):
 
     class CardinalityContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_cardinality
 
-     
-        def copyFrom(self, ctx:ParserRuleContext):
+        def copyFrom(self, ctx: ParserRuleContext):
             super().copyFrom(ctx)
-
-
 
     class StarCardinalityContext(CardinalityContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.CardinalityContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.CardinalityContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitStarCardinality" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitStarCardinality"):
                 return visitor.visitStarCardinality(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class RepeatCardinalityContext(CardinalityContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.CardinalityContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.CardinalityContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def repeatRange(self):
-            return self.getTypedRuleContext(ShExDocParser.RepeatRangeContext,0)
+            return self.getTypedRuleContext(ShExDocParser.RepeatRangeContext, 0)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRepeatCardinality" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitRepeatCardinality"):
                 return visitor.visitRepeatCardinality(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class PlusCardinalityContext(CardinalityContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.CardinalityContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.CardinalityContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitPlusCardinality" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitPlusCardinality"):
                 return visitor.visitPlusCardinality(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class OptionalCardinalityContext(CardinalityContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.CardinalityContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.CardinalityContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitOptionalCardinality" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitOptionalCardinality"):
                 return visitor.visitOptionalCardinality(self)
             else:
                 return visitor.visitChildren(self)
-
-
 
     def cardinality(self):
 
@@ -4018,67 +3822,61 @@ class ShExDocParser ( Parser ):
 
     class RepeatRangeContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_repeatRange
 
-     
-        def copyFrom(self, ctx:ParserRuleContext):
+        def copyFrom(self, ctx: ParserRuleContext):
             super().copyFrom(ctx)
-
-
 
     class ExactRangeContext(RepeatRangeContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.RepeatRangeContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.RepeatRangeContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def INTEGER(self):
             return self.getToken(ShExDocParser.INTEGER, 0)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitExactRange" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitExactRange"):
                 return visitor.visitExactRange(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class MinMaxRangeContext(RepeatRangeContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.RepeatRangeContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.RepeatRangeContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def INTEGER(self, i:int=None):
+        def INTEGER(self, i: int = None):
             if i is None:
                 return self.getTokens(ShExDocParser.INTEGER)
             else:
                 return self.getToken(ShExDocParser.INTEGER, i)
+
         def UNBOUNDED(self):
             return self.getToken(ShExDocParser.UNBOUNDED, 0)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitMinMaxRange" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitMinMaxRange"):
                 return visitor.visitMinMaxRange(self)
             else:
                 return visitor.visitChildren(self)
-
-
 
     def repeatRange(self):
 
         localctx = ShExDocParser.RepeatRangeContext(self, self._ctx, self.state)
         self.enterRule(localctx, 98, self.RULE_repeatRange)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 550
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,67,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 67, self._ctx)
             if la_ == 1:
                 localctx = ShExDocParser.ExactRangeContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
@@ -4102,15 +3900,14 @@ class ShExDocParser ( Parser ):
                 self.state = 547
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==ShExDocParser.INTEGER or _la==ShExDocParser.UNBOUNDED:
+                if _la == ShExDocParser.INTEGER or _la == ShExDocParser.UNBOUNDED:
                     self.state = 546
                     _la = self._input.LA(1)
-                    if not(_la==ShExDocParser.INTEGER or _la==ShExDocParser.UNBOUNDED):
+                    if not (_la == ShExDocParser.INTEGER or _la == ShExDocParser.UNBOUNDED):
                         self._errHandler.recoverInline(self)
                     else:
                         self._errHandler.reportMatch(self)
                         self.consume()
-
 
                 self.state = 549
                 self.match(ShExDocParser.T__6)
@@ -4127,22 +3924,18 @@ class ShExDocParser ( Parser ):
 
     class SenseFlagsContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_senseFlags
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitSenseFlags" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitSenseFlags"):
                 return visitor.visitSenseFlags(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def senseFlags(self):
 
@@ -4162,34 +3955,30 @@ class ShExDocParser ( Parser ):
 
     class ValueSetContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def valueSetValue(self, i:int=None):
+        def valueSetValue(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.ValueSetValueContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.ValueSetValueContext,i)
-
+                return self.getTypedRuleContext(ShExDocParser.ValueSetValueContext, i)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_valueSet
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitValueSet" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitValueSet"):
                 return visitor.visitValueSet(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def valueSet(self):
 
         localctx = ShExDocParser.ValueSetContext(self, self._ctx, self.state)
         self.enterRule(localctx, 102, self.RULE_valueSet)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 554
@@ -4197,7 +3986,16 @@ class ShExDocParser ( Parser ):
             self.state = 558
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShExDocParser.T__3) | (1 << ShExDocParser.T__4) | (1 << ShExDocParser.KW_TRUE) | (1 << ShExDocParser.KW_FALSE) | (1 << ShExDocParser.IRIREF) | (1 << ShExDocParser.PNAME_NS) | (1 << ShExDocParser.PNAME_LN) | (1 << ShExDocParser.LANGTAG))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (ShExDocParser.INTEGER - 64)) | (1 << (ShExDocParser.DECIMAL - 64)) | (1 << (ShExDocParser.DOUBLE - 64)) | (1 << (ShExDocParser.STRING_LITERAL1 - 64)) | (1 << (ShExDocParser.STRING_LITERAL2 - 64)) | (1 << (ShExDocParser.STRING_LITERAL_LONG1 - 64)) | (1 << (ShExDocParser.STRING_LITERAL_LONG2 - 64)))) != 0):
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                    (1 << ShExDocParser.T__3) | (1 << ShExDocParser.T__4) | (1 << ShExDocParser.KW_TRUE) | (
+                    1 << ShExDocParser.KW_FALSE) | (1 << ShExDocParser.IRIREF) | (1 << ShExDocParser.PNAME_NS) | (
+                            1 << ShExDocParser.PNAME_LN) | (1 << ShExDocParser.LANGTAG))) != 0) or (
+                    (((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & (
+                    (1 << (ShExDocParser.INTEGER - 64)) | (1 << (ShExDocParser.DECIMAL - 64)) | (
+                    1 << (ShExDocParser.DOUBLE - 64)) | (1 << (ShExDocParser.STRING_LITERAL1 - 64)) | (
+                            1 << (ShExDocParser.STRING_LITERAL2 - 64)) | (
+                            1 << (ShExDocParser.STRING_LITERAL_LONG1 - 64)) | (
+                            1 << (ShExDocParser.STRING_LITERAL_LONG2 - 64)))) != 0):
                 self.state = 555
                 self.valueSetValue()
                 self.state = 560
@@ -4216,60 +4014,51 @@ class ShExDocParser ( Parser ):
 
     class ValueSetValueContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def iriRange(self):
-            return self.getTypedRuleContext(ShExDocParser.IriRangeContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.IriRangeContext, 0)
 
         def literalRange(self):
-            return self.getTypedRuleContext(ShExDocParser.LiteralRangeContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.LiteralRangeContext, 0)
 
         def languageRange(self):
-            return self.getTypedRuleContext(ShExDocParser.LanguageRangeContext,0)
+            return self.getTypedRuleContext(ShExDocParser.LanguageRangeContext, 0)
 
-
-        def iriExclusion(self, i:int=None):
+        def iriExclusion(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.IriExclusionContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.IriExclusionContext,i)
+                return self.getTypedRuleContext(ShExDocParser.IriExclusionContext, i)
 
-
-        def literalExclusion(self, i:int=None):
+        def literalExclusion(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.LiteralExclusionContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.LiteralExclusionContext,i)
+                return self.getTypedRuleContext(ShExDocParser.LiteralExclusionContext, i)
 
-
-        def languageExclusion(self, i:int=None):
+        def languageExclusion(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.LanguageExclusionContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.LanguageExclusionContext,i)
-
+                return self.getTypedRuleContext(ShExDocParser.LanguageExclusionContext, i)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_valueSetValue
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitValueSetValue" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitValueSetValue"):
                 return visitor.visitValueSetValue(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def valueSetValue(self):
 
         localctx = ShExDocParser.ValueSetValueContext(self, self._ctx, self.state)
         self.enterRule(localctx, 104, self.RULE_valueSetValue)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 584
             self._errHandler.sync(self)
@@ -4279,7 +4068,9 @@ class ShExDocParser ( Parser ):
                 self.state = 563
                 self.iriRange()
                 pass
-            elif token in [ShExDocParser.KW_TRUE, ShExDocParser.KW_FALSE, ShExDocParser.INTEGER, ShExDocParser.DECIMAL, ShExDocParser.DOUBLE, ShExDocParser.STRING_LITERAL1, ShExDocParser.STRING_LITERAL2, ShExDocParser.STRING_LITERAL_LONG1, ShExDocParser.STRING_LITERAL_LONG2]:
+            elif token in [ShExDocParser.KW_TRUE, ShExDocParser.KW_FALSE, ShExDocParser.INTEGER, ShExDocParser.DECIMAL,
+                           ShExDocParser.DOUBLE, ShExDocParser.STRING_LITERAL1, ShExDocParser.STRING_LITERAL2,
+                           ShExDocParser.STRING_LITERAL_LONG1, ShExDocParser.STRING_LITERAL_LONG2]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 564
                 self.literalRange()
@@ -4295,52 +4086,51 @@ class ShExDocParser ( Parser ):
                 self.match(ShExDocParser.T__3)
                 self.state = 582
                 self._errHandler.sync(self)
-                la_ = self._interp.adaptivePredict(self._input,72,self._ctx)
+                la_ = self._interp.adaptivePredict(self._input, 72, self._ctx)
                 if la_ == 1:
-                    self.state = 568 
+                    self.state = 568
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     while True:
                         self.state = 567
                         self.iriExclusion()
-                        self.state = 570 
+                        self.state = 570
                         self._errHandler.sync(self)
                         _la = self._input.LA(1)
-                        if not (_la==ShExDocParser.T__16):
+                        if not (_la == ShExDocParser.T__16):
                             break
 
                     pass
 
                 elif la_ == 2:
-                    self.state = 573 
+                    self.state = 573
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     while True:
                         self.state = 572
                         self.literalExclusion()
-                        self.state = 575 
+                        self.state = 575
                         self._errHandler.sync(self)
                         _la = self._input.LA(1)
-                        if not (_la==ShExDocParser.T__16):
+                        if not (_la == ShExDocParser.T__16):
                             break
 
                     pass
 
                 elif la_ == 3:
-                    self.state = 578 
+                    self.state = 578
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     while True:
                         self.state = 577
                         self.languageExclusion()
-                        self.state = 580 
+                        self.state = 580
                         self._errHandler.sync(self)
                         _la = self._input.LA(1)
-                        if not (_la==ShExDocParser.T__16):
+                        if not (_la == ShExDocParser.T__16):
                             break
 
                     pass
-
 
                 pass
             else:
@@ -4356,41 +4146,36 @@ class ShExDocParser ( Parser ):
 
     class IriRangeContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def iri(self):
-            return self.getTypedRuleContext(ShExDocParser.IriContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.IriContext, 0)
 
         def STEM_MARK(self):
             return self.getToken(ShExDocParser.STEM_MARK, 0)
 
-        def iriExclusion(self, i:int=None):
+        def iriExclusion(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.IriExclusionContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.IriExclusionContext,i)
-
+                return self.getTypedRuleContext(ShExDocParser.IriExclusionContext, i)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_iriRange
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitIriRange" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitIriRange"):
                 return visitor.visitIriRange(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def iriRange(self):
 
         localctx = ShExDocParser.IriRangeContext(self, self._ctx, self.state)
         self.enterRule(localctx, 106, self.RULE_iriRange)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 586
@@ -4398,13 +4183,13 @@ class ShExDocParser ( Parser ):
             self.state = 594
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ShExDocParser.STEM_MARK:
+            if _la == ShExDocParser.STEM_MARK:
                 self.state = 587
                 self.match(ShExDocParser.STEM_MARK)
                 self.state = 591
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while _la==ShExDocParser.T__16:
+                while _la == ShExDocParser.T__16:
                     self.state = 588
                     self.iriExclusion()
                     self.state = 593
@@ -4423,13 +4208,12 @@ class ShExDocParser ( Parser ):
 
     class IriExclusionContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def iri(self):
-            return self.getTypedRuleContext(ShExDocParser.IriContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.IriContext, 0)
 
         def STEM_MARK(self):
             return self.getToken(ShExDocParser.STEM_MARK, 0)
@@ -4437,20 +4221,17 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_iriExclusion
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitIriExclusion" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitIriExclusion"):
                 return visitor.visitIriExclusion(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def iriExclusion(self):
 
         localctx = ShExDocParser.IriExclusionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 108, self.RULE_iriExclusion)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 596
@@ -4460,7 +4241,7 @@ class ShExDocParser ( Parser ):
             self.state = 599
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ShExDocParser.STEM_MARK:
+            if _la == ShExDocParser.STEM_MARK:
                 self.state = 598
                 self.match(ShExDocParser.STEM_MARK)
 
@@ -4475,41 +4256,36 @@ class ShExDocParser ( Parser ):
 
     class LiteralRangeContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def literal(self):
-            return self.getTypedRuleContext(ShExDocParser.LiteralContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.LiteralContext, 0)
 
         def STEM_MARK(self):
             return self.getToken(ShExDocParser.STEM_MARK, 0)
 
-        def literalExclusion(self, i:int=None):
+        def literalExclusion(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.LiteralExclusionContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.LiteralExclusionContext,i)
-
+                return self.getTypedRuleContext(ShExDocParser.LiteralExclusionContext, i)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_literalRange
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLiteralRange" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLiteralRange"):
                 return visitor.visitLiteralRange(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def literalRange(self):
 
         localctx = ShExDocParser.LiteralRangeContext(self, self._ctx, self.state)
         self.enterRule(localctx, 110, self.RULE_literalRange)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 601
@@ -4517,13 +4293,13 @@ class ShExDocParser ( Parser ):
             self.state = 609
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ShExDocParser.STEM_MARK:
+            if _la == ShExDocParser.STEM_MARK:
                 self.state = 602
                 self.match(ShExDocParser.STEM_MARK)
                 self.state = 606
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while _la==ShExDocParser.T__16:
+                while _la == ShExDocParser.T__16:
                     self.state = 603
                     self.literalExclusion()
                     self.state = 608
@@ -4542,13 +4318,12 @@ class ShExDocParser ( Parser ):
 
     class LiteralExclusionContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def literal(self):
-            return self.getTypedRuleContext(ShExDocParser.LiteralContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.LiteralContext, 0)
 
         def STEM_MARK(self):
             return self.getToken(ShExDocParser.STEM_MARK, 0)
@@ -4556,20 +4331,17 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_literalExclusion
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLiteralExclusion" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLiteralExclusion"):
                 return visitor.visitLiteralExclusion(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def literalExclusion(self):
 
         localctx = ShExDocParser.LiteralExclusionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 112, self.RULE_literalExclusion)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 611
@@ -4579,7 +4351,7 @@ class ShExDocParser ( Parser ):
             self.state = 614
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ShExDocParser.STEM_MARK:
+            if _la == ShExDocParser.STEM_MARK:
                 self.state = 613
                 self.match(ShExDocParser.STEM_MARK)
 
@@ -4594,72 +4366,66 @@ class ShExDocParser ( Parser ):
 
     class LanguageRangeContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_languageRange
 
-     
-        def copyFrom(self, ctx:ParserRuleContext):
+        def copyFrom(self, ctx: ParserRuleContext):
             super().copyFrom(ctx)
-
-
 
     class LanguageRangeFullContext(LanguageRangeContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.LanguageRangeContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.LanguageRangeContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def LANGTAG(self):
             return self.getToken(ShExDocParser.LANGTAG, 0)
+
         def STEM_MARK(self):
             return self.getToken(ShExDocParser.STEM_MARK, 0)
-        def languageExclusion(self, i:int=None):
+
+        def languageExclusion(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.LanguageExclusionContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.LanguageExclusionContext,i)
+                return self.getTypedRuleContext(ShExDocParser.LanguageExclusionContext, i)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLanguageRangeFull" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLanguageRangeFull"):
                 return visitor.visitLanguageRangeFull(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class LanguageRangeAtContext(LanguageRangeContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShExDocParser.LanguageRangeContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShExDocParser.LanguageRangeContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def STEM_MARK(self):
             return self.getToken(ShExDocParser.STEM_MARK, 0)
-        def languageExclusion(self, i:int=None):
+
+        def languageExclusion(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ShExDocParser.LanguageExclusionContext)
             else:
-                return self.getTypedRuleContext(ShExDocParser.LanguageExclusionContext,i)
+                return self.getTypedRuleContext(ShExDocParser.LanguageExclusionContext, i)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLanguageRangeAt" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLanguageRangeAt"):
                 return visitor.visitLanguageRangeAt(self)
             else:
                 return visitor.visitChildren(self)
-
-
 
     def languageRange(self):
 
         localctx = ShExDocParser.LanguageRangeContext(self, self._ctx, self.state)
         self.enterRule(localctx, 114, self.RULE_languageRange)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 634
             self._errHandler.sync(self)
@@ -4672,20 +4438,18 @@ class ShExDocParser ( Parser ):
                 self.state = 624
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==ShExDocParser.STEM_MARK:
+                if _la == ShExDocParser.STEM_MARK:
                     self.state = 617
                     self.match(ShExDocParser.STEM_MARK)
                     self.state = 621
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
-                    while _la==ShExDocParser.T__16:
+                    while _la == ShExDocParser.T__16:
                         self.state = 618
                         self.languageExclusion()
                         self.state = 623
                         self._errHandler.sync(self)
                         _la = self._input.LA(1)
-
-
 
                 pass
             elif token in [ShExDocParser.T__4]:
@@ -4698,7 +4462,7 @@ class ShExDocParser ( Parser ):
                 self.state = 631
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while _la==ShExDocParser.T__16:
+                while _la == ShExDocParser.T__16:
                     self.state = 628
                     self.languageExclusion()
                     self.state = 633
@@ -4719,7 +4483,7 @@ class ShExDocParser ( Parser ):
 
     class LanguageExclusionContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -4732,20 +4496,17 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_languageExclusion
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLanguageExclusion" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLanguageExclusion"):
                 return visitor.visitLanguageExclusion(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def languageExclusion(self):
 
         localctx = ShExDocParser.LanguageExclusionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 116, self.RULE_languageExclusion)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 636
@@ -4755,7 +4516,7 @@ class ShExDocParser ( Parser ):
             self.state = 639
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ShExDocParser.STEM_MARK:
+            if _la == ShExDocParser.STEM_MARK:
                 self.state = 638
                 self.match(ShExDocParser.STEM_MARK)
 
@@ -4770,25 +4531,21 @@ class ShExDocParser ( Parser ):
 
     class IncludeContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tripleExprLabel(self):
-            return self.getTypedRuleContext(ShExDocParser.TripleExprLabelContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.TripleExprLabelContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_include
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInclude" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitInclude"):
                 return visitor.visitInclude(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def include(self):
 
@@ -4810,33 +4567,27 @@ class ShExDocParser ( Parser ):
 
     class AnnotationContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def predicate(self):
-            return self.getTypedRuleContext(ShExDocParser.PredicateContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.PredicateContext, 0)
 
         def iri(self):
-            return self.getTypedRuleContext(ShExDocParser.IriContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.IriContext, 0)
 
         def literal(self):
-            return self.getTypedRuleContext(ShExDocParser.LiteralContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.LiteralContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_annotation
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAnnotation" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitAnnotation"):
                 return visitor.visitAnnotation(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def annotation(self):
 
@@ -4855,7 +4606,9 @@ class ShExDocParser ( Parser ):
                 self.state = 646
                 self.iri()
                 pass
-            elif token in [ShExDocParser.KW_TRUE, ShExDocParser.KW_FALSE, ShExDocParser.INTEGER, ShExDocParser.DECIMAL, ShExDocParser.DOUBLE, ShExDocParser.STRING_LITERAL1, ShExDocParser.STRING_LITERAL2, ShExDocParser.STRING_LITERAL_LONG1, ShExDocParser.STRING_LITERAL_LONG2]:
+            elif token in [ShExDocParser.KW_TRUE, ShExDocParser.KW_FALSE, ShExDocParser.INTEGER, ShExDocParser.DECIMAL,
+                           ShExDocParser.DOUBLE, ShExDocParser.STRING_LITERAL1, ShExDocParser.STRING_LITERAL2,
+                           ShExDocParser.STRING_LITERAL_LONG1, ShExDocParser.STRING_LITERAL_LONG2]:
                 self.state = 647
                 self.literal()
                 pass
@@ -4872,13 +4625,12 @@ class ShExDocParser ( Parser ):
 
     class SemanticActionContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def iri(self):
-            return self.getTypedRuleContext(ShExDocParser.IriContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.IriContext, 0)
 
         def CODE(self):
             return self.getToken(ShExDocParser.CODE, 0)
@@ -4886,20 +4638,17 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_semanticAction
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitSemanticAction" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitSemanticAction"):
                 return visitor.visitSemanticAction(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def semanticAction(self):
 
         localctx = ShExDocParser.SemanticActionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 122, self.RULE_semanticAction)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 650
@@ -4908,7 +4657,7 @@ class ShExDocParser ( Parser ):
             self.iri()
             self.state = 652
             _la = self._input.LA(1)
-            if not(_la==ShExDocParser.T__19 or _la==ShExDocParser.CODE):
+            if not (_la == ShExDocParser.T__19 or _la == ShExDocParser.CODE):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -4923,33 +4672,27 @@ class ShExDocParser ( Parser ):
 
     class LiteralContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def rdfLiteral(self):
-            return self.getTypedRuleContext(ShExDocParser.RdfLiteralContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.RdfLiteralContext, 0)
 
         def numericLiteral(self):
-            return self.getTypedRuleContext(ShExDocParser.NumericLiteralContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.NumericLiteralContext, 0)
 
         def booleanLiteral(self):
-            return self.getTypedRuleContext(ShExDocParser.BooleanLiteralContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.BooleanLiteralContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_literal
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLiteral" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLiteral"):
                 return visitor.visitLiteral(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def literal(self):
 
@@ -4959,7 +4702,8 @@ class ShExDocParser ( Parser ):
             self.state = 657
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [ShExDocParser.STRING_LITERAL1, ShExDocParser.STRING_LITERAL2, ShExDocParser.STRING_LITERAL_LONG1, ShExDocParser.STRING_LITERAL_LONG2]:
+            if token in [ShExDocParser.STRING_LITERAL1, ShExDocParser.STRING_LITERAL2,
+                         ShExDocParser.STRING_LITERAL_LONG1, ShExDocParser.STRING_LITERAL_LONG2]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 654
                 self.rdfLiteral()
@@ -4987,29 +4731,24 @@ class ShExDocParser ( Parser ):
 
     class PredicateContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def iri(self):
-            return self.getTypedRuleContext(ShExDocParser.IriContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.IriContext, 0)
 
         def rdfType(self):
-            return self.getTypedRuleContext(ShExDocParser.RdfTypeContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.RdfTypeContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_predicate
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitPredicate" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitPredicate"):
                 return visitor.visitPredicate(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def predicate(self):
 
@@ -5042,7 +4781,7 @@ class ShExDocParser ( Parser ):
 
     class RdfTypeContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -5052,14 +4791,11 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_rdfType
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRdfType" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitRdfType"):
                 return visitor.visitRdfType(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def rdfType(self):
 
@@ -5079,25 +4815,21 @@ class ShExDocParser ( Parser ):
 
     class DatatypeContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def iri(self):
-            return self.getTypedRuleContext(ShExDocParser.IriContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.IriContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_datatype
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitDatatype" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitDatatype"):
                 return visitor.visitDatatype(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def datatype(self):
 
@@ -5117,29 +4849,24 @@ class ShExDocParser ( Parser ):
 
     class ShapeExprLabelContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def iri(self):
-            return self.getTypedRuleContext(ShExDocParser.IriContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.IriContext, 0)
 
         def blankNode(self):
-            return self.getTypedRuleContext(ShExDocParser.BlankNodeContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.BlankNodeContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_shapeExprLabel
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitShapeExprLabel" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitShapeExprLabel"):
                 return visitor.visitShapeExprLabel(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def shapeExprLabel(self):
 
@@ -5172,29 +4899,24 @@ class ShExDocParser ( Parser ):
 
     class TripleExprLabelContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def iri(self):
-            return self.getTypedRuleContext(ShExDocParser.IriContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.IriContext, 0)
 
         def blankNode(self):
-            return self.getTypedRuleContext(ShExDocParser.BlankNodeContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.BlankNodeContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_tripleExprLabel
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTripleExprLabel" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTripleExprLabel"):
                 return visitor.visitTripleExprLabel(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def tripleExprLabel(self):
 
@@ -5227,7 +4949,7 @@ class ShExDocParser ( Parser ):
 
     class NumericLiteralContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -5243,25 +4965,24 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_numericLiteral
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitNumericLiteral" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitNumericLiteral"):
                 return visitor.visitNumericLiteral(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def numericLiteral(self):
 
         localctx = ShExDocParser.NumericLiteralContext(self, self._ctx, self.state)
         self.enterRule(localctx, 136, self.RULE_numericLiteral)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 675
             _la = self._input.LA(1)
-            if not(((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (ShExDocParser.INTEGER - 64)) | (1 << (ShExDocParser.DECIMAL - 64)) | (1 << (ShExDocParser.DOUBLE - 64)))) != 0)):
+            if not (((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & (
+                    (1 << (ShExDocParser.INTEGER - 64)) | (1 << (ShExDocParser.DECIMAL - 64)) | (
+                    1 << (ShExDocParser.DOUBLE - 64)))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -5276,32 +4997,27 @@ class ShExDocParser ( Parser ):
 
     class RdfLiteralContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def string(self):
-            return self.getTypedRuleContext(ShExDocParser.StringContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.StringContext, 0)
 
         def LANGTAG(self):
             return self.getToken(ShExDocParser.LANGTAG, 0)
 
         def datatype(self):
-            return self.getTypedRuleContext(ShExDocParser.DatatypeContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.DatatypeContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_rdfLiteral
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRdfLiteral" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitRdfLiteral"):
                 return visitor.visitRdfLiteral(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def rdfLiteral(self):
 
@@ -5313,7 +5029,7 @@ class ShExDocParser ( Parser ):
             self.string()
             self.state = 681
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,90,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 90, self._ctx)
             if la_ == 1:
                 self.state = 678
                 self.match(ShExDocParser.LANGTAG)
@@ -5335,7 +5051,7 @@ class ShExDocParser ( Parser ):
 
     class BooleanLiteralContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -5348,25 +5064,22 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_booleanLiteral
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitBooleanLiteral" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitBooleanLiteral"):
                 return visitor.visitBooleanLiteral(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def booleanLiteral(self):
 
         localctx = ShExDocParser.BooleanLiteralContext(self, self._ctx, self.state)
         self.enterRule(localctx, 140, self.RULE_booleanLiteral)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 683
             _la = self._input.LA(1)
-            if not(_la==ShExDocParser.KW_TRUE or _la==ShExDocParser.KW_FALSE):
+            if not (_la == ShExDocParser.KW_TRUE or _la == ShExDocParser.KW_FALSE):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -5381,7 +5094,7 @@ class ShExDocParser ( Parser ):
 
     class StringContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -5400,25 +5113,25 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_string
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitString" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitString"):
                 return visitor.visitString(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def string(self):
 
         localctx = ShExDocParser.StringContext(self, self._ctx, self.state)
         self.enterRule(localctx, 142, self.RULE_string)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 685
             _la = self._input.LA(1)
-            if not(((((_la - 69)) & ~0x3f) == 0 and ((1 << (_la - 69)) & ((1 << (ShExDocParser.STRING_LITERAL1 - 69)) | (1 << (ShExDocParser.STRING_LITERAL2 - 69)) | (1 << (ShExDocParser.STRING_LITERAL_LONG1 - 69)) | (1 << (ShExDocParser.STRING_LITERAL_LONG2 - 69)))) != 0)):
+            if not (((((_la - 69)) & ~0x3f) == 0 and ((1 << (_la - 69)) & (
+                    (1 << (ShExDocParser.STRING_LITERAL1 - 69)) | (1 << (ShExDocParser.STRING_LITERAL2 - 69)) | (
+                    1 << (ShExDocParser.STRING_LITERAL_LONG1 - 69)) | (
+                            1 << (ShExDocParser.STRING_LITERAL_LONG2 - 69)))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -5433,7 +5146,7 @@ class ShExDocParser ( Parser ):
 
     class IriContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -5441,20 +5154,16 @@ class ShExDocParser ( Parser ):
             return self.getToken(ShExDocParser.IRIREF, 0)
 
         def prefixedName(self):
-            return self.getTypedRuleContext(ShExDocParser.PrefixedNameContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.PrefixedNameContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_iri
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitIri" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitIri"):
                 return visitor.visitIri(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def iri(self):
 
@@ -5487,7 +5196,7 @@ class ShExDocParser ( Parser ):
 
     class PrefixedNameContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -5500,25 +5209,22 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_prefixedName
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitPrefixedName" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitPrefixedName"):
                 return visitor.visitPrefixedName(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def prefixedName(self):
 
         localctx = ShExDocParser.PrefixedNameContext(self, self._ctx, self.state)
         self.enterRule(localctx, 146, self.RULE_prefixedName)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 691
             _la = self._input.LA(1)
-            if not(_la==ShExDocParser.PNAME_NS or _la==ShExDocParser.PNAME_LN):
+            if not (_la == ShExDocParser.PNAME_NS or _la == ShExDocParser.PNAME_LN):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -5533,7 +5239,7 @@ class ShExDocParser ( Parser ):
 
     class BlankNodeContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -5543,14 +5249,11 @@ class ShExDocParser ( Parser ):
         def getRuleIndex(self):
             return ShExDocParser.RULE_blankNode
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitBlankNode" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitBlankNode"):
                 return visitor.visitBlankNode(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def blankNode(self):
 
@@ -5570,7 +5273,7 @@ class ShExDocParser ( Parser ):
 
     class ExtensionContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -5578,20 +5281,16 @@ class ShExDocParser ( Parser ):
             return self.getToken(ShExDocParser.KW_EXTENDS, 0)
 
         def shapeExprLabel(self):
-            return self.getTypedRuleContext(ShExDocParser.ShapeExprLabelContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.ShapeExprLabelContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_extension
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitExtension" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitExtension"):
                 return visitor.visitExtension(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def extension(self):
 
@@ -5628,7 +5327,7 @@ class ShExDocParser ( Parser ):
 
     class RestrictionsContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -5636,20 +5335,16 @@ class ShExDocParser ( Parser ):
             return self.getToken(ShExDocParser.KW_RESTRICTS, 0)
 
         def shapeExprLabel(self):
-            return self.getTypedRuleContext(ShExDocParser.ShapeExprLabelContext,0)
-
+            return self.getTypedRuleContext(ShExDocParser.ShapeExprLabelContext, 0)
 
         def getRuleIndex(self):
             return ShExDocParser.RULE_restrictions
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRestrictions" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitRestrictions"):
                 return visitor.visitRestrictions(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def restrictions(self):
 
@@ -5683,8 +5378,3 @@ class ShExDocParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
-
-
-
-

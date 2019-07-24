@@ -17,7 +17,7 @@ class JsonPatternTestCase(unittest.TestCase):
         self.assertIsNone(re.search(b1, '\t\\X?z'))
 
         escaped_b1 = re.sub(r'\\', r'\\\\', b1)
-        bj1 = '{"pattern" : "%s"}' % (escaped_b1)
+        bj1 = '{"pattern" : "%s"}' % escaped_b1
         json_b1 = json.loads(bj1)
         self.assertIsNotNone(re.search(json_b1['pattern'], '\t\\X?'))
 
@@ -31,7 +31,7 @@ class JsonPatternTestCase(unittest.TestCase):
         self.assertIsNone(re.search(b1, '\t\\𝒸?z'))
 
         escaped_b1 = re.sub(r'\\', r'\\\\', b1)
-        bj1 = '{"pattern" : "%s"}' % (escaped_b1)
+        bj1 = '{"pattern" : "%s"}' % escaped_b1
         json_b1 = json.loads(bj1)
         self.assertIsNotNone(re.search(json_b1['pattern'], '\t\\𝒸?'))
 
@@ -45,7 +45,7 @@ class JsonPatternTestCase(unittest.TestCase):
         self.assertIsNone(re.search(b1, '\t\\\U0001D4B8?z'))
 
         escaped_b1 = re.sub(r'\\', r'\\\\', b1)
-        bj1 = '{"pattern" : "%s"}' % (escaped_b1)
+        bj1 = '{"pattern" : "%s"}' % escaped_b1
         json_b1 = json.loads(bj1)
         self.assertIsNotNone(re.search(json_b1['pattern'], '\t\\\U0001D4B8?'))
 

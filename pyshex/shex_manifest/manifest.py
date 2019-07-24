@@ -16,27 +16,26 @@ def fetch_uri(self, url: str, base: str="") -> Optional[str]:
     if req.ok:
         return req.text
     else:
-        print("{} {}".format(base + url, req.reason))
+        print("{} {}".format(base + url, req.reason) )
         return None
 
 
 class ManifestEntry(JsonObj):
-    schemaLabel = str
-    schemaURL = str
-    dataLabel = str
-    dataURL = str
-    queryMap = str
-    status = str
-    _manifest = "Manifest"
+    schemaLabel = ...  # type: str
+    schemaURL = ...  # type: str
+    dataLabel = ...  # type: str
+    dataURL = ...  # type: str
+    queryMap = ...  # type: str
+    status = ...  # type: str
+    _manifest = ...  # type: "Manifest"
 
-    _schema_text = str
-    _schema = Schema
-    _rdf_text = str
-    _rdf = Graph
+    _schema_text = ...  # type: str
+    _schema = ...  # type: Schema
+    _rdf_text = ...  # type: str
+    _rdf = ...  # type: Graph
 
     def resolve(self) -> bool:
         """ Resolve the schema and data
-
         :return: success indicator
         """
 
@@ -77,7 +76,6 @@ class Manifest:
     def __init__(self, source, base: Optional[str] = None, debug: Optional[bool] = False,
                  debug_slurps: Optional[bool] = False,over_slurp: Optional[bool]=True) -> None:
         """ Load a manifest
-
         :param source: file name, URI or file-like object that carries the manifest description
         :param base: RDF and ShEx base directory or URL.  If omitted, source file name/URI will be used
         :param debug: default debug setting for evaluate function

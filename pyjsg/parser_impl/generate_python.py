@@ -45,7 +45,7 @@ def do_parse(infilename: str, outfilename: str, verbose: bool) -> bool:
     """
     python = parse(FileStream(infilename, encoding="utf-8"), infilename)
     if python is not None:
-        with open(outfilename, 'w+') as outfile:
+        with open(outfilename, 'w') as outfile:
             outfile.write(python)
         if verbose:
             print("Output written to {}".format(outfilename))
@@ -55,7 +55,6 @@ def do_parse(infilename: str, outfilename: str, verbose: bool) -> bool:
 
 def parse(input_: Union[str, FileStream], source: str) -> Optional[str]:
     """Parse the text in infile and save the results in outfile
-
     :param input_: string or stream to parse
     :param source: source name for python file header
     :return: python text if successful
@@ -108,7 +107,7 @@ def evaluate(module_name: str, fname: str, verbose: bool):
     """
     Load fname as a module.  Will raise an exception if there is an error
     :param module_name: resulting name of module
-    :param fname: name to load 
+    :param fname: name to load
     """
     if verbose:
         print("Testing {}".format(fname))

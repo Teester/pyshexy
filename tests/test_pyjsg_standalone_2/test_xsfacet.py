@@ -1,4 +1,3 @@
-import os
 import unittest
 from pathlib import Path
 
@@ -12,11 +11,9 @@ from jsonasobj import loads as jao_loads
 
 class XSFacetTestCase(unittest.TestCase):
     def test_facet(self):
-        #file_loc = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'shexSpec', 'shexTest', 'schemas',
-        #                        '1bnodeLength.json')
         file_loc = str(Path(__file__).resolve().parent.joinpath('1bnodeLength.json'))
 
-        with open(file_loc)  as f:
+        with open(file_loc) as f:
             text = f.read()
         facets = loads(text, ShExJ)
         # print(as_json(facets))
@@ -27,6 +24,7 @@ class XSFacetTestCase(unittest.TestCase):
         d1 = jao_loads(text)
         d2 = jao_loads(as_json(facets))
         self.assertTrue(compare_dicts(as_dict(d1), as_dict(d2)))
+
 
 if __name__ == '__main__':
     unittest.main()

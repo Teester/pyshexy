@@ -1,7 +1,7 @@
 # Generated from ShExDoc.g4 by ANTLR 4.7.1
 from antlr4 import *
 from io import StringIO
-from typing.io import TextIO
+from typing import TextIO
 import sys
 
 
@@ -529,42 +529,42 @@ class ShExDocLexer(Lexer):
     modeNames = [ "DEFAULT_MODE" ]
 
     literalNames = [ "<INVALID>",
-            "'='", "'('", "')'", "'.'", "'@'", "'{'", "'}'", "'|'", "';'", 
-            "'$'", "'+'", "'?'", "','", "'^'", "'['", "']'", "'-'", "'&'", 
+            "'='", "'('", "')'", "'.'", "'@'", "'{'", "'}'", "'|'", "';'",
+            "'$'", "'+'", "'?'", "','", "'^'", "'['", "']'", "'-'", "'&'",
             "'//'", "'%'", "'^^'", "'true'", "'false'", "'a'", "'~'", "'*'" ]
 
     symbolicNames = [ "<INVALID>",
-            "KW_ABSTRACT", "KW_BASE", "KW_EXTENDS", "KW_IMPORT", "KW_RESTRICTS", 
-            "KW_EXTERNAL", "KW_PREFIX", "KW_START", "KW_VIRTUAL", "KW_CLOSED", 
-            "KW_EXTRA", "KW_LITERAL", "KW_IRI", "KW_NONLITERAL", "KW_BNODE", 
-            "KW_AND", "KW_OR", "KW_MININCLUSIVE", "KW_MINEXCLUSIVE", "KW_MAXINCLUSIVE", 
-            "KW_MAXEXCLUSIVE", "KW_LENGTH", "KW_MINLENGTH", "KW_MAXLENGTH", 
-            "KW_TOTALDIGITS", "KW_FRACTIONDIGITS", "KW_NOT", "KW_TRUE", 
-            "KW_FALSE", "PASS", "COMMENT", "CODE", "RDF_TYPE", "IRIREF", 
-            "PNAME_NS", "PNAME_LN", "ATPNAME_NS", "ATPNAME_LN", "REGEXP", 
-            "REGEXP_FLAGS", "BLANK_NODE_LABEL", "LANGTAG", "INTEGER", "DECIMAL", 
-            "DOUBLE", "STEM_MARK", "UNBOUNDED", "STRING_LITERAL1", "STRING_LITERAL2", 
+            "KW_ABSTRACT", "KW_BASE", "KW_EXTENDS", "KW_IMPORT", "KW_RESTRICTS",
+            "KW_EXTERNAL", "KW_PREFIX", "KW_START", "KW_VIRTUAL", "KW_CLOSED",
+            "KW_EXTRA", "KW_LITERAL", "KW_IRI", "KW_NONLITERAL", "KW_BNODE",
+            "KW_AND", "KW_OR", "KW_MININCLUSIVE", "KW_MINEXCLUSIVE", "KW_MAXINCLUSIVE",
+            "KW_MAXEXCLUSIVE", "KW_LENGTH", "KW_MINLENGTH", "KW_MAXLENGTH",
+            "KW_TOTALDIGITS", "KW_FRACTIONDIGITS", "KW_NOT", "KW_TRUE",
+            "KW_FALSE", "PASS", "COMMENT", "CODE", "RDF_TYPE", "IRIREF",
+            "PNAME_NS", "PNAME_LN", "ATPNAME_NS", "ATPNAME_LN", "REGEXP",
+            "REGEXP_FLAGS", "BLANK_NODE_LABEL", "LANGTAG", "INTEGER", "DECIMAL",
+            "DOUBLE", "STEM_MARK", "UNBOUNDED", "STRING_LITERAL1", "STRING_LITERAL2",
             "STRING_LITERAL_LONG1", "STRING_LITERAL_LONG2" ]
 
-    ruleNames = [ "T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", 
-                  "T__7", "T__8", "T__9", "T__10", "T__11", "T__12", "T__13", 
-                  "T__14", "T__15", "T__16", "T__17", "T__18", "T__19", 
-                  "T__20", "KW_ABSTRACT", "KW_BASE", "KW_EXTENDS", "KW_IMPORT", 
-                  "KW_RESTRICTS", "KW_EXTERNAL", "KW_PREFIX", "KW_START", 
-                  "KW_VIRTUAL", "KW_CLOSED", "KW_EXTRA", "KW_LITERAL", "KW_IRI", 
-                  "KW_NONLITERAL", "KW_BNODE", "KW_AND", "KW_OR", "KW_MININCLUSIVE", 
-                  "KW_MINEXCLUSIVE", "KW_MAXINCLUSIVE", "KW_MAXEXCLUSIVE", 
-                  "KW_LENGTH", "KW_MINLENGTH", "KW_MAXLENGTH", "KW_TOTALDIGITS", 
-                  "KW_FRACTIONDIGITS", "KW_NOT", "KW_TRUE", "KW_FALSE", 
-                  "PASS", "COMMENT", "CODE", "RDF_TYPE", "IRIREF", "PNAME_NS", 
-                  "PNAME_LN", "ATPNAME_NS", "ATPNAME_LN", "REGEXP", "REGEXP_FLAGS", 
-                  "BLANK_NODE_LABEL", "LANGTAG", "INTEGER", "DECIMAL", "DOUBLE", 
-                  "STEM_MARK", "UNBOUNDED", "EXPONENT", "STRING_LITERAL1", 
-                  "STRING_LITERAL2", "STRING_LITERAL_LONG1", "STRING_LITERAL_LONG2", 
-                  "UCHAR", "ECHAR", "PN_CHARS_BASE", "PN_CHARS_U", "PN_CHARS", 
-                  "PN_PREFIX", "PN_LOCAL", "PLX", "PERCENT", "HEX", "PN_LOCAL_ESC", 
-                  "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", 
-                  "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", 
+    ruleNames = [ "T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6",
+                  "T__7", "T__8", "T__9", "T__10", "T__11", "T__12", "T__13",
+                  "T__14", "T__15", "T__16", "T__17", "T__18", "T__19",
+                  "T__20", "KW_ABSTRACT", "KW_BASE", "KW_EXTENDS", "KW_IMPORT",
+                  "KW_RESTRICTS", "KW_EXTERNAL", "KW_PREFIX", "KW_START",
+                  "KW_VIRTUAL", "KW_CLOSED", "KW_EXTRA", "KW_LITERAL", "KW_IRI",
+                  "KW_NONLITERAL", "KW_BNODE", "KW_AND", "KW_OR", "KW_MININCLUSIVE",
+                  "KW_MINEXCLUSIVE", "KW_MAXINCLUSIVE", "KW_MAXEXCLUSIVE",
+                  "KW_LENGTH", "KW_MINLENGTH", "KW_MAXLENGTH", "KW_TOTALDIGITS",
+                  "KW_FRACTIONDIGITS", "KW_NOT", "KW_TRUE", "KW_FALSE",
+                  "PASS", "COMMENT", "CODE", "RDF_TYPE", "IRIREF", "PNAME_NS",
+                  "PNAME_LN", "ATPNAME_NS", "ATPNAME_LN", "REGEXP", "REGEXP_FLAGS",
+                  "BLANK_NODE_LABEL", "LANGTAG", "INTEGER", "DECIMAL", "DOUBLE",
+                  "STEM_MARK", "UNBOUNDED", "EXPONENT", "STRING_LITERAL1",
+                  "STRING_LITERAL2", "STRING_LITERAL_LONG1", "STRING_LITERAL_LONG2",
+                  "UCHAR", "ECHAR", "PN_CHARS_BASE", "PN_CHARS_U", "PN_CHARS",
+                  "PN_PREFIX", "PN_LOCAL", "PLX", "PERCENT", "HEX", "PN_LOCAL_ESC",
+                  "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K",
+                  "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
                   "W", "X", "Y", "Z" ]
 
     grammarFileName = "ShExDoc.g4"
@@ -575,5 +575,3 @@ class ShExDocLexer(Lexer):
         self._interp = LexerATNSimulator(self, self.atn, self.decisionsToDFA, PredictionContextCache())
         self._actions = None
         self._predicates = None
-
-

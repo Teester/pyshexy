@@ -12,7 +12,6 @@ class JSGPattern:
     def __init__(self, pattern: str):
         """
         Compile and record a match pattern
-
         :param pattern: regular expression
         """
         self.pattern_re = re.compile(pattern, flags=re.DOTALL)
@@ -22,7 +21,6 @@ class JSGPattern:
 
     def matches(self, txt: str) -> bool:
         """Determine whether txt matches pattern
-
         :param txt: text to check
         :return: True if match
         """
@@ -34,19 +32,19 @@ class JSGPattern:
 
 
 class JSGPatternedValMeta(type):
-    pattern = Optional[JSGPattern]
-    python_type = Union[type, Tuple[type]]
+    pattern = ...  # type: Optional[JSGPattern]
+    python_type = ...  # type: Union[type, Tuple[type]]
 
     def __instancecheck__(self, instance) -> bool:
         return isinstance(instance, self.python_type) and (self.pattern is None or self.pattern.matches(str(instance)))
 
 
 class JSGPatterned(JSGValidateable, metaclass=JSGPatternedValMeta):
-    pattern = None
+    pattern = None  # type: Optional[JSGPattern]
 
     def __init__(self, val: Any) -> None:
         if not isinstance(val, type(self)):
-            raise ValueError('Invalid {} value:"{}"'.format(self._class_name, val))
+            raise ValueError('Invalid {} value: "{}"'.format(self._class_name, val))
 
     def _is_valid(self, log: Optional[Logger] = None) -> bool:
         return True
@@ -60,7 +58,7 @@ class JSGString(str, JSGPatterned):
     """
     A lexerRuleSpec implementation
     """
-    pattern = None
+    pattern = None  # type: Optional[JSGPattern]
     python_type = str
 
 

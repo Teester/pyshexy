@@ -21,8 +21,8 @@ else:
 
 
 class JSGObjectMeta(type):
-    _reference_types = []
-    _reference_names = List[str]                # Names of objects in _reference_types
+    _reference_types = []  # type: List["JSGObject"]
+    _reference_names = ...  # type: List[str]                 # Names of objects in _reference_types
 
     def __init__(cls, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -32,18 +32,16 @@ class JSGObjectMeta(type):
 class JSGObject(JsonObj, JSGValidateable, metaclass=JSGObjectMeta):
     """
     JSGObject is a JsonObj with constraints.
-
     Note that methods and variables in JSGObject should always begin with "_", as we currently restrict the set of
     JSON names to those that begin with [a-zA-Z]
     """
-    _reference_types = []        # Types that can be used as compound constructors
-    _reference_names = []                # Names of the reference types for assignment testing
-    _members = {}                  # Names of actual member elements
-    _strict = True                            # True means no additional members allowed, False means "open"
+    _reference_types = []  # type: List["JSGObject"]        # Types that can be used as compound constructors
+    _reference_names = []  # type: List[str]              # Names of the reference types for assignment testing
+    _members = {}  # type: Dict[str, type]                # Names of actual member elements
+    _strict = True  # type: bool                          # True means no additional members allowed, False means "open"
 
     def __init__(self, context: JSGContext, **kwargs):
         """ Generic constructor
-
         :param context: Context for TYPE and IGNORE variables
         :param kwargs: Initial values - object specific
         """
@@ -57,7 +55,6 @@ class JSGObject(JsonObj, JSGValidateable, metaclass=JSGObjectMeta):
     def __setattr__(self, key: str, value: Any) -> None:
         """ Attribute setter.  Any attribute that is part of the members list or not validated passes.  Otherwise
         setting is only allowed if the class level _strict mode is False
-
         :param key:
         :param value:
         :return:
@@ -120,7 +117,6 @@ class JSGObject(JsonObj, JSGValidateable, metaclass=JSGObjectMeta):
     @staticmethod
     def _test(entry, log: Logger) -> bool:
         """Test whether entry conforms to its type
-
         :param entry: entry to test
         :param log: place to record issues
         :return: True if it meets requirements
@@ -215,22 +211,24 @@ class JSGObject(JsonObj, JSGValidateable, metaclass=JSGObjectMeta):
         et = self._map_jsg_type(name, element, poss_types)
         if et is not None:
             return et
-        raise ValueError("Wrong type for {}: {} - expected: {} got {}".format(name, Logger.json_repr(element), poss_types, type(element).__name__))
-        
+        raise ValueError("Wrong type for {}: {} - expected:".format(name, Logger.json_repr(element)) +
+                         " {} got {}".format(poss_types, type(element).__name__))
+
+
 class ObjectWrapperMeta(type):
-    variable_name = str
-    context = JSGContext
-    typ = type
+    variable_name = ...  # type: str
+    context = ...  # type: JSGContext
+    typ = ...  # type: type
 
     def __instancecheck__(self, element: object) -> bool:
         return conforms(element, JSGObject, self.context.NAMESPACE)
 
 
 class ObjectWrapper(metaclass=ObjectWrapperMeta):
-    variable_name = str
-    context = JSGContext
-    typ = type
-        
+    variable_name = ...  # type: str
+    context = ...  # type: JSGContext
+    typ = ...  # type: type
+
     def __new__(cls, value):
         return cls.typ(cls.variable_name, cls.context, value)
 

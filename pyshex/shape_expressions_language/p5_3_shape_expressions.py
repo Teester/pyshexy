@@ -12,12 +12,9 @@ from pyshex.utils.trace_utils import trace_satisfies
 
 def satisfies(cntxt: Context, n: Node, se: ShExJ.shapeExpr) -> bool:
     """ `5.3 Shape Expressions <http://shex.io/shex-semantics/#node-constraint-semantics>`_
-
           satisfies: The expression satisfies(n, se, G, m) indicates that a node n and graph G satisfy a shape
                       expression se with shapeMap m.
-
            satisfies(n, se, G, m) is true if and only if:
-
             * Se is a NodeConstraint and satisfies2(n, se) as described below in Node Constraints.
                       Note that testing if a node satisfies a node constraint does not require a graph or shapeMap.
             * Se is a Shape and satisfies(n, se) as defined below in Shapes and Triple Expressions.
@@ -29,7 +26,6 @@ def satisfies(cntxt: Context, n: Node, se: ShExJ.shapeExpr) -> bool:
             indicate success.
             * Se is a shapeExprRef and there exists in the schema a shape expression se2 with that id and
                       satisfies(n, se2, G, m).
-
           .. note:: Where is the documentation on recursion?  All I can find is
            `5.9.4 Recursion Example <http://shex.io/shex-semantics/#example-recursion>`_
           """

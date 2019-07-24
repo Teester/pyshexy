@@ -9,14 +9,13 @@ from pyshexc.parser_impl import generate_shexj
 
 repl_list = [
     (r'"([0-9]+)"\^\^<http://www.w3.org/2001/XMLSchema#integer>\n?', r'\1')
-]
+]  # type: List[Tuple[str, str]]
 
 
 class ShExC:
     """ Convert ShExJ into ShExC """
     def __init__(self, schema: Union[ShExJ.Schema, str], base: Optional[str]=None) -> None:
         """ Construct a converter
-
         :param schema: schema string or instance to parse
         """
         self.base = base
@@ -27,7 +26,6 @@ class ShExC:
 
     def __str__(self) -> str:
         """ Return the stringified ShExC representation of the schema
-
         :return: A partially formatted representation
         """
         schema = self.tokenize()
@@ -44,18 +42,17 @@ class ShExC:
         rval = reduce(lambda r, p: re.sub(p[0], p[1], r), repl_list, rval)
         rval = rval.replace(self.base, '') if self.base is not None else rval
         if self.base is not None:
-            rval = "BASE <{}>\n\n{}".format(self.base, rval)
+            rval = 'BASE <{}>\n\n'.format(self.base) + rval
         return rval
 
     def __repr__(self) -> str:
         """  Return a compact representation of the ShExC
-
         :return: space separated declaration
         """
         return ' '.join(e for e in self.tokenize() if e)
 
     def tokenize(self) -> List[str]:
-        schema = []
+        schema = []  # type: List[str]
 
         schema += self.imports(self.schema.imports)
         schema += self.semActs(self.schema.startActs)
@@ -75,9 +72,9 @@ class ShExC:
         rval = []
         if semActs is not None:
             for act in semActs:
-                rval.append("%{}}}".format(self.iriref(act.name)))
+                rval.append("%{}".format(self.iriref(act.name)))
                 act_code = self._escape_embedded_code(act.code).replace('%', '\\%') if act.code else None
-                rval.append(("{{{}%}}".format(act_code)) if act_code is not None else "%")
+                rval.append("{{{}%}}".format(act_code) if act_code is not None else '%')
         return rval
 
     def start(self, start: Optional[ShExJ.shapeExpr]) -> List[str]:
@@ -315,7 +312,7 @@ class ShExC:
 
     @staticmethod
     def language(v: ShExJ.LANGTAG) -> str:
-        return '@{}'.format(str(v))
+        return '@' + str(v)
 
     def languageStem(self, v: ShExJ.LanguageStem) -> str:
         return self.language(v.stem) + '~'
@@ -330,7 +327,7 @@ class ShExC:
 
     def shapeExprRef(self, shapeExprRef: ShExJ.shapeExprLabel) -> str:
         # TODO: this is an issue in the JSG - the type should be shapeExprRef
-        return '@{}'.format(self.exprLabel(shapeExprRef))
+        return '@' + self.exprLabel(shapeExprRef)
 
     def tripleExprLabel(self, tripleExprLabel: ShExJ.tripleExprLabel) -> str:
         return self.exprLabel(tripleExprLabel)
@@ -351,7 +348,7 @@ class ShExC:
 
     @staticmethod
     def iriref(v: ShExJ.IRIREF) -> str:
-        return "<\{}>".format(v)
+        return "<{}>".format(v)
 
     @staticmethod
     def _escape_embedded_code(s: str) -> str:

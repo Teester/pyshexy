@@ -16,7 +16,6 @@ UNKNOWN_TYPE_EXCEPTION = "Type '{}' is undefined"
 
 def loads_loader(load_module: types.ModuleType, pairs: Dict[str, str]) -> Optional[JSGValidateable]:
     """json loader objecthook
-
     :param load_module: Module that contains the various types
     :param pairs: key/value tuples (In our case, they are str/str)
     :return:
@@ -56,7 +55,6 @@ def loads_loader(load_module: types.ModuleType, pairs: Dict[str, str]) -> Option
 
 def loads(s: str, load_module: types.ModuleType, **kwargs):
     """ Convert a JSON string into a JSGObject
-
     :param s: string representation of JSON document
     :param load_module: module that contains declarations for types
     :param kwargs: arguments see: json.load for details
@@ -67,7 +65,6 @@ def loads(s: str, load_module: types.ModuleType, **kwargs):
 
 def load(fp: Union[TextIO, str], load_module: types.ModuleType, **kwargs):
     """ Convert a file name or file-like object containing stringified JSON into a JSGObject
-
     :param fp: file-like object to deserialize
     :param load_module: module that contains declarations for types
     :param kwargs: arguments see: json.load for details
@@ -80,19 +77,18 @@ def load(fp: Union[TextIO, str], load_module: types.ModuleType, **kwargs):
         return loads(fp.read(), load_module, **kwargs)
 
 
-def isinstance_(x, A_tuple):
+def isinstance_(x, a_tuple):
     """ native isinstance_ with the test for typing.Union overridden """
-    if is_union(A_tuple):
-        return any(isinstance_(x, t) for t in A_tuple.__args__)
-    elif getattr(A_tuple, '__origin__', None) is not None:
-        return isinstance(x, A_tuple.__origin__)
+    if is_union(a_tuple):
+        return any(isinstance_(x, t) for t in a_tuple.__args__)
+    elif getattr(a_tuple, '__origin__', None) is not None:
+        return isinstance(x, a_tuple.__origin__)
     else:
-        return isinstance(x, A_tuple)
+        return isinstance(x, a_tuple)
 
 
 def is_valid(obj: JSGValidateable, log: Optional[Union[TextIO, Logger]] = None) -> bool:
     """ Determine whether obj is valid
-
     :param obj: Object to validate
     :param log: Logger to record validation failures.  If absent, no information is recorded
     """

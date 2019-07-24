@@ -11,12 +11,13 @@ SUBJ = Union[URIRef, BNode]
 PRED = URIRef
 OBJ = Node
 
-#class RDFTriple(NamedTuple):
+# class RDFTriple(NamedTuple):
 #    s = None
 #    p = None
 #    o = None
 RDFTriple = NamedTuple("RDFTriple", [("s", SUBJ), ("p", PRED), ("o", OBJ)])
 RDFTriple.__new__.__defaults__ = (None,) * len(RDFTriple._fields)
+
 
 class CFGraph(Graph):
     """ Collection Flattening Graph
@@ -30,8 +31,8 @@ class CFGraph(Graph):
 
     def triples(self,
                 pattern: Optional[Union[QueryTriple, SUBJ]],
-                pred: Optional[PRED]='',
-                obj: Optional[OBJ]='') -> Generator[RDFTriple, None, None]:
+                pred: Optional[PRED] = '',
+                obj: Optional[OBJ] = '') -> Generator[RDFTriple, None, None]:
 
         # Allow a tuple or a list of three items
         if pattern is None or pred != '' or obj != '':
@@ -45,7 +46,7 @@ class CFGraph(Graph):
                             if isinstance(o, BNode):
                                 if self.value(o, RDF.first, None):
                                     for e in Collection(self, o):
-                                        yield(s, p, e)
+                                        yield (s, p, e)
                                 else:
                                     yield (s, p, o)
                             else:
@@ -60,7 +61,7 @@ class CFGraph(Graph):
             for t in super().triples(pattern):
                 yield t
 
-    def subjects(self, predicate: Optional[PRED]=None, object: Optional[OBJ]=None):
+    def subjects(self, predicate: Optional[PRED] = None, object: Optional[OBJ] = None):
         for s, p in self.subject_predicates(object):
             if predicate is None or p == predicate:
                 yield s

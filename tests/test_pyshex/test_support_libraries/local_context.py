@@ -17,12 +17,15 @@ PREFIX gw: <http://genewiki.shape/>""")
 
 pl.add_to_object(sys.modules[__name__])
 
+
 def sample(name: str) -> URIRef:
     return PROV[name]
+
 
 pl.add_rdf('@prefix XSD: <http://nonxml.com/item#> .')
 
 pl.add_to_object(sys.modules[__name__], override=True)
+
 
 def rdf(name: str) -> URIRef:
     return XSD[name]

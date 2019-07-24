@@ -9,7 +9,7 @@ from pyshex.shapemap_structure_and_language.p1_notation_and_terminology import T
 
 class N3Mapper:
     def __init__(self, nsm: Union[Graph, NamespaceManager] = None) -> None:
-        self._bnode_map = {}
+        self._bnode_map = {}  # type: Dict[BNode, str]
         self.namespace_manager = NamespaceManager(Graph()) if nsm is None \
             else nsm.namespace_manager if isinstance(nsm, Graph) else nsm
         self._cur_bnode_number = 0
@@ -17,7 +17,7 @@ class N3Mapper:
     @property
     def _next_bnode(self) -> str:
         self._cur_bnode_number += 1
-        return "_:b{}".format(self._cur_bnode_number)
+        return '_:b{}'.format(self._cur_bnode_number)
 
     def n3(self, node: Union[URIRef, BNode, Literal, Triple, str]) -> str:
         if isinstance_(node, Triple):
@@ -30,5 +30,3 @@ class N3Mapper:
             if not isinstance(node, (URIRef, Literal)):
                 node = URIRef(str(node))
             return node.n3(self.namespace_manager)
-
-

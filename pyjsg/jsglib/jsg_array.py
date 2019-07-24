@@ -1,4 +1,3 @@
-import sys
 from typing import Optional, List, Tuple
 
 from pyjsg.jsglib.jsg_context import JSGContext
@@ -11,7 +10,6 @@ class JSGArray(list, JSGValidateable):
     def __init__(self, variable_name: str, context: JSGContext, typ, min_: int, max_: Optional[int],
                  value: Optional[list]) -> None:
         """ Construct an array holder
-
         :param variable_name: Name assigned to the variable.  Used for error reporting
         :param context: Supporting context
         :param typ: array type
@@ -22,8 +20,8 @@ class JSGArray(list, JSGValidateable):
         self._variable_name = variable_name
         self._context = context
         self._type = typ
-        self._min = min_
-        self._max = max_
+        self._min = min_  # type: int
+        self._max = max_  # type: Optional[int]
         if value is not None:
             isvalid, errors = self._validate(value)
             if not isvalid:
@@ -36,7 +34,6 @@ class JSGArray(list, JSGValidateable):
 
     def _validate(self, val: list, log: Optional[Logger] = None) -> Tuple[bool, List[str]]:
         """ Determine whether val is a valid instance of this array
-
         :returns: Success indicator and error list """
         errors = []
         if not isinstance(val, list):
@@ -48,10 +45,12 @@ class JSGArray(list, JSGValidateable):
                     errors.append("{} element {}: {} is not a {}".format(self._variable_name, i, v, self._type.__name__))
 
             if len(val) < self._min:
-                errors.append("{}: at least {} value{} required - element has {}".format(self._variable_name, self._min, 's' if self._min > 1 else '', len(val) if len(val) else 'none'))
-
+                errors.append(
+                    "{}: at least {} value{} required - ".format(self._variable_name, self._min, 's' if self._min > 1 else '') +
+                    "element has {}".format(len(val) if len(val) else 'none'))
             if self._max is not None and len(val) > self._max:
-                errors.append("{}: no more than {} values permitted - element has {}".format(self._variable_name, self._max, len(val)))
+                errors.append(
+                    "{}: no more than {} values permitted - element has {}".format(self._variable_name, self._max, len(val)))
 
         if log:
             for error in errors:
@@ -60,11 +59,11 @@ class JSGArray(list, JSGValidateable):
 
 
 class ArrayWrapperMeta(type):
-    variable_name = str
-    context = JSGContext
-    typ = type
-    min = int
-    max = Optional[int]
+    variable_name = ...  # type: str
+    context = ...  # type: JSGContext
+    typ = ...  # type: type
+    min = ...  # type: int
+    max = ...  # type: Optional[int]
 
     def __instancecheck__(self, instance: list) -> bool:
         if not isinstance(instance, list):
@@ -76,11 +75,11 @@ class ArrayWrapperMeta(type):
 
 
 class ArrayWrapper(metaclass=ArrayWrapperMeta):
-    variable_name = str
-    context = JSGContext
-    typ = type
-    min = int
-    max = Optional[int]
+    variable_name = ...  # type: str
+    context = ...  # type: JSGContext
+    typ = ...  # type: type
+    min = ...  # type: int
+    max = ...  # type: Optional[int]
 
     def __new__(cls, value):
         return JSGArray(cls.variable_name, cls.context, cls.typ, cls.min, cls.max, value)

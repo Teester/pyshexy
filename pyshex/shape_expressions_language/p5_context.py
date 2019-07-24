@@ -1,9 +1,6 @@
-
 """
 Context for evaluation engine -- carries all of the global variables (schema, graph, etc.)
-
 We might fold the various routines inside context and replace "cntxt: Context" with "self", but we will have to see.
-
 """
 from collections import defaultdict
 from copy import copy
@@ -26,8 +23,8 @@ class DebugContext:
         self.debug = False
         self.trace_slurps = False
         self.trace_depth = 0
-        self.held_prints = defaultdict(str)
-        self.max_print_depth = 0
+        self.held_prints = defaultdict(str)  # type: Dict[int, str]
+        self.max_print_depth = 0  # type: int
 
     def d(self) -> str:
         """ Return a depth indicator """
@@ -57,7 +54,6 @@ class DebugContext:
 
     def print(self, txt: str, hold: bool=False) -> None:
         """ Conditionally print txt
-
         :param txt: text to print
         :param hold: If true, hang on to the text until another print comes through
         :param hold: If true, drop both print statements if another hasn't intervened
@@ -133,19 +129,18 @@ class Context:
         """
         Create a context consisting of an RDF Graph and a ShEx Schema and generate a identifier to
         item map.
-
         :param g: RDF graph
         :param s: ShExJ Schema instance
         :param external_shape_resolver: External resolution function
         :param base_namespace:
         """
-        self.is_valid = True
-        self.error_list = []
-        self.graph = g
+        self.is_valid = True  # type: bool
+        self.error_list = []  # type: List[str]
+        self.graph = g  # type: Graph
         self.n3_mapper = N3Mapper(g)
-        self.schema = s
-        self.schema_id_map = {}
-        self.te_id_map = {}
+        self.schema = s  # type: ShExJ.Schema
+        self.schema_id_map = {}  # type: Dict[ShExJ.shapeExprLabel, ShExJ.shapeExpr]
+        self.te_id_map = {}  # type: Dict[ShExJ.tripleExprLabel, ShExJ.tripleExpr]
         self.external_shape_for = external_shape_resolver if external_shape_resolver \
             else default_external_shape_resolver
         self.base_namespace = base_namespace if isinstance(base_namespace, Namespace) \
@@ -159,11 +154,11 @@ class Context:
         # A list of node selectors/shape expressions that are being evaluated.  If we attempt to evaluate
         # an entry for a second time, we, instead, put the entry into the assumptions table.  We start with 'true'
         # and, if the result is 'true' then we count it as success.  If not, we switch to false and try again
-        self.evaluating = set()
-        self.assumptions = {}
+        self.evaluating = set()  # type: Set[Tuple[Node, ShExJ.shapeExprLabel]]
+        self.assumptions = {}  # type: Dict[Tuple[Node, ShExJ.shapeExprLabel], bool]
 
         # Known results -- a cache of existing evaluation results
-        self.known_results = {}
+        self.known_results = {}  # type: Dict[Tuple[Node, ShExJ.shapeExprLabel], bool]
 
         # Debugging options
         self.debug_context = DebugContext()
@@ -193,9 +188,9 @@ class Context:
             for e in self.schema.shapes:
                 self._gen_schema_xref(e)
 
-        self.current_node = None
-        self.evaluate_stack = []  # Node / shape evaluation stacks
-        self.bnode_map = {}       # Map for prettifying bnodes
+        self.current_node = None  # type: ParseNode
+        self.evaluate_stack = []  # type: List[Tuple[Union[BNode, URIRef], Optional[str]]] # Node / shape evaluation stacks
+        self.bnode_map = {}  # type: Dict[BNode, str]     # Map for prettifying bnodes
 
     def reset(self) -> None:
         """
@@ -211,21 +206,20 @@ class Context:
     def _gen_schema_xref(self, expr: Optional[Union[ShExJ.shapeExprLabel, ShExJ.shapeExpr]]) -> None:
         """
         Generate the schema_id_map
-
         :param expr: root shape expression
         """
         if expr is not None and not isinstance_(expr, ShExJ.shapeExprLabel) and 'id' in expr and expr.id is not None:
             abs_id = self._resolve_relative_uri(expr.id)
             if abs_id not in self.schema_id_map:
                 self.schema_id_map[abs_id] = expr
-                if isinstance(expr, (ShExJ.ShapeOr, ShExJ.ShapeAnd)):
-                    for expr2 in expr.shapeExprs:
-                        self._gen_schema_xref(expr2)
-                elif isinstance(expr, ShExJ.ShapeNot):
-                    self._gen_schema_xref(expr.shapeExpr)
-                elif isinstance(expr, ShExJ.Shape):
-                    if expr.expression is not None:
-                        self._gen_te_xref(expr.expression)
+        if isinstance(expr, (ShExJ.ShapeOr, ShExJ.ShapeAnd)):
+            for expr2 in expr.shapeExprs:
+                self._gen_schema_xref(expr2)
+        elif isinstance(expr, ShExJ.ShapeNot):
+            self._gen_schema_xref(expr.shapeExpr)
+        elif isinstance(expr, ShExJ.Shape):
+            if expr.expression is not None:
+                self._gen_te_xref(expr.expression)
 
     def _resolve_relative_uri(self, ref: Union[URIRef, BNode, ShExJ.shapeExprLabel]) -> ShExJ.shapeExprLabel:
         return ShExJ.IRIREF(str(self.base_namespace[str(ref)])) if ':' not in str(ref) and self.base_namespace else ref
@@ -233,9 +227,7 @@ class Context:
     def _gen_te_xref(self, expr: Union[ShExJ.tripleExpr, ShExJ.tripleExprLabel]) -> None:
         """
         Generate the triple expression map (te_id_map)
-
         :param expr: root triple expression
-
         """
         if expr is not None and not isinstance_(expr, ShExJ.tripleExprLabel) and 'id' in expr and expr.id is not None:
             if expr.id in self.te_id_map:
@@ -262,7 +254,6 @@ class Context:
                      visit_center: _VisitorCenter = None, follow_inner_shapes: bool=True) -> None:
         """
         Visit expr and all of its "descendant" shapes.
-
         :param expr: root shape expression
         :param f: visitor function
         :param arg_cntxt: accompanying context for the visitor function
@@ -346,7 +337,6 @@ class Context:
         """
         Visit a shape expression that was reached through a triple expression.  This, in turn, is used to visit
         additional triple expressions that are referenced by the Shape
-
         :param shape: Shape reached through triple expression traverse
         :param visit_center: context used in shape visitor
         """
@@ -357,7 +347,6 @@ class Context:
         """Indicate that we are beginning to evaluate n according to shape expression s.
         If we are already in the process of evaluating (n,s), as indicated self.evaluating, we return our current
         guess as to the result.
-
         :param n: Node to be evaluated
         :param s: expression for node evaluation
         :return: Assumed evaluation result.  If None, evaluation must be performed
@@ -381,7 +370,6 @@ class Context:
         """
         Indicate that we have completed an actual evaluation of (n,s).  This is only called when start_evaluating
         has returned None as the assumed result
-
         :param n: Node that was evaluated
         :param s: expression for node evaluation
         :param result: result of evaluation
@@ -418,7 +406,7 @@ class Context:
         if self.current_node._fail_reason is None:
             self.current_node._fail_reason = reason_text
         else:
-            self.current_node._fail_reason += '\n{}'.format(reason_text)
+            self.current_node._fail_reason += '\n' + reason_text
         self.current_node.reason_stack = copy(self.evaluate_stack)
 
     def dump_bnode(self, n: Union[URIRef, BNode, Literal]) -> None:

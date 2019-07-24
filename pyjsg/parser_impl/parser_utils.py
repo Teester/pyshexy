@@ -7,13 +7,12 @@ from typing import List, Set
 from pyjsg.parser.jsgParser import ParserRuleContext
 
 
-def t(n: int=1) -> str:
+def t(n: int = 1) -> str:
     return '    ' * n
 
 
 def flatten(l: Iterable) -> List:
     """Return a list of all non-list items in l
-
     :param l: list to be flattened
     :return:
     """
@@ -41,7 +40,6 @@ def flatten_unique(l: Iterable) -> List:
 
 def as_set(l: Iterable) -> Set:
     """ Return the set of all terminals in list l
-
     :param l:
     """
     return set(flatten(l))
@@ -57,7 +55,6 @@ def get_terminal(ctx: ParserRuleContext) -> str:
         * LEXER_ID - The name of a match pattern definition
         * LEXER_ID_REF - A reference to an existing match pattern definition
         * STRING -- A JSG item name enclosed in quotes
-
         :param ctx: JSG parser item with some sort of identifier
         :return:
         """
@@ -68,6 +65,7 @@ def get_terminal(ctx: ParserRuleContext) -> str:
             tkn = ele().getText()[1:-1] if ele_name == 'STRING' else ele().getText()
     return str(tkn)
 
+
 def as_token(ctx: ParserRuleContext) -> str:
     """ Extract the token for an identifier from the context. Tokens can be:
     * ID - The name of a JSG definition
@@ -75,7 +73,6 @@ def as_token(ctx: ParserRuleContext) -> str:
     * LEXER_ID - The name of a match pattern definition
     * LEXER_ID_REF - A reference to an existing match pattern definition
     * STRING -- A JSG item name enclosed in quotes
-
     :param ctx: JSG parser item with some sort of identifier
     :return:
     """
@@ -84,7 +81,6 @@ def as_token(ctx: ParserRuleContext) -> str:
 
 def as_tokens(ctx: List[ParserRuleContext]) -> List[str]:
     """Return a stringified list of identifiers in ctx
-
     :param ctx: JSG parser item with a set of identifiers
     :return:
     """
@@ -93,7 +89,6 @@ def as_tokens(ctx: List[ParserRuleContext]) -> List[str]:
 
 def is_valid_python(tkn: str) -> bool:
     """Determine whether tkn is a valid python identifier
-
     :param tkn:
     :return:
     """
@@ -106,7 +101,6 @@ def is_valid_python(tkn: str) -> bool:
 
 def esc_kw(token: str) -> str:
     """ Escape python keywords
-
     :param token: token
     :return: token with '_' suffixed if it is a keyword
     """

@@ -45,7 +45,7 @@ class WikiDataTestCase(unittest.TestCase):
 
     def fetch_uri(self, uri: str) -> str:
         req = requests.get(uri)
-        self.assertTrue(req.ok, "Unable to read %s" % (uri))
+        self.assertTrue(req.ok, "Unable to read %s" % uri)
         return req.text
 
     def run_test(self, manifest_uri: str, num_entries: Optional[int]=None, verbose: bool=True, debug: bool=False,
@@ -78,13 +78,13 @@ class WikiDataTestCase(unittest.TestCase):
                 slurper = SlurpyGraph(sparql_endpoint)
                 # slurper.debug_slurps = debug_slurps
                 prefixes.add_bindings(slurper)
-                print("Evaluating: %s" % (df))
+                print("Evaluating: %s" % df)
                 results = evaluator.evaluate(rdf=slurper, focus=df, debug=debug, debug_slurps=debug_slurps, over_slurp=False)
                 rval += results
                 if save_graph_dir:
                     element_name = df.rsplit('/', 1)[1]
                     file_name = os.path.join(save_graph_dir, element_name + '.ttl')
-                    print("Writing: %s" % (file_name))
+                    print("Writing: %s" % file_name)
                     slurper.serialize(file_name, format="turtle")
                 if stop_on_fail and not all(r.result for r in results):
                     break

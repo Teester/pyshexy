@@ -224,7 +224,7 @@ class ValueTypeTestCase(unittest.TestCase):
             elif isinstance(opts_, _Anon1_3_):
                 pass
             else:
-                raise ValueError("Unrecognized value type: {opts_}")""",
+                raise ValueError("Unrecognized value type: {}".format(_opts))""",
                          t.as_python('stringFacet').strip())
         self.assertEqual(['_Anon1_1_', '_Anon1_2_', '_Anon1_3_'], t.dependency_list())
 

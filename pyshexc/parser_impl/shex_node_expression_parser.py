@@ -80,14 +80,14 @@ class ShexNodeExpressionParser(ShExDocVisitor):
 
     def _iri_exclusions(self, exclusions: List[ShExDocParser.IriExclusionContext]) \
             -> List[Union[IriStem, IRIREF]]:
-        rval = []
+        rval = []  # type: List[Union[IriStem, IRIREF]]
         for excl in exclusions:
             excl_iri = self.context.iri_to_iriref(excl.iri())
             rval.append(IriStem(excl_iri) if excl.STEM_MARK() else excl_iri)
         return rval
 
     def visitLiteralRange(self, ctx: ShExDocParser.LiteralRangeContext):
-        """ ShExC: literalRange: literal (STEM_MARK literalExclusion*)? 
+        """ ShExC: literalRange: literal (STEM_MARK literalExclusion*)?
             ShExJ: valueSetValue: objectValue | LiteralStem | LiteralStemRange
                    literalStem: {stem:STRING}
                    literalStemRange: {stem:STRING exclusions:[STRING|LiteralStem+]?
@@ -109,7 +109,7 @@ class ShexNodeExpressionParser(ShExDocVisitor):
             ShExJ: exclusions: [STRING|LiteralStem +]
                    literalStem: {stem:STRING}
         """
-        rval = []
+        rval = []  # type: List[Union[ObjectLiteral, LiteralStem]]
         for excl in exclusions:
             excl_literal_v = self.context.literal_to_ObjectLiteral(excl.literal()).value
             rval.append(LiteralStem(excl_literal_v) if excl.STEM_MARK() else excl_literal_v)
@@ -145,7 +145,7 @@ class ShexNodeExpressionParser(ShExDocVisitor):
     def _language_exclusions(exclusions: List[ShExDocParser.LanguageExclusionContext]) \
             -> List[Union[LANGTAG, LanguageStem]]:
         """ languageExclusion = '-' LANGTAG STEM_MARK?"""
-        rval = []
+        rval = []  # type: List[Union[LANGTAG, LanguageStem]]
         for excl in exclusions:
             excl_langtag = LANGTAG(excl.LANGTAG().getText()[1:])
             rval.append(LanguageStem(excl_langtag) if excl.STEM_MARK() else excl_langtag)
@@ -170,7 +170,7 @@ class ShexNodeExpressionParser(ShExDocVisitor):
 
     def visitNumericFacet(self, ctx: ShExDocParser.NumericFacetContext):
         """ numericFacet: numericRange rawNumeric | numericLength INTEGER
-            numericRange: KW_MINEXCLUSIVE | KW_MININCLUSIVE | KW_MAXEXCLUSIVE | KW_MAXINCLUSIVE 
+            numericRange: KW_MINEXCLUSIVE | KW_MININCLUSIVE | KW_MAXEXCLUSIVE | KW_MAXINCLUSIVE
             numericLength: KW_TOTALDIGITS | KW_FRACTIONDIGITS """
         if ctx.numericRange():
             numlit = self.context.numeric_literal_to_type(ctx.rawNumeric())

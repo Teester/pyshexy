@@ -15,7 +15,7 @@ rdf_1 = """%s
 :issue1 ex:state ex:HunkyDory .
 :issue2 ex:taste ex:GoodEnough .
 :issue3 ex:state "just fine" .
-""" % (rdf_header)
+""" % rdf_header
 
 
 class NodeKindConstraintTest(unittest.TestCase):

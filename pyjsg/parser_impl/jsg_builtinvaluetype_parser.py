@@ -1,4 +1,4 @@
-#from dataclasses import dataclass
+# from dataclasses import dataclass
 from typing import Optional, Tuple, Dict, List
 
 from pyjsg.parser.jsgParser import *
@@ -7,21 +7,28 @@ from pyjsg.parser_impl.jsg_doc_context import JSGDocContext, PythonGeneratorElem
 
         
 class JSGBuiltinValueType(jsgParserVisitor, PythonGeneratorElement):
-    #@dataclass
+    # @dataclass
     class TypeInfo:
-        def __init__(self, sig_type, ref_type, py_type, mt_value):
+        def __init__(self, sig_type: str, ref_type: str, py_type: type, mt_value: str):
             self.sig_type = sig_type
             self.ref_type = ref_type
             self.py_type = py_type
             self.mt_value = mt_value
             
         def __repr__(self):
-            return ("{}(sig_type={}!r, ref_type={}!r, py_type={}!r, mt_value={}!r)".format(self.__class__.__name__, sig_type, ref_type, py_type, mt_value))
+            return "{}(sig_type={}!r, ref_type={}!r, py_type={}!r, mt_value={}!r)".format(self.__class__.__name__,
+                                                                                          self.sig_type,
+                                                                                          self.ref_type,
+                                                                                          self.py_type,
+                                                                                          self.mt_value)
 
         def __eq__(self, other):
             if other.__class__ is not self.__class__:
                 return NotImplemented
-            return (self.sig_type, self.ref_type, self.py_type, self.mt_value) == (other.sig_type, other.ref_type, other.py_type, other.mt_value)
+            return (self.sig_type, self.ref_type, self.py_type, self.mt_value) == (other.sig_type,
+                                                                                   other.ref_type,
+                                                                                   other.py_type,
+                                                                                   other.mt_value)
 
     parserTypeToImplClass = \
         {"@string": TypeInfo("jsg.String", "jsg.String", str, "None"),
@@ -35,8 +42,8 @@ class JSGBuiltinValueType(jsgParserVisitor, PythonGeneratorElement):
 
     def __init__(self, context: JSGDocContext, ctx: Optional[jsgParser.BuiltinValueTypeContext] = None):
         self._context = context
-        self._value_type_text = None
-        self._typeinfo = None
+        self._value_type_text = None  # type: Optional[str]
+        self._typeinfo = None  # type: JSGBuiltinValueType.TypeInfo
         self.text = ""
         if ctx:
             self.text = ctx.getText()

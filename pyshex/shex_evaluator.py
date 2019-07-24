@@ -17,12 +17,15 @@ from pyshex.utils.schema_loader import SchemaLoader
 from pyshex.utils.sparql_query import SPARQLQuery
 
 
-#class EvaluationResult(NamedTuple):
+# class EvaluationResult(NamedTuple):
 #    result: bool
 #    focus: Optional[URIRef]
 #    start: Optional[URIRef]
 #    reason: Optional[str]
-EvaluationResult = NamedTuple("EvaluationResult", [("result", bool), ("focus", Optional[URIRef]), ("start", Optional[URIRef]), ("reason", Optional[str])])
+EvaluationResult = NamedTuple("EvaluationResult", [("result", bool),
+                                                   ("focus", Optional[URIRef]),
+                                                   ("start", Optional[URIRef]),
+                                                   ("reason", Optional[str])])
 
 # Handy types
 URI = Union[str, URIRef]        # URI as an argument
@@ -68,7 +71,6 @@ class ShExEvaluator:
                  over_slurp: bool = None,
                  output_sink: Optional[Callable[[EvaluationResult], bool]] = None) -> None:
         """ Evaluator constructor.  All of the parameters below can be set in the constructor or at runtime
-
         :param rdf: RDF string, file name, URL or Graph for evaluation.
         :param schema: ShEx Schema to evaluate. Can be ShExC, ShExJ or a pre-parsed schema
         :param focus: focus node(s).  If absent, all non-BNode subjects in the graph are evaluated
@@ -79,7 +81,7 @@ class ShExEvaluator:
         :param over_slurp: Controls whether SPARQL slurper does exact or over slurps
         :param output_sink: Function for accepting evaluation results and returns whether to keep evaluating
         """
-        self.pfx = None
+        self.pfx = None  # type: PrefixLibrary
         self.rdf_format = rdf_format
         self.g = None
         self.rdf = rdf
@@ -98,7 +100,6 @@ class ShExEvaluator:
     @property
     def rdf(self) -> str:
         """
-
         :return: The rendering of whatever RDF is currently being evaluated
         """
         return self.g.serialize(format=self.rdf_format).decode()
@@ -107,7 +108,6 @@ class ShExEvaluator:
     def rdf(self, rdf: Optional[Union[str, Graph]]) -> None:
         """ Set the RDF DataSet to be evaulated.  If ``rdf`` is a string, the presence of a return is the
         indicator that it is text instead of a location.
-
         :param rdf: File name, URL, representation of rdflib Graph
         """
         if isinstance(rdf, Graph):
@@ -125,7 +125,6 @@ class ShExEvaluator:
     @property
     def schema(self) -> Optional[str]:
         """
-
         :return: The ShExC representation of the schema if one is supplied
         """
         return str(ShExC(self._schema)) if self._schema else None
@@ -133,7 +132,6 @@ class ShExEvaluator:
     @schema.setter
     def schema(self, shex: Optional[Union[str, ShExJ.Schema]]) -> None:
         """ Set the schema to be used.  Schema can either be a ShExC or ShExJ string or a pre-parsed schema.
-
         :param shex:  Schema
         """
         self.pfx = None
@@ -161,7 +159,6 @@ class ShExEvaluator:
     @property
     def foci(self) -> List[URIRef]:
         """
-
         :return: The current set of focus nodes
         """
         return self._focus if self._focus else sorted([s for s in set(self.g.subjects()) if isinstance(s, URIRef)])
@@ -170,7 +167,6 @@ class ShExEvaluator:
     def focus(self, focus: Optional[URIPARM]) -> None:
         """ Set the focus node(s).  If no focus node is specified, the evaluation will occur for all non-BNode
         graph subjects.  Otherwise it can be a string, a URIRef or a list of string/URIRef combinations
-
         :param focus: None if focus should be all URIRefs in the graph otherwise a URI or list of URI's
         """
         self._focus = normalize_uriparm(focus) if focus else None
@@ -178,7 +174,6 @@ class ShExEvaluator:
     @property
     def start(self) -> STARTPARM:
         """
-
         :return: The schema start node(s)
         """
         return self._start
@@ -233,7 +228,7 @@ class ShExEvaluator:
 
         for focus in evaluator.foci:
             self.nnodes += 1
-            start_list = []
+            start_list = []  # type: List[Union[URIRef, START]]
             for start in evaluator.start:
                 if start is START:
                     start_list.append(evaluator._schema.start)

@@ -16,7 +16,7 @@ start = @<A>
 data = """PREFIX : <%s>
 
 :d :p1 "final" .
-""" % (EX)
+""" % EX
 
 
 class ShexjsIssue17TestCase(unittest.TestCase):

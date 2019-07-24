@@ -14,10 +14,10 @@ class JSGPairDef(jsgParserVisitor, PythonGeneratorElement):
         self._context = context
 
         # PairDef can be one of "name: valueType [ebnsuffix]", "(name [|] name ...): valueType [ebnsuffix]" or type_ref
-        self._typ = None       # If absent, then _type reference
-        self._names = OrderedDict()    # List of names associated with _typ
+        self._typ = None  # type: Optional[JSGValueType]     # If absent, then _type reference
+        self._names = OrderedDict()  # type: Dict[str, str]    # List of names associated with _typ
 
-        self._type_reference = None     # Reference to external type
+        self._type_reference = None  # type: Optional[str]    # Reference to external type
 
         self._ebnf = JSGEbnf(context)                  # Cardinality of either branch
         self.text = ""
@@ -43,12 +43,11 @@ class JSGPairDef(jsgParserVisitor, PythonGeneratorElement):
     def members_entries(self, all_are_optional: Optional[bool] = False) -> List[Tuple[str, str]]:
         """ Generate a list quoted raw name, signature type entries for this pairdef, recursively traversing
         reference types
-
         :param all_are_optional: If true, all types are forced optional
         :return: raw name/ signature type for all elements in this pair
         """
         if self._type_reference:
-            rval = []
+            rval = []  # type: List[Tuple[str, str]]
             for n, t in self._context.reference(self._type_reference).members_entries(all_are_optional):
                 rval.append((n, self._ebnf.signature_cardinality(t, all_are_optional).format(name=n)))
             return rval
@@ -78,28 +77,24 @@ class JSGPairDef(jsgParserVisitor, PythonGeneratorElement):
         """ Return the __init__ signature element(s) (var: type = default value).  Note that signatures are not
         generated for non-python names, although we do take the liberty of suffixing a '_' for reserved words
         (e.g. class: @int  generates "class_: int = None"
-
         :param all_are_optional: If True, all items are considered to be optional
-
         :return: List of signatures
         """
         if self._type_reference:
             # This assumes that references are to things that have signatures
             ref = self._context.reference(self._type_reference)
             if not getattr(ref, 'signatures', None):
-                raise NotImplementedError("Reference to {} is not valid".format(self._type_reference))
+                raise NotImplementedError("Reference to " + self._type_reference + " is not valid")
             return self._context.reference(self._type_reference).signatures(all_are_optional)
         else:
-            return ["{}: {} = {}".format(self._names[rn], self.python_type(), self._ebnf.mt_value(self._typ)) for rn, cn in self._names.items() if is_valid_python(cn)]
+            return ["{}: {} = ".format(self._names[rn], self.python_type()) +
+                    "{}".format(self._ebnf.mt_value(self._typ)) for rn, cn in self._names.items() if is_valid_python(cn)]
 
     def _initializer_for(self, raw_name: str, cooked_name: str, prefix: Optional[str]) -> List[str]:
         """Create an initializer entry for the entry
-
         :param raw_name: name unadjusted for python compatibility.
         :param cooked_name: name that may or may not be python compatible
-
         :param prefix: owner of the element - used when objects passed as arguments
-
         :return: Initialization statements
         """
         mt_val = self._ebnf.mt_value(self._typ)
@@ -134,7 +129,7 @@ class JSGPairDef(jsgParserVisitor, PythonGeneratorElement):
             # TODO: Remove this check once we are certian things are good
             ref = self._context.reference(self._type_reference)
             if not getattr(ref, 'signatures', None):
-                raise NotImplementedError("Reference to {} is not valid".format(self._type_reference))
+                raise NotImplementedError("Reference to " + self._type_reference + " is not valid")
             return self._context.reference(self._type_reference).initializers(prefix)
         else:
             return flatten([self._initializer_for(rn, cn, prefix) for rn, cn in self._names.items()])
@@ -146,7 +141,7 @@ class JSGPairDef(jsgParserVisitor, PythonGeneratorElement):
     #   Visitors
     # ***************
     def visitPairDef(self, ctx: jsgParser.PairDefContext):
-        """ pairDef: name COLON valueType ebnfSuffix? 
+        """ pairDef: name COLON valueType ebnfSuffix?
                      | idref ebnfSuffix?
                      | OPREN name (BAR? name)+ CPREN COLON valueType ebnfSuffix?
         """

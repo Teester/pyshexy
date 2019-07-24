@@ -24,9 +24,9 @@ class ParserContext:
     """
     def __init__(self):
         self.schema = ShExJ.Schema()
-        self.ld_prefixes = {}       # prefixes in the JSON-LD module
-        self.prefixes = {}          # Assigned prefixes
-        self.base = None
+        self.ld_prefixes = {}  # type: Dict[PREFIXstr, IRIstr]     # prefixes in the JSON-LD module
+        self.prefixes = {}  # type: Dict[PREFIXstr, IRIstr]        # Assigned prefixes
+        self.base = None  # type: Optional[IRIstr]
 
     def _lookup_prefix(self, prefix: PREFIXstr) -> str:
         if len(prefix) == 0:
@@ -75,7 +75,7 @@ class ParserContext:
             return self.shapeexprlabel_to_IRI(ref.shapeExprLabel())
 
     def iri_to_str(self, iri_: ShExDocParser.IriContext) -> str:
-        """ iri: IRIREF | prefixedName 
+        """ iri: IRIREF | prefixedName
         """
         if iri_.IRIREF():
             return self.iriref_to_str(iri_.IRIREF())
@@ -83,8 +83,8 @@ class ParserContext:
             return self.prefixedname_to_str(iri_.prefixedName())
 
     def iri_to_iriref(self, iri_: ShExDocParser.IriContext) -> ShExJ.IRIREF:
-        """ iri: IRIREF | prefixedName 
-            prefixedName: PNAME_LN | PNAME_NS 
+        """ iri: IRIREF | prefixedName
+            prefixedName: PNAME_LN | PNAME_NS
         """
         return ShExJ.IRIREF(self.iri_to_str(iri_))
 
@@ -193,7 +193,6 @@ class ParserContext:
     def fix_re_escapes(self, txt: str) -> str:
         """ The ShEx RE engine allows escaping any character.  We have to remove that escape for everything except those
         that CAN be legitimately escaped
-
         :param txt: text to be escaped
         """
         def _subf(matchobj):

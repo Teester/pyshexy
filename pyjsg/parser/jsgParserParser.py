@@ -2,8 +2,9 @@
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
-from typing.io import TextIO
+from typing import TextIO
 import sys
+
 
 def serializedATN():
     with StringIO() as buf:
@@ -149,29 +150,28 @@ def serializedATN():
         return buf.getvalue()
 
 
-class jsgParserParser ( Parser ):
-
+class jsgParserParser(Parser):
     grammarFileName = "jsgParser.g4"
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
-    decisionsToDFA = [ DFA(ds, i) for i, ds in enumerate(atn.decisionToState) ]
+    decisionsToDFA = [DFA(ds, i) for i, ds in enumerate(atn.decisionToState)]
 
     sharedContextCache = PredictionContextCache()
 
-    literalNames = [ "<INVALID>", "'@terminals'", "'.TYPE'", "'-'", "';'", 
-                     "'.IGNORE'", "'{'", "'}'", "'->'", "'|'", "'['", "']'", 
-                     "','", "':'", "'('", "')'", "'='", "'?'", "'*'", "'+'", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "'.'" ]
+    literalNames = ["<INVALID>", "'@terminals'", "'.TYPE'", "'-'", "';'",
+                    "'.IGNORE'", "'{'", "'}'", "'->'", "'|'", "'['", "']'",
+                    "','", "':'", "'('", "')'", "'='", "'?'", "'*'", "'+'",
+                    "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                    "'.'"]
 
-    symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "LEXER_ID", "ID", "STRING", "INT", "ANY", "PASS", 
-                      "COMMENT", "LEXER_CHAR_SET" ]
+    symbolicNames = ["<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "LEXER_ID", "ID", "STRING", "INT", "ANY", "PASS",
+                     "COMMENT", "LEXER_CHAR_SET"]
 
     RULE_doc = 0
     RULE_directive = 1
@@ -202,104 +202,96 @@ class jsgParserParser ( Parser ):
     RULE_lexerAtom = 26
     RULE_terminal = 27
 
-    ruleNames =  [ "doc", "directive", "typeExceptions", "grammarElt", "objectDef", 
-                   "objectExpr", "objectExprDef", "particleOpt", "arrayDef", 
-                   "arrayExpr", "particle", "propertyOrGroup", "propertyOrGroupList", 
-                   "propertyType", "typeAlternatives", "objectAlias", "lexerAlias", 
-                   "lexerAliasDef", "ebnfSuffix", "lexerRuleSpec", "lexerRuleBlock", 
-                   "lexerAltList", "lexerAlt", "lexerElements", "lexerElement", 
-                   "lexerBlock", "lexerAtom", "terminal" ]
+    ruleNames = ["doc", "directive", "typeExceptions", "grammarElt", "objectDef",
+                 "objectExpr", "objectExprDef", "particleOpt", "arrayDef",
+                 "arrayExpr", "particle", "propertyOrGroup", "propertyOrGroupList",
+                 "propertyType", "typeAlternatives", "objectAlias", "lexerAlias",
+                 "lexerAliasDef", "ebnfSuffix", "lexerRuleSpec", "lexerRuleBlock",
+                 "lexerAltList", "lexerAlt", "lexerElements", "lexerElement",
+                 "lexerBlock", "lexerAtom", "terminal"]
 
     EOF = Token.EOF
-    T__0=1
-    T__1=2
-    T__2=3
-    T__3=4
-    T__4=5
-    T__5=6
-    T__6=7
-    T__7=8
-    T__8=9
-    T__9=10
-    T__10=11
-    T__11=12
-    T__12=13
-    T__13=14
-    T__14=15
-    T__15=16
-    T__16=17
-    T__17=18
-    T__18=19
-    LEXER_ID=20
-    ID=21
-    STRING=22
-    INT=23
-    ANY=24
-    PASS=25
-    COMMENT=26
-    LEXER_CHAR_SET=27
+    T__0 = 1
+    T__1 = 2
+    T__2 = 3
+    T__3 = 4
+    T__4 = 5
+    T__5 = 6
+    T__6 = 7
+    T__7 = 8
+    T__8 = 9
+    T__9 = 10
+    T__10 = 11
+    T__11 = 12
+    T__12 = 13
+    T__13 = 14
+    T__14 = 15
+    T__15 = 16
+    T__16 = 17
+    T__17 = 18
+    T__18 = 19
+    LEXER_ID = 20
+    ID = 21
+    STRING = 22
+    INT = 23
+    ANY = 24
+    PASS = 25
+    COMMENT = 26
+    LEXER_CHAR_SET = 27
 
-    def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
+    def __init__(self, input: TokenStream, output: TextIO = sys.stdout):
         super().__init__(input, output)
         self.checkVersion("4.7")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
 
-
-
     class DocContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def EOF(self):
             return self.getToken(jsgParserParser.EOF, 0)
 
-        def directive(self, i:int=None):
+        def directive(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(jsgParserParser.DirectiveContext)
             else:
-                return self.getTypedRuleContext(jsgParserParser.DirectiveContext,i)
+                return self.getTypedRuleContext(jsgParserParser.DirectiveContext, i)
 
-
-        def grammarElt(self, i:int=None):
+        def grammarElt(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(jsgParserParser.GrammarEltContext)
             else:
-                return self.getTypedRuleContext(jsgParserParser.GrammarEltContext,i)
+                return self.getTypedRuleContext(jsgParserParser.GrammarEltContext, i)
 
-
-        def lexerRuleSpec(self, i:int=None):
+        def lexerRuleSpec(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(jsgParserParser.LexerRuleSpecContext)
             else:
-                return self.getTypedRuleContext(jsgParserParser.LexerRuleSpecContext,i)
-
+                return self.getTypedRuleContext(jsgParserParser.LexerRuleSpecContext, i)
 
         def getRuleIndex(self):
             return jsgParserParser.RULE_doc
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitDoc" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitDoc"):
                 return visitor.visitDoc(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def doc(self):
 
         localctx = jsgParserParser.DocContext(self, self._ctx, self.state)
         self.enterRule(localctx, 0, self.RULE_doc)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 59
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==jsgParserParser.T__1 or _la==jsgParserParser.T__4:
+            while _la == jsgParserParser.T__1 or _la == jsgParserParser.T__4:
                 self.state = 56
                 self.directive()
                 self.state = 61
@@ -309,7 +301,7 @@ class jsgParserParser ( Parser ):
             self.state = 65
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==jsgParserParser.ID:
+            while _la == jsgParserParser.ID:
                 self.state = 62
                 self.grammarElt()
                 self.state = 67
@@ -321,7 +313,7 @@ class jsgParserParser ( Parser ):
             self.state = 72
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==jsgParserParser.LEXER_ID:
+            while _la == jsgParserParser.LEXER_ID:
                 self.state = 69
                 self.lexerRuleSpec()
                 self.state = 74
@@ -340,64 +332,57 @@ class jsgParserParser ( Parser ):
 
     class DirectiveContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return jsgParserParser.RULE_directive
 
-     
-        def copyFrom(self, ctx:ParserRuleContext):
+        def copyFrom(self, ctx: ParserRuleContext):
             super().copyFrom(ctx)
-
-
 
     class TypeDirectiveContext(DirectiveContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a jsgParserParser.DirectiveContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a jsgParserParser.DirectiveContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def ID(self):
             return self.getToken(jsgParserParser.ID, 0)
+
         def typeExceptions(self):
-            return self.getTypedRuleContext(jsgParserParser.TypeExceptionsContext,0)
+            return self.getTypedRuleContext(jsgParserParser.TypeExceptionsContext, 0)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTypeDirective" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTypeDirective"):
                 return visitor.visitTypeDirective(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class IgnoreDirectiveContext(DirectiveContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a jsgParserParser.DirectiveContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a jsgParserParser.DirectiveContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def ID(self, i:int=None):
+        def ID(self, i: int = None):
             if i is None:
                 return self.getTokens(jsgParserParser.ID)
             else:
                 return self.getToken(jsgParserParser.ID, i)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitIgnoreDirective" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitIgnoreDirective"):
                 return visitor.visitIgnoreDirective(self)
             else:
                 return visitor.visitChildren(self)
-
-
 
     def directive(self):
 
         localctx = jsgParserParser.DirectiveContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_directive)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 92
             self._errHandler.sync(self)
@@ -412,12 +397,11 @@ class jsgParserParser ( Parser ):
                 self.state = 81
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==jsgParserParser.T__2:
+                if _la == jsgParserParser.T__2:
                     self.state = 79
                     self.match(jsgParserParser.T__2)
                     self.state = 80
                     self.typeExceptions()
-
 
                 self.state = 83
                 self.match(jsgParserParser.T__3)
@@ -430,7 +414,7 @@ class jsgParserParser ( Parser ):
                 self.state = 88
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while _la==jsgParserParser.ID:
+                while _la == jsgParserParser.ID:
                     self.state = 85
                     self.match(jsgParserParser.ID)
                     self.state = 90
@@ -453,11 +437,11 @@ class jsgParserParser ( Parser ):
 
     class TypeExceptionsContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def ID(self, i:int=None):
+        def ID(self, i: int = None):
             if i is None:
                 return self.getTokens(jsgParserParser.ID)
             else:
@@ -466,32 +450,29 @@ class jsgParserParser ( Parser ):
         def getRuleIndex(self):
             return jsgParserParser.RULE_typeExceptions
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTypeExceptions" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTypeExceptions"):
                 return visitor.visitTypeExceptions(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def typeExceptions(self):
 
         localctx = jsgParserParser.TypeExceptionsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 4, self.RULE_typeExceptions)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 95 
+            self.state = 95
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
                 self.state = 94
                 self.match(jsgParserParser.ID)
-                self.state = 97 
+                self.state = 97
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not (_la==jsgParserParser.ID):
+                if not (_la == jsgParserParser.ID):
                     break
 
         except RecognitionException as re:
@@ -504,37 +485,30 @@ class jsgParserParser ( Parser ):
 
     class GrammarEltContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def objectDef(self):
-            return self.getTypedRuleContext(jsgParserParser.ObjectDefContext,0)
-
+            return self.getTypedRuleContext(jsgParserParser.ObjectDefContext, 0)
 
         def arrayDef(self):
-            return self.getTypedRuleContext(jsgParserParser.ArrayDefContext,0)
-
+            return self.getTypedRuleContext(jsgParserParser.ArrayDefContext, 0)
 
         def objectAlias(self):
-            return self.getTypedRuleContext(jsgParserParser.ObjectAliasContext,0)
-
+            return self.getTypedRuleContext(jsgParserParser.ObjectAliasContext, 0)
 
         def lexerAlias(self):
-            return self.getTypedRuleContext(jsgParserParser.LexerAliasContext,0)
-
+            return self.getTypedRuleContext(jsgParserParser.LexerAliasContext, 0)
 
         def getRuleIndex(self):
             return jsgParserParser.RULE_grammarElt
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitGrammarElt" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitGrammarElt"):
                 return visitor.visitGrammarElt(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def grammarElt(self):
 
@@ -543,7 +517,7 @@ class jsgParserParser ( Parser ):
         try:
             self.state = 103
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,7,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 7, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 99
@@ -579,7 +553,7 @@ class jsgParserParser ( Parser ):
 
     class ObjectDefContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -587,20 +561,16 @@ class jsgParserParser ( Parser ):
             return self.getToken(jsgParserParser.ID, 0)
 
         def objectExpr(self):
-            return self.getTypedRuleContext(jsgParserParser.ObjectExprContext,0)
-
+            return self.getTypedRuleContext(jsgParserParser.ObjectExprContext, 0)
 
         def getRuleIndex(self):
             return jsgParserParser.RULE_objectDef
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitObjectDef" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitObjectDef"):
                 return visitor.visitObjectDef(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def objectDef(self):
 
@@ -622,66 +592,58 @@ class jsgParserParser ( Parser ):
 
     class ObjectExprContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return jsgParserParser.RULE_objectExpr
 
-     
-        def copyFrom(self, ctx:ParserRuleContext):
+        def copyFrom(self, ctx: ParserRuleContext):
             super().copyFrom(ctx)
-
-
 
     class ObjectExprMapContext(ObjectExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a jsgParserParser.ObjectExprContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a jsgParserParser.ObjectExprContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def ID(self):
             return self.getToken(jsgParserParser.ID, 0)
+
         def propertyType(self):
-            return self.getTypedRuleContext(jsgParserParser.PropertyTypeContext,0)
+            return self.getTypedRuleContext(jsgParserParser.PropertyTypeContext, 0)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitObjectExprMap" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitObjectExprMap"):
                 return visitor.visitObjectExprMap(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class ObjectExprObjContext(ObjectExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a jsgParserParser.ObjectExprContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a jsgParserParser.ObjectExprContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def objectExprDef(self):
-            return self.getTypedRuleContext(jsgParserParser.ObjectExprDefContext,0)
+            return self.getTypedRuleContext(jsgParserParser.ObjectExprDefContext, 0)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitObjectExprObj" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitObjectExprObj"):
                 return visitor.visitObjectExprObj(self)
             else:
                 return visitor.visitChildren(self)
-
-
 
     def objectExpr(self):
 
         localctx = jsgParserParser.ObjectExprContext(self, self._ctx, self.state)
         self.enterRule(localctx, 10, self.RULE_objectExpr)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 119
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,9,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 9, self._ctx)
             if la_ == 1:
                 localctx = jsgParserParser.ObjectExprObjContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
@@ -690,10 +652,10 @@ class jsgParserParser ( Parser ):
                 self.state = 110
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << jsgParserParser.T__13) | (1 << jsgParserParser.ID) | (1 << jsgParserParser.STRING))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << jsgParserParser.T__13) | (1 << jsgParserParser.ID) | (
+                        1 << jsgParserParser.STRING))) != 0):
                     self.state = 109
                     self.objectExprDef()
-
 
                 self.state = 112
                 self.match(jsgParserParser.T__6)
@@ -725,59 +687,56 @@ class jsgParserParser ( Parser ):
 
     class ObjectExprDefContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def particle(self, i:int=None):
+        def particle(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(jsgParserParser.ParticleContext)
             else:
-                return self.getTypedRuleContext(jsgParserParser.ParticleContext,i)
+                return self.getTypedRuleContext(jsgParserParser.ParticleContext, i)
 
-
-        def particleOpt(self, i:int=None):
+        def particleOpt(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(jsgParserParser.ParticleOptContext)
             else:
-                return self.getTypedRuleContext(jsgParserParser.ParticleOptContext,i)
-
+                return self.getTypedRuleContext(jsgParserParser.ParticleOptContext, i)
 
         def getRuleIndex(self):
             return jsgParserParser.RULE_objectExprDef
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitObjectExprDef" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitObjectExprDef"):
                 return visitor.visitObjectExprDef(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def objectExprDef(self):
 
         localctx = jsgParserParser.ObjectExprDefContext(self, self._ctx, self.state)
         self.enterRule(localctx, 12, self.RULE_objectExprDef)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 122 
+            self.state = 122
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
                 self.state = 121
                 self.particle()
-                self.state = 124 
+                self.state = 124
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << jsgParserParser.T__13) | (1 << jsgParserParser.ID) | (1 << jsgParserParser.STRING))) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                        (1 << jsgParserParser.T__13) | (1 << jsgParserParser.ID) | (
+                        1 << jsgParserParser.STRING))) != 0)):
                     break
 
             self.state = 130
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==jsgParserParser.T__8:
+            while _la == jsgParserParser.T__8:
                 self.state = 126
                 self.match(jsgParserParser.T__8)
                 self.state = 127
@@ -796,40 +755,37 @@ class jsgParserParser ( Parser ):
 
     class ParticleOptContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def particle(self, i:int=None):
+        def particle(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(jsgParserParser.ParticleContext)
             else:
-                return self.getTypedRuleContext(jsgParserParser.ParticleContext,i)
-
+                return self.getTypedRuleContext(jsgParserParser.ParticleContext, i)
 
         def getRuleIndex(self):
             return jsgParserParser.RULE_particleOpt
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitParticleOpt" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitParticleOpt"):
                 return visitor.visitParticleOpt(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def particleOpt(self):
 
         localctx = jsgParserParser.ParticleOptContext(self, self._ctx, self.state)
         self.enterRule(localctx, 14, self.RULE_particleOpt)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 136
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << jsgParserParser.T__13) | (1 << jsgParserParser.ID) | (1 << jsgParserParser.STRING))) != 0):
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                    (1 << jsgParserParser.T__13) | (1 << jsgParserParser.ID) | (1 << jsgParserParser.STRING))) != 0):
                 self.state = 133
                 self.particle()
                 self.state = 138
@@ -846,7 +802,7 @@ class jsgParserParser ( Parser ):
 
     class ArrayDefContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -854,20 +810,16 @@ class jsgParserParser ( Parser ):
             return self.getToken(jsgParserParser.ID, 0)
 
         def arrayExpr(self):
-            return self.getTypedRuleContext(jsgParserParser.ArrayExprContext,0)
-
+            return self.getTypedRuleContext(jsgParserParser.ArrayExprContext, 0)
 
         def getRuleIndex(self):
             return jsgParserParser.RULE_arrayDef
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitArrayDef" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitArrayDef"):
                 return visitor.visitArrayDef(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def arrayDef(self):
 
@@ -889,38 +841,33 @@ class jsgParserParser ( Parser ):
 
     class ArrayExprContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def propertyType(self, i:int=None):
+        def propertyType(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(jsgParserParser.PropertyTypeContext)
             else:
-                return self.getTypedRuleContext(jsgParserParser.PropertyTypeContext,i)
-
+                return self.getTypedRuleContext(jsgParserParser.PropertyTypeContext, i)
 
         def ebnfSuffix(self):
-            return self.getTypedRuleContext(jsgParserParser.EbnfSuffixContext,0)
-
+            return self.getTypedRuleContext(jsgParserParser.EbnfSuffixContext, 0)
 
         def getRuleIndex(self):
             return jsgParserParser.RULE_arrayExpr
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitArrayExpr" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitArrayExpr"):
                 return visitor.visitArrayExpr(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def arrayExpr(self):
 
         localctx = jsgParserParser.ArrayExprContext(self, self._ctx, self.state)
         self.enterRule(localctx, 18, self.RULE_arrayExpr)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 142
@@ -930,7 +877,7 @@ class jsgParserParser ( Parser ):
             self.state = 148
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==jsgParserParser.T__8:
+            while _la == jsgParserParser.T__8:
                 self.state = 144
                 self.match(jsgParserParser.T__8)
                 self.state = 145
@@ -942,10 +889,11 @@ class jsgParserParser ( Parser ):
             self.state = 152
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << jsgParserParser.T__5) | (1 << jsgParserParser.T__16) | (1 << jsgParserParser.T__17) | (1 << jsgParserParser.T__18))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                    (1 << jsgParserParser.T__5) | (1 << jsgParserParser.T__16) | (1 << jsgParserParser.T__17) | (
+                    1 << jsgParserParser.T__18))) != 0):
                 self.state = 151
                 self.ebnfSuffix()
-
 
             self.state = 154
             self.match(jsgParserParser.T__10)
@@ -959,7 +907,7 @@ class jsgParserParser ( Parser ):
 
     class ParticleContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -967,34 +915,29 @@ class jsgParserParser ( Parser ):
             return self.getToken(jsgParserParser.ID, 0)
 
         def ebnfSuffix(self):
-            return self.getTypedRuleContext(jsgParserParser.EbnfSuffixContext,0)
-
+            return self.getTypedRuleContext(jsgParserParser.EbnfSuffixContext, 0)
 
         def propertyOrGroup(self):
-            return self.getTypedRuleContext(jsgParserParser.PropertyOrGroupContext,0)
-
+            return self.getTypedRuleContext(jsgParserParser.PropertyOrGroupContext, 0)
 
         def getRuleIndex(self):
             return jsgParserParser.RULE_particle
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitParticle" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitParticle"):
                 return visitor.visitParticle(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def particle(self):
 
         localctx = jsgParserParser.ParticleContext(self, self._ctx, self.state)
         self.enterRule(localctx, 20, self.RULE_particle)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 167
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,18,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 18, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 156
@@ -1002,18 +945,18 @@ class jsgParserParser ( Parser ):
                 self.state = 158
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << jsgParserParser.T__5) | (1 << jsgParserParser.T__16) | (1 << jsgParserParser.T__17) | (1 << jsgParserParser.T__18))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                        (1 << jsgParserParser.T__5) | (1 << jsgParserParser.T__16) | (1 << jsgParserParser.T__17) | (
+                        1 << jsgParserParser.T__18))) != 0):
                     self.state = 157
                     self.ebnfSuffix()
-
 
                 self.state = 161
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==jsgParserParser.T__11:
+                if _la == jsgParserParser.T__11:
                     self.state = 160
                     self.match(jsgParserParser.T__11)
-
 
                 pass
 
@@ -1024,10 +967,9 @@ class jsgParserParser ( Parser ):
                 self.state = 165
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==jsgParserParser.T__11:
+                if _la == jsgParserParser.T__11:
                     self.state = 164
                     self.match(jsgParserParser.T__11)
-
 
                 pass
 
@@ -1042,105 +984,97 @@ class jsgParserParser ( Parser ):
 
     class PropertyOrGroupContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return jsgParserParser.RULE_propertyOrGroup
 
-     
-        def copyFrom(self, ctx:ParserRuleContext):
+        def copyFrom(self, ctx: ParserRuleContext):
             super().copyFrom(ctx)
-
-
 
     class PropertyOrGroupChoiceContext(PropertyOrGroupContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a jsgParserParser.PropertyOrGroupContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a jsgParserParser.PropertyOrGroupContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def propertyOrGroupList(self, i:int=None):
+        def propertyOrGroupList(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(jsgParserParser.PropertyOrGroupListContext)
             else:
-                return self.getTypedRuleContext(jsgParserParser.PropertyOrGroupListContext,i)
+                return self.getTypedRuleContext(jsgParserParser.PropertyOrGroupListContext, i)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitPropertyOrGroupChoice" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitPropertyOrGroupChoice"):
                 return visitor.visitPropertyOrGroupChoice(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class PropertyOrGroupShorthandContext(PropertyOrGroupContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a jsgParserParser.PropertyOrGroupContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a jsgParserParser.PropertyOrGroupContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def ID(self, i:int=None):
+        def ID(self, i: int = None):
             if i is None:
                 return self.getTokens(jsgParserParser.ID)
             else:
                 return self.getToken(jsgParserParser.ID, i)
+
         def propertyType(self):
-            return self.getTypedRuleContext(jsgParserParser.PropertyTypeContext,0)
+            return self.getTypedRuleContext(jsgParserParser.PropertyTypeContext, 0)
 
         def ebnfSuffix(self):
-            return self.getTypedRuleContext(jsgParserParser.EbnfSuffixContext,0)
+            return self.getTypedRuleContext(jsgParserParser.EbnfSuffixContext, 0)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitPropertyOrGroupShorthand" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitPropertyOrGroupShorthand"):
                 return visitor.visitPropertyOrGroupShorthand(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class PropertyOrGroupSimpleContext(PropertyOrGroupContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a jsgParserParser.PropertyOrGroupContext
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a jsgParserParser.PropertyOrGroupContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def propertyType(self):
-            return self.getTypedRuleContext(jsgParserParser.PropertyTypeContext,0)
+            return self.getTypedRuleContext(jsgParserParser.PropertyTypeContext, 0)
 
         def ID(self):
             return self.getToken(jsgParserParser.ID, 0)
+
         def STRING(self):
             return self.getToken(jsgParserParser.STRING, 0)
+
         def ebnfSuffix(self):
-            return self.getTypedRuleContext(jsgParserParser.EbnfSuffixContext,0)
+            return self.getTypedRuleContext(jsgParserParser.EbnfSuffixContext, 0)
 
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitPropertyOrGroupSimple" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitPropertyOrGroupSimple"):
                 return visitor.visitPropertyOrGroupSimple(self)
             else:
                 return visitor.visitChildren(self)
-
-
 
     def propertyOrGroup(self):
 
         localctx = jsgParserParser.PropertyOrGroupContext(self, self._ctx, self.state)
         self.enterRule(localctx, 22, self.RULE_propertyOrGroup)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 199
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,23,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 23, self._ctx)
             if la_ == 1:
                 localctx = jsgParserParser.PropertyOrGroupSimpleContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 169
                 _la = self._input.LA(1)
-                if not(_la==jsgParserParser.ID or _la==jsgParserParser.STRING):
+                if not (_la == jsgParserParser.ID or _la == jsgParserParser.STRING):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
@@ -1152,10 +1086,11 @@ class jsgParserParser ( Parser ):
                 self.state = 173
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << jsgParserParser.T__5) | (1 << jsgParserParser.T__16) | (1 << jsgParserParser.T__17) | (1 << jsgParserParser.T__18))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                        (1 << jsgParserParser.T__5) | (1 << jsgParserParser.T__16) | (1 << jsgParserParser.T__17) | (
+                        1 << jsgParserParser.T__18))) != 0):
                     self.state = 172
                     self.ebnfSuffix()
-
 
                 pass
 
@@ -1166,7 +1101,7 @@ class jsgParserParser ( Parser ):
                 self.match(jsgParserParser.T__13)
                 self.state = 176
                 self.match(jsgParserParser.ID)
-                self.state = 179 
+                self.state = 179
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while True:
@@ -1174,10 +1109,10 @@ class jsgParserParser ( Parser ):
                     self.match(jsgParserParser.T__8)
                     self.state = 178
                     self.match(jsgParserParser.ID)
-                    self.state = 181 
+                    self.state = 181
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
-                    if not (_la==jsgParserParser.T__8):
+                    if not (_la == jsgParserParser.T__8):
                         break
 
                 self.state = 183
@@ -1189,10 +1124,11 @@ class jsgParserParser ( Parser ):
                 self.state = 187
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << jsgParserParser.T__5) | (1 << jsgParserParser.T__16) | (1 << jsgParserParser.T__17) | (1 << jsgParserParser.T__18))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                        (1 << jsgParserParser.T__5) | (1 << jsgParserParser.T__16) | (1 << jsgParserParser.T__17) | (
+                        1 << jsgParserParser.T__18))) != 0):
                     self.state = 186
                     self.ebnfSuffix()
-
 
                 pass
 
@@ -1203,7 +1139,7 @@ class jsgParserParser ( Parser ):
                 self.match(jsgParserParser.T__13)
                 self.state = 190
                 self.propertyOrGroupList()
-                self.state = 193 
+                self.state = 193
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while True:
@@ -1211,10 +1147,10 @@ class jsgParserParser ( Parser ):
                     self.match(jsgParserParser.T__8)
                     self.state = 192
                     self.propertyOrGroupList()
-                    self.state = 195 
+                    self.state = 195
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
-                    if not (_la==jsgParserParser.T__8):
+                    if not (_la == jsgParserParser.T__8):
                         break
 
                 self.state = 197
@@ -1232,46 +1168,44 @@ class jsgParserParser ( Parser ):
 
     class PropertyOrGroupListContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def propertyOrGroup(self, i:int=None):
+        def propertyOrGroup(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(jsgParserParser.PropertyOrGroupContext)
             else:
-                return self.getTypedRuleContext(jsgParserParser.PropertyOrGroupContext,i)
-
+                return self.getTypedRuleContext(jsgParserParser.PropertyOrGroupContext, i)
 
         def getRuleIndex(self):
             return jsgParserParser.RULE_propertyOrGroupList
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitPropertyOrGroupList" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitPropertyOrGroupList"):
                 return visitor.visitPropertyOrGroupList(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def propertyOrGroupList(self):
 
         localctx = jsgParserParser.PropertyOrGroupListContext(self, self._ctx, self.state)
         self.enterRule(localctx, 24, self.RULE_propertyOrGroupList)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 202 
+            self.state = 202
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
                 self.state = 201
                 self.propertyOrGroup()
-                self.state = 204 
+                self.state = 204
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << jsgParserParser.T__13) | (1 << jsgParserParser.ID) | (1 << jsgParserParser.STRING))) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                        (1 << jsgParserParser.T__13) | (1 << jsgParserParser.ID) | (
+                        1 << jsgParserParser.STRING))) != 0)):
                     break
 
         except RecognitionException as re:
@@ -1284,7 +1218,7 @@ class jsgParserParser ( Parser ):
 
     class PropertyTypeContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -1298,16 +1232,13 @@ class jsgParserParser ( Parser ):
             return self.getToken(jsgParserParser.STRING, 0)
 
         def objectExpr(self):
-            return self.getTypedRuleContext(jsgParserParser.ObjectExprContext,0)
-
+            return self.getTypedRuleContext(jsgParserParser.ObjectExprContext, 0)
 
         def arrayExpr(self):
-            return self.getTypedRuleContext(jsgParserParser.ArrayExprContext,0)
-
+            return self.getTypedRuleContext(jsgParserParser.ArrayExprContext, 0)
 
         def typeAlternatives(self):
-            return self.getTypedRuleContext(jsgParserParser.TypeAlternativesContext,0)
-
+            return self.getTypedRuleContext(jsgParserParser.TypeAlternativesContext, 0)
 
         def ANY(self):
             return self.getToken(jsgParserParser.ANY, 0)
@@ -1315,14 +1246,11 @@ class jsgParserParser ( Parser ):
         def getRuleIndex(self):
             return jsgParserParser.RULE_propertyType
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitPropertyType" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitPropertyType"):
                 return visitor.visitPropertyType(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def propertyType(self):
 
@@ -1384,23 +1312,23 @@ class jsgParserParser ( Parser ):
 
     class TypeAlternativesContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def LEXER_ID(self, i:int=None):
+        def LEXER_ID(self, i: int = None):
             if i is None:
                 return self.getTokens(jsgParserParser.LEXER_ID)
             else:
                 return self.getToken(jsgParserParser.LEXER_ID, i)
 
-        def ID(self, i:int=None):
+        def ID(self, i: int = None):
             if i is None:
                 return self.getTokens(jsgParserParser.ID)
             else:
                 return self.getToken(jsgParserParser.ID, i)
 
-        def STRING(self, i:int=None):
+        def STRING(self, i: int = None):
             if i is None:
                 return self.getTokens(jsgParserParser.STRING)
             else:
@@ -1409,30 +1337,29 @@ class jsgParserParser ( Parser ):
         def getRuleIndex(self):
             return jsgParserParser.RULE_typeAlternatives
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTypeAlternatives" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTypeAlternatives"):
                 return visitor.visitTypeAlternatives(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def typeAlternatives(self):
 
         localctx = jsgParserParser.TypeAlternativesContext(self, self._ctx, self.state)
         self.enterRule(localctx, 28, self.RULE_typeAlternatives)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 218
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << jsgParserParser.LEXER_ID) | (1 << jsgParserParser.ID) | (1 << jsgParserParser.STRING))) != 0)):
+            if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                    (1 << jsgParserParser.LEXER_ID) | (1 << jsgParserParser.ID) | (
+                    1 << jsgParserParser.STRING))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
                 self.consume()
-            self.state = 221 
+            self.state = 221
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
@@ -1440,15 +1367,17 @@ class jsgParserParser ( Parser ):
                 self.match(jsgParserParser.T__8)
                 self.state = 220
                 _la = self._input.LA(1)
-                if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << jsgParserParser.LEXER_ID) | (1 << jsgParserParser.ID) | (1 << jsgParserParser.STRING))) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                        (1 << jsgParserParser.LEXER_ID) | (1 << jsgParserParser.ID) | (
+                        1 << jsgParserParser.STRING))) != 0)):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
                     self.consume()
-                self.state = 223 
+                self.state = 223
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not (_la==jsgParserParser.T__8):
+                if not (_la == jsgParserParser.T__8):
                     break
 
         except RecognitionException as re:
@@ -1461,7 +1390,7 @@ class jsgParserParser ( Parser ):
 
     class ObjectAliasContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -1469,20 +1398,16 @@ class jsgParserParser ( Parser ):
             return self.getToken(jsgParserParser.ID, 0)
 
         def objectExprDef(self):
-            return self.getTypedRuleContext(jsgParserParser.ObjectExprDefContext,0)
-
+            return self.getTypedRuleContext(jsgParserParser.ObjectExprDefContext, 0)
 
         def getRuleIndex(self):
             return jsgParserParser.RULE_objectAlias
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitObjectAlias" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitObjectAlias"):
                 return visitor.visitObjectAlias(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def objectAlias(self):
 
@@ -1508,7 +1433,7 @@ class jsgParserParser ( Parser ):
 
     class LexerAliasContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -1516,20 +1441,16 @@ class jsgParserParser ( Parser ):
             return self.getToken(jsgParserParser.ID, 0)
 
         def lexerAliasDef(self):
-            return self.getTypedRuleContext(jsgParserParser.LexerAliasDefContext,0)
-
+            return self.getTypedRuleContext(jsgParserParser.LexerAliasDefContext, 0)
 
         def getRuleIndex(self):
             return jsgParserParser.RULE_lexerAlias
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerAlias" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerAlias"):
                 return visitor.visitLexerAlias(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerAlias(self):
 
@@ -1555,11 +1476,11 @@ class jsgParserParser ( Parser ):
 
     class LexerAliasDefContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def LEXER_ID(self, i:int=None):
+        def LEXER_ID(self, i: int = None):
             if i is None:
                 return self.getTokens(jsgParserParser.LEXER_ID)
             else:
@@ -1568,20 +1489,17 @@ class jsgParserParser ( Parser ):
         def getRuleIndex(self):
             return jsgParserParser.RULE_lexerAliasDef
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerAliasDef" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerAliasDef"):
                 return visitor.visitLexerAliasDef(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerAliasDef(self):
 
         localctx = jsgParserParser.LexerAliasDefContext(self, self._ctx, self.state)
         self.enterRule(localctx, 34, self.RULE_lexerAliasDef)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 235
@@ -1589,7 +1507,7 @@ class jsgParserParser ( Parser ):
             self.state = 240
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==jsgParserParser.T__8:
+            while _la == jsgParserParser.T__8:
                 self.state = 236
                 self.match(jsgParserParser.T__8)
                 self.state = 237
@@ -1608,11 +1526,11 @@ class jsgParserParser ( Parser ):
 
     class EbnfSuffixContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def INT(self, i:int=None):
+        def INT(self, i: int = None):
             if i is None:
                 return self.getTokens(jsgParserParser.INT)
             else:
@@ -1621,20 +1539,17 @@ class jsgParserParser ( Parser ):
         def getRuleIndex(self):
             return jsgParserParser.RULE_ebnfSuffix
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitEbnfSuffix" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitEbnfSuffix"):
                 return visitor.visitEbnfSuffix(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def ebnfSuffix(self):
 
         localctx = jsgParserParser.EbnfSuffixContext(self, self._ctx, self.state)
         self.enterRule(localctx, 36, self.RULE_ebnfSuffix)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 255
             self._errHandler.sync(self)
@@ -1663,23 +1578,20 @@ class jsgParserParser ( Parser ):
                 self.state = 252
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==jsgParserParser.T__11:
+                if _la == jsgParserParser.T__11:
                     self.state = 248
                     self.match(jsgParserParser.T__11)
                     self.state = 250
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
-                    if _la==jsgParserParser.T__17 or _la==jsgParserParser.INT:
+                    if _la == jsgParserParser.T__17 or _la == jsgParserParser.INT:
                         self.state = 249
                         _la = self._input.LA(1)
-                        if not(_la==jsgParserParser.T__17 or _la==jsgParserParser.INT):
+                        if not (_la == jsgParserParser.T__17 or _la == jsgParserParser.INT):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-
-
-
 
                 self.state = 254
                 self.match(jsgParserParser.T__6)
@@ -1697,7 +1609,7 @@ class jsgParserParser ( Parser ):
 
     class LexerRuleSpecContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -1705,20 +1617,16 @@ class jsgParserParser ( Parser ):
             return self.getToken(jsgParserParser.LEXER_ID, 0)
 
         def lexerRuleBlock(self):
-            return self.getTypedRuleContext(jsgParserParser.LexerRuleBlockContext,0)
-
+            return self.getTypedRuleContext(jsgParserParser.LexerRuleBlockContext, 0)
 
         def getRuleIndex(self):
             return jsgParserParser.RULE_lexerRuleSpec
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerRuleSpec" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerRuleSpec"):
                 return visitor.visitLexerRuleSpec(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerRuleSpec(self):
 
@@ -1744,25 +1652,21 @@ class jsgParserParser ( Parser ):
 
     class LexerRuleBlockContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def lexerAltList(self):
-            return self.getTypedRuleContext(jsgParserParser.LexerAltListContext,0)
-
+            return self.getTypedRuleContext(jsgParserParser.LexerAltListContext, 0)
 
         def getRuleIndex(self):
             return jsgParserParser.RULE_lexerRuleBlock
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerRuleBlock" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerRuleBlock"):
                 return visitor.visitLexerRuleBlock(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerRuleBlock(self):
 
@@ -1782,34 +1686,30 @@ class jsgParserParser ( Parser ):
 
     class LexerAltListContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def lexerAlt(self, i:int=None):
+        def lexerAlt(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(jsgParserParser.LexerAltContext)
             else:
-                return self.getTypedRuleContext(jsgParserParser.LexerAltContext,i)
-
+                return self.getTypedRuleContext(jsgParserParser.LexerAltContext, i)
 
         def getRuleIndex(self):
             return jsgParserParser.RULE_lexerAltList
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerAltList" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerAltList"):
                 return visitor.visitLexerAltList(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerAltList(self):
 
         localctx = jsgParserParser.LexerAltListContext(self, self._ctx, self.state)
         self.enterRule(localctx, 42, self.RULE_lexerAltList)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 264
@@ -1817,7 +1717,7 @@ class jsgParserParser ( Parser ):
             self.state = 269
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==jsgParserParser.T__8:
+            while _la == jsgParserParser.T__8:
                 self.state = 265
                 self.match(jsgParserParser.T__8)
                 self.state = 266
@@ -1836,25 +1736,21 @@ class jsgParserParser ( Parser ):
 
     class LexerAltContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def lexerElements(self):
-            return self.getTypedRuleContext(jsgParserParser.LexerElementsContext,0)
-
+            return self.getTypedRuleContext(jsgParserParser.LexerElementsContext, 0)
 
         def getRuleIndex(self):
             return jsgParserParser.RULE_lexerAlt
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerAlt" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerAlt"):
                 return visitor.visitLexerAlt(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerAlt(self):
 
@@ -1864,7 +1760,8 @@ class jsgParserParser ( Parser ):
             self.state = 274
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [jsgParserParser.T__13, jsgParserParser.LEXER_ID, jsgParserParser.STRING, jsgParserParser.ANY, jsgParserParser.LEXER_CHAR_SET]:
+            if token in [jsgParserParser.T__13, jsgParserParser.LEXER_ID, jsgParserParser.STRING, jsgParserParser.ANY,
+                         jsgParserParser.LEXER_CHAR_SET]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 272
                 self.lexerElements()
@@ -1886,46 +1783,45 @@ class jsgParserParser ( Parser ):
 
     class LexerElementsContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def lexerElement(self, i:int=None):
+        def lexerElement(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(jsgParserParser.LexerElementContext)
             else:
-                return self.getTypedRuleContext(jsgParserParser.LexerElementContext,i)
-
+                return self.getTypedRuleContext(jsgParserParser.LexerElementContext, i)
 
         def getRuleIndex(self):
             return jsgParserParser.RULE_lexerElements
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerElements" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerElements"):
                 return visitor.visitLexerElements(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerElements(self):
 
         localctx = jsgParserParser.LexerElementsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 46, self.RULE_lexerElements)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 277 
+            self.state = 277
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
                 self.state = 276
                 self.lexerElement()
-                self.state = 279 
+                self.state = 279
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << jsgParserParser.T__13) | (1 << jsgParserParser.LEXER_ID) | (1 << jsgParserParser.STRING) | (1 << jsgParserParser.ANY) | (1 << jsgParserParser.LEXER_CHAR_SET))) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                        (1 << jsgParserParser.T__13) | (1 << jsgParserParser.LEXER_ID) | (
+                        1 << jsgParserParser.STRING) | (1 << jsgParserParser.ANY) | (
+                                1 << jsgParserParser.LEXER_CHAR_SET))) != 0)):
                     break
 
         except RecognitionException as re:
@@ -1938,54 +1834,50 @@ class jsgParserParser ( Parser ):
 
     class LexerElementContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def lexerAtom(self):
-            return self.getTypedRuleContext(jsgParserParser.LexerAtomContext,0)
-
+            return self.getTypedRuleContext(jsgParserParser.LexerAtomContext, 0)
 
         def ebnfSuffix(self):
-            return self.getTypedRuleContext(jsgParserParser.EbnfSuffixContext,0)
-
+            return self.getTypedRuleContext(jsgParserParser.EbnfSuffixContext, 0)
 
         def lexerBlock(self):
-            return self.getTypedRuleContext(jsgParserParser.LexerBlockContext,0)
-
+            return self.getTypedRuleContext(jsgParserParser.LexerBlockContext, 0)
 
         def getRuleIndex(self):
             return jsgParserParser.RULE_lexerElement
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerElement" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerElement"):
                 return visitor.visitLexerElement(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerElement(self):
 
         localctx = jsgParserParser.LexerElementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 48, self.RULE_lexerElement)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 289
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [jsgParserParser.LEXER_ID, jsgParserParser.STRING, jsgParserParser.ANY, jsgParserParser.LEXER_CHAR_SET]:
+            if token in [jsgParserParser.LEXER_ID, jsgParserParser.STRING, jsgParserParser.ANY,
+                         jsgParserParser.LEXER_CHAR_SET]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 281
                 self.lexerAtom()
                 self.state = 283
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << jsgParserParser.T__5) | (1 << jsgParserParser.T__16) | (1 << jsgParserParser.T__17) | (1 << jsgParserParser.T__18))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                        (1 << jsgParserParser.T__5) | (1 << jsgParserParser.T__16) | (1 << jsgParserParser.T__17) | (
+                        1 << jsgParserParser.T__18))) != 0):
                     self.state = 282
                     self.ebnfSuffix()
-
 
                 pass
             elif token in [jsgParserParser.T__13]:
@@ -1995,10 +1887,11 @@ class jsgParserParser ( Parser ):
                 self.state = 287
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << jsgParserParser.T__5) | (1 << jsgParserParser.T__16) | (1 << jsgParserParser.T__17) | (1 << jsgParserParser.T__18))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & (
+                        (1 << jsgParserParser.T__5) | (1 << jsgParserParser.T__16) | (1 << jsgParserParser.T__17) | (
+                        1 << jsgParserParser.T__18))) != 0):
                     self.state = 286
                     self.ebnfSuffix()
-
 
                 pass
             else:
@@ -2014,25 +1907,21 @@ class jsgParserParser ( Parser ):
 
     class LexerBlockContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def lexerAltList(self):
-            return self.getTypedRuleContext(jsgParserParser.LexerAltListContext,0)
-
+            return self.getTypedRuleContext(jsgParserParser.LexerAltListContext, 0)
 
         def getRuleIndex(self):
             return jsgParserParser.RULE_lexerBlock
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerBlock" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerBlock"):
                 return visitor.visitLexerBlock(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerBlock(self):
 
@@ -2056,13 +1945,12 @@ class jsgParserParser ( Parser ):
 
     class LexerAtomContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def terminal(self):
-            return self.getTypedRuleContext(jsgParserParser.TerminalContext,0)
-
+            return self.getTypedRuleContext(jsgParserParser.TerminalContext, 0)
 
         def LEXER_CHAR_SET(self):
             return self.getToken(jsgParserParser.LEXER_CHAR_SET, 0)
@@ -2073,14 +1961,11 @@ class jsgParserParser ( Parser ):
         def getRuleIndex(self):
             return jsgParserParser.RULE_lexerAtom
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerAtom" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerAtom"):
                 return visitor.visitLexerAtom(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerAtom(self):
 
@@ -2118,7 +2003,7 @@ class jsgParserParser ( Parser ):
 
     class TerminalContext(ParserRuleContext):
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -2131,25 +2016,22 @@ class jsgParserParser ( Parser ):
         def getRuleIndex(self):
             return jsgParserParser.RULE_terminal
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTerminal" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTerminal"):
                 return visitor.visitTerminal(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def terminal(self):
 
         localctx = jsgParserParser.TerminalContext(self, self._ctx, self.state)
         self.enterRule(localctx, 54, self.RULE_terminal)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 300
             _la = self._input.LA(1)
-            if not(_la==jsgParserParser.LEXER_ID or _la==jsgParserParser.STRING):
+            if not (_la == jsgParserParser.LEXER_ID or _la == jsgParserParser.STRING):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -2161,8 +2043,3 @@ class jsgParserParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
-
-
-
-

@@ -14,11 +14,11 @@ class JSGObjectMap(JSGObject):
     """
     An object map is a JsonObj with constraints on the attribute names, value types of both
     """
-    _name_filter = None
-    _value_type = AnyType
+    _name_filter = None  # type: type(JSGString)
+    _value_type = AnyType  # type: type(JSGValidateable)
 
-    _min = 0
-    _max = None
+    _min = 0  # type: int
+    _max = None  # type: Optional[int]
 
     _strict = False
 
@@ -53,7 +53,7 @@ class JSGObjectMap(JSGObject):
     def _is_valid_element(self, log: Logger, name: str, entry: Type[JSGValidateable]) -> bool:
         if self._name_filter is not None:
             if not self._name_filter.matches(name):
-                if log.log("Illegal Object Map key: {}={}".format(name, entry)):  
+                if log.log("Illegal Object Map key: {}={}".format(name, entry)):
                     return False
         return super()._is_valid_element(log, name, entry)
 

@@ -33,7 +33,6 @@ class doc(jsg.JSGObject):
         setattr(self, 'v 7', _kwargs.get('v 7', None))
 
 
-
 class another_object(jsg.JSGObject):
     _reference_types = []
     _members = {}

@@ -11,7 +11,6 @@ class JSGNullMeta(type):
 
 class JSGNull(JSGValidateable, metaclass=JSGNullMeta):
     """ Wrapper for the JSON null class
-
     Assigning 'None' or 'JSGNull' to an attribute of type JSGNull causes it to exist
     Assigning 'Empty' to an attribute of type JSGNull removes it
     Assigning anything else is an error

@@ -36,7 +36,6 @@ class ParseErrorListener(ErrorListener):
 def load_shex_file(shexfilename: str) -> str:
     """
     Read a ShEx input file, processing BOM encodings if necessary
-
     :param shexfilename: file or URL to open
     :return:
     """

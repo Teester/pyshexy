@@ -40,7 +40,6 @@ class doc(jsg.JSGObject):
         self.v7 = v7
 
 
-
 class another_object(jsg.JSGObject):
     _reference_types = []
     _members = {}

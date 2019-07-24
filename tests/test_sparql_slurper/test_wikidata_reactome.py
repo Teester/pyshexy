@@ -21,7 +21,7 @@ class ReactomeTestCase(unittest.TestCase):
         # Test that we get something
         self.assertTrue(30 < orig_len < 60)                 # Current value is 33
         # Test that it is reproducable
-        self.assertEqual(orig_len, len(list(g.predicate_objects((WD.Q29017194)))))
+        self.assertEqual(orig_len, len(list(g.predicate_objects(WD.Q29017194))))
         # Test that it is cached
         self.assertEqual(orig_len, len(g))
         # Add a path

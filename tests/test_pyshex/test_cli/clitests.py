@@ -15,7 +15,7 @@ class ArgParseExitException(Exception):
     ...
 
 
-def _parser_exit(_: argparse.ArgumentParser,  __=0, message: Optional[str]=None) -> None:
+def _parser_exit(_: argparse.ArgumentParser, __=0, message: Optional[str] = None) -> None:
     raise ArgParseExitException(message)
 
 
@@ -47,9 +47,9 @@ class CLITestCase(unittest.TestCase):
             cls.creation_messages = []
             assert False, "Tests failed because baseline files were being created"
 
-    def do_test(self, args: Union[str, List[str]], testfile: Optional[str]="",
-                update_test_file: bool=False, error: type(Exception)=None, tox_wrap_fix: bool=False,
-                failexpected: bool=False, text_filter: Callable[[str], str]=None) -> None:
+    def do_test(self, args: Union[str, List[str]], testfile: Optional[str] = "",
+                update_test_file: bool = False, error: type(Exception) = None, tox_wrap_fix: bool = False,
+                failexpected: bool = False, text_filter: Callable[[str], str] = None) -> None:
         """ Execute a cli test
 
         @param args: Argument string or list to command

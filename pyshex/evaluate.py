@@ -14,10 +14,9 @@ from pyshex.utils.schema_loader import SchemaLoader
 def evaluate(g: Graph,
              schema: Union[str, ShExJ.Schema],
              focus: Optional[Union[str, URIRef, IRIREF]],
-             start: Optional[Union[str, URIRef, IRIREF, START, START_TYPE]]=None,
+             start: Optional[Union[str, URIRef, IRIREF, START, START_TYPE]] = None,
              debug_trace: bool = False) -> Tuple[bool, Optional[str]]:
     """ Evaluate focus node `focus` in graph `g` against shape `shape` in ShEx schema `schema`
-
     :param g: Graph containing RDF
     :param schema: ShEx Schema -- if str, it will be parsed
     :param focus: focus node in g. If not specified, all URI subjects in G will be evaluated.

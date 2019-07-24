@@ -1,4 +1,3 @@
-
 # True means refresh all test files (only partially implemented at the moment)
 import os
 
@@ -16,4 +15,5 @@ datadir = os.path.abspath(os.path.join(os.path.dirname(__file__), 'data'))
 #                 if k >= 0:
 #                     uch = '\a\b\f\r\t\v\n\\"\''[k]
 from rdflib import __version__ as rdflib_version
+
 RDFLIB_PARSING_ISSUE_FIXED = rdflib_version >= "5.0.0"

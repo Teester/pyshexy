@@ -1,7 +1,5 @@
 """ Implementation of `3. Terminology <http://shex.io/shex-semantics/#terminology>`_
-
     Shape expressions are defined using terms from RDF semantics [rdf11-mt]:
-
     * Node: one of IRI, blank node, Literal
     * Graph: a set of Triples of (subject, predicate, object)
 """
@@ -37,7 +35,6 @@ def predicatesIn(G: Graph, n: Node) -> Set[TriplePredicate]:
 
 def neigh(G: Graph, n: Node) -> RDFGraph:
     """  neigh(G, n) is the neighbourhood of the node n in the graph G.
-
          neigh(G, n) = arcsOut(G, n) ∪ arcsIn(G, n)
     """
     return arcsOut(G, n) | arcsIn(G, n)
@@ -45,7 +42,6 @@ def neigh(G: Graph, n: Node) -> RDFGraph:
 
 def predicates(G: Graph, n: Node) -> Set[TriplePredicate]:
     """ redicates(G, n) is the set of predicates in neigh(G, n).
-
         predicates(G, n) = predicatesOut(G, n) ∪ predicatesIn(G, n)
     """
     return predicatesOut(G, n) | predicatesIn(G, n)

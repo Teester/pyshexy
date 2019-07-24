@@ -11,7 +11,6 @@ from pyshex.sparql11_query.p17_1_operand_data_types import is_integer, is_numeri
 
 def can_cast_to(v: Literal, dt: str) -> bool:
     """ 5.4.3 Datatype Constraints
-
     Determine whether "a value of the lexical form of n can be cast to the target type v per
     XPath Functions 3.1 section 19 Casting[xpath-functions]."
     """
@@ -21,7 +20,6 @@ def can_cast_to(v: Literal, dt: str) -> bool:
 
 def total_digits(n: Literal) -> Optional[int]:
     """ 5.4.5 XML Schema Numberic Facet Constraints
-
      totaldigits and fractiondigits constraints on values not derived from xsd:decimal fail.
      """
     return len(str(abs(int(n.value)))) + fraction_digits(n) if is_numeric(n) and n.value is not None else None
@@ -29,7 +27,6 @@ def total_digits(n: Literal) -> Optional[int]:
 
 def fraction_digits(n: Literal) -> Optional[int]:
     """ 5.4.5 XML Schema Numeric Facet Constraints
-
     for "fractiondigits" constraints, v is less than or equals the number of digits to the right of the decimal place
     in the XML Schema canonical form[xmlschema-2] of the value of n, ignoring trailing zeros.
     """
@@ -60,12 +57,11 @@ def _subf(matchobj) -> str:
 
 def _map_xpath_flags_to_re(expr: str, xpath_flags: str) -> Tuple[int, str]:
     """ Map `5.6.2 Flags <https://www.w3.org/TR/xpath-functions-31/#flags>`_  to python
-
     :param expr: match pattern
     :param xpath_flags: xpath flags
     :returns: python flags / modified match pattern
     """
-    python_flags = 0
+    python_flags = 0  # type: int
     modified_expr = expr
     if xpath_flags is None:
         xpath_flags = ""

@@ -17,7 +17,7 @@ shex_1 = """{ "type": "Schema", "shapes": [
 
 rdf_1 = """%s
 :issue1 ex:submittedBy <http://a.example/bob> .
-:issue2 ex:submittedOn "bob" .""" % (rdf_header)
+:issue2 ex:submittedOn "bob" .""" % rdf_header
 
 shex_2 = """{ "type": "Schema", "shapes": [
   { "id": "http://schema.example/IssueShape",
@@ -30,7 +30,7 @@ shex_2 = """{ "type": "Schema", "shapes": [
 
 rdf_2 = """%s
 :issue6 ex:submittedBy :genUser218 .
-:issue7 ex:submittedBy :genContact817 .""" % (rdf_header)
+:issue7 ex:submittedBy :genContact817 .""" % rdf_header
 
 pattern = re.sub(r'\\', r'\\\\', r'^\t\\𝒸\?$')
 shex_3 = """{ "type": "Schema", "shapes": [
@@ -40,7 +40,7 @@ shex_3 = """{ "type": "Schema", "shapes": [
       "predicate": "http://schema.example/trademark",
       "valueExpr": { "type": "NodeConstraint",
                      "pattern": "%s" }
-} } ] }""" % (pattern)
+} } ] }""" % pattern
 
 # Warning - the editor has to preserve the tab in product6 - if it changes it to spaces, no match
 rdf_3 = """%s
@@ -48,7 +48,7 @@ rdf_3 = """%s
 :product7 ex:trademark "\\t\\\\\U0001D4B8?" .
 :product8 ex:trademark "\\t\\\\\\\\U0001D4B8?" .
 
-""" % (rdf_header)
+""" % rdf_header
 
 
 class StringFacetTestCase(unittest.TestCase):

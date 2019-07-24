@@ -11,7 +11,7 @@ class ShexTripleExpressionParser(ShExDocVisitor):
     def __init__(self, context: ParserContext):
         ShExDocVisitor.__init__(self)
         self.context = context
-        self.expression = None
+        self.expression = None  # type: TripleConstraint
 
     def visitMultiElementOneOf(self, ctx: ShExDocParser.MultiElementOneOfContext):
         """ multiElementOneOf: groupTripleExpr ('|' groupTripleExpr)+ """
