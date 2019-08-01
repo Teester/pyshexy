@@ -32,7 +32,7 @@ class EachOfEvaluator:
 
         self.predicate_to_expression_nums = {}  # type: Dict[IRIREF, List[int]]
         self.expression_num_predicates = []  # type: List[Set[IRIREF]]
-        self.predicate_graph= {}  # type: Dict[IRIREF, RDFGraph]
+        self.predicate_graph = {}  # type: Dict[IRIREF, RDFGraph]
 
         for e in expr.expressions:
             expr_num = len(self.expressions)

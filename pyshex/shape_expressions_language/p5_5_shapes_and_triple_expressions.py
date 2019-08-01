@@ -63,11 +63,11 @@ def satisfiesShape(cntxt: Context, n: Node, S: ShExJ.Shape, c: DebugContext) -> 
             non_matchables = RDFGraph([t for t in arcsOut(cntxt.graph, n) if t not in matchables])
             if len(non_matchables):
                 cntxt.fail_reason = "Unmatched triples in CLOSED shape:"
-                cntxt.fail_reason = '\n'.join("\t{}".format(t) for t in non_matchables)
+                cntxt.fail_reason = '\n'.join(f"\t{t}" for t in non_matchables)
                 if c.debug:
                     print(c.i(0,
-                              "<--- Satisfies shape {} FAIL - ".format(c.d()) +
-                              "{} non-matching triples on a closed shape".format(len(non_matchables))))
+                              f"<--- Satisfies shape {c.d()} FAIL - "
+                              f"{len(non_matchables)} non-matching triples on a closed shape"))
                     print(c.i(1, "", list(non_matchables)))
                     print()
                 return False
@@ -84,7 +84,7 @@ def satisfiesShape(cntxt: Context, n: Node, S: ShExJ.Shape, c: DebugContext) -> 
                     non_permutable_matchables = RDFGraph([t for t in matchables if t not in permutable_matchables])
                     if c.debug:
                         print(c.i(1,
-                                  "Complete match failed -- evaluating extras", list(extras)))
+                                  f"Complete match failed -- evaluating extras", list(extras)))
                     for matched, remainder in partition_2(permutable_matchables):
                         permutation = non_permutable_matchables.union(matched)
                         if matches(cntxt, permutation, S.expression):
@@ -175,11 +175,11 @@ def matches(cntxt: Context, T: RDFGraph, expr: ShExJ.tripleExpr) -> bool:
 @trace_matches(True)
 def matchesTripleExprLabel(cntxt: Context, T: RDFGraph, expr: ShExJ.tripleExprLabel, c: DebugContext) -> bool:
     if c.debug:
-        print(" {}".format(expr))
+        print(f" {expr}")
     te = cntxt.tripleExprFor(expr)
     if te:
         return matchesCardinality(cntxt, T, te)
-    cntxt.fail_reason = "{}: Labeled triple expression not found".format(expr)
+    cntxt.fail_reason = f"{expr}: Labeled triple expression not found"
     return False
 
 
@@ -195,22 +195,22 @@ def matchesCardinality(cntxt: Context, T: RDFGraph, expr: Union[ShExJ.tripleExpr
     min_ = expr.min if expr.min is not None else 1
     max_ = expr.max if expr.max is not None else 1
 
-    cardinality_text = "{{{},{}}}".format(min_, '*' if max_ == -1 else max_)
+    cardinality_text = f"{{{min_},{'*' if max_ == -1 else max_}}}"
     if c.debug and (min_ != 0 or len(T) != 0):
-        print("{} matching {} triples".format(cardinality_text, len(T)))
+        print(f"{cardinality_text} matching {len(T)} triples")
     if min_ == 0 and len(T) == 0:
         return True
     if isinstance(expr, ShExJ.TripleConstraint):
         if len(T) < min_:
             if len(T) > 0:
                 _fail_triples(cntxt, T)
-                cntxt.fail_reason = "   {} triples less than {}".format(len(T), cardinality_text)
+                cntxt.fail_reason = f"   {len(T)} triples less than {cardinality_text}"
             else:
-                cntxt.fail_reason = "   No matching triples found for predicate {}".format(cntxt.n3_mapper.n3(expr.predicate))
+                cntxt.fail_reason = f"   No matching triples found for predicate {cntxt.n3_mapper.n3(expr.predicate)}"
             return False
         elif 0 <= max_ < len(T):
             _fail_triples(cntxt, T)
-            cntxt.fail_reason = "   {} triples exceeds max {}".format(len(T), cardinality_text)
+            cntxt.fail_reason = f"   {len(T)} triples exceeds max {cardinality_text}"
             return False
         else:
             return all(matchesTripleConstraint(cntxt, t, expr) for t in T)
@@ -220,7 +220,7 @@ def matchesCardinality(cntxt: Context, T: RDFGraph, expr: Union[ShExJ.tripleExpr
                 return True
         if min_ != 1 or max_ != 1:
             _fail_triples(cntxt, T)
-            cntxt.fail_reason = "   {} triples cannot be partitioned into {} passing groups".format(len(T), cardinality_text)
+            cntxt.fail_reason = f"   {len(T)} triples cannot be partitioned into {cardinality_text} passing groups"
         return False
 
 
@@ -229,7 +229,7 @@ def _fail_triples(cntxt: Context, T: RDFGraph) -> None:
     if len(tlist):
         cntxt.fail_reason = "Triples:"
         for t in sorted(tlist):
-            cntxt.fail_reason = "      {}".format(cntxt.n3_mapper.n3(t))
+            cntxt.fail_reason = f"      {cntxt.n3_mapper.n3(t)}"
         if len(tlist) > 5:
             cntxt.fail_reason = "      ...   "
 
@@ -289,14 +289,14 @@ def matchesTripleConstraint(cntxt: Context, t: RDFTriple, expr: ShExJ.TripleCons
     from pyshex.shape_expressions_language.p5_3_shape_expressions import satisfies
 
     if c.debug:
-        print(c.i(1, " triple: {}".format(t)))
+        print(c.i(1, f" triple: {t}"))
         print(c.i(1, '', expr._as_json_dumps().split('\n')))
 
     if uriref_matches_iriref(t.p, expr.predicate):
         value = t.s if expr.inverse else t.o
         return expr.valueExpr is None or satisfies(cntxt, value, expr.valueExpr)
     else:
-        cntxt.fail_reason = "Predicate mismatch: {} ≠ {}".format(t.p, expr.predicate)
+        cntxt.fail_reason = f"Predicate mismatch: {t.p} ≠ {expr.predicate}"
         return False
 
 
@@ -308,6 +308,6 @@ def matchesTripleExprRef(cntxt: Context, T: RDFGraph, expr: ShExJ.tripleExprLabe
     """
     tefor_expr = cntxt.tripleExprFor(expr)
     if tefor_expr is None:
-        cntxt.fail_reason = "{}: Reference not found".format(expr)
+        cntxt.fail_reason = f"{expr}: Reference not found"
         return False
     return matchesExpr(cntxt, T, tefor_expr)
