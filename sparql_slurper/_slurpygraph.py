@@ -2,6 +2,7 @@ from typing import Dict, NamedTuple, Union, List, Tuple, Optional, Callable, Typ
 
 import time
 import collections
+import toolforge
 from SPARQLWrapper import SPARQLWrapper, JSON
 from rdflib import Graph, URIRef, Literal, BNode
 
@@ -25,7 +26,8 @@ class SlurpyGraph(Graph):
         :param endpoint: URL of SPARQL endpoint
         :param persistent_bnodes: BNodes persist across SPARQL calls
         """
-        self.sparql = SPARQLWrapper(endpoint)
+        user_agent = toolforge.set_user_agent("pyshexy")
+        self.sparql = SPARQLWrapper(endpoint, agent=user_agent)
         self.persistent_bnodes = persistent_bnodes
         self.sparql.setReturnFormat(JSON)
         self.resolved_nodes = [(None, None, None)]
