@@ -1,6 +1,7 @@
 from typing import List
 
 import jsonasobj
+import toolforge
 import requests
 from SPARQLWrapper import SPARQLWrapper, JSON
 from rdflib import URIRef
@@ -30,7 +31,8 @@ class SPARQLQuery:
         if print_query:
             print("SPARQL:")
             print(self.query)
-        self.endpoint = SPARQLWrapper(sparql_endpoint)
+        user_agent = toolforge.set_user_agent("pyshexy")
+        self.endpoint = SPARQLWrapper(sparql_endpoint, agent=user_agent)
         self.endpoint.setQuery(self.query)
         self.endpoint.setReturnFormat(JSON)
 
